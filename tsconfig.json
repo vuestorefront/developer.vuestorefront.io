@@ -1,0 +1,11 @@
+{
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+    "types": [
+      "./auto-imports.d.ts",
+      "@nuxt/types",
+      "@nuxt/content"
+    ]
+  }
+}
