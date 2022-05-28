@@ -5,7 +5,7 @@
 # ReMark
 
 - https://github.com/mdx-js/mdx/tree/main/packages/remark-mdx
-- https://github.com/remcohaszing/remark-mermaidjs
+- https://github.com/temando/remark-mermaid
 - https://github.com/remcohaszing/remark-prettier
 - https://github.com/landakram/remark-wiki-link
 - https://github.com/florianeckerstorfer/remark-a11y-emoji

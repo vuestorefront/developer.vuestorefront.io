@@ -1,0 +1,15 @@
+{
+  "root": true,
+  "extends": [
+    "@vue-storefront/eslint-config-nuxt"
+  ],
+  "parserOptions": {
+    "project": [
+      "tsconfig.json",
+      ".nuxt/tsconfig.json"
+    ]
+  },
+  "rules": {
+    "n/no-unsupported-features/es-syntax": "off"
+  }
+}
