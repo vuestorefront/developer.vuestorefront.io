@@ -1,3 +1,5 @@
+import { BlogArticleApiResponse } from '../types';
+
 export default async function fetchOrgArticles({
   organization,
   page,
@@ -8,12 +10,15 @@ export default async function fetchOrgArticles({
   perPage?: number;
   [k: string]: any | any[];
 }) {
-  return $fetch(`https://dev.to/api/organizations/${organization}/articles`, {
-    method: 'GET',
-    params: {
-      page: page || 1,
-      per_page: perPage || 10,
+  return $fetch<BlogArticleApiResponse>(
+    `https://dev.to/api/organizations/${organization}/articles`,
+    {
+      method: 'GET',
+      params: {
+        page: page || 1,
+        per_page: perPage || 10,
+      },
+      responseType: 'json',
     },
-    responseType: 'json',
-  });
+  );
 }

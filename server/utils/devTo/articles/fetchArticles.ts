@@ -1,4 +1,4 @@
-import { DevToArticleApiResponse } from '~/server/utils/devTo/types';
+import { BlogArticleApiResponse } from '~/server/utils/devTo/types';
 
 export default async function fetchArticles({
   username,
@@ -13,7 +13,7 @@ export default async function fetchArticles({
   collectionId?: number;
   urlQuery?: Record<string, string | string[] | undefined>;
 }) {
-  return $fetch<DevToArticleApiResponse>('https://dev.to/api/articles', {
+  return $fetch<BlogArticleApiResponse>('https://dev.to/api/articles', {
     method: 'GET',
     params: {
       page: page || 1,

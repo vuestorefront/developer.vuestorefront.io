@@ -1,9 +1,9 @@
 <template>
   <div>
     <h1>Examples</h1>
-    <hr >
+    <hr />
     <h2>API</h2>
-    <hr >
+    <hr />
     <h3>Dev.to</h3>
     <h4>useFetch</h4>
     <ul>
@@ -28,7 +28,7 @@
         </nuxt-link>
       </li>
     </ul>
-    <hr >
+    <hr />
     <h4>useLazyFetch</h4>
     <ul>
       <li>
@@ -54,7 +54,7 @@
         </nuxt-link>
       </li>
     </ul>
-    <hr >
+    <hr />
     <h4>useAsyncData</h4>
     <ul>
       <li>
@@ -80,7 +80,7 @@
         </nuxt-link>
       </li>
     </ul>
-    <hr >
+    <hr />
     <h4>useLazyAsyncData</h4>
     <ul>
       <li>
@@ -106,7 +106,7 @@
         </nuxt-link>
       </li>
     </ul>
-    <hr >
+    <hr />
     <h3>GitHub</h3>
     <h4>useFetch</h4>
     <ul>
@@ -126,7 +126,7 @@
         </nuxt-link>
       </li>
     </ul>
-    <hr >
+    <hr />
     <h4>useLazyFetch</h4>
     <ul>
       <li>
@@ -145,7 +145,7 @@
         </nuxt-link>
       </li>
     </ul>
-    <hr >
+    <hr />
     <h4>useAsyncData</h4>
     <ul>
       <li>
@@ -169,7 +169,7 @@
         </nuxt-link>
       </li>
     </ul>
-    <hr >
+    <hr />
     <h4>useLazyAsyncData</h4>
     <ul>
       <li>
@@ -193,7 +193,7 @@
         </nuxt-link>
       </li>
     </ul>
-    <hr >
+    <hr />
   </div>
 </template>
 

@@ -10,8 +10,18 @@
     ]
   },
   "rules": {
+    "vue/html-self-closing": "off",
+    "vue/html-closing-bracket-spacing": [
+      "error",
+      {
+        "startTag": "never",
+        "endTag": "never",
+        "selfClosingTag": "always"
+      }
+    ],
     "import/default": "off",
     "import/no-named-as-default": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "@typescript-eslint/require-await": "off"
   }
 }
