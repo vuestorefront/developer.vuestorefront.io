@@ -1,5 +1,5 @@
 import fetchUserInfo from '~/server/utils/devTo/user/fetchUserInfo';
-import returnSingleParams from '~/server/utils/queryParams/returnSingleParams';
+import returnSingleParams from '~/server/utils/queryParams/returnSingleParameters';
 
 export default defineEventHandler(async (event) => {
   const query = useQuery(event);

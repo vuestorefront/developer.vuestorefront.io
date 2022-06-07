@@ -1,19 +1,20 @@
 <template>
   <div>
     <h1>Dev.to User Data</h1>
-    <hr />
+    <hr>
     <p><strong>Is Fetching:</strong> {{ isFetching }}</p>
     <p><strong>Is Loading:</strong> {{ isFinished }}</p>
     <p><strong>Status Code:</strong> {{ statusCode }}</p>
     <p><strong>Error:</strong> {{ error }}</p>
-    <hr />
+    <hr>
     <pre>{{ data }}</pre>
   </div>
 </template>
-<script setup lang="ts">
-  import { useDevToUser } from '~/composables/api/useDevToUser';
 
-  const { $apiLazyFetch } = useDevToUser({ username: 'bloodf' });
+<script setup lang="ts">
+  import { useUser } from '~/composables/api/devTo/useUser';
+
+  const { $apiLazyFetch } = useUser({ username: 'bloodf' });
   const { data, error, isFetching, isFinished, response, statusCode } =
     await $apiLazyFetch();
 </script>

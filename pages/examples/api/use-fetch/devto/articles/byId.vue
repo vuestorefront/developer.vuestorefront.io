@@ -10,10 +10,11 @@
     <pre>{{ data }}</pre>
   </div>
 </template>
-<script setup lang="ts">
-  import { useDevToArticleById } from '~/composables/api/useDevToArticlesById';
 
-  const { $apiFetch } = useDevToArticleById(1080900);
+<script setup lang="ts">
+  import { useArticleById } from '~/composables/api/devTo/useArticlesById';
+
+  const { $apiFetch } = useArticleById(1_080_900);
   const { data, error, isFetching, isFinished, response, statusCode } =
     await $apiFetch();
 </script>

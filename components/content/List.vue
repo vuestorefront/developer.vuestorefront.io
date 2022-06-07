@@ -1,15 +1,3 @@
-<script setup lang="ts">
-  // Utils from Nuxt Content
-  const { flatUnwrap } = useUnwrap();
-
-  defineProps({
-    icon: {
-      type: String,
-      default: 'heroicons-outline:badge-check',
-    },
-  });
-</script>
-
 <template>
   <ul class="p-0">
     <li
@@ -22,3 +10,14 @@
     </li>
   </ul>
 </template>
+
+<script setup lang="ts">
+  defineProps({
+    icon: {
+      type: String,
+      default: 'heroicons-outline:badge-check',
+    },
+  });
+  // Utils from Nuxt Content
+  const { flatUnwrap } = useUnwrap();
+</script>

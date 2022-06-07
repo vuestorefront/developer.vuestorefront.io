@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
       organization,
       repository,
     },
-    `commits`,
+    `/commits`,
     {
       params: {
         path: filePath,

@@ -10,6 +10,8 @@
     ]
   },
   "rules": {
-    "n/no-unsupported-features/es-syntax": "off"
+    "import/default": "off",
+    "import/no-named-as-default": "off",
+    "import/extensions": "off"
   }
 }

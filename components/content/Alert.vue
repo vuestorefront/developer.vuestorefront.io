@@ -1,12 +1,3 @@
-<script setup>
-  defineProps({
-    icon: {
-      type: String,
-      default: 'heroicons-outline:exclamation',
-    },
-  });
-</script>
-
 <template>
   <div class="p-4 rounded-md bg-yellow-50">
     <div class="flex">
@@ -24,3 +15,12 @@
     </div>
   </div>
 </template>
+
+<script setup>
+  defineProps({
+    icon: {
+      type: String,
+      default: 'heroicons-outline:exclamation',
+    },
+  });
+</script>

@@ -1,4 +1,4 @@
-import { DevToUserApiResponse } from '~/server/utils/devTo/types';
+import { BlogUserApiResponse } from '../types';
 
 export default async function fetchUserInfo({
   id,
@@ -12,7 +12,7 @@ export default async function fetchUserInfo({
       ? `https://dev.to/api/users/${id}`
       : `https://dev.to/api/users/by_username?url=${username}`;
 
-  return $fetch<DevToUserApiResponse>(apiUrl, {
+  return $fetch<BlogUserApiResponse>(apiUrl, {
     method: 'GET',
     responseType: 'json',
   });

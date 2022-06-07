@@ -12,16 +12,16 @@ const exec = (
     pattern: RegExp;
   },
 ): Record<string, unknown> => {
-  let i = 0;
+  let index = 0;
   const out: {
     [key: string]: unknown;
     [key: number]: unknown;
   } = {};
   const matches: RegExpExecArray | Record<string | number, unknown> =
     result.pattern.exec(path) || {};
-  while (i < result.keys.length) {
-    i += 1;
-    out[result.keys[i]] = matches[i] || null;
+  while (index < result.keys.length) {
+    index += 1;
+    out[result.keys[index]] = matches[index] || null;
   }
   return out;
 };
@@ -36,31 +36,31 @@ export default (GITHUB_TOKEN: string) => {
     repository: string;
     filePath?: string;
   }) => {
-    let ref = '';
+    let reference = '';
     let mutablePath = `${filePath}`;
     const mutableRepo = `${repository}`;
 
     if (!isEmpty(mutablePath)) {
       const execResult = exec(`/${mutablePath}`, githubBlobUrl);
       if (execResult.ref) {
-        ref = `${execResult.ref}`;
-        mutablePath = mutablePath.replace(`blob/${ref}`, '');
+        reference = `${execResult.ref}`;
+        mutablePath = mutablePath.replace(`blob/${reference}`, '');
       }
     } else if (mutableRepo.includes('@')) {
-      [, ref] = mutableRepo.split('@');
+      [, reference] = mutableRepo.split('@');
     }
 
     const fileData = await gitHubFetch<string, 'text'>(
       GITHUB_TOKEN,
       { organization, repository },
-      `contents/${mutablePath}`,
+      `/contents/${mutablePath}`,
       {
         headers: {
           Accept: 'application/vnd.github.v3.raw',
           Authorization: `token ${GITHUB_TOKEN}`,
         },
         params: {
-          ...(ref ? { ref } : {}),
+          ...(reference ? { ref: reference } : {}),
         },
         response: true,
         responseType: 'text',

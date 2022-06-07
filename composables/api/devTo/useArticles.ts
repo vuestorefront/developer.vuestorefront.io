@@ -2,7 +2,7 @@ import { withQuery } from 'ufo';
 import { ApiUrl } from '~/enums/apiUrl';
 import { generateReturnMethods } from '~/composables/api/utils/generateReturnMethods';
 
-export const useDevToArticles = ({
+export const useArticles = ({
   username,
   page,
   perPage,
@@ -20,8 +20,8 @@ export const useDevToArticles = ({
   generateReturnMethods(
     withQuery(
       !organization && username
-        ? `${ApiUrl.DevTo}user/articles`
-        : `${ApiUrl.DevTo}${organization}/articles`,
+        ? `${ApiUrl.Blog}user/articles`
+        : `${ApiUrl.Blog}${organization}/articles`,
       {
         ...(username && !organization ? { username } : {}),
         ...(page ? { page: `${page}` } : {}),
@@ -29,7 +29,7 @@ export const useDevToArticles = ({
         ...(!organization
           ? {
               ...(collectionId ? { collectionId: `${collectionId}` } : {}),
-              ...(urlQuery || {}),
+              ...urlQuery,
             }
           : {}),
       },

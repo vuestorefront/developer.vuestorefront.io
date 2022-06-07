@@ -1,7 +1,7 @@
 import { generateReturnMethods } from '~/composables/api/utils/generateReturnMethods';
 import { ApiUrl } from '~/enums/apiUrl';
 
-export const useGitHubFile = ({
+export const useFile = ({
   organization,
   repository,
   filePath,

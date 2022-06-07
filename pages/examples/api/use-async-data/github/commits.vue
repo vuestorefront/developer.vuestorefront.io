@@ -1,19 +1,20 @@
 <template>
   <div>
     <h1>GitHub Commits Data</h1>
-    <hr />
+    <hr>
     <p><strong>Is Fetching:</strong> {{ isFetching }}</p>
     <p><strong>Is Loading:</strong> {{ isFinished }}</p>
     <p><strong>Status Code:</strong> {{ statusCode }}</p>
     <p><strong>Error:</strong> {{ error }}</p>
-    <hr />
+    <hr>
     <pre>{{ data }}</pre>
   </div>
 </template>
-<script setup lang="ts">
-  import { useGitHubCommits } from '~/composables/api/useGitHubCommits';
 
-  const { $apiAsyncData } = useGitHubCommits({
+<script setup lang="ts">
+  import { useCommits } from '~/composables/api/gitHub/useCommits';
+
+  const { $apiAsyncData } = useCommits({
     organization: 'vuestorefront',
     repository: 'vue-storefront',
     filePath: 'README.md',

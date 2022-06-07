@@ -1,4 +1,4 @@
-export interface DevToUserApiResponse {
+export interface BlogUserApiResponse {
   type_of: string;
   id: number;
   username: string;
@@ -12,7 +12,7 @@ export interface DevToUserApiResponse {
   profile_image: string;
 }
 
-export interface DevToUser {
+export interface BlogUser {
   name: string;
   username: string;
   twitter_username: string;
@@ -22,7 +22,7 @@ export interface DevToUser {
   profile_image_90: string;
 }
 
-export interface DevToOrganization {
+export interface BlogOrganization {
   name: string;
   username: string;
   slug: string;
@@ -30,7 +30,7 @@ export interface DevToOrganization {
   profile_image_90: string;
 }
 
-export interface DevToArticleApiResponse {
+export interface BlogArticleApiResponse {
   type_of: string;
   id: number;
   title: string;
@@ -55,6 +55,6 @@ export interface DevToArticleApiResponse {
   last_comment_at: Date;
   published_timestamp: Date;
   reading_time_minutes: number;
-  user: DevToUser;
-  organization: DevToOrganization;
+  user: BlogUser;
+  organization: BlogOrganization;
 }

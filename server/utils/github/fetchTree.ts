@@ -1,5 +1,5 @@
-import { gitHubFetch } from './utils/gitHubFetch';
 import { GitTree } from '~/server/utils/github/type';
+import { gitHubFetch } from './utils/gitHubFetch';
 
 export default (GITHUB_TOKEN: string) => {
   return async ({
@@ -36,13 +36,13 @@ export default (GITHUB_TOKEN: string) => {
       },
     );
 
-    const paths = fileTreeRaw.map((i) => i.path);
+    const paths = fileTreeRaw.map((index) => index.path);
     const result = [];
 
     paths.map((path) => {
-      const tmp = path?.split('/');
-      return tmp?.reduce(
-        (previous, path, i, arrPaths) => {
+      const temporary = path?.split('/');
+      return temporary?.reduce(
+        (previous, path, index, arrayPaths) => {
           if (!previous[path]) {
             previous[path] = { result: [] };
 

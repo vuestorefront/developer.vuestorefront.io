@@ -2,7 +2,7 @@ import { withQuery } from 'ufo';
 import { generateReturnMethods } from '~/composables/api/utils/generateReturnMethods';
 import { ApiUrl } from '~/enums/apiUrl';
 
-export const useGitHubFileTree = ({
+export const useFileTree = ({
   organization,
   repository,
   sha = '',
@@ -17,6 +17,6 @@ export const useGitHubFileTree = ({
     withQuery(`${ApiUrl.GitHub}${organization}/${repository}/file/tree`, {
       ...(sha ? { sha } : {}),
       // eslint-disable-next-line no-bitwise
-      ...(recursive ? { recursive: `${~~recursive}` } : {}),
+      ...(recursive ? { recursive: `${Math.trunc(recursive)}` } : {}),
     }),
   );

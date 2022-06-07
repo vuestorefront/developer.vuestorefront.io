@@ -1,5 +1,5 @@
 export enum ApiUrl {
-  DevTo = '/api/dev-to/',
+  Blog = '/api/dev-to/',
   GitHub = '/api/github/',
   Content = '/api/content/',
 }

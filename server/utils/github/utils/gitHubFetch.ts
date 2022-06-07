@@ -11,12 +11,12 @@ export const gitHubFetch = async <T, K = 'json'>(
     repository: string;
   },
   path = '',
-  opts = {},
+  options = {},
 ) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   return $fetch<T, K>(
-    `repos/${organization}/${sanitizeRepo(repository)}/${path || ''}`,
+    `repos/${organization}/${sanitizeRepo(repository)}${path || ''}`,
     {
       headers: {
         Authorization: `token ${GITHUB_TOKEN}`,
@@ -24,7 +24,7 @@ export const gitHubFetch = async <T, K = 'json'>(
       retry: 3,
       baseURL: 'https://api.github.com/',
       method: 'GET',
-      ...(opts || {}),
+      ...options,
     },
   );
 };
