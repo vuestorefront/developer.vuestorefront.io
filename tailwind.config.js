@@ -1,10 +1,28 @@
-import { defineConfig } from 'windicss/helpers';
+const colors = require('tailwindcss/colors');
 
-export default defineConfig({
-  content: ['content/**/*.md'],
+module.exports = {
+  darkMode: 'class',
+  plugins: [require('@tailwindcss/typography')],
+  content: [
+    'components/**/*.{js,jsx,ts,tsx,vue}',
+    'stories/**/*.{js,jsx,ts,tsx,vue}',
+    'layouts/**/*.{js,jsx,ts,tsx,vue}',
+    'pages/**/*.{js,jsx,ts,tsx,vue}',
+    'plugins/**/*.{js,jsx,ts,tsx,vue}',
+    'content/**/*.{md,yml,json,json5,csv}',
+  ],
+  safelist: [
+    'whitelisted',
+    {
+      pattern:
+        /(bg|text|border)-(green|purple|blue|yellow|gray|rose)-([2589])0+/,
+    },
+  ],
   theme: {
     extend: {
       colors: {
+        transparent: 'transparent',
+        current: 'currentColor',
         blue: {
           50: '#f3f8f9',
           100: '#daf1fa',
@@ -29,7 +47,7 @@ export default defineConfig({
           800: '#2a262f',
           900: '#19181b',
         },
-        primary: {
+        green: {
           50: '#f0fdf4',
           100: '#dcfce7',
           200: '#bbf7d0',
@@ -41,7 +59,7 @@ export default defineConfig({
           800: '#166534',
           900: '#14532d',
         },
-        secondary: {
+        purple: {
           50: '#f5f3ff',
           100: '#ede9fe',
           200: '#ddd6fe',
@@ -89,9 +107,6 @@ export default defineConfig({
         '6xl': '4.375rem',
       },
       fontFamily: {
-        'red-hat-text': 'Red Hat Text',
-        'red-hat-display': 'Red Hat Display',
-        roboto: 'Roboto',
         sans: ['Red Hat Text', 'ui-sans-serif', 'system-ui'],
         heading: ['Red Hat Display', 'ui-sans-serif', 'system-ui'],
         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular'],
@@ -124,5 +139,4 @@ export default defineConfig({
       },
     },
   },
-  plugins: [],
-});
+};
