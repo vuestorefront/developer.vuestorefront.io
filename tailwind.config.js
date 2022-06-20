@@ -15,7 +15,7 @@ module.exports = {
     'whitelisted',
     {
       pattern:
-        /(bg|text|border)-(green|purple|blue|yellow|gray|rose)-([2589])0+/,
+        /(bg|text|border)-(primary|secondary|blue|yellow|gray|rose|white)(-([2589])0+)?/,
     },
   ],
   theme: {
@@ -24,6 +24,7 @@ module.exports = {
         transparent: 'transparent',
         current: 'currentColor',
         blue: {
+          DEFAULT: '#357dc0',
           50: '#f3f8f9',
           100: '#daf1fa',
           200: '#afe0f5',
@@ -36,6 +37,7 @@ module.exports = {
           900: '#101f3f',
         },
         gray: {
+          DEFAULT: '#73707b',
           50: '#fafbfb',
           100: '#f1f1f2',
           200: '#e5e5e6',
@@ -47,7 +49,8 @@ module.exports = {
           800: '#2a262f',
           900: '#19181b',
         },
-        green: {
+        primary: {
+          DEFAULT: '#02bb4d',
           50: '#f0fdf4',
           100: '#dcfce7',
           200: '#bbf7d0',
@@ -59,7 +62,8 @@ module.exports = {
           800: '#166534',
           900: '#14532d',
         },
-        purple: {
+        secondary: {
+          DEFAULT: '#875df1',
           50: '#f5f3ff',
           100: '#ede9fe',
           200: '#ddd6fe',
@@ -72,6 +76,7 @@ module.exports = {
           900: '#420ca9',
         },
         rose: {
+          DEFAULT: '#f43f5e',
           50: '#fff1f2',
           100: '#ffe4e6',
           200: '#fecdd3',
@@ -79,8 +84,12 @@ module.exports = {
           400: '#fb7185',
           500: '#f43f5e',
           600: '#e11d48',
+          700: '#be123c',
+          800: '#9f1239',
+          900: '#881337',
         },
         yellow: {
+          DEFAULT: '#f59e0b',
           50: '#fffbeb',
           100: '#fef3c7',
           200: '#fde68a',
@@ -110,6 +119,9 @@ module.exports = {
         sans: ['Red Hat Text', 'ui-sans-serif', 'system-ui'],
         heading: ['Red Hat Display', 'ui-sans-serif', 'system-ui'],
         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular'],
+        'red-hat-text': 'Red Hat Text',
+        'red-hat-display': 'Red Hat Display',
+        roboto: 'Roboto',
       },
       boxShadow: {
         sm: '0px 0px 2px 0px rgba(0,0,0,0.2)',

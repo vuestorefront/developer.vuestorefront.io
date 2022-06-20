@@ -1,5 +1,5 @@
 <template>
-  <Story title="Atoms/Icon">
+  <Story title="Icons/Icon">
     <Variant title="playground" :init-state="initState">
       <template #default="{ state }">
         <Suspense>
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-  import Icon from '../../../components/atoms/Icon.vue';
+  import Icon from '../../../components/icons/Icon.vue';
 
   function initState() {
     return {

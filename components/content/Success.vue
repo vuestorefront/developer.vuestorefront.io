@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-  import ColorTextBox from '../molecules/banner/ColorTextBox';
+  import ColorTextBox from '../banners/colored/TextBoxBanner.vue';
 
   defineProps<{
     title: string;

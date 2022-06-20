@@ -200,7 +200,7 @@
 <script setup lang="ts"></script>
 
 <script>
-  import ColoredBanner from '../components/molecules/banner/ColorTextBox';
+  import ColoredBanner from '../components/banners/colored/TextBoxBanner';
 
   export default {
     components: { ColoredBanner },

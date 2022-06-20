@@ -1,8 +1,8 @@
 <template>
-  <Story title="Molecules/Banner/AlertTextBox">
+  <Story title="Banners/Colored/TextBox">
     <Variant title="Color Text Box" :init-state="initState">
       <template #default="{ state }">
-        <ColorTextBox
+        <TextBoxBanner
           :icon="state.icon"
           :type="state.type"
           :message="state.message"
@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-  import ColorTextBox from '../../../components/molecules/banner/ColorTextBox';
+  import TextBoxBanner from '../../../../components/banners/colored/TextBoxBanner.vue';
 
   function initState() {
     return {

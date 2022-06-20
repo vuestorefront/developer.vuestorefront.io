@@ -1,13 +1,13 @@
-export default (type?: string) => {
+export const useGetTypeProperties = (type?: string) => {
   const typeToData = (componentType): [string, string] => {
     const baseData = {
       warning: ['yellow', 'carbon:warning-alt'],
       info: ['blue', 'carbon:information'],
-      success: ['green', 'carbon:checkmark'],
+      success: ['primary', 'carbon:checkmark'],
       danger: ['rose', 'carbon:close-outline'],
     };
 
-    return baseData[componentType] ? baseData[componentType] : ['green', ''];
+    return baseData[componentType] ? baseData[componentType] : ['primary', ''];
   };
   const data = computed(() => typeToData(type));
 

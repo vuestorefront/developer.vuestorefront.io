@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-  import Icon from '../../atoms/Icon';
+  import Icon from '../../icons/Icon.vue';
 
   const props = defineProps<{
     icon?: string;
@@ -57,7 +57,7 @@
     .icon-box {
       @apply flex-shrink-0 mr-3;
       > .icon-img {
-        @apply w-7 h-7;
+        @apply w-auto h-8;
       }
     }
   }
