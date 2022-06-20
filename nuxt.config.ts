@@ -1,4 +1,5 @@
 import { defineNuxtConfig } from 'nuxt';
+import { fileURLToPath } from 'node:url';
 
 export default defineNuxtConfig({
   debug: process.env.NODE_ENV !== 'production',

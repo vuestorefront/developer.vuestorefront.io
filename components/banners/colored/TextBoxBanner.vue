@@ -1,24 +1,24 @@
 <template>
-  <div :class="`colored-banner bg-${data.bg} border-${data.border}`">
+  <div :class="`colored-banner bg-${colors.bg} border-${colors.border}`">
     <div class="flex">
       <slot
         name="icon"
-        :icon="icon || data.icon"
-        :color="`text-${data.border}`"
+        :icon="icon || colors.icon"
+        :color="`text-${colors.border}`"
       >
-        <div v-if="!!(icon || data.icon)" class="icon-box">
+        <div v-if="!!(icon || colors.icon)" class="icon-box">
           <Suspense>
             <Icon
               aria-hidden="true"
-              :class="`icon-img text-${data.border}`"
-              :name="icon || data.icon"
+              :class="`icon-img text-${colors.border}`"
+              :name="icon || colors.icon"
             />
           </Suspense>
         </div>
       </slot>
       <div>
         <slot name="title" :title="title">
-          <h3 :class="`title text-${data.text}`">
+          <h3 :class="`title text-${colors.text}`">
             {{ title }}
           </h3>
         </slot>
@@ -33,16 +33,16 @@
 </template>
 
 <script setup lang="ts">
-  import Icon from '../../icons/Icon.vue';
+  import Icon from '~/components/icons/Icon.vue';
 
   const props = defineProps<{
     icon?: string;
     title?: string;
     message?: string;
-    type?: string;
+    type?: ['default', 'success', 'danger', 'info', 'warning'];
   }>();
 
-  const data = computed(() => useGetTypeProperties(props.type));
+  const colors = computed(() => useGetTypeProperties(props.type));
 </script>
 
 <style scoped>

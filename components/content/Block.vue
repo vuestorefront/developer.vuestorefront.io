@@ -1,5 +1,5 @@
 <template>
-  <ColorTextBox type="success" :message="message" :title="title" />
+  <ColorTextBox type="default" :message="message" :title="title" />
 </template>
 
 <script setup lang="ts">

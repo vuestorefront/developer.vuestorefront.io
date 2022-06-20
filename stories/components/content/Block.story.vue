@@ -1,11 +1,11 @@
 <template>
   <Story
-    title="Nuxt Content/Component/Banner/Danger"
+    title="Nuxt Content/Component/Banner/Block"
     :layout="{ type: 'single', iframe: true }"
     :init-state="initState"
   >
     <template #default="{ state }">
-      <Danger :message="state.message" :title="state.title" />
+      <Block :message="state.message" :title="state.title" />
     </template>
     <template #controls="{ state }">
       <HstText v-model="state.title" title="Title" />
@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-  import Danger from '~/components/content/Danger';
+  import Block from '~/components/content/Block';
 
   function initState() {
     return {
@@ -26,9 +26,9 @@
 </script>
 
 <docs lang="md">
-# Danger MD Block
+# Default MD Block
 
-[Nuxt Content](https://content.nuxtjs.org/) MD Danger Block
+[Nuxt Content](https://content.nuxtjs.org/) MD Default Block
 
 ```typescript
 type Props = {

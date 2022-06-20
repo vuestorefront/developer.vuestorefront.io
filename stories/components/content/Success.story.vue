@@ -1,19 +1,21 @@
 <template>
-  <Story title="Content/Component/Success">
-    <Variant title="Success Text Box" :init-state="initState">
-      <template #default="{ state }">
-        <Success :message="state.message" :title="state.title" />
-      </template>
-      <template #controls="{ state }">
-        <HstText v-model="state.title" title="Title" />
-        <HstText v-model="state.text" title="Message" />
-      </template>
-    </Variant>
+  <Story
+    title="Nuxt Content/Component/Banner/Success"
+    :layout="{ type: 'single', iframe: true }"
+    :init-state="initState"
+  >
+    <template #default="{ state }">
+      <Success :message="state.message" :title="state.title" />
+    </template>
+    <template #controls="{ state }">
+      <HstText v-model="state.title" title="Title" />
+      <HstText v-model="state.message" title="Message" />
+    </template>
   </Story>
 </template>
 
 <script setup lang="ts">
-  import Success from '../../../components/content/Success';
+  import Success from '~/components/content/Success';
 
   function initState() {
     return {
@@ -22,3 +24,17 @@
     };
   }
 </script>
+
+<docs lang="md">
+# Success MD Block
+
+[Nuxt Content](https://content.nuxtjs.org/) MD Success Block
+
+```typescript
+type Props = {
+  icon?: string;
+  title?: string;
+  message?: string;
+};
+```
+</docs>

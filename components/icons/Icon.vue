@@ -11,7 +11,6 @@
 
   const properties = defineProps<{
     name: string;
-    inlineClass?: string;
   }>();
 
   const nuxtApp = useNuxtApp();

@@ -11,8 +11,8 @@
               {{ header }}
             </h1>
           </slot>
-          <slot name="text" :text="text">
-            <p class="leading-6 mb-10 text-xl">{{ text }}</p>
+          <slot name="message" :message="message">
+            <p class="text-lg mb-10 text-xl">{{ message }}</p>
           </slot>
           <slot name="button" :button="{ text: buttonText, link: buttonLink }">
             <nuxt-link
@@ -49,7 +49,7 @@
   withDefaults(
     defineProps<{
       header?: string;
-      text?: string;
+      message?: string;
       buttonText?: string;
       buttonLink?: string;
       buttonColor?: string;

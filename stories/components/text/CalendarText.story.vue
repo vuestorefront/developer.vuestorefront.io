@@ -1,40 +1,36 @@
 <template>
-  <Story
-    title="Icons/Icon"
-    :init-state="initState"
-    :layout="{ type: 'single', iframe: true }"
-  >
+  <Story title="Text/Calendar" :layout="{ type: 'single', iframe: true }">
     <Variant :init-state="initState">
       <template #default="{ state }">
         <Suspense>
-          <Icon :name="state.name" />
+          <CalendarText :date="state.date" />
         </Suspense>
       </template>
       <template #controls="{ state }">
-        <HstText v-model="state.name" title="Icon" />
+        <HstNumber v-model="state.date" title="Date" />
       </template>
     </Variant>
   </Story>
 </template>
 
 <script setup lang="ts">
-  import Icon from '~/components/icons/Icon.vue';
+  import CalendarText from '../../../components/text/CalendarText.vue';
 
   function initState() {
     return {
-      name: 'heroicons-outline:exclamation',
+      date: Date.now(),
     };
   }
 </script>
 
 <docs lang="md">
-# Icon
+# Calendar Text
 
-Component for icon with [Iconify](https://iconify.design/) module.
+Component for displaying a text with a calendar icon in the end.
 
 ```typescript
 type Props = {
-  name: string;
+  date?: Date | number;
 };
 ```
 </docs>

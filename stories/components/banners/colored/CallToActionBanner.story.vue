@@ -1,11 +1,11 @@
 <template>
-  <Story title="Banners/Colored/CallToAction">
-    <Variant title="playground" :init-state="initState">
+  <Story title="Banners/Colored/Call To Action">
+    <Variant title="Default" :init-state="initState">
       <template #default="{ state }">
         <Suspense>
           <CallToActionBanner
             :header="state.header"
-            :text="state.text"
+            :message="state.message"
             :button-text="state.buttonText"
             :button-link="state.buttonLink"
             :img="state.img"
@@ -16,7 +16,7 @@
       </template>
       <template #controls="{ state }">
         <HstText v-model="state.header" title="Header Title" />
-        <HstText v-model="state.text" title="Text" />
+        <HstText v-model="state.message" title="Text" />
         <HstText v-model="state.buttonText" title="Button Text" />
         <HstText v-model="state.buttonColor" title="Button BG Color" />
         <HstSelect
@@ -52,12 +52,13 @@
 </template>
 
 <script setup lang="ts">
-  import CallToActionBanner from '../../../../components/banners/colored/CallToActionBanner.vue';
+  import CallToActionBanner from '~/components/banners/colored/CallToActionBanner.vue';
 
   function initState() {
     return {
       header: 'Join our Discord server',
-      text: 'Find help, new ideas, new projects, and much more on our Discord server. ',
+      message:
+        'Find help, new ideas, new projects, and much more on our Discord server. ',
       buttonText: 'Join our Discord server',
       buttonLink: 'https://discord.gg/vuestorefront',
       buttonColor: 'white',
@@ -68,3 +69,25 @@
     };
   }
 </script>
+
+<docs lang="md">
+# Call to Action Banner
+
+Banner used for Call to Action with Button and Image
+
+```typescript
+type Props = {
+  header?: string;
+  message?: string;
+  buttonText?: string;
+  buttonLink?: string;
+  buttonColor?: string; // default: 'white'
+  buttonHoverColor?: string; // default: ''
+  buttonTextColor?: string; // default: 'secondary'
+  img?: string;
+  imgAlt?: string;
+  color?: string; // default: 'secondary'
+  textColor?: string; // default: 'white'
+};
+```
+</docs>
