@@ -1,9 +1,5 @@
 <template>
-  <Story
-    title="Icons/Icon"
-    :init-state="initState"
-    :layout="{ type: 'single', iframe: true }"
-  >
+  <Story title="Icons/Icon" :layout="{ type: 'single', iframe: true }">
     <Variant :init-state="initState">
       <template #default="{ state }">
         <Suspense>

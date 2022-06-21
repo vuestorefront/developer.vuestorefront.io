@@ -6,7 +6,7 @@
         :icon="icon || colors.icon"
         :color="`text-${colors.border}`"
       >
-        <div v-if="!!(icon || colors.icon)" class="icon-box">
+        <div v-if="!!(icon || colors.icon) && !error" class="icon-box">
           <Suspense>
             <Icon
               aria-hidden="true"
@@ -42,6 +42,7 @@
     type?: ['default', 'success', 'danger', 'info', 'warning'];
   }>();
 
+  const { error } = useErrorHandling();
   const colors = computed(() => useGetTypeProperties(props.type));
 </script>
 

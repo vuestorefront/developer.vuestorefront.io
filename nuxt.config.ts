@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     githubToken: process.env.GITHUB_TOKEN,
     devToToken: process.env.DEV_TO_TOKEN,
   },
-  modules: ['@nuxtjs/tailwindcss', '@vueuse/nuxt'],
+  modules: ['@nuxtjs/tailwindcss', '@intlify/nuxt3', '@vueuse/nuxt'],
   buildModules: ['@nuxtjs/google-fonts', '@nuxt/content', '@nuxtjs/color-mode'],
   tailwindcss: {
     jit: true,

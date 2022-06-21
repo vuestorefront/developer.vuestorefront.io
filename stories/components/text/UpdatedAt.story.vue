@@ -1,9 +1,9 @@
 <template>
-  <Story title="Text/Calendar" :layout="{ type: 'single', iframe: true }">
+  <Story title="Text/Updated At" :layout="{ type: 'single', iframe: true }">
     <Variant :init-state="initState">
       <template #default="{ state }">
         <Suspense>
-          <CalendarText :date="state.date" />
+          <UpdatedAt :date="state.date" />
         </Suspense>
       </template>
       <template #controls="{ state }">
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-  import CalendarText from '../../../components/text/CalendarText.vue';
+  import UpdatedAt from '~/components/text/UpdatedAt.vue';
 
   function initState() {
     return {
@@ -24,9 +24,9 @@
 </script>
 
 <docs lang="md">
-# Calendar Text
+# Updated At
 
-Component for displaying a text with a calendar icon in the end.
+Component for displaying an updated at text with a calendar icon in the end.
 
 ```typescript
 type Props = {
