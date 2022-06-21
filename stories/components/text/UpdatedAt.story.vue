@@ -1,15 +1,15 @@
 <template>
-  <Story title="Text/Updated At" :layout="{ type: 'single', iframe: true }">
-    <Variant :init-state="initState">
-      <template #default="{ state }">
-        <Suspense>
-          <UpdatedAt :date="state.date" />
-        </Suspense>
-      </template>
-      <template #controls="{ state }">
-        <HstNumber v-model="state.date" title="Date" />
-      </template>
-    </Variant>
+  <Story
+    title="Text/Updated At"
+    :layout="{ type: 'single', iframe: true }"
+    :init-state="initState"
+  >
+    <template #default="{ state }">
+      <UpdatedAt :date="state.date" />
+    </template>
+    <template #controls="{ state }">
+      <HstNumber v-model="state.date" title="Date" />
+    </template>
   </Story>
 </template>
 

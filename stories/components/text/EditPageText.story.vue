@@ -1,12 +1,6 @@
 <template>
   <Story title="Text/Edit Page" :layout="{ type: 'single', iframe: true }">
-    <Variant :init-state="initState">
-      <template #default="{ state }">
-        <Suspense>
-          <EditPage />
-        </Suspense>
-      </template>
-    </Variant>
+    <EditPage />
   </Story>
 </template>
 

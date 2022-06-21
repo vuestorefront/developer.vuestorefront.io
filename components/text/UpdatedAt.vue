@@ -13,13 +13,17 @@
   const props = defineProps<{
     date?: Date | number;
   }>();
+  const { formatDate } = useDateTimeIntl();
 
   const textDate = computed(() =>
-    new Intl.DateTimeFormat('default', {
-      weekday: 'short',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    }).format(new Date(props.date || '')),
+    formatDate({
+      date: props.date || '',
+      options: {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      },
+    }),
   );
 </script>
