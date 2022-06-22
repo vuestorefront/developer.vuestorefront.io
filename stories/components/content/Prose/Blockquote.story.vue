@@ -1,8 +1,5 @@
 <template>
-  <Story
-    title="Nuxt Content/Component/Prose/Blockquote"
-    :init-state="initState"
-  >
+  <Story title="Nuxt Content/Prose/Blockquote" :init-state="initState">
     <template #default="{ state }">
       <Blockquote>
         {{ state.quote }}

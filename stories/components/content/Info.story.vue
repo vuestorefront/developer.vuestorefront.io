@@ -1,6 +1,6 @@
 <template>
   <Story
-    title="Nuxt Content/Component/Banner/Information"
+    title="Nuxt Content/Banner/Information"
     :layout="{ type: 'single', iframe: true }"
     :init-state="initState"
   >

@@ -1,5 +1,5 @@
 <template>
-  <Story title="Nuxt Content/Component/Banner/Warning" :init-state="initState">
+  <Story title="Nuxt Content/Banner/Warning" :init-state="initState">
     <template #default="{ state }">
       <Warning :message="state.message" :title="state.title" />
     </template>
