@@ -1,9 +1,11 @@
 <template>
-  <Story title="List/Contributors" :init-state="initState">
+  <Story
+    title="List/Contributors"
+    :init-state="initState"
+    :layout="{ type: 'grid', width: 500 }"
+  >
     <template #default="{ state }">
-      <Suspense>
-        <Contributors :contributors="state.contributors" />
-      </Suspense>
+      <Contributors :contributors="state.contributors" />
     </template>
   </Story>
 </template>

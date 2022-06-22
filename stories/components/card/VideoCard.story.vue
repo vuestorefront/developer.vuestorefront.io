@@ -1,5 +1,9 @@
 <template>
-  <Story title="Card/Video" :init-state="initState">
+  <Story
+    title="Card/Video"
+    :init-state="initState"
+    :layout="{ type: 'grid', width: 300 }"
+  >
     <template #default="{ state }">
       <VideoCard
         :title="state.title"

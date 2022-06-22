@@ -1,5 +1,9 @@
 <template>
-  <Story title="Card/Blog" :init-state="initState">
+  <Story
+    title="Card/Blog"
+    :init-state="initState"
+    :layout="{ type: 'grid', width: 300 }"
+  >
     <template #default="{ state }">
       <BlogCard
         :title="state.title"

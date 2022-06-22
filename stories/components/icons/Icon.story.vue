@@ -1,13 +1,15 @@
 <template>
-  <Story title="Icons/Icon" :init-state="initState">
-    <template #default="{ state }">
-      <Suspense>
-        <Icon :name="state.name" />
-      </Suspense>
-    </template>
-    <template #controls="{ state }">
-      <HstText v-model="state.name" title="Icon" />
-    </template>
+  <Story title="Icons/Icon" :layout="{ type: 'grid', width: 200 }">
+    <Variant :init-state="initState" title="default">
+      <template #default="{ state }">
+        <Suspense>
+          <Icon :name="state.name" />
+        </Suspense>
+      </template>
+      <template #controls="{ state }">
+        <HstText v-model="state.name" title="Icon" />
+      </template>
+    </Variant>
   </Story>
 </template>
 

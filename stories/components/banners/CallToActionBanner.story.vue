@@ -1,17 +1,15 @@
 <template>
   <Story title="Banners/Call To Action" :init-state="initState">
     <template #default="{ state }">
-      <Suspense>
-        <CallToActionBanner
-          :header="state.header"
-          :message="state.message"
-          :button-text="state.buttonText"
-          :button-link="state.buttonLink"
-          :img="state.img"
-          :img-alt="state.imgAlt"
-          :color="state.color"
-        />
-      </Suspense>
+      <CallToActionBanner
+        :header="state.header"
+        :message="state.message"
+        :button-text="state.buttonText"
+        :button-link="state.buttonLink"
+        :img="state.img"
+        :img-alt="state.imgAlt"
+        :color="state.color"
+      />
     </template>
     <template #controls="{ state }">
       <HstText v-model="state.header" title="Header Title" />

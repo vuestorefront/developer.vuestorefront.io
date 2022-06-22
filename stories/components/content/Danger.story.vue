@@ -1,5 +1,9 @@
 <template>
-  <Story title="Nuxt Content/Banner/Danger" :init-state="initState">
+  <Story
+    title="Nuxt Content/Banner/Danger"
+    :init-state="initState"
+    :layout="{ type: 'grid', width: 300 }"
+  >
     <template #default="{ state }">
       <Danger :message="state.message" :title="state.title" />
     </template>

@@ -1,14 +1,16 @@
 <template>
-  <Story title="Item/Contributor" :init-state="initState">
+  <Story
+    title="Item/Contributor"
+    :init-state="initState"
+    :layout="{ type: 'grid', width: 200 }"
+  >
     <template #default="{ state }">
-      <Suspense>
-        <Contributor
-          :name="state.name"
-          :avatar="state.avatar"
-          :url="state.url"
-          :username="state.username"
-        />
-      </Suspense>
+      <Contributor
+        :name="state.name"
+        :avatar="state.avatar"
+        :url="state.url"
+        :username="state.username"
+      />
     </template>
     <template #controls="{ state }">
       <HstText v-model="state.name" title="Icon" />

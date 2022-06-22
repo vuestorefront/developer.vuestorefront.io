@@ -1,7 +1,7 @@
 <template>
   <Story
     title="Nuxt Content/Banner/Information"
-    :layout="{ type: 'single', iframe: true }"
+    :layout="{ type: 'grid', width: 300 }"
     :init-state="initState"
   >
     <template #default="{ state }">
