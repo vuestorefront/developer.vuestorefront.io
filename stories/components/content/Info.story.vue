@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-  import Info from '~/components/content/Info';
+  import Info from '~/components/content/Info.vue';
 
   function initState() {
     return {

@@ -1,9 +1,5 @@
 <template>
-  <Story
-    title="Nuxt Content/Component/Banner/Success"
-    :layout="{ type: 'single', iframe: true }"
-    :init-state="initState"
-  >
+  <Story title="Nuxt Content/Component/Banner/Success" :init-state="initState">
     <template #default="{ state }">
       <Success :message="state.message" :title="state.title" />
     </template>
@@ -15,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-  import Success from '~/components/content/Success';
+  import Success from '~/components/content/Success.vue';
 
   function initState() {
     return {

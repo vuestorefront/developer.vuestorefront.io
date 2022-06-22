@@ -1,9 +1,5 @@
 <template>
-  <Story
-    title="Nuxt Content/Component/Banner/Danger"
-    :layout="{ type: 'single', iframe: true }"
-    :init-state="initState"
-  >
+  <Story title="Nuxt Content/Component/Banner/Danger" :init-state="initState">
     <template #default="{ state }">
       <Danger :message="state.message" :title="state.title" />
     </template>
@@ -15,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-  import Danger from '~/components/content/Danger';
+  import Danger from '~/components/content/Danger.vue';
 
   function initState() {
     return {

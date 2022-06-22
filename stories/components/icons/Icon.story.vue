@@ -1,15 +1,13 @@
 <template>
-  <Story title="Icons/Icon" :layout="{ type: 'single', iframe: true }">
-    <Variant :init-state="initState">
-      <template #default="{ state }">
-        <Suspense>
-          <Icon :name="state.name" />
-        </Suspense>
-      </template>
-      <template #controls="{ state }">
-        <HstText v-model="state.name" title="Icon" />
-      </template>
-    </Variant>
+  <Story title="Icons/Icon" :init-state="initState">
+    <template #default="{ state }">
+      <Suspense>
+        <Icon :name="state.name" />
+      </Suspense>
+    </template>
+    <template #controls="{ state }">
+      <HstText v-model="state.name" title="Icon" />
+    </template>
   </Story>
 </template>
 

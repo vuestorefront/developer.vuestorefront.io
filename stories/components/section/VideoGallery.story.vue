@@ -1,9 +1,8 @@
 <template>
-  <Story title="Section/Blog Posts" :init-state="initState">
+  <Story title="Section/Video Gallery" :init-state="initState">
     <template #default="{ state }">
-      <BlogPosts :posts="state.posts" />
+      <VideoGallery :posts="state.posts" />
     </template>
-
     <template #controls="{ state }">
       <HstTextarea v-model="state.posts" title="Posts" />
     </template>
@@ -11,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-  import BlogPosts from '~/components/section/BlogPosts.vue';
+  import VideoGallery from '~/components/section/VideoGallery.vue';
 
   function initState() {
     return {
@@ -19,8 +18,6 @@
         {
           title: 'Boost your conversion rate',
           link: '#',
-          description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.',
           date: Date.now(),
           image: 'https://picsum.photos/600/600/?blur=10',
           author: {
@@ -32,8 +29,6 @@
         {
           title: 'How to use search engine optimization to drive sales',
           link: '#',
-          description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.',
           date: Date.now(),
           image: 'https://picsum.photos/600/550/?blur=5',
           readingTime: '4 min',
@@ -46,9 +41,6 @@
         {
           title: 'Improve your customer experience',
           link: '#',
-          category: { name: 'Case Study', link: '#' },
-          description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.',
           date: Date.now(),
           image: 'https://picsum.photos/600/500/?blur=5',
           readingTime: '11 min',
@@ -58,15 +50,28 @@
             avatar: 'https://i.pravatar.cc/310',
           },
         },
+        {
+          title: 'Dictumst varius efficitur nisl mattis',
+          link: '#',
+          category: { name: 'Case Study', link: '#' },
+          date: Date.now(),
+          image: 'https://picsum.photos/600/510/?blur=5',
+          readingTime: '11 min',
+          author: {
+            name: 'Maximus facilisis',
+            link: '#',
+            avatar: 'https://i.pravatar.cc/311',
+          },
+        },
       ],
     };
   }
 </script>
 
 <docs lang="md">
-# Blog Section
+# Video Gallery
 
-Section for displaying blog posts
+Section for displaying videos
 
 ```typescript
 type Props = {

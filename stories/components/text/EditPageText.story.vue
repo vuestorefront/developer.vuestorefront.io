@@ -1,5 +1,5 @@
 <template>
-  <Story title="Text/Edit Page" :layout="{ type: 'single', iframe: true }">
+  <Story title="Text/Edit Page">
     <EditPage />
   </Story>
 </template>

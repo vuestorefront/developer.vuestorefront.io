@@ -1,7 +1,6 @@
 <template>
   <Story
     title="Text/Updated At"
-    :layout="{ type: 'single', iframe: true }"
     :init-state="initState"
   >
     <template #default="{ state }">

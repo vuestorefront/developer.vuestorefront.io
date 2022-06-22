@@ -5,10 +5,10 @@
         <img class="h-48 w-full object-cover" :src="image" :alt="title" />
       </NuxtLink>
     </slot>
-    <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+    <div class="flex-1 bg-white p-2 flex flex-col justify-between">
       <div class="flex-1">
         <slot name="title" v-bind="{ link, title }">
-          <NuxtLink class="block mt-2" :to="link">
+          <NuxtLink class="block" :to="link">
             <p class="text-xl font-semibold text-gray-900">
               {{ title }}
             </p>

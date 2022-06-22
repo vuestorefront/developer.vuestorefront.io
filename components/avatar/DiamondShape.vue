@@ -1,5 +1,5 @@
 <template>
-  <div class="avatar mr-2">
+  <div class="avatar mr-2" aria-hidden="true">
     <svg class="svg-hidden">
       <clipPath id="my-clip-path" clipPathUnits="objectBoundingBox">
         <path

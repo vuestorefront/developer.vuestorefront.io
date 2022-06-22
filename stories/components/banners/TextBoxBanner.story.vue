@@ -1,8 +1,5 @@
 <template>
-  <Story
-    title="Banners/Colored/Text Box"
-    :layout="{ type: 'grid', width: 400 }"
-  >
+  <Story title="Banners/Text Box" :layout="{ type: 'grid', width: 400 }">
     <template #controls="{ state }">
       <HstText v-model="state.icon" title="Icon" />
       <HstText v-model="state.title" title="Title" />
@@ -27,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-  import TextBoxBanner from '~/components/banners/colored/TextBoxBanner.vue';
+  import TextBoxBanner from '~/components/banners/TextBoxBanner.vue';
 
   const componentType = [
     'Warning',

@@ -200,7 +200,7 @@
 <script setup lang="ts"></script>
 
 <script>
-  import ColoredBanner from '../components/banners/colored/TextBoxBanner';
+  import ColoredBanner from '../components/banners/TextBoxBanner';
 
   export default {
     components: { ColoredBanner },

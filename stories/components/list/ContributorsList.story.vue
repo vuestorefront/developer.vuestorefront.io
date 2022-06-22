@@ -1,17 +1,15 @@
 <template>
-  <Story title="List/Contributors" :layout="{ type: 'single', iframe: true }">
-    <Variant :init-state="initState">
-      <template #default="{ state }">
-        <Suspense>
-          <Contributors :contributors="state.contributors" />
-        </Suspense>
-      </template>
-    </Variant>
+  <Story title="List/Contributors" :init-state="initState">
+    <template #default="{ state }">
+      <Suspense>
+        <Contributors :contributors="state.contributors" />
+      </Suspense>
+    </template>
   </Story>
 </template>
 
 <script setup lang="ts">
-  import Contributors from '~/components/list/Contributors.vue';
+  import Contributors from '~/components/list/ContributorsList.vue';
 
   function initState() {
     return {

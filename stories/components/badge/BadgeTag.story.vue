@@ -1,5 +1,5 @@
 <template>
-  <Story title="Badge/Colored/BadgeTag" :layout="{ type: 'grid', width: 200 }">
+  <Story title="Badge/BadgeTag" :layout="{ type: 'grid', width: 200 }">
     <Variant title="With Text & Icon" :init-state="initState">
       <template #default="{ state }">
         <Suspense>
@@ -74,7 +74,7 @@
 </template>
 
 <script setup lang="ts">
-  import BadgeTag from '~/components/badge/colored/BadgeTag.vue';
+  import BadgeTag from '~/components/badge/BadgeTag.vue';
 
   function initState() {
     return {

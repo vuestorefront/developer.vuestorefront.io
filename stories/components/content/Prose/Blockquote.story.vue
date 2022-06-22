@@ -1,7 +1,6 @@
 <template>
   <Story
     title="Nuxt Content/Component/Prose/Blockquote"
-    :layout="{ type: 'single', iframe: true }"
     :init-state="initState"
   >
     <template #default="{ state }">
