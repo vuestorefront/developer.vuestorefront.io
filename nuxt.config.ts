@@ -10,6 +10,7 @@ export default defineNuxtConfig({
   },
   modules: ['@nuxtjs/tailwindcss', '@intlify/nuxt3', '@vueuse/nuxt'],
   buildModules: ['@nuxtjs/google-fonts', '@nuxt/content', '@nuxtjs/color-mode'],
+  css: ['@/assets/scss/main.scss'],
   tailwindcss: {
     jit: true,
     viewer: false,

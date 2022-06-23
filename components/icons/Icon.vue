@@ -1,7 +1,6 @@
 <template>
-  <Iconify v-if="icon" :icon="icon" class="inline-block" />
-  <Component :is="component" v-else-if="component" />
-  <span v-else>{{ properties.name }}</span>
+  <Iconify v-if="icon" :icon="icon" class="inline-block" aria-hidden="true" />
+  <Component :is="component" v-else-if="component" aria-hidden="true" />
 </template>
 
 <script setup lang="ts">
