@@ -1,0 +1,14 @@
+.btn{
+  @apply w-fit inline-flex items-center px-6 py-3 border border-transparent text-base uppercase rounded-md shadow-base focus:outline-none focus:ring-2 focus:ring-offset-2 hover:no-underline;
+}
+.btn {
+  &-primary {
+    @apply text-white bg-primary-500 hover:bg-primary-700 focus:ring-primary-500 hover:text-white
+  }
+  &-secondary {
+    @apply text-white bg-secondary-500 hover:bg-secondary-700 focus:ring-secondary-500 hover:text-white
+  }
+  &-white {
+    @apply text-primary bg-white focus:ring-primary-500 hover:text-primary-700
+  }
+}

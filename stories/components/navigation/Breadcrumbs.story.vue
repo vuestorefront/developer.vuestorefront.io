@@ -1,6 +1,6 @@
 <template>
   <Story
-    title="Navigation/Breadcrumb"
+    title="Navigation/Breadcrumbs"
     :init-state="initState"
     :layout="{ type: 'grid', width: 500 }"
   >
@@ -8,7 +8,7 @@
       <Breadcrumb :bread-crumbs="state.breadCrumbs" />
     </template>
     <template #controls="{ state }">
-      <HstTextarea v-model="state.breadCrumbs" title="Icon" />
+      <HstTextarea v-model="state.breadCrumbs" title="BreadCrumbs" />
     </template>
   </Story>
 </template>
