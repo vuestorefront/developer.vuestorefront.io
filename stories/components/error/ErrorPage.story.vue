@@ -27,8 +27,8 @@
       message: `This is not the page you're looking for.\n
 But there is always hope.\n
 You can go back to the last page, go to our home page or search for the specific topic.`,
-      error:
-        'Massa fringilla eget torquent sodales ipsum aptent mollis nullam arcu, nisl proin amet consequat taciti placerat ad facilisis pellentesque lobortis, dictum quis purus potenti condimentum nam ligula primis. Enim tincidunt malesuada diam natoque eget duis fames turpis nostra id venenatis, magna etiam ut quam habitasse placerat semper class vehicula felis.',
+      error: `Massa fringilla eget torquent sodales ipsum aptent mollis nullam arcu, nisl proin amet consequat taciti placerat ad facilisis pellentesque lobortis, dictum quis purus potenti condimentum nam ligula primis.
+      \nEnim tincidunt malesuada diam natoque eget duis fames turpis nostra id venenatis, magna etiam ut quam habitasse placerat semper class vehicula felis.`,
     };
   }
 </script>

@@ -14,14 +14,12 @@
         </h2>
       </div>
       <p class="my-4 text-gray-500">{{ message }}</p>
-      <div
+      <pre
         v-if="error"
-        class="bg-gray-200 p-3 my-8 flex rounded-xl border border-gray-400"
+        class="bg-gray-200 my-8 flex rounded-xl border border-gray-400 break-words p-3 whitespace-normal"
       >
-        <blockquote>
           {{ error }}
-        </blockquote>
-      </div>
+        </pre>
       <div class="flex flex-row gap-4">
         <NuxtLink class="btn btn-primary"> Go Back </NuxtLink>
         <NuxtLink class="btn btn-white"> Go to Home </NuxtLink>
