@@ -1,6 +1,6 @@
 <template>
   <Story
-    title="Atoms/Buttons"
+    title="Atoms/Buttons/Button"
     :init-state="initState"
     :layout="{ type: 'grid', width: 400, iframe: true }"
   >
@@ -319,7 +319,6 @@ type Props = {
   iconOnly?: boolean;
   label: string;
   tag?: string;
-  href?: string;
 };
 ```
 </docs>
