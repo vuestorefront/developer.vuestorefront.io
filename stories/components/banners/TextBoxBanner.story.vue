@@ -6,8 +6,8 @@
       <HstText v-model="state.message" title="Message" />
     </template>
     <Variant
-      v-for="(type, key) in componentType"
-      :key="key"
+      v-for="(type, index) in componentType"
+      :key="Math.random() + index"
       :title="type"
       :init-state="initState"
     >

@@ -4,26 +4,14 @@
     :init-state="initState"
     :layout="{ type: 'grid', width: 400, iframe: true }"
   >
-    <Variant title="default">
+    <Variant
+      v-for="(color, index) in buttonColors"
+      :key="Math.random() + index"
+      :title="capitalize(color)"
+    >
       <template #default="{ state }">
         <Button
-          :size="state.size"
-          :color="state.color"
-          :outline="state.outline"
-          :shadow="state.shadow"
-          :label="state.label"
-          :tag="state.tag"
-          :rounded="state.rounded"
-          :disabled="state.disabled"
-          :icon="state.icon"
-          :icon-only="state.iconOnly"
-          :icon-name="state.iconName"
-        />
-      </template>
-    </Variant>
-    <Variant title="Success/Primary">
-      <template #default="{ state }">
-        <Button
+          :color="state.color || color"
           :counter="state.counter"
           :disabled="state.disabled"
           :icon-name="state.iconName"
@@ -34,170 +22,31 @@
           :rounded="state.rounded"
           :shadow="state.shadow"
           :size="state.size"
+          :tag-props="state.tagProps"
+          :tag="state.tag"
+        />
+      </template>
+    </Variant>
+    <Variant
+      v-for="(btn, index) in iconButtons"
+      :key="Math.random() + index"
+      :title="btn.title"
+    >
+      <template #default="{ state }">
+        <Button
+          :counter="state.counter"
+          :disabled="state.disabled"
+          :icon-name="state.iconName || btn.iconName"
+          :icon-only="btn.iconOnly"
+          :icon="btn.icon"
+          :label="btn.label"
+          :outline="state.outline"
+          :rounded="state.rounded"
+          :shadow="state.shadow"
+          :size="state.size"
+          :tag-props="state.tagProps"
           :tag="state.tag"
           color="success"
-        />
-      </template>
-    </Variant>
-    <Variant title="Secondary">
-      <template #default="{ state }">
-        <Button
-          :counter="state.counter"
-          :disabled="state.disabled"
-          :icon-name="state.iconName"
-          :icon-only="state.iconOnly"
-          :icon="state.icon"
-          :label="state.label"
-          :outline="state.outline"
-          :rounded="state.rounded"
-          :shadow="state.shadow"
-          :size="state.size"
-          :tag="state.tag"
-          color="secondary"
-        />
-      </template>
-    </Variant>
-    <Variant title="Info">
-      <template #default="{ state }">
-        <Button
-          :counter="state.counter"
-          :disabled="state.disabled"
-          :icon-name="state.iconName"
-          :icon-only="state.iconOnly"
-          :icon="state.icon"
-          :label="state.label"
-          :outline="state.outline"
-          :rounded="state.rounded"
-          :shadow="state.shadow"
-          :size="state.size"
-          :tag="state.tag"
-          color="info"
-        />
-      </template>
-    </Variant>
-    <Variant title="Warning">
-      <template #default="{ state }">
-        <Button
-          :counter="state.counter"
-          :disabled="state.disabled"
-          :icon-name="state.iconName"
-          :icon-only="state.iconOnly"
-          :icon="state.icon"
-          :label="state.label"
-          :outline="state.outline"
-          :rounded="state.rounded"
-          :shadow="state.shadow"
-          :size="state.size"
-          :tag="state.tag"
-          color="warning"
-        />
-      </template>
-    </Variant>
-    <Variant title="Danger">
-      <template #default="{ state }">
-        <Button
-          :counter="state.counter"
-          :disabled="state.disabled"
-          :icon-name="state.iconName"
-          :icon-only="state.iconOnly"
-          :icon="state.icon"
-          :label="state.label"
-          :outline="state.outline"
-          :rounded="state.rounded"
-          :shadow="state.shadow"
-          :size="state.size"
-          :tag="state.tag"
-          color="danger"
-        />
-      </template>
-    </Variant>
-    <Variant title="White">
-      <template #default="{ state }">
-        <Button
-          :counter="state.counter"
-          :disabled="state.disabled"
-          :icon-name="state.iconName"
-          :icon-only="state.iconOnly"
-          :icon="state.icon"
-          :label="state.label"
-          :outline="state.outline"
-          :rounded="state.rounded"
-          :shadow="state.shadow"
-          :size="state.size"
-          :tag="state.tag"
-          color="white"
-        />
-      </template>
-    </Variant>
-    <Variant title="Transparent">
-      <template #default="{ state }">
-        <Button
-          :counter="state.counter"
-          :disabled="state.disabled"
-          :icon-name="state.iconName"
-          :icon-only="state.iconOnly"
-          :icon="state.icon"
-          :label="state.label"
-          :outline="state.outline"
-          :rounded="state.rounded"
-          :shadow="state.shadow"
-          :size="state.size"
-          :tag="state.tag"
-          color="transparent"
-        />
-      </template>
-    </Variant>
-    <Variant title="With Left Icon">
-      <template #default="{ state }">
-        <Button
-          :counter="state.counter"
-          :disabled="state.disabled"
-          :icon-name="state.iconName || 'mdi:home'"
-          :icon-only="state.iconOnly"
-          :icon="state.icon || 'left'"
-          :label="state.label"
-          :outline="state.outline"
-          :rounded="state.rounded"
-          :shadow="state.shadow"
-          :size="state.size"
-          :tag="state.tag"
-          color="success"
-        />
-      </template>
-    </Variant>
-    <Variant title="With Right Icon">
-      <template #default="{ state }">
-        <Button
-          :counter="state.counter"
-          :disabled="state.disabled"
-          :icon-name="state.iconName || 'mdi:home'"
-          :icon-only="state.iconOnly"
-          :icon="state.icon || 'right'"
-          :label="state.label"
-          :outline="state.outline"
-          :rounded="state.rounded"
-          :shadow="state.shadow"
-          :size="state.size"
-          :tag="state.tag"
-          color="secondary"
-        />
-      </template>
-    </Variant>
-    <Variant title="Icon Only">
-      <template #default="{ state }">
-        <Button
-          :counter="state.counter"
-          :disabled="state.disabled"
-          :icon-name="state.iconName || 'mdi:home'"
-          :icon="state.icon || 'right'"
-          :icon-only="true"
-          label=""
-          :outline="state.outline"
-          :rounded="state.rounded"
-          :shadow="state.shadow"
-          :size="state.size"
-          :tag="state.tag"
-          color="info"
         />
       </template>
     </Variant>
@@ -215,6 +64,7 @@
           :shadow="state.shadow"
           :size="state.size"
           :tag="state.tag"
+          :tag-props="state.tagProps"
           color="warning"
         />
       </template>
@@ -243,11 +93,15 @@
           info: 'Info (Blue)',
           white: 'White',
           transparent: 'Transparent',
+          facebook: 'Facebook',
+          twitter: 'Twitter',
+          github: 'GitHub',
+          google: 'Google',
+          apple: 'Apple',
         }"
       />
+      <HstCheckbox v-model="state.outline" title="Outline" />
       <HstText v-model="state.label" title="Label" />
-      <HstText v-model="state.tag" title="Tag" />
-      <HstText v-model="state.href" title="Href" />
       <HstSelect
         v-model="state.icon"
         title="Enable Icon"
@@ -258,13 +112,14 @@
           false: 'Disable (Right/Boolean)',
         }"
       />
-      <HstText v-model="state.iconName" title="Icon Name" />
       <HstCheckbox v-model="state.iconOnly" title="Icon Only" />
-      <HstCheckbox v-model="state.rounded" title="Rounded" />
-      <HstCheckbox v-model="state.outline" title="Outline" />
-      <HstCheckbox v-model="state.shadow" title="Shadow" />
-      <HstCheckbox v-model="state.disabled" title="Disabled" />
+      <HstText v-model="state.iconName" title="Icon Name" />
       <HstNumber v-model="state.counter" title="Counter" />
+      <HstCheckbox v-model="state.disabled" title="Disabled" />
+      <HstCheckbox v-model="state.rounded" title="Rounded" />
+      <HstCheckbox v-model="state.shadow" title="Shadow" />
+      <HstText v-model="state.tag" title="Tag" />
+      <HstText v-model="state.tagProps" title="Tag Props" />
     </template>
   </Story>
 </template>
@@ -272,10 +127,43 @@
 <script setup lang="ts">
   import Button from '~/components/atoms/buttons/Button.vue';
 
+  const buttonColors = [
+    'success',
+    'primary',
+    'secondary',
+    'danger',
+    'warning',
+    'info',
+    'white',
+    'transparent',
+  ];
+  const iconButtons = [
+    {
+      title: 'Left side Icon',
+      label: 'button',
+      icon: 'left',
+      iconName: 'mdi:home',
+    },
+    {
+      title: 'Right side Icon',
+      label: 'button',
+      icon: 'right',
+      iconName: 'mdi:home',
+    },
+    {
+      title: 'Icon Only',
+      label: '',
+      icon: true,
+      iconOnly: true,
+      iconName: 'mdi:home',
+    },
+  ];
+  const { capitalize } = useTextCase();
+
   function initState() {
     return {
       size: 'base',
-      color: 'primary',
+      color: '',
       outline: false,
       shadow: false,
       label: 'Button',
@@ -286,6 +174,7 @@
       icon: false,
       iconOnly: false,
       iconName: '',
+      tagProps: {},
     };
   }
 </script>
@@ -299,6 +188,7 @@ Button component
 
 ```typescript
 type Props = {
+  isSocial?: boolean;
   size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl';
   color?:
     | 'success'
@@ -319,6 +209,7 @@ type Props = {
   iconOnly?: boolean;
   label: string;
   tag?: string;
+  tagProps: ?Record<string, any>;
 };
 ```
 </docs>

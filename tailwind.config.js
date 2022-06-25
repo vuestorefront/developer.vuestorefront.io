@@ -1,8 +1,12 @@
-const colors = require('tailwindcss/colors');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
   content: [
     'components/**/*.{js,jsx,ts,tsx,vue}',
     'stories/**/*.{js,jsx,ts,tsx,vue}',
