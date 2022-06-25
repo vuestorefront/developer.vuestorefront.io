@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts">
-  import Icon from '~/components/icons/Icon.vue';
+  import Icon from '~/components/atoms/icon/Icon.vue';
 
   export default {
     name: 'Button',
@@ -135,7 +135,7 @@
 </script>
 
 <style lang="scss">
-  @use 'assets/scss/components/button/buttons.scss';
-  @use 'assets/scss/components/button/buttonColors.scss';
-  @use 'assets/scss/components/button/buttonSizes.scss';
+  @use '../../../assets/scss/components/button/buttons';
+  @use '../../../assets/scss/components/button/buttonColors';
+  @use '../../../assets/scss/components/button/buttonSizes';
 </style>

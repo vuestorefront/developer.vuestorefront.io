@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-  import Icon from '~/components/icons/Icon.vue';
+  import Icon from '~/components/atoms/icon/Icon.vue';
   import { SocialIcon, socialList } from '~/constants/socialList';
 
   const props = defineProps<{

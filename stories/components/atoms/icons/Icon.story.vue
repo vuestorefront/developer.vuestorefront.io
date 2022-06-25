@@ -1,5 +1,5 @@
 <template>
-  <Story title="Icons/Icon" :layout="{ type: 'grid', width: 200 }">
+  <Story title="Atoms/Icons" :layout="{ type: 'grid', width: 200 }">
     <Variant :init-state="initState" title="default">
       <template #default="{ state }">
         <Suspense>
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-  import Icon from '~/components/icons/Icon.vue';
+  import Icon from '~/components/atoms/icon/Icon.vue';
 
   function initState() {
     return {

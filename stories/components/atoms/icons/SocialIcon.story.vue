@@ -1,6 +1,6 @@
 <template>
   <Story
-    title="Icons/Social Icon"
+    title="Atoms/Social Icon"
     :init-state="initState"
     :layout="{ type: 'grid', width: 200 }"
   >
@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-  import SocialIcon from '~/components/icons/SocialIcon.vue';
+  import SocialIcon from '~/components/atoms/icon/SocialIcon.vue';
 
   function initState() {
     return {

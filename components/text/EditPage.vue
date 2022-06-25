@@ -8,5 +8,5 @@
 </template>
 
 <script setup lang="ts">
-  import Icon from '~/components/icons/Icon.vue';
+  import Icon from '~/components/atoms/icon/Icon.vue';
 </script>

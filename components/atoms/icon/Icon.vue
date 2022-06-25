@@ -1,6 +1,7 @@
 <template>
   <Iconify v-if="icon" :icon="icon" class="inline-block" aria-hidden="true" />
   <Component :is="component" v-else-if="component" aria-hidden="true" />
+  <span v-else>▯</span>
 </template>
 
 <script setup lang="ts">
@@ -14,14 +15,23 @@
 
   const nuxtApp = useNuxtApp();
   const icon: Ref<IconifyIcon | null> = ref(null);
-  icon.value = await loadIcon(properties.name).catch((_) => null);
 
-  const component = computed(() => nuxtApp.vueApp.component(properties.name));
+  const component = computed(
+    () => nuxtApp?.vueApp?.component(properties.name) || null,
+  );
+
+  const setIcon = async () => {
+    icon.value = await loadIcon(properties.name).catch((_) => null);
+  };
+
+  onBeforeMount(async () => {
+    await setIcon();
+  });
 
   watch(
     () => properties.name,
     async () => {
-      icon.value = await loadIcon(properties.name).catch((_) => null);
+      await setIcon();
     },
   );
 </script>

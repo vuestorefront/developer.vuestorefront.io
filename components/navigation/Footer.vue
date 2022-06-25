@@ -1,5 +1,4 @@
 <template>
-  <!-- This example requires Tailwind CSS v2.0+ -->
   <footer class="bg-white" aria-labelledby="footer-heading">
     <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
     <h2 id="footer-heading" class="sr-only">Footer</h2>
@@ -12,7 +11,14 @@
           <p class="text-gray-500 text-base">
             Frontend Platform for Headless Commerce
           </p>
-          <SocialLinksList />
+          <div class="flex space-x-5">
+            <SocialIcon name="twitter" />
+            <SocialIcon name="github" />
+            <SocialIcon name="youtube" />
+            <SocialIcon name="dev.to" />
+            <SocialIcon name="facebook" />
+            <SocialIcon name="linkedin" />
+          </div>
         </div>
         <div
           class="mt-6 lg:mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 xl:mt-0 xl:col-span-2"
@@ -39,7 +45,7 @@
 
 <script setup lang="ts">
   import FooterListMenu from '~/components/menu/FooterListMenu.vue';
-  import SocialLinksList from '~/components/list/SocialLinksList.vue';
+  import SocialIcon from '~/components/atoms/icon/SocialIcon.vue';
 
   const menuItems = computed(() => [
     {

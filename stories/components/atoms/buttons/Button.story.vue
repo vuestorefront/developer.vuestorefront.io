@@ -1,6 +1,6 @@
 <template>
   <Story
-    title="Atoms/Button"
+    title="Atoms/Buttons"
     :init-state="initState"
     :layout="{ type: 'grid', width: 400, iframe: true }"
   >
@@ -270,7 +270,7 @@
 </template>
 
 <script setup lang="ts">
-  import Button from '~/components/atoms/Button.vue';
+  import Button from '~/components/atoms/buttons/Button.vue';
 
   function initState() {
     return {
