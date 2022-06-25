@@ -2,7 +2,7 @@
   <div class="p-4">
     <div class="mb-2">
       <img
-        src="~/assets/images/icons/quote.svg"
+        src="assets/images/icons/quote.svg"
         aria-hidden="true"
         class="mb-3"
       />
