@@ -203,6 +203,6 @@
   };
 </script>
 
-<style lang="scss">
-  @use 'assets/scss/components/buttons';
+<style lang="scss" scoped>
+  @use 'assets/scss/components/atoms/buttons';
 </style>
