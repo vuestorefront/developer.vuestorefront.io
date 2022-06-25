@@ -1,8 +1,5 @@
 <template>
-  <Story
-    title="Text/Updated At"
-    :init-state="initState"
-  >
+  <Story title="Atoms/Text/Updated At" :init-state="initState">
     <template #default="{ state }">
       <UpdatedAt :date="state.date" />
     </template>
@@ -13,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-  import UpdatedAt from '~/components/text/UpdatedAt.vue';
+  import UpdatedAt from '~/components/atoms/text/UpdatedAt.vue';
 
   function initState() {
     return {

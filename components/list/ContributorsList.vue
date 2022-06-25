@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-  import Contributor from '~/components/item/ContributorItem.vue';
+  import Contributor from '~/components/atoms/item/ContributorItem.vue';
 
   defineProps<{
     contributors: {

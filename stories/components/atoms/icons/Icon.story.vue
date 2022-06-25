@@ -1,5 +1,5 @@
 <template>
-  <Story title="Atoms/Icons" :layout="{ type: 'grid', width: 200 }">
+  <Story title="Atoms/Icons/Icon" :layout="{ type: 'grid', width: 200 }">
     <Variant :init-state="initState" title="default">
       <template #default="{ state }">
         <Suspense>

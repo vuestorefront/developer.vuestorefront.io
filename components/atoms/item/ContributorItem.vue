@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-  import DiamondShape from '~/components/avatar/DiamondShape.vue';
+  import DiamondShape from '~/components/atoms/avatar/DiamondShape.vue';
 
   defineProps<{
     name?: string;

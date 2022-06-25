@@ -1,6 +1,6 @@
 <template>
   <Story
-    title="Atoms/Social Icon"
+    title="Atoms/Icons/Social Icon"
     :init-state="initState"
     :layout="{ type: 'grid', width: 200 }"
   >

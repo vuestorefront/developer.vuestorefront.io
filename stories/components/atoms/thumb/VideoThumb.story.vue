@@ -1,5 +1,5 @@
 <template>
-  <Story title="Thumb/Video" :init-state="initState">
+  <Story title="Atoms/Thumb/Video" :init-state="initState">
     <template #default="{ state }">
       <VideoThumb class="h-screen" :image="state.image" />
     </template>
@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-  import VideoThumb from '~/components/thumb/VideoThumb.vue';
+  import VideoThumb from '~/components/atoms/thumb/VideoThumb.vue';
 
   function initState() {
     return {

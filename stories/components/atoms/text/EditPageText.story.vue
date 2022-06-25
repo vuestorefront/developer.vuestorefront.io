@@ -1,11 +1,11 @@
 <template>
-  <Story title="Text/Edit Page">
+  <Story title="Atoms/Text/Edit Page">
     <EditPage />
   </Story>
 </template>
 
 <script setup lang="ts">
-  import EditPage from '~/components/text/EditPage.vue';
+  import EditPage from '~/components/atoms/text/EditPage.vue';
 </script>
 
 <docs lang="md">

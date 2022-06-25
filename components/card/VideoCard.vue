@@ -40,8 +40,8 @@
 </template>
 
 <script setup lang="ts">
-  import DiamondShape from '~/components/avatar/DiamondShape.vue';
-  import VideoThumb from '~/components/thumb/VideoThumb.vue';
+  import DiamondShape from '~/components/atoms/avatar/DiamondShape.vue';
+  import VideoThumb from '~/components/atoms/thumb/VideoThumb.vue';
 
   const props = defineProps<{
     author: {

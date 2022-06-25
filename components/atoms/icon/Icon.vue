@@ -12,9 +12,10 @@
   const properties = defineProps<{
     name: string;
   }>();
+  const icon: Ref<IconifyIcon | null> = ref(null);
 
   const nuxtApp = useNuxtApp();
-  const icon: Ref<IconifyIcon | null> = ref(null);
+  const { error } = useErrorHandling(icon);
 
   const component = computed(
     () => nuxtApp?.vueApp?.component(properties.name) || null,

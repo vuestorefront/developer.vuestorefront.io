@@ -39,7 +39,7 @@
   );
 
   const enableIcon = computed(
-    () => props.textOnly || !props.icon || props.iconOnly,
+    () => !props.textOnly || props.icon || props.iconOnly,
   );
   const colors = computed(() => useGetTypeProperties(props.type));
 </script>

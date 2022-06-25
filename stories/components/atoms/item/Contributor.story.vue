@@ -1,6 +1,6 @@
 <template>
   <Story
-    title="Item/Contributor"
+    title="Atoms/Item/Contributor"
     :init-state="initState"
     :layout="{ type: 'grid', width: 200 }"
   >
@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-  import Contributor from '~/components/item/ContributorItem.vue';
+  import Contributor from '~/components/atoms/item/ContributorItem.vue';
 
   function initState() {
     return {

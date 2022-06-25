@@ -12,14 +12,12 @@
       :init-state="initState"
     >
       <template #default="{ state }">
-        <Suspense>
-          <TextBoxBanner
-            :icon="state.icon"
-            :type="type"
-            :message="state.message"
-            :title="state.title"
-          />
-        </Suspense>
+        <TextBoxBanner
+          :icon="state.icon"
+          :type="type"
+          :message="state.message"
+          :title="state.title"
+        />
       </template>
     </Variant>
   </Story>

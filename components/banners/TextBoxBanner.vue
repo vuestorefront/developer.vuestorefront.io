@@ -42,7 +42,6 @@
     type?: ['default', 'success', 'danger', 'info', 'warning'];
   }>();
 
-  const { error } = useErrorHandling();
   const colors = computed(() => useGetTypeProperties(props.type));
 </script>
 

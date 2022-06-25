@@ -23,7 +23,7 @@
     },
   );
 
-  const avatarBgUrl = computed(() => `url(${props.img})`);
+  const avatarBgUrl = computed(() => `url("${props.img}")`);
 </script>
 
 <style lang="scss" scoped>
