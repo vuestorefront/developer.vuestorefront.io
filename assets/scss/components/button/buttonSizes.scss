@@ -1,0 +1,24 @@
+.button{
+  &-xs, &-sm{
+    &.button-label {
+      & > span {
+        @apply w-4 h-4
+      }
+    }
+  }
+  &-xs{
+    @apply px-3 py-2 text-xs;
+  }
+  &-sm {
+    @apply px-3 py-2 text-sm;
+  }
+  &-base {
+    @apply px-5 py-2.5 text-base;
+  }
+  &-lg {
+    @apply px-5 py-3 text-base;
+  }
+  &-xl {
+    @apply text-base px-6 py-3.5;
+  }
+}

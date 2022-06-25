@@ -1,0 +1,115 @@
+.button {
+  &-state {
+    &--success,
+    &--primary {
+      @apply text-white bg-primary-500 hover:bg-primary-700 focus:ring-primary-500 hover:text-white;
+      &.button-disabled,[attr="disabled"] {
+        @apply bg-primary-200 hover:bg-primary-400;
+      }
+      &.button-label {
+        &> span{
+          @apply bg-primary-200 text-primary-800;
+        }
+      }
+    }
+
+    &--secondary {
+      @apply text-white bg-secondary-500 hover:bg-secondary-700 focus:ring-primary-500 hover:text-white;
+
+      &.button-disabled,[attr="disabled"] {
+        @apply bg-secondary-200 hover:bg-secondary-400;
+      }
+      &.button-label {
+        &> span{
+          @apply bg-secondary-200 text-secondary-800;
+        }
+      }
+    }
+
+    &--danger {
+      @apply text-white bg-rose-500 hover:bg-rose-700 focus:ring-primary-500 hover:text-white;
+
+      &.button-disabled,[attr="disabled"] {
+        @apply bg-rose-200 hover:bg-rose-400;
+      }
+      &.button-label {
+        &> span{
+          @apply bg-rose-200 text-rose-800;
+        }
+      }
+    }
+
+    &--warning {
+      @apply text-white bg-yellow-500 hover:bg-yellow-700 focus:ring-primary-500 hover:text-white;
+
+      &.button-disabled,[attr="disabled"] {
+        @apply bg-yellow-200 hover:bg-yellow-400;
+      }
+      &.button-label {
+        &> span{
+          @apply bg-yellow-200 text-yellow-800;
+        }
+      }
+    }
+
+    &--info {
+      @apply text-white bg-blue-500 hover:bg-blue-700 focus:ring-primary-500 hover:text-white;
+
+      &.button-disabled,[attr="disabled"] {
+        @apply bg-blue-200 hover:bg-blue-400;
+      }
+      &.button-label {
+        &> span{
+          @apply bg-blue-200 text-blue-800;
+        }
+      }
+    }
+
+    &--white {
+      @apply text-primary bg-white focus:ring-primary-500 hover:text-primary-700;
+
+      &.button-disabled,[attr="disabled"] {
+        @apply bg-gray-200 hover:bg-gray-400;
+      }
+      &.button-label {
+        &> span{
+          @apply bg-gray-200 text-gray-800;
+        }
+      }
+    }
+
+    &--transparent {
+      @apply text-primary bg-white focus:ring-primary-500 hover:text-primary-700 shadow-base bg-none;
+
+      &.button-label {
+        &> span{
+          @apply bg-gray-200 text-gray-800;
+        }
+      }
+    }
+  }
+
+  &-outline {
+    @apply border border-transparent;
+    &--success,
+    &--primary {
+      @apply text-primary-500 hover:bg-primary-500 border-primary-500 bg-transparent;
+    }
+
+    &--secondary {
+      @apply text-secondary-500 hover:bg-secondary-500 border-secondary-500 bg-transparent;
+    }
+
+    &--danger {
+      @apply text-rose-500 hover:bg-rose-500 border-rose-500 bg-transparent;
+    }
+
+    &--warning {
+      @apply text-yellow-500 hover:bg-yellow-500 border-yellow-500 bg-transparent;
+    }
+
+    &--info {
+      @apply text-blue-500 hover:bg-blue-500 border-blue-500 bg-transparent;
+    }
+  }
+}
