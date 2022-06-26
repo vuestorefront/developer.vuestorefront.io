@@ -1,6 +1,7 @@
 <template>
   <Story title="Organisms/Navigation/Header">
     <Header />
+    <div style="height: 300vh">LONG DATA</div>
   </Story>
 </template>
 

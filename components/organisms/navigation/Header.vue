@@ -1,114 +1,156 @@
 <template>
-  <nav
-    class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800"
-  >
-    <div class="container flex flex-wrap justify-between items-center mx-auto">
-      <NuxtLink to="https://vuestorefront.io/" class="flex items-center">
-        <img
-          src="/logo/vsf-full.svg"
-          class="mr-3 h-6 sm:h-9"
-          alt="Vue Storefront - Developer Portal"
-        />
-      </NuxtLink>
-      <div class="flex md:order-2">
-        <!-- Place this tag where you want the button to render. -->
-        <github-button
-          href="https://github.com/vuestorefront/vue-storefront"
-          data-color-scheme="no-preference: light; light: light; dark: light;"
-          data-size="large"
-          data-show-count="true"
-          aria-label="Star vuestorefront/vue-storefront on GitHub"
+  <div id="header-navigation-observer"></div>
+  <div id="header-base" class="header-navigation">
+    <nav id="header-navigation" class="header-menu-bar floating-menu">
+      <div class="header-container">
+        <NuxtLink
+          to="https://vuestorefront.io/"
+          class="my-3.5 flex items-center"
         >
-          Star
-        </github-button>
-        <button
-          data-collapse-toggle="header-menu"
-          type="button"
-          class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="header-menu"
-          aria-expanded="false"
-        >
-          <span class="sr-only">Open main menu</span>
+          <img
+            src="/logo/vsf-full.svg"
+            class="h-6 md:h-9"
+            alt="Vue Storefront - Developer Portal"
+          />
+        </NuxtLink>
+        <div class="right-content">
           <Suspense>
-            <Icon name="carbon:menu" />
+            <Icon name="carbon:search" class="text-3xl" />
           </Suspense>
-          <Suspense>
-            <Icon name="carbon:close" />
-          </Suspense>
-        </button>
-      </div>
-      <div
-        id="header-menu"
-        class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1"
-      >
-        <ul
-          class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"
+          <github-button
+            href="https://github.com/vuestorefront/vue-storefront"
+            data-color-scheme="no-preference: light; light: light; dark: light;"
+            data-size="large"
+            data-show-count="true"
+            aria-label="Star vuestorefront/vue-storefront on GitHub"
+            class="hidden md:inline-block"
+          >
+            Star
+          </github-button>
+          <button
+            data-collapse-toggle="header-menu"
+            type="button"
+            class="mobile-navigation mobile-navigation-button--closed"
+            aria-controls="header-menu"
+            aria-expanded="false"
+          >
+            <Suspense>
+              <Icon name="carbon:menu" class="menu-icon" />
+            </Suspense>
+            <Suspense>
+              <Icon name="carbon:close" class="close-icon" />
+            </Suspense>
+            <span class="sr-only">Open main menu</span>
+          </button>
+        </div>
+        <div
+          class="hidden justify-between w-full lg:flex lg:w-auto lg:order-1 h-auto items-center"
         >
-          <li>
-            <a
-              href="#"
-              class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
-              aria-current="page"
-            >Home</a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >About</a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >Services</a>
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >Contact</a>
-          </li>
-        </ul>
+          <ul
+            class="flex flex-col mt-4 md:flex-row md:mt-0 md:text-sm md:font-medium"
+          >
+            <li>
+              <a
+                href="#"
+                class="block py-2 pr-4 pl-3 text-gray-900 rounded font-medium text-base dark:text-white border"
+                aria-current="page"
+              >
+                Getting started
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-2 pr-4 pl-3 text-gray-900 rounded font-medium text-base dark:text-white"
+              >
+                Guide
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-2 pr-4 pl-3 text-gray-900 rounded font-medium text-base dark:text-white"
+              >
+                Documentation
+                <img
+                  src="assets/images/icons/dropdown-caret.svg"
+                  class="h-[1rem] inline"
+                />
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-2 pr-4 pl-3 text-gray-900 rounded font-medium text-base dark:text-white"
+              >
+                Community
+                <img
+                  src="assets/images/icons/dropdown-caret.svg"
+                  class="h-[1rem] inline"
+                />
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-2 pr-4 pl-3 text-gray-900 rounded font-medium text-base dark:text-white"
+              >
+                Videos
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </template>
 
 <script setup lang="ts">
   import GithubButton from 'vue-github-button';
-  import Icon from '../../atoms/icon/Icon.vue';
+  import Icon from '~/components/atoms/icon/Icon.vue';
 
-  const isVisible = ref(false);
-  const menuItems = ref(document.querySelectorAll('.mega-menu a'));
-  const focusedIndex = ref(0);
+  const navElBase = computed(() => document?.querySelector('#header-base'));
+  const navElContent = computed(() =>
+    document?.querySelector('#header-navigation'),
+  );
 
-  const showMenu = () => {
-    isVisible.value = true;
-  };
+  onMounted(() => {
+    const scrollUp = 'scroll-up';
+    const scrollDown = 'scroll-down';
+    let lastScroll = 0;
 
-  const hideMenu = () => {
-    isVisible.value = false;
-    focusedIndex.value = 0;
-  };
-  const startArrowKeys = () => {
-    menuItems.value[0].focus();
-  };
-  const focusPrevious = (isArrowKey) => {
-    focusedIndex.value -= 1;
-    if (isArrowKey) {
-      focusItem();
-    }
-  };
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll <= 0) {
+        navElBase.value?.classList.remove(scrollUp);
+        navElContent.value?.classList.remove('scrolling-menu');
+        navElContent.value?.classList.add('floating-menu');
+        return;
+      }
 
-  const focusNext = (isArrowKey) => {
-    focusedIndex.value += 1;
-    if (isArrowKey) {
-      focusItem();
-    }
-  };
+      if (currentScroll > 80) {
+        navElContent.value?.classList.add('scrolling-menu');
+        navElContent.value?.classList.remove('floating-menu');
+      }
 
-  const focusItem = () => {
-    menuItems.value[focusedIndex.value].focus();
-  };
+      if (
+        currentScroll > lastScroll &&
+        !navElBase.value?.classList.contains(scrollDown)
+      ) {
+        navElBase.value?.classList.remove(scrollUp);
+        navElBase.value?.classList.add(scrollDown);
+      } else if (
+        currentScroll < lastScroll &&
+        navElBase.value?.classList.contains(scrollDown)
+      ) {
+        navElBase.value?.classList.remove(scrollDown);
+        navElBase.value?.classList.add(scrollUp);
+      }
+      lastScroll = currentScroll;
+    });
+  });
 </script>
+
+<style lang="scss" scoped>
+  @use 'assets/scss/components/organisms/navigation/header';
+</style>

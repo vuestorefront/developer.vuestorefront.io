@@ -1,3 +1,12 @@
+html {
+  font-size: 16px;
+}
+a, svg, img, input, textarea, button {
+  @apply text-gray-900 dark:text-white;
+  &:focus{
+    @apply outline-none ring-2 ring-primary-500 rounded;
+  }
+}
 a {
   @apply cursor-pointer text-base text-gray-500 hover:text-gray-900 hover:underline hover:text-primary-500
 }
