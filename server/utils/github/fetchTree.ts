@@ -42,17 +42,17 @@ export default (GITHUB_TOKEN: string) => {
     paths.map((path) => {
       const temporary = path?.split('/');
       return temporary?.reduce(
-        (previous, path, index, arrayPaths) => {
-          if (!previous[path]) {
-            previous[path] = { result: [] };
+        (previous, tmpPath, index, arrayPaths) => {
+          if (!previous[tmpPath]) {
+            previous[tmpPath] = { result: [] };
 
             previous.result.push({
               path,
-              children: previous[path]?.result,
+              children: previous[tmpPath]?.result,
               type: 'file',
             });
           }
-          return previous[path];
+          return previous[tmpPath];
         },
         { result },
       );

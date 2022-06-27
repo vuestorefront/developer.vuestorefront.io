@@ -6,7 +6,7 @@
       v-bind="{ iconName, icon }"
     >
       <Suspense v-if="iconName">
-        <Icon :name="iconName" />
+        <Icon class="button-text" :name="iconName" />
       </Suspense>
     </slot>
     <slot
@@ -15,14 +15,14 @@
       v-bind="{ iconName, icon }"
     >
       <Suspense>
-        <Icon :name="iconName" />
+        <Icon class="button-text" :name="iconName" />
       </Suspense>
     </slot>
     <slot v-if="!iconOnly" :label="label">
-      {{ label }}
+      <span class="button-text">{{ label }}</span>
     </slot>
     <slot v-if="counter" name="counter" :counter="counter">
-      <span>{{ counter }}</span>
+      <span class="counter-label">{{ counter }}</span>
     </slot>
     <slot
       v-if="$slots.right || (icon === 'right' && !iconOnly)"
@@ -30,7 +30,7 @@
       v-bind="{ iconName, icon }"
     >
       <Suspense>
-        <Icon :name="iconName" />
+        <Icon class="button-text" :name="iconName" />
       </Suspense>
     </slot>
   </Component>
@@ -39,6 +39,30 @@
 <script lang="ts">
   import Icon from '~/components/atoms/icon/Icon.vue';
 
+  type Props = {
+    isSocial?: boolean;
+    size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl';
+    color?:
+      | 'success'
+      | 'primary'
+      | 'secondary'
+      | 'danger'
+      | 'warning'
+      | 'info'
+      | 'white'
+      | 'transparent';
+    outline?: boolean;
+    shadow?: boolean;
+    rounded?: boolean;
+    counter?: number;
+    disabled?: number;
+    icon?: 'left' | 'right' | boolean;
+    iconName?: string;
+    iconOnly?: boolean;
+    label: string;
+    tag?: string;
+    tagProps?: Record<string, string | number | boolean | Function>;
+  };
   const buttonColors = {
     base: 'button',
     rounded: 'button-rounded',
@@ -106,12 +130,12 @@
       size: {
         type: String,
         default: 'base',
-        validate: (s) => sizes.has(s),
+        validate: (s: string) => sizes.has(s),
       },
       color: {
         type: String,
         default: 'base',
-        validate: (s) => colors.has(s),
+        validate: (s: string) => colors.has(s),
       },
       outline: {
         type: Boolean,
@@ -142,7 +166,7 @@
       icon: {
         type: [Boolean, String],
         default: false,
-        validate: (s) =>
+        validate: (s: string | boolean) =>
           typeof s === 'boolean' || ['left', 'right'].includes(s),
       },
       iconOnly: {
@@ -156,16 +180,16 @@
         default: () => ({}),
       },
     },
-    setup(props) {
+    setup(props: Props) {
       const buttonClass = computed(() => {
         let baseClass = `${buttonColors.base}`;
-        if (props.size > 0) baseClass += ` ${buttonColors.size[props.size]}`;
+        if (props?.size) baseClass += ` ${buttonColors.size[props.size]}`;
 
         if (props.color) baseClass += ` ${buttonColors.color[props.color]}`;
 
         if (props.outline)
           baseClass += ` ${buttonColors.outline.base} ${
-            buttonColors.outline[props.color]
+            buttonColors.outline.color[props.color || 'primary']
           }`;
 
         if (props.shadow) baseClass += ` ${buttonColors.shadow.base}`;
@@ -191,8 +215,8 @@
       });
 
       const baseComponent = computed(() =>
-        h(props.tag, {
-          class: buttonClass.value,
+        h(props.tag || 'button', {
+          class: `${buttonClass.value}`,
           disabled: props.disabled,
         }),
       );

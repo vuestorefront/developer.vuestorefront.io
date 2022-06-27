@@ -2,9 +2,13 @@
 module.exports = {
   darkMode: 'class',
   plugins: [
+    // eslint-disable-next-line import/no-extraneous-dependencies
     require('@tailwindcss/typography'),
+    // eslint-disable-next-line import/no-extraneous-dependencies
     require('@tailwindcss/forms'),
+    // eslint-disable-next-line import/no-extraneous-dependencies
     require('@tailwindcss/line-clamp'),
+    // eslint-disable-next-line import/no-extraneous-dependencies
     require('@tailwindcss/aspect-ratio'),
   ],
   content: [

@@ -196,13 +196,3 @@
     <hr />
   </div>
 </template>
-
-<script setup lang="ts"></script>
-
-<script>
-  import ColoredBanner from '~/components/molecules/banners/TextBoxBanner';
-
-  export default {
-    components: { ColoredBanner },
-  };
-</script>

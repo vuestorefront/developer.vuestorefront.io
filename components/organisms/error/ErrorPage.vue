@@ -19,7 +19,7 @@
         class="bg-gray-200 my-8 flex rounded-xl border border-gray-400 break-words p-3 whitespace-normal"
       >
           {{ error }}
-        </pre>
+      </pre>
       <div class="flex flex-row gap-4">
         <NuxtLink class="btn btn-primary"> Go Back </NuxtLink>
         <NuxtLink class="btn btn-white"> Go to Home </NuxtLink>

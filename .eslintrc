@@ -9,20 +9,20 @@
       ".nuxt/tsconfig.json"
     ]
   },
-  "rules": {
-    "vue/html-self-closing": "off",
-    "vue/html-closing-bracket-spacing": [
-      "error",
-      {
-        "startTag": "never",
-        "endTag": "never",
-        "selfClosingTag": "always"
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
+    },
+    "import/resolver": {
+      "typescript": {
+        "project": [
+          ".nuxt/tsconfig.json",
+          "tsconfig.json"
+        ]
       }
-    ],
-    "import/default": "off",
-    "import/no-named-as-default": "off",
-    "import/extensions": "off",
-    "@typescript-eslint/require-await": "off",
-    "unicorn/prevent-abbreviations": "off"
+    }
   }
 }

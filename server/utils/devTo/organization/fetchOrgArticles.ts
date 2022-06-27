@@ -8,7 +8,7 @@ export default async function fetchOrgArticles({
   organization: string;
   page?: number;
   perPage?: number;
-  [k: string]: any | any[];
+  [k: string]: unknown | unknown[];
 }) {
   return $fetch<BlogArticleApiResponse>(
     `https://dev.to/api/organizations/${organization}/articles`,

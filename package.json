@@ -54,7 +54,7 @@
     "@types/node": "^18.0.0",
     "@types/prettier": "^2.6.3",
     "@types/tailwindcss": "^3.0.10",
-    "@vue-storefront/eslint-config-nuxt": "^1.0.9",
+    "@vue-storefront/eslint-config-nuxt": "^1.0.11",
     "@vue/test-utils": "^2.0.0",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
