@@ -5,8 +5,8 @@
     :layout="{ type: 'grid', width: 400, iframe: true }"
   >
     <Variant
-      v-for="(type, index) in socialTypes"
-      :key="Math.random() + index"
+      v-for="type in socialTypes"
+      :key="nanoid()"
       :title="`${capitalize(type)} Login`"
     >
       <template #default="{ state }">
@@ -56,6 +56,7 @@
 </template>
 
 <script setup lang="ts">
+  import { nanoid } from 'nanoid';
   import SocialLoginButton from '~/components/atoms/buttons/SocialLoginButton.vue';
 
   const socialTypes = ['facebook', 'twitter', 'github', 'google', 'apple'];

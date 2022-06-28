@@ -26,14 +26,15 @@
     "story:preview": "histoire preview",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
-    "test:unit": "vitest",
-    "typecheck": "vue-tsc --noEmit"
+    "test:unit": "vitest"
   },
   "dependencies": {
     "@iconify/vue": "^3.2.1",
+    "@vuestorefront-community/nuxt-click-outside": "^1.1.2",
     "@vueuse/nuxt": "^8.7.5",
     "lodash": "^4.17.21",
-    "nuxt": "^3.0.0-rc.3",
+    "nanoid": "^4.0.0",
+    "nuxt": "^3.0.0-rc.4",
     "ohmyfetch": "^0.4.18",
     "regexparam": "^2.0.0",
     "ufo": "^0.8.4",
@@ -53,8 +54,8 @@
     "@types/lodash": "^4.14.182",
     "@types/node": "^18.0.0",
     "@types/prettier": "^2.6.3",
-    "@types/tailwindcss": "^3.0.10",
-    "@vue-storefront/eslint-config-nuxt": "^1.0.11",
+    "@types/tailwindcss": "^3.0.11",
+    "@vue-storefront/eslint-config": "^1.0.17",
     "@vue/test-utils": "^2.0.0",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
@@ -64,7 +65,7 @@
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "sass": "^1.53.0",
-    "sass-loader": "^13.0.1",
+    "sass-loader": "^13.0.2",
     "tailwindcss": "^3.1.4",
     "typescript": "^4.7.4",
     "vitest": "^0.16.0"

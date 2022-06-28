@@ -5,8 +5,8 @@
     :layout="{ type: 'grid', width: 400, iframe: true }"
   >
     <Variant
-      v-for="(color, index) in buttonColors"
-      :key="Math.random() + index"
+      v-for="color in buttonColors"
+      :key="nanoid()"
       :title="capitalize(color)"
     >
       <template #default="{ state }">
@@ -20,6 +20,7 @@
           :label="state.label"
           :outline="state.outline"
           :rounded="state.rounded"
+          :square="state.square"
           :shadow="state.shadow"
           :size="state.size"
           :tag-props="state.tagProps"
@@ -27,11 +28,7 @@
         />
       </template>
     </Variant>
-    <Variant
-      v-for="(btn, index) in iconButtons"
-      :key="Math.random() + index"
-      :title="btn.title"
-    >
+    <Variant v-for="btn in iconButtons" :key="nanoid()" :title="btn.title">
       <template #default="{ state }">
         <Button
           :counter="state.counter"
@@ -42,6 +39,7 @@
           :label="btn.label"
           :outline="state.outline"
           :rounded="state.rounded"
+          :square="state.square"
           :shadow="state.shadow"
           :size="state.size"
           :tag-props="state.tagProps"
@@ -61,6 +59,7 @@
           :label="state.label"
           :outline="state.outline"
           :rounded="state.rounded"
+          :square="state.square"
           :shadow="state.shadow"
           :size="state.size"
           :tag="state.tag"
@@ -117,6 +116,7 @@
       <HstNumber v-model="state.counter" title="Counter" />
       <HstCheckbox v-model="state.disabled" title="Disabled" />
       <HstCheckbox v-model="state.rounded" title="Rounded" />
+      <HstCheckbox v-model="state.square" title="Square" />
       <HstCheckbox v-model="state.shadow" title="Shadow" />
       <HstText v-model="state.tag" title="Tag" />
       <HstText v-model="state.tagProps" title="Tag Props" />
@@ -125,6 +125,7 @@
 </template>
 
 <script setup lang="ts">
+  import { nanoid } from 'nanoid';
   import Button from '~/components/atoms/buttons/Button.vue';
 
   const buttonColors = [
@@ -169,6 +170,7 @@
       label: 'Button',
       tag: 'button',
       rounded: false,
+      square: false,
       disabled: false,
       counter: 0,
       icon: false,
@@ -188,7 +190,6 @@ Button component
 
 ```typescript
 type Props = {
-  isSocial?: boolean;
   size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl';
   color?:
     | 'success'
@@ -202,14 +203,16 @@ type Props = {
   outline?: boolean;
   shadow?: boolean;
   rounded?: boolean;
+  square?: boolean;
   counter?: number;
-  disabled?: number;
+  disabled?: boolean;
   icon?: 'left' | 'right' | boolean;
   iconName?: string;
   iconOnly?: boolean;
   label: string;
   tag?: string;
-  tagProps: ?Record<string, any>;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  tagProps?: Record<string, string | number | boolean | Function>;
 };
 ```
 </docs>

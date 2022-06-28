@@ -9,8 +9,8 @@
       <HstText v-model="state.message" title="Message" />
     </template>
     <Variant
-      v-for="(type, index) in componentType"
-      :key="Math.random() + index"
+      v-for="type in componentType"
+      :key="nanoid()"
       :title="type"
       :init-state="initState"
     >
@@ -27,6 +27,7 @@
 </template>
 
 <script setup lang="ts">
+  import { nanoid } from 'nanoid';
   import TextBoxBanner from '~/components/molecules/banners/TextBoxBanner.vue';
 
   const componentType = [

@@ -1,28 +1,6 @@
 {
   "root": true,
   "extends": [
-    "@vue-storefront/eslint-config-nuxt"
-  ],
-  "parserOptions": {
-    "project": [
-      "tsconfig.json",
-      ".nuxt/tsconfig.json"
-    ]
-  },
-  "settings": {
-    "import/parsers": {
-      "@typescript-eslint/parser": [
-        ".ts",
-        ".tsx"
-      ]
-    },
-    "import/resolver": {
-      "typescript": {
-        "project": [
-          ".nuxt/tsconfig.json",
-          "tsconfig.json"
-        ]
-      }
-    }
-  }
+    "@vue-storefront/eslint-config"
+  ]
 }

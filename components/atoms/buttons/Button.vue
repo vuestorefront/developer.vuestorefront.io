@@ -21,8 +21,8 @@
     <slot v-if="!iconOnly" :label="label">
       <span class="button-text">{{ label }}</span>
     </slot>
-    <slot v-if="counter" name="counter" :counter="counter">
-      <span class="counter-label">{{ counter }}</span>
+    <slot name="counter" :counter="counter">
+      <span v-if="counter" class="counter-label">{{ counter }}</span>
     </slot>
     <slot
       v-if="$slots.right || (icon === 'right' && !iconOnly)"
@@ -37,35 +37,15 @@
 </template>
 
 <script lang="ts">
+  import { cssColors, cssSizes } from '~/constants/cssBaseData';
+  import { ButtonProps } from '~/constants/types';
+  import { CssButtonClasses } from '~/constants/types/cssData';
   import Icon from '~/components/atoms/icon/Icon.vue';
 
-  type Props = {
-    isSocial?: boolean;
-    size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl';
-    color?:
-      | 'success'
-      | 'primary'
-      | 'secondary'
-      | 'danger'
-      | 'warning'
-      | 'info'
-      | 'white'
-      | 'transparent';
-    outline?: boolean;
-    shadow?: boolean;
-    rounded?: boolean;
-    counter?: number;
-    disabled?: number;
-    icon?: 'left' | 'right' | boolean;
-    iconName?: string;
-    iconOnly?: boolean;
-    label: string;
-    tag?: string;
-    tagProps?: Record<string, string | number | boolean | Function>;
-  };
-  const buttonColors = {
+  const cssClasses: CssButtonClasses = {
     base: 'button',
     rounded: 'button-rounded',
+    square: 'button-square',
     disabled: 'button-disabled',
     color: {
       success: 'button-color--success',
@@ -97,11 +77,11 @@
       },
     },
     size: {
-      xs: 'button-xs',
-      sm: 'button-sm',
-      base: 'button-base',
-      lg: 'button-lg',
-      xl: 'button-xl',
+      xs: 'button-size-xs',
+      sm: 'button-size-sm',
+      base: 'button-size-base',
+      lg: 'button-size-lg',
+      xl: 'button-size-xl',
     },
     icon: {
       base: 'button-icon',
@@ -111,17 +91,6 @@
     },
   };
 
-  const colors = new Set([
-    'success',
-    'primary',
-    'secondary',
-    'danger',
-    'warning',
-    'info',
-    'white',
-    'transparent',
-  ]);
-  const sizes = new Set(['xs', 'sm', 'base', 'lg', 'xl']);
   export default {
     name: 'Button',
     components: { Icon },
@@ -130,12 +99,12 @@
       size: {
         type: String,
         default: 'base',
-        validate: (s: string) => sizes.has(s),
+        validate: (s: string) => cssSizes.has(s),
       },
       color: {
         type: String,
-        default: 'base',
-        validate: (s: string) => colors.has(s),
+        default: 'primary',
+        validate: (s: string) => cssColors.has(s),
       },
       outline: {
         type: Boolean,
@@ -149,6 +118,10 @@
         type: Boolean,
         default: false,
       },
+      square: {
+        type: Boolean,
+        default: false,
+      },
       label: {
         type: String,
         default: '',
@@ -159,9 +132,11 @@
       },
       counter: {
         type: Number,
+        default: 0,
       },
       disabled: {
         type: Boolean,
+        default: false,
       },
       icon: {
         type: [Boolean, String],
@@ -171,44 +146,49 @@
       },
       iconOnly: {
         type: Boolean,
+        default: false,
       },
       iconName: {
         type: String,
+        default: '',
       },
       tagProps: {
         type: Object,
         default: () => ({}),
       },
     },
-    setup(props: Props) {
+    setup(props: ButtonProps, { slots }) {
       const buttonClass = computed(() => {
-        let baseClass = `${buttonColors.base}`;
-        if (props?.size) baseClass += ` ${buttonColors.size[props.size]}`;
+        let baseClass = `${cssClasses.base}`;
+        if (props?.size) baseClass += ` ${cssClasses.size[props.size]}`;
 
-        if (props.color) baseClass += ` ${buttonColors.color[props.color]}`;
+        if (props.color) baseClass += ` ${cssClasses.color[props.color]}`;
 
         if (props.outline)
-          baseClass += ` ${buttonColors.outline.base} ${
-            buttonColors.outline.color[props.color || 'primary']
+          baseClass += ` ${cssClasses.outline.base} ${
+            cssClasses.outline.color[props.color || 'primary']
           }`;
 
-        if (props.shadow) baseClass += ` ${buttonColors.shadow.base}`;
+        if (props.shadow) baseClass += ` ${cssClasses.shadow.base}`;
 
-        if (props.rounded) baseClass += ` ${buttonColors.rounded}`;
+        if (props.rounded) baseClass += ` ${cssClasses.rounded}`;
 
-        if (props.disabled) baseClass += ` ${buttonColors.disabled}`;
+        if (props.square) baseClass += ` ${cssClasses.square}`;
 
-        if (props.counter) baseClass += ` ${buttonColors.counter.base}`;
+        if (props.disabled) baseClass += ` ${cssClasses.disabled}`;
 
-        if (props.icon) {
-          baseClass += ` ${buttonColors.icon.base}`;
+        if (props.counter) baseClass += ` ${cssClasses.counter.base}`;
 
-          if (props.iconOnly) baseClass += ` ${buttonColors.icon.iconOnly}`;
+        if (props.icon || slots.right || slots.left) {
+          baseClass += ` ${cssClasses.icon.base}`;
 
-          if (props.icon === 'right')
-            baseClass += ` ${buttonColors.icon.right}`;
+          if (props.iconOnly) baseClass += ` ${cssClasses.icon.iconOnly}`;
 
-          if (props.icon === 'left') baseClass += ` ${buttonColors.icon.left}`;
+          if (props.icon === 'right' || slots.right)
+            baseClass += ` ${cssClasses.icon.right}`;
+
+          if (props.icon === 'left' || slots.left)
+            baseClass += ` ${cssClasses.icon.left}`;
         }
 
         return baseClass;
@@ -216,7 +196,7 @@
 
       const baseComponent = computed(() =>
         h(props.tag || 'button', {
-          class: `${buttonClass.value}`,
+          class: `${buttonClass.value} button-text`,
           disabled: props.disabled,
         }),
       );
@@ -226,7 +206,3 @@
     },
   };
 </script>
-
-<style lang="scss" scoped>
-  @use 'assets/scss/components/atoms/buttons';
-</style>

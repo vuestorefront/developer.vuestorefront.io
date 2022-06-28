@@ -6,21 +6,21 @@ import { fileURLToPath } from 'node:url';
 export default defineNuxtConfig({
   debug: process.env.NODE_ENV !== 'production',
   sourcemap: process.env.NODE_ENV !== 'production',
-  alias: {
-    constants: fileURLToPath(new URL('./constants', import.meta.url)),
-    enums: fileURLToPath(new URL('./enums', import.meta.url)),
-    locales: fileURLToPath(new URL('./locales', import.meta.url)),
-  },
   runtimeConfig: {
     githubToken: process.env.GITHUB_TOKEN,
     devToToken: process.env.DEV_TO_TOKEN,
   },
-  modules: ['@nuxtjs/tailwindcss', '@intlify/nuxt3', '@vueuse/nuxt'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@intlify/nuxt3',
+    '@vueuse/nuxt',
+    '@vuestorefront-community/nuxt-click-outside',
+  ],
   buildModules: ['@nuxtjs/google-fonts', '@nuxt/content', '@nuxtjs/color-mode'],
   css: ['@/assets/scss/main.scss'],
   tailwindcss: {
     jit: true,
-    viewer: false,
+    viewer: true,
   },
   experimental: {
     externalVue: true,

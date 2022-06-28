@@ -1,14 +1,19 @@
 .dropdown{
-  &-btn{
-    @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+  &-options{
+    @apply z-10 bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 absolute left-0 right-0 mb-4 bg-white divide-y rounded-lg shadow-lg overflow-hidden;
   }
-  &-menu{
-    @apply z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700;
-    & ul{
-      @apply py-1 text-sm text-gray-700 dark:text-gray-200;
+
+  &-item{
+    @apply cursor-pointer block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white px-3 py-2 transition-colors duration-200 hover:bg-gray-200;
+
+    &.button-text, & .button-text {
+      @apply text-white
     }
-    &-item{
-      @apply block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white;
+  }
+
+  &-counter {
+    & > .counter-label {
+      @apply inline-flex items-center justify-center w-5 h-5 ml-2 text-xs font-semibold rounded-full;
     }
   }
 }

@@ -1,12 +1,7 @@
 <template>
-  <Story title="Molecules/Dropdown/Dropdown Menu" :init-state="initState">
+  <Story title="Molecules/Dropdown/Dropdown" :init-state="initState">
     <template #default="{ state }">
-      <DropdownMenu
-        :link="state.link"
-        :icon-name="state.iconName"
-        :label="state.label"
-        :sub-menu="state.subMenu"
-      />
+      <Dropdown v-model="state.selected" :options="state.options" />
     </template>
     <template #controls="{ state }">
       <HstText v-model="state.label" title="Label" />
@@ -18,29 +13,15 @@
 </template>
 
 <script setup lang="ts">
-  import DropdownMenu from '~/components/molecules/dropdown/DropdownMenu.vue';
-  import { HeaderMenu, headerMenuItems } from '~/constants/headerMenu';
+  import Dropdown from '~/components/molecules/dropdown/Dropdown.vue';
 
-  function initState(): HeaderMenu {
+  function initState() {
     return {
-      label: 'Documentation',
-      link: '#',
-      subMenu: [
-        {
-          label: 'Home',
-          link: '#',
-          iconName: 'carbon:home',
-        },
-        {
-          label: 'Home',
-          link: '#',
-          iconName: 'carbon:home',
-        },
-        {
-          label: 'Home',
-          link: '#',
-          iconName: 'carbon:home',
-        },
+      selected: 'option1',
+      options: [
+        { label: 'Option 1', value: 'option1' },
+        { label: 'Option 2', value: 'option2' },
+        { label: 'Option 3', value: 'option3' },
       ],
     };
   }
