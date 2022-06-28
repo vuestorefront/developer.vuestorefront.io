@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@iconify/vue": "^3.2.1",
+    "@popperjs/core": "^2.11.5",
     "@vuestorefront-community/nuxt-click-outside": "^1.1.2",
     "@vueuse/nuxt": "^8.7.5",
     "lodash": "^4.17.21",

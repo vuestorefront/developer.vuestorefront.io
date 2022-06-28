@@ -56,12 +56,14 @@
 </template>
 
 <script setup lang="ts">
-  import { nanoid } from 'nanoid';
   import SocialLoginButton from '~/components/atoms/buttons/SocialLoginButton.vue';
+  import { useUuid } from '~/composables/useUuid';
 
   const socialTypes = ['facebook', 'twitter', 'github', 'google', 'apple'];
 
   const { capitalize } = useTextCase();
+
+  const nanoid = useUuid;
 
   function initState() {
     return {

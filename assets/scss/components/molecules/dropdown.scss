@@ -1,10 +1,30 @@
 .dropdown{
   &-options{
-    @apply z-10 bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 absolute left-0 right-0 mb-4 bg-white divide-y rounded-lg shadow-lg overflow-hidden;
+    @apply z-10
+    absolute
+    bg-white
+    dark:bg-gray-700
+    divide-gray-100
+    divide-y
+    left-0
+    overflow-hidden
+    right-0
+    rounded-lg
+    shadow
+    shadow-lg
+    w-44;
   }
 
   &-item{
-    @apply cursor-pointer block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white px-3 py-2 transition-colors duration-200 hover:bg-gray-200;
+    @apply cursor-pointer
+    block
+    dark:hover:bg-gray-600
+    dark:hover:text-white
+    duration-200
+    hover:bg-gray-200
+    px-3
+    py-2
+    transition-colors;
 
     &.button-text, & .button-text {
       @apply text-white
@@ -13,7 +33,15 @@
 
   &-counter {
     & > .counter-label {
-      @apply inline-flex items-center justify-center w-5 h-5 ml-2 text-xs font-semibold rounded-full;
+      @apply inline-flex
+      font-semibold
+      h-5
+      items-center
+      justify-center
+      ml-2
+      rounded-full
+      text-xs
+      w-5;
     }
   }
 }

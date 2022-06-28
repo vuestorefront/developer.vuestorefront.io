@@ -1,7 +1,6 @@
 import {defineConfig} from 'histoire';
 import {HstNuxt} from "@histoire/plugin-nuxt";
 
-
 export default defineConfig({
   theme: {
     title: 'Developer Portal - System',
@@ -27,4 +26,5 @@ export default defineConfig({
     }
   },
   plugins: [HstNuxt()],
+  setupFile: './stories/setup.histoire.ts',
 })

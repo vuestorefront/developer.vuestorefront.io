@@ -41,6 +41,7 @@
   import { ButtonProps } from '~/constants/types';
   import { CssButtonClasses } from '~/constants/types/cssData';
   import Icon from '~/components/atoms/icon/Icon.vue';
+  import { NuxtLink } from '#components';
 
   const cssClasses: CssButtonClasses = {
     base: 'button',
@@ -194,12 +195,19 @@
         return baseClass;
       });
 
-      const baseComponent = computed(() =>
-        h(props.tag || 'button', {
+      const baseComponent = computed(() => {
+        if (props.tag === 'nuxt-link')
+          return h(NuxtLink, {
+            class: `${buttonClass.value} button-text`,
+            disabled: props.disabled,
+            ...props.tagProps,
+          });
+        return h(props.tag, {
           class: `${buttonClass.value} button-text`,
           disabled: props.disabled,
-        }),
-      );
+          ...props.tagProps,
+        });
+      });
       return {
         baseComponent,
       };

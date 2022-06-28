@@ -1,19 +1,18 @@
 <template>
   <slot name="dropdown:select">
     <Button
-      data-dropdown-toggle="dropdown"
-      :class="{ ':hover': isOpen }"
-      @keydown.enter.exact="toggleMenu"
-      @keydown.esc.exact="toggleMenu"
-      @click.exact="toggleMenu"
+      :class="{ ':hover': isVisible }"
+      :data-dropdown-toggle="UUID"
+      :tag="buttonTag"
+      :tag-props="buttonTagProps"
     >
       {{ selected.label }}
       <template #right>
         <Suspense>
           <Icon
-            name="ph:caret-down-bold"
+            :name="iconName"
             class="button-text transform transition-transform duration-200 ease-in-out"
-            :class="isOpen ? 'rotate-180' : 'rotate-0'"
+            :class="isVisible ? 'rotate-180' : 'rotate-0'"
           />
         </Suspense>
       </template>
@@ -21,20 +20,23 @@
   </slot>
   <slot name="dropdown:options" v-bind="{ options, modelValue }">
     <DropdownList
-      :is-open="isOpen"
+      :data-dropdown-menu="UUID"
+      :is-open="isVisible"
       :options="dropdownOptions"
       :selected="modelValue"
+      :item-tag="itemTag"
       @select="setValue"
     />
   </slot>
 </template>
 
 <script lang="ts">
-  import { nanoid } from 'nanoid';
-  import { DropdownListProps, DropdownOption } from '~/constants/types';
-  import DropdownList from '~/components/atoms/dropdown/DropdownList.vue';
+  import { DropdownOption, DropdownProps } from '~/constants/types';
+  import DropdownList from '~/components/molecules/dropdown/DropdownList.vue';
   import Button from '~/components/atoms/buttons/Button.vue';
   import Icon from '~/components/atoms/icon/Icon.vue';
+  import { useUuid } from '~/composables/useUuid';
+  import { useDropdown } from '~/composables/dynamicUi/useDropdown';
 
   export default {
     components: { Icon, Button, DropdownList },
@@ -48,15 +50,37 @@
         required: true,
         type: [String, Number, Boolean],
       },
+      iconName: String,
+      buttonTag: String,
+      buttonTagProps: {
+        type: Object,
+        default: () => ({}),
+      },
+      itemTag: String,
+      itemTagProps: {
+        type: [Object, Function],
+        default: () => ({}),
+      },
     },
-    emits: ['update:modelValue'],
-    setup(props: DropdownListProps, { emit }) {
+    emits: ['update:modelValue', 'show', 'hide'],
+    setup(props: DropdownProps, { emit }) {
       const isOpen = ref(false);
+      const UUID = useUuid();
+      const onShow = () => emit('show');
+      const onHide = () => emit('hide');
+      const { isVisible, hide } = useDropdown({
+        targetElement: `[data-dropdown-menu="${UUID}"]`,
+        triggerElement: `[data-dropdown-toggle="${UUID}"]`,
+        options: {
+          onHide,
+          onShow,
+        },
+      });
 
       const dropdownOptions = computed<DropdownOption[]>(() =>
         props.options?.map((c, i) => ({
           selected: c.selected || props.modelValue === c.value,
-          id: nanoid(),
+          id: useUuid(),
           ...c,
         })),
       );
@@ -65,21 +89,21 @@
         dropdownOptions.value.find((c) => c.selected),
       );
 
-      const toggleMenu = () => {
-        isOpen.value = !isOpen.value;
-      };
-
-      const setValue = (value: DropdownOption) => {
+      const setValue = async (value: DropdownOption) => {
         emit('update:modelValue', value.value);
-        isOpen.value = false;
+
+        onHide();
+        await hide();
       };
 
       return {
         setValue,
-        toggleMenu,
+        // dropDown,
         dropdownOptions,
         selected,
         isOpen,
+        UUID,
+        isVisible,
       };
     },
   };

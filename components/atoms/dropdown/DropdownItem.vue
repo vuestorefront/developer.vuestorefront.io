@@ -1,5 +1,9 @@
 <template>
-  <Component :is="baseComponent">
+  <Component
+    :is="baseComponent"
+    @click="$emit('click', { ...$props })"
+    @mouseover="$emit('mouseover', { ...$props })"
+  >
     <slot
       v-if="$slots.left || (icon === 'left' && !iconOnly)"
       name="left"
@@ -40,6 +44,7 @@
   import { cssSizes } from '~/constants/cssBaseData';
   import { DropdownItemProps } from '~/constants/types';
   import Icon from '~/components/atoms/icon/Icon.vue';
+  import { NuxtLink } from '#components';
 
   const cssClasses: {
     base: string;
@@ -91,7 +96,7 @@
       },
       tag: {
         type: String,
-        default: 'li',
+        default: 'a',
       },
       disabled: {
         type: Boolean,
@@ -128,7 +133,8 @@
         default: () => ({}),
       },
     },
-    setup(props: DropdownItemProps, { slots, emit }) {
+    emits: ['click', 'mouseover'],
+    setup(props: DropdownItemProps, { slots }) {
       const buttonClass = computed(() => {
         let baseClass = `${cssClasses.base}`;
         if (props?.size) baseClass += ` ${cssClasses.size[props.size]}`;
@@ -150,20 +156,21 @@
         return baseClass;
       });
 
-      const baseComponent = computed(() =>
-        h(props.tag, {
+      const baseComponent = computed(() => {
+        if (props.tag === 'nuxt-link')
+          return h(NuxtLink, {
+            class: `${buttonClass.value}`,
+            disabled: props.disabled,
+            ...props.tagProps,
+          });
+        return h(props.tag, {
           class: `${buttonClass.value}`,
           disabled: props.disabled,
           selected: props.selected,
           ...props.tagProps,
-          onClick: () => {
-            emit('click');
-          },
-          onBlur: () => {
-            emit('blur');
-          },
-        }),
-      );
+        });
+      });
+
       return {
         baseComponent,
       };

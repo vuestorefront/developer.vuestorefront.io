@@ -9,11 +9,12 @@ export type BaseCustomItemProps = {
 export type BaseOptionsItemProps = {
   selected: boolean;
 };
+// eslint-disable-next-line @typescript-eslint/ban-types
+export type TagProps = Record<string, string | number | boolean | Function>;
 
 export type BaseTagProps = {
   tag: string | keyof HTMLElementTagNameMap;
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  tagProps: Record<string, string | number | boolean | Function>;
+  tagProps: TagProps;
 };
 
 export type BaseSizeProps = {

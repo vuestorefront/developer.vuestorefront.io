@@ -20,7 +20,7 @@
           </div>
         </slot>
         <slot name="description" v-bind="{ description }">
-          <p class="mt-3 text-base text-gray-500">
+          <p class="mt-3 text-base text-gray-500 line-clamp-3">
             {{ description }}
           </p>
         </slot>

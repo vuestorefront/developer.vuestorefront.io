@@ -27,8 +27,10 @@
 </template>
 
 <script setup lang="ts">
-  import { nanoid } from 'nanoid';
   import TextBoxBanner from '~/components/molecules/banners/TextBoxBanner.vue';
+  import { useUuid } from '~/composables/useUuid';
+
+  const nanoid = useUuid;
 
   const componentType = [
     'Warning',

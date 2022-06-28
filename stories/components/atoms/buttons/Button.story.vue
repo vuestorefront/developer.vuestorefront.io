@@ -125,8 +125,8 @@
 </template>
 
 <script setup lang="ts">
-  import { nanoid } from 'nanoid';
   import Button from '~/components/atoms/buttons/Button.vue';
+  import { useUuid } from '~/composables/useUuid';
 
   const buttonColors = [
     'success',
@@ -160,7 +160,7 @@
     },
   ];
   const { capitalize } = useTextCase();
-
+  const nanoid = useUuid;
   function initState() {
     return {
       size: 'base',
