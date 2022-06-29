@@ -5,14 +5,12 @@
     :layout="{ type: 'grid', width: 500 }"
   >
     <template #default="{ state }">
-      <Contributors :contributors="state.contributors" />
+      <MoleculesContributorsList :contributors="state.contributors" />
     </template>
   </Story>
 </template>
 
 <script setup lang="ts">
-  import Contributors from '~/components/molecules/list/ContributorsList.vue';
-
   function initState() {
     return {
       contributors: [

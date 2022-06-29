@@ -1,12 +1,8 @@
 <template>
   <Story title="Atoms/Text/Edit Page">
-    <EditPage />
+    <AtomsTextEditPage />
   </Story>
 </template>
-
-<script setup lang="ts">
-  import EditPage from '~/components/atoms/text/EditPage.vue';
-</script>
 
 <docs lang="md">
 # Edit Page Text

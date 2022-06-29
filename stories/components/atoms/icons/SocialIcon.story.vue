@@ -5,7 +5,7 @@
     :layout="{ type: 'grid', width: 200 }"
   >
     <template #default="{ state }">
-      <SocialIcon :name="state.name" />
+      <AtomsIconSocial :name="state.name" />
     </template>
     <template #controls="{ state }">
       <HstSelect
@@ -25,8 +25,6 @@
 </template>
 
 <script setup lang="ts">
-  import SocialIcon from '~/components/atoms/icon/SocialIcon.vue';
-
   function initState() {
     return {
       name: 'twitter',

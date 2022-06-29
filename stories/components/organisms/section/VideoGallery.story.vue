@@ -1,7 +1,7 @@
 <template>
   <Story title="Organisms/Section/Video Gallery" :init-state="initState">
     <template #default="{ state }">
-      <VideoGallery :posts="state.posts" />
+      <OrganismsSectionVideoGallery :posts="state.posts" />
     </template>
     <template #controls="{ state }">
       <HstTextarea v-model="state.posts" title="Posts" />
@@ -10,8 +10,6 @@
 </template>
 
 <script setup lang="ts">
-  import VideoGallery from '~/components/organisms/section/VideoGallery.vue';
-
   function initState() {
     return {
       posts: [

@@ -2,9 +2,10 @@ export interface SocialIcon {
   icon: string;
   link: string;
   name: string;
+  alias: string[];
 }
 
-export const socialList = [
+export const socialList: SocialIcon[] = [
   {
     icon: 'fa6-brands:twitter',
     link: 'https://twitter.com/VueStorefront',

@@ -1,10 +1,11 @@
 <template>
-  <main p="x4 y10" text="center teal-700 dark:gray-200">
-    <div>Not found</div>
-    <div>
-      <button btn text-sm m="3 t8" @click="router.back()">Back</button>
-    </div>
-  </main>
+  <LazyOrganismsErrorPage :code="404">
+    <p>This is not the page you're looking for. But there is always hope.</p>
+    <p>
+      You can go back to the last page, go to our home page or search for the
+      specific topic.
+    </p>
+  </LazyOrganismsErrorPage>
 </template>
 
 <script setup lang="ts">

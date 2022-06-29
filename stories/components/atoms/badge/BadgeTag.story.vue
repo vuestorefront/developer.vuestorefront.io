@@ -2,7 +2,7 @@
   <Story title="Atoms/Badge/BadgeTag" :layout="{ type: 'grid', width: 200 }">
     <Variant title="With Text & Icon" :init-state="initState">
       <template #default="{ state }">
-        <BadgeTag
+        <AtomsBadgeTag
           :icon="state.icon"
           :icon-only="state.iconOnly"
           :type="state.type"
@@ -11,12 +11,12 @@
     </Variant>
     <Variant title="Text Only" :init-state="initState">
       <template #default="{ state }">
-        <BadgeTag :type="state.type" />
+        <AtomsBadgeTag :type="state.type" />
       </template>
     </Variant>
     <Variant title="Icon only" :init-state="initState">
       <template #default="{ state }">
-        <BadgeTag :icon="state.icon" :type="state.type" icon-only />
+        <AtomsBadgeTag :icon="state.icon" :type="state.type" icon-only />
       </template>
     </Variant>
     <template #controls="{ state }">
@@ -38,8 +38,6 @@
 </template>
 
 <script setup lang="ts">
-  import BadgeTag from '~/components/atoms/badge/BadgeTag.vue';
-
   function initState() {
     return {
       icon: 'heroicons-outline:exclamation',

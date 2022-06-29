@@ -1,7 +1,7 @@
 <template>
   <Iconify v-if="icon" :icon="icon" class="inline-block" aria-hidden="true" />
   <Component :is="component" v-else-if="component" aria-hidden="true" />
-  <span v-else>▯</span>
+  <span v-else>{{ icon }}</span>
 </template>
 
 <script setup lang="ts">

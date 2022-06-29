@@ -5,12 +5,12 @@
     :layout="{ type: 'grid', width: 400, iframe: true }"
   >
     <Variant
-      v-for="type in socialTypes"
-      :key="nanoid()"
+      v-for="(type, index) in socialTypes"
+      :key="nanoid() + index"
       :title="`${capitalize(type)} Login`"
     >
       <template #default="{ state }">
-        <SocialLoginButton
+        <AtomsButtonSocialLogin
           :disabled="state.disabled"
           :icon-only="state.iconOnly"
           :type="type"
@@ -56,7 +56,6 @@
 </template>
 
 <script setup lang="ts">
-  import SocialLoginButton from '~/components/atoms/buttons/SocialLoginButton.vue';
   import { useUuid } from '~/composables/useUuid';
 
   const socialTypes = ['facebook', 'twitter', 'github', 'google', 'apple'];

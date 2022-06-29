@@ -1,7 +1,7 @@
 <template>
   <Story title="Molecules/Dropdown/Dropdown" :init-state="initState">
     <template #default="{ state }">
-      <Dropdown
+      <MoleculesDropdown
         v-model="state.selected"
         :options="state.options"
         :icon-name="state.iconName"
@@ -18,8 +18,6 @@
 </template>
 
 <script setup lang="ts">
-  import Dropdown from '~/components/molecules/dropdown/Dropdown.vue';
-
   function initState() {
     return {
       selected: 'option1',

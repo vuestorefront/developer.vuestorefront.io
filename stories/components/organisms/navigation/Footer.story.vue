@@ -1,12 +1,8 @@
 <template>
   <Story title="Organisms/Navigation/Footer">
-    <Footer />
+    <OrganismsNavigationFooter />
   </Story>
 </template>
-
-<script setup lang="ts">
-  import Footer from '~/components/organisms/navigation/Footer.vue';
-</script>
 
 <docs lang="md">
 # Footer Navigation

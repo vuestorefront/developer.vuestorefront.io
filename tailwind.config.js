@@ -18,6 +18,7 @@ module.exports = {
     'pages/**/*.{js,jsx,ts,tsx,vue}',
     'plugins/**/*.{js,jsx,ts,tsx,vue}',
     'content/**/*.{md,yml,json,json5,csv}',
+    'constants/**/*.{js,jsx,ts,tsx,vue}',
   ],
   safelist: [
     'whitelisted',

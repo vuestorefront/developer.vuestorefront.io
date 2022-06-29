@@ -5,7 +5,7 @@
     :layout="{ type: 'grid', width: 800 }"
   >
     <template #default="{ state }">
-      <Pagination
+      <MoleculesPagination
         :total="state.total"
         :number-of-elements="state.numberOfElements"
         :pages-to-display="state.pagesToDisplay"
@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-  import Pagination from '~/components/molecules/navigation/Pagination.vue';
+  import Pagination from '~/components/molecules/pagination/Pagination.vue';
 
   function initState() {
     return {

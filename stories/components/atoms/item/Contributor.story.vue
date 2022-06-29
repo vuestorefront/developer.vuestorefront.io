@@ -5,7 +5,7 @@
     :layout="{ type: 'grid', width: 200 }"
   >
     <template #default="{ state }">
-      <Contributor
+      <AtomsContributorItem
         :name="state.name"
         :avatar="state.avatar"
         :url="state.url"
@@ -19,8 +19,6 @@
 </template>
 
 <script setup lang="ts">
-  import Contributor from '~/components/atoms/item/ContributorItem.vue';
-
   function initState() {
     return {
       name: 'Heitor Ramon',

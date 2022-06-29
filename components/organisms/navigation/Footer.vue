@@ -12,18 +12,18 @@
             Frontend Platform for Headless Commerce
           </p>
           <div class="flex space-x-5">
-            <SocialIcon name="twitter" />
-            <SocialIcon name="github" />
-            <SocialIcon name="youtube" />
-            <SocialIcon name="dev.to" />
-            <SocialIcon name="facebook" />
-            <SocialIcon name="linkedin" />
+            <AtomsIconSocial name="twitter" />
+            <AtomsIconSocial name="github" />
+            <AtomsIconSocial name="youtube" />
+            <AtomsIconSocial name="dev.to" />
+            <AtomsIconSocial name="facebook" />
+            <AtomsIconSocial name="linkedin" />
           </div>
         </div>
         <div
           class="mt-6 lg:mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 xl:mt-0 xl:col-span-2"
         >
-          <FooterListMenu
+          <MoleculesFooterMenu
             v-for="(item, index) in menuItems"
             :key="index"
             :title="item.title"
@@ -44,82 +44,9 @@
 </template>
 
 <script setup lang="ts">
-  import FooterListMenu from '~/components/molecules/menu/FooterListMenu.vue';
-  import SocialIcon from '~/components/atoms/icon/SocialIcon.vue';
+  import { footerMenuItems } from '~/constants/footerMenu';
 
-  const menuItems = computed(() => [
-    {
-      title: 'Guides',
-      subMenu: [
-        {
-          title: 'Getting Started',
-          link: '#',
-        },
-        {
-          title: 'Create your own Integration',
-          link: '#',
-        },
-        {
-          title: 'Create your own Extension',
-          link: '#',
-        },
-        {
-          title: 'Deploy Vue Storefront',
-          link: '#',
-        },
-      ],
-    },
-    {
-      title: 'Documentation',
-      subMenu: [
-        {
-          title: 'Vue Storefront 2',
-          link: '#',
-        },
-        {
-          title: 'Vue Storefront 1',
-          link: '#',
-        },
-        {
-          title: 'Vue Storefront Cloud',
-          link: '#',
-        },
-        {
-          title: 'Storefront-UI',
-          link: '#',
-        },
-        {
-          title: 'Integrations',
-          link: '#',
-        },
-        {
-          title: 'Extensions',
-          link: '#',
-        },
-      ],
-    },
-    {
-      title: 'Company',
-      subMenu: [
-        {
-          title: 'About',
-          link: '#',
-        },
-        {
-          title: 'Contact Us',
-          link: '#',
-        },
-        {
-          title: 'Contact for Partners',
-          link: '#',
-        },
-        {
-          title: 'Careers',
-          link: '#',
-        },
-      ],
-    },
-  ]);
+  const menuItems = computed(() => footerMenuItems);
 
   const currentYear = computed(() => new Date().getFullYear());
 </script>

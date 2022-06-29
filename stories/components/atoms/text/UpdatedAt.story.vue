@@ -1,7 +1,7 @@
 <template>
   <Story title="Atoms/Text/Updated At" :init-state="initState">
     <template #default="{ state }">
-      <UpdatedAt :date="state.date" />
+      <AtomsTextUpdatedAt :date="state.date" />
     </template>
     <template #controls="{ state }">
       <HstNumber v-model="state.date" title="Date" />
@@ -10,8 +10,6 @@
 </template>
 
 <script setup lang="ts">
-  import UpdatedAt from '~/components/atoms/text/UpdatedAt.vue';
-
   function initState() {
     return {
       date: Date.now(),

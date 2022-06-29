@@ -9,13 +9,13 @@
       <HstText v-model="state.message" title="Message" />
     </template>
     <Variant
-      v-for="type in componentType"
-      :key="nanoid()"
+      v-for="(type, index) in componentType"
+      :key="nanoid() + index"
       :title="type"
       :init-state="initState"
     >
       <template #default="{ state }">
-        <TextBoxBanner
+        <MoleculesBannersTextBox
           :icon="state.icon"
           :type="type"
           :message="state.message"
@@ -27,7 +27,6 @@
 </template>
 
 <script setup lang="ts">
-  import TextBoxBanner from '~/components/molecules/banners/TextBoxBanner.vue';
   import { useUuid } from '~/composables/useUuid';
 
   const nanoid = useUuid;

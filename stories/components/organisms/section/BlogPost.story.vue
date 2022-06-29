@@ -1,7 +1,7 @@
 <template>
   <Story title="Organisms/Section/Blog Posts" :init-state="initState">
     <template #default="{ state }">
-      <BlogPosts :posts="state.posts" />
+      <OrganismsSectionBlogPosts :posts="state.posts" />
     </template>
 
     <template #controls="{ state }">
@@ -11,8 +11,6 @@
 </template>
 
 <script setup lang="ts">
-  import BlogPosts from '~/components/organisms/section/BlogPosts.vue';
-
   function initState() {
     return {
       posts: [

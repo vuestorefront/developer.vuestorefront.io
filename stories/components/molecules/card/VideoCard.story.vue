@@ -5,7 +5,7 @@
     :layout="{ type: 'grid', width: 300 }"
   >
     <template #default="{ state }">
-      <VideoCard
+      <MoleculesCardVideo
         :title="state.title"
         :image="state.image"
         :link="state.link"
@@ -26,8 +26,6 @@
 </template>
 
 <script setup lang="ts">
-  import VideoCard from '~/components/molecules/card/VideoCard.vue';
-
   function initState() {
     return {
       title: 'Egestas risus scelerisque nisl arcu eget sed',

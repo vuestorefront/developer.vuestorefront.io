@@ -5,12 +5,12 @@
     :layout="{ type: 'grid', width: 400, iframe: true }"
   >
     <Variant
-      v-for="color in buttonColors"
-      :key="nanoid()"
+      v-for="(color, index) in buttonColors"
+      :key="nanoid() + index"
       :title="capitalize(color)"
     >
       <template #default="{ state }">
-        <Button
+        <AtomsButtonDefault
           :color="state.color || color"
           :counter="state.counter"
           :disabled="state.disabled"
@@ -28,9 +28,13 @@
         />
       </template>
     </Variant>
-    <Variant v-for="btn in iconButtons" :key="nanoid()" :title="btn.title">
+    <Variant
+      v-for="(btn, index) in iconButtons"
+      :key="nanoid() + index"
+      :title="btn.title"
+    >
       <template #default="{ state }">
-        <Button
+        <AtomsButtonDefault
           :counter="state.counter"
           :disabled="state.disabled"
           :icon-name="state.iconName || btn.iconName"
@@ -50,7 +54,7 @@
     </Variant>
     <Variant title="With Counter">
       <template #default="{ state }">
-        <Button
+        <AtomsButtonDefault
           :counter="state.counter || 5"
           :disabled="state.disabled"
           :icon-name="state.iconName"
@@ -125,7 +129,6 @@
 </template>
 
 <script setup lang="ts">
-  import Button from '~/components/atoms/buttons/Button.vue';
   import { useUuid } from '~/composables/useUuid';
 
   const buttonColors = [

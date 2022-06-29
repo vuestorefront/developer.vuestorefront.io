@@ -1,7 +1,7 @@
 <template>
   <Story title="Atoms/Avatar/Diamond Shape" :init-state="initState">
     <template #default="{ state }">
-      <DiamondShape
+      <AtomsAvatarDiamondShape
         :width="state.width"
         :height="state.height"
         :img="state.img"
@@ -16,8 +16,6 @@
 </template>
 
 <script setup lang="ts">
-  import DiamondShape from '~/components/atoms/avatar/DiamondShape.vue';
-
   function initState() {
     return {
       width: '2rem',

@@ -5,7 +5,7 @@
     :layout="{ type: 'grid', width: 500 }"
   >
     <template #default="{ state }">
-      <Breadcrumb :bread-crumbs="state.breadCrumbs" />
+      <MoleculesBreadcrumb :bread-crumbs="state.breadCrumbs" />
     </template>
     <template #controls="{ state }">
       <HstTextarea v-model="state.breadCrumbs" title="BreadCrumbs" />
@@ -14,8 +14,6 @@
 </template>
 
 <script setup lang="ts">
-  import Breadcrumb from '~/components/molecules/navigation/Breadcrumb.vue';
-
   function initState() {
     return {
       breadCrumbs: [

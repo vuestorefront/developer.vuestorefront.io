@@ -5,7 +5,7 @@
     :layout="{ type: 'grid', width: 300 }"
   >
     <template #default="{ state }">
-      <BlogCard
+      <MoleculesCardBlog
         :title="state.title"
         :description="state.description"
         :image="state.image"
@@ -28,8 +28,6 @@
 </template>
 
 <script setup lang="ts">
-  import BlogCard from '~/components/molecules/card/BlogCard.vue';
-
   function initState() {
     return {
       title: 'Egestas risus scelerisque nisl arcu eget sed',

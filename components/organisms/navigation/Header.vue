@@ -15,9 +15,9 @@
         </NuxtLink>
         <div class="right-content">
           <Suspense>
-            <Icon name="carbon:search" class="text-3xl" />
+            <AtomsIcon name="carbon:search" class="text-3xl" />
           </Suspense>
-          <GitHubStars class="hidden md:inline-block" />
+          <AtomsButtonGitHubStars class="hidden md:inline-block" />
           <button
             data-collapse-toggle="header-menu"
             type="button"
@@ -26,10 +26,10 @@
             aria-expanded="false"
           >
             <Suspense>
-              <Icon name="carbon:menu" class="menu-icon" />
+              <AtomsIcon name="carbon:menu" class="menu-icon" />
             </Suspense>
             <Suspense>
-              <Icon name="carbon:close" class="close-icon" />
+              <AtomsIcon name="carbon:close" class="close-icon" />
             </Suspense>
             <span class="sr-only">Open main menu</span>
           </button>
@@ -45,30 +45,11 @@
                 Getting started
               </a>
             </li>
-            <li>
-              <a href="#" class="header-menu-navigation--item"> Guide </a>
-            </li>
-            <li>
-              <a href="#" class="header-menu-navigation--item">
-                Documentation
-                <img
-                  src="assets/images/icons/dropdown-caret.svg"
-                  class="h-[1rem] inline"
-                />
-              </a>
-            </li>
-            <li>
-              <a href="#" class="header-menu-navigation--item">
-                Community
-                <img
-                  src="assets/images/icons/dropdown-caret.svg"
-                  class="h-[1rem] inline"
-                />
-              </a>
-            </li>
-            <li>
-              <a href="#" class="header-menu-navigation--item"> Videos </a>
-            </li>
+            <!--            <MoleculesHeaderMenu
+              v-for="(menu, index) in headerMenuItems"
+              :key="index"
+              v-bind="menu"
+            /> -->
           </ul>
         </div>
       </div>
@@ -77,9 +58,7 @@
 </template>
 
 <script setup lang="ts">
-  import Icon from '~/components/atoms/icon/Icon.vue';
-  import GitHubStars from '~/components/atoms/buttons/GitHubStars.vue';
-  import SearchButton from '~/components/atoms/buttons/SearchButton.vue';
+  import { headerMenuItems } from '~/constants/headerMenu';
 
   const navElBase = computed(() => document?.querySelector('#header-base'));
   const navElContent = computed(() =>

@@ -3,7 +3,7 @@
     <Variant :init-state="initState" title="default">
       <template #default="{ state }">
         <Suspense>
-          <Icon :name="state.name" />
+          <AtomsIcon :name="state.name" />
         </Suspense>
       </template>
       <template #controls="{ state }">
@@ -14,8 +14,6 @@
 </template>
 
 <script setup lang="ts">
-  import Icon from '~/components/atoms/icon/Icon.vue';
-
   function initState() {
     return {
       name: 'heroicons-outline:exclamation',

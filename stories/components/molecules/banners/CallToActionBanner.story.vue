@@ -1,7 +1,7 @@
 <template>
   <Story title="Molecules/Banners/Call To Action" :init-state="initState">
     <template #default="{ state }">
-      <CallToActionBanner
+      <MoleculesBannersCallToAction
         :header="state.header"
         :message="state.message"
         :button-text="state.buttonText"
@@ -48,8 +48,6 @@
 </template>
 
 <script setup lang="ts">
-  import CallToActionBanner from '~/components/molecules/banners/CallToActionBanner.vue';
-
   function initState() {
     return {
       header: 'Join our Discord server',
