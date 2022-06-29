@@ -1,33 +1,29 @@
 <template>
-  <slot name="dropdown:select">
-    <Button
-      :class="{ ':hover': isVisible }"
-      :data-dropdown-toggle="UUID"
-      :tag="buttonTag"
-      :tag-props="buttonTagProps"
-    >
-      {{ selected.label }}
-      <template #right>
-        <Suspense>
-          <Icon
-            :name="iconName"
-            class="button-text transform transition-transform duration-200 ease-in-out"
-            :class="isVisible ? 'rotate-180' : 'rotate-0'"
-          />
-        </Suspense>
-      </template>
-    </Button>
-  </slot>
-  <slot name="dropdown:options" v-bind="{ options, modelValue }">
-    <DropdownList
-      :data-dropdown-menu="UUID"
-      :is-open="isVisible"
-      :options="dropdownOptions"
-      :selected="modelValue"
-      :item-tag="itemTag"
-      @select="setValue"
-    />
-  </slot>
+  <Button
+    :class="{ ':hover': isVisible }"
+    :data-dropdown-toggle="UUID"
+    :tag="buttonTag"
+    :tag-props="buttonTagProps"
+  >
+    {{ selected.label }}
+    <template #right>
+      <Suspense>
+        <Icon
+          :name="iconName"
+          class="button-text transform transition-transform duration-200 ease-in-out"
+          :class="isVisible ? 'rotate-180' : 'rotate-0'"
+        />
+      </Suspense>
+    </template>
+  </Button>
+  <DropdownList
+    :data-dropdown-menu="UUID"
+    :is-open="isVisible"
+    :options="dropdownOptions"
+    :selected="modelValue"
+    :item-tag="itemTag"
+    @select="setValue"
+  />
 </template>
 
 <script lang="ts">
@@ -98,7 +94,6 @@
 
       return {
         setValue,
-        // dropDown,
         dropdownOptions,
         selected,
         isOpen,

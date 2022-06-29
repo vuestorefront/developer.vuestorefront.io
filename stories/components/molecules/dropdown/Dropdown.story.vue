@@ -24,7 +24,7 @@
     return {
       selected: 'option1',
       buttonTag: 'button',
-      itemTag: 'a',
+      itemTag: 'p',
       iconName: 'ph:caret-down-bold',
       options: [
         { label: 'Option 1', value: 'option1' },

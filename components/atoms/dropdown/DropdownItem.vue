@@ -44,7 +44,6 @@
   import { cssSizes } from '~/constants/cssBaseData';
   import { DropdownItemProps } from '~/constants/types';
   import Icon from '~/components/atoms/icon/Icon.vue';
-  import { NuxtLink } from '#components';
 
   const cssClasses: {
     base: string;
@@ -157,8 +156,8 @@
       });
 
       const baseComponent = computed(() => {
-        if (props.tag === 'nuxt-link')
-          return h(NuxtLink, {
+        if (['nuxt-link', 'router-link'].includes(props.tag))
+          return h('router-link', {
             class: `${buttonClass.value}`,
             disabled: props.disabled,
             ...props.tagProps,

@@ -25,6 +25,8 @@ export default defineConfig({
       },
     }
   },
-  plugins: [HstNuxt()],
+  plugins: [
+    HstNuxt(),
+  ],
   setupFile: './stories/setup.histoire.ts',
 })

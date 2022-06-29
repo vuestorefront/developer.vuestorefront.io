@@ -1,5 +1,5 @@
-.dropdown{
-  &-options{
+.dropdown {
+  &-options {
     @apply z-10
     absolute
     bg-white
@@ -12,10 +12,20 @@
     rounded-lg
     shadow
     shadow-lg
-    w-44;
+    w-44
+    transition-all
+    duration-200;
   }
 
-  &-item{
+  &-header {
+    @apply px-4
+    py-3
+    text-sm
+    text-gray-900
+    dark:text-white;
+  }
+
+  &-item {
     @apply cursor-pointer
     block
     dark:hover:bg-gray-600

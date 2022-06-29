@@ -4,7 +4,7 @@ html {
 a, svg, img, input, textarea, button {
   @apply text-gray-900 dark:text-white;
   &:focus{
-    @apply outline-none ring-2 ring-primary-500 rounded;
+    @apply ring-2 ring-primary-500 rounded;
   }
 }
 a {

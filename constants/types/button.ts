@@ -13,3 +13,9 @@ export type ButtonProps = BaseCustomItemProps &
   BaseCounterProps &
   BaseVisualProps &
   BaseIconProps;
+
+export type ButtonContentProps = BaseCustomItemProps &
+  BaseSizeProps &
+  BaseCounterProps &
+  BaseVisualProps &
+  BaseIconProps;

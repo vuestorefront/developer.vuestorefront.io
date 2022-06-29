@@ -17,16 +17,7 @@
           <Suspense>
             <Icon name="carbon:search" class="text-3xl" />
           </Suspense>
-          <github-button
-            href="https://github.com/vuestorefront/vue-storefront"
-            data-color-scheme="no-preference: light; light: light; dark: light;"
-            data-size="large"
-            data-show-count="true"
-            aria-label="Star vuestorefront/vue-storefront on GitHub"
-            class="hidden md:inline-block"
-          >
-            Star
-          </github-button>
+          <GitHubStars class="hidden md:inline-block" />
           <button
             data-collapse-toggle="header-menu"
             type="button"
@@ -43,34 +34,22 @@
             <span class="sr-only">Open main menu</span>
           </button>
         </div>
-        <div
-          class="hidden justify-between w-full lg:flex lg:w-auto lg:order-1 h-auto items-center"
-        >
-          <ul
-            class="flex flex-col mt-4 md:flex-row md:mt-0 md:text-sm md:font-medium"
-          >
+        <div class="header-menu-navigation">
+          <ul class="header-menu-navigation--list">
             <li>
               <a
                 href="#"
-                class="block py-2 pr-4 pl-3 text-gray-900 rounded font-medium text-base dark:text-white border"
+                class="header-menu-navigation--item"
                 aria-current="page"
               >
                 Getting started
               </a>
             </li>
             <li>
-              <a
-                href="#"
-                class="block py-2 pr-4 pl-3 text-gray-900 rounded font-medium text-base dark:text-white"
-              >
-                Guide
-              </a>
+              <a href="#" class="header-menu-navigation--item"> Guide </a>
             </li>
             <li>
-              <a
-                href="#"
-                class="block py-2 pr-4 pl-3 text-gray-900 rounded font-medium text-base dark:text-white"
-              >
+              <a href="#" class="header-menu-navigation--item">
                 Documentation
                 <img
                   src="assets/images/icons/dropdown-caret.svg"
@@ -79,10 +58,7 @@
               </a>
             </li>
             <li>
-              <a
-                href="#"
-                class="block py-2 pr-4 pl-3 text-gray-900 rounded font-medium text-base dark:text-white"
-              >
+              <a href="#" class="header-menu-navigation--item">
                 Community
                 <img
                   src="assets/images/icons/dropdown-caret.svg"
@@ -91,12 +67,7 @@
               </a>
             </li>
             <li>
-              <a
-                href="#"
-                class="block py-2 pr-4 pl-3 text-gray-900 rounded font-medium text-base dark:text-white"
-              >
-                Videos
-              </a>
+              <a href="#" class="header-menu-navigation--item"> Videos </a>
             </li>
           </ul>
         </div>
@@ -106,8 +77,9 @@
 </template>
 
 <script setup lang="ts">
-  import GithubButton from 'vue-github-button';
   import Icon from '~/components/atoms/icon/Icon.vue';
+  import GitHubStars from '~/components/atoms/buttons/GitHubStars.vue';
+  import SearchButton from '~/components/atoms/buttons/SearchButton.vue';
 
   const navElBase = computed(() => document?.querySelector('#header-base'));
   const navElContent = computed(() =>

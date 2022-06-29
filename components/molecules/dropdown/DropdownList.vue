@@ -1,9 +1,5 @@
 <template>
-  <ul
-    v-show="isOpen"
-    class="dropdown-options"
-    aria-labelledby="dropdownDefault"
-  >
+  <ul v-show="isOpen" class="dropdown-options">
     <li v-for="option in options" :key="option.id">
       <DropdownItem
         :tag="itemTag"

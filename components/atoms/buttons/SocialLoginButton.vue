@@ -1,5 +1,18 @@
-<script lang="ts">
-  import Button from '~/components/atoms/buttons/Button.vue';
+<template>
+  <ComponentRender />
+</template>
+
+<script lang="ts" setup>
+  import ButtonContent from '~/components/atoms/buttons/ButtonContent.vue';
+
+  const props = defineProps({
+    type: {
+      type: String,
+      required: true,
+      validate: (s: string) =>
+        ['facebook', 'twitter', 'github', 'google', 'apple'].includes(s),
+    },
+  });
 
   const socialButton = {
     facebook: {
@@ -34,25 +47,20 @@
     },
   };
 
-  export default {
-    name: 'SocialButton',
-    inheritAttrs: true,
-    props: {
-      type: {
-        type: String,
-        required: true,
-        validate: (s) => Object.keys(socialButton).has(s),
+  const attrs = useAttrs();
+  const ComponentRender = () =>
+    h(
+      'a',
+      {
+        ...attrs,
       },
-    },
-    setup(props, { attrs }) {
-      return () =>
-        h(Button, {
-          ...attrs,
+      [
+        h(ButtonContent, {
           class: `${socialButton[props.type].class}`,
           icon: 'left',
           iconName: socialButton[props.type].icon,
           label: socialButton[props.type].label,
-        });
-    },
-  };
+        }),
+      ],
+    );
 </script>
