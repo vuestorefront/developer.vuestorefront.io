@@ -4,12 +4,16 @@ import Icon from '~/components/atoms/icon/Icon.vue';
 type CssClass = string | string[] | Record<string, boolean>;
 
 export const useFunctionalRender = () => {
-  const iconRender = (
-    cssClass: CssClass,
+  const iconRender = ({
+    cssClass = '',
     iconName = '',
     render = false,
-  ): VNode | Array<VNode> =>
-    render || !!iconName
+  }: {
+    cssClass?: CssClass;
+    iconName: string;
+    render: boolean;
+  }): VNode | Array<VNode> =>
+    render
       ? h(
           Suspense,
           h(Icon, {
@@ -19,10 +23,13 @@ export const useFunctionalRender = () => {
         )
       : [];
 
-  const labelRender = (
-    cssClass: CssClass,
-    content: string | VNode,
-  ): VNode | Array<VNode> =>
+  const labelRender = ({
+    cssClass = '',
+    content,
+  }: {
+    cssClass?: CssClass;
+    content: string | VNode;
+  }): VNode | Array<VNode> =>
     h(
       'span',
       {
@@ -31,11 +38,15 @@ export const useFunctionalRender = () => {
       content,
     );
 
-  const counterRender = (
-    cssClass: CssClass,
-    counter: number,
+  const counterRender = ({
+    cssClass = '',
+    counter,
     render = false,
-  ): VNode | Array<VNode> =>
+  }: {
+    cssClass?: CssClass;
+    counter: number;
+    render: boolean;
+  }): VNode | Array<VNode> =>
     render
       ? h(
           'span',
@@ -46,13 +57,18 @@ export const useFunctionalRender = () => {
         )
       : [];
 
-  const slotRender = (
-    slotName: string,
-    component: VNode | VNode[],
-    slots: Record<string, any>,
-    slotProps?: any,
-  ): VNode | Array<VNode> =>
-    (slots[slotName] && slots[slotName](slotProps)) || component;
+  const slotRender = ({
+    slotName = '',
+    component,
+    slots = {},
+    slotProps,
+  }: {
+    slotName: string;
+    component: VNode | VNode[];
+    slots: Record<string, any>;
+    slotProps?: any;
+  }): VNode | Array<VNode> =>
+    slots[slotName] ? slots[slotName](slotProps) : component;
 
   return {
     counterRender,

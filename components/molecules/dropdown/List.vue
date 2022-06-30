@@ -1,5 +1,5 @@
 <template>
-  <ul v-show="isVisible" class="dropdown-options">
+  <ul class="dropdown-options hidden">
     <li v-for="option in options" :key="option.id">
       <AtomsDropdownItem
         :tag="itemTag"

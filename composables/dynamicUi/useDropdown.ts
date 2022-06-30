@@ -15,7 +15,7 @@ export const useDropdown = (options: {
     document.querySelector(options.triggerElement),
   );
 
-  const dropdownClass = ref<Dropdown>();
+  const dropdownInstance = ref<Dropdown>();
 
   const baseOptions = {
     placement: 'bottom-start',
@@ -26,11 +26,11 @@ export const useDropdown = (options: {
   const initialized = ref<boolean>(false);
 
   onMounted(() => {
-    dropdownClass.value = new Dropdown(baseOptions);
+    dropdownInstance.value = new Dropdown(baseOptions);
     if (targetEl.value && triggerEl.value) {
-      dropdownClass.value.setTarget(targetEl.value);
-      dropdownClass.value.setTrigger(triggerEl.value);
-      dropdownClass.value.mount();
+      dropdownInstance.value.setTarget(targetEl.value);
+      dropdownInstance.value.setTrigger(triggerEl.value);
+      dropdownInstance.value.mount();
 
       initialized.value = true;
     }
@@ -38,15 +38,16 @@ export const useDropdown = (options: {
 
   onUnmounted(() => {
     if (initialized.value) {
-      dropdownClass.value?.unMount();
+      dropdownInstance.value?.unMount();
 
       initialized.value = false;
     }
   });
 
   return {
-    isVisible: computed(() => !!dropdownClass.value?.isVisible),
-    show: () => dropdownClass.value?.show(),
-    hide: () => dropdownClass.value?.hide(),
+    dropdownInstance,
+    isVisible: computed(() => !!dropdownInstance.value?.isVisible),
+    show: () => dropdownInstance.value?.show(),
+    hide: () => dropdownInstance.value?.hide(),
   };
 };

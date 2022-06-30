@@ -1,11 +1,9 @@
 <template>
   <AtomsButtonDefault
-    :class="{ ':hover': isVisible }"
     :data-dropdown-toggle="UUID"
     :tag="buttonTag"
     :tag-props="buttonTagProps"
   >
-    {{ selected.label }}
     <template #right>
       <Suspense>
         <AtomsIcon
@@ -15,10 +13,11 @@
         />
       </Suspense>
     </template>
+    {{ selected.label }}
   </AtomsButtonDefault>
   <MoleculesDropdownList
     :data-dropdown-menu="UUID"
-    :is-open="isVisible"
+    :is-visible="isVisible"
     :options="dropdownOptions"
     :selected="modelValue"
     :item-tag="itemTag"

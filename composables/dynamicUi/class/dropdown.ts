@@ -14,10 +14,12 @@ type PopperJsOptions = {
   onFirstUpdate?: (arg: Partial<State>) => void;
 };
 export type DropdownOptions = {
-  placement?: Placement;
+  placement?: Placement | string;
   onShow?: (self: Dropdown) => Promise<void> | void;
   onHide?: (self: Dropdown) => Promise<void> | void;
   popperJsOptions?: PopperJsOptions;
+  showClass?: string;
+  hideClass?: string;
 };
 
 export class Dropdown {
@@ -31,17 +33,25 @@ export class Dropdown {
 
   private popperJsOptions: PopperJsOptions | undefined;
 
+  private readonly showClass: string;
+
+  private readonly hideClass: string;
+
   public isVisible: boolean;
 
   constructor(options?: DropdownOptions) {
     this.options = {
       placement: 'bottom',
-      event: 'click',
       onShow: () => {},
       onHide: () => {},
       ...options,
     };
+
+    this.showClass = options?.showClass || 'block';
+    this.hideClass = options?.hideClass || 'hidden';
+
     this.popperJsOptions = options?.popperJsOptions;
+
     this.isVisible = false;
   }
 
@@ -70,7 +80,7 @@ export class Dropdown {
     const popperOptions = this.options?.popperJsOptions;
     if (this.triggerEl && this.targetEl) {
       return createPopper(this.triggerEl, this.targetEl, {
-        placement: this.options.placement,
+        placement: this.options.placement || 'bottom-start',
         modifiers: [
           {
             name: 'offset',
@@ -108,17 +118,26 @@ export class Dropdown {
     }
   }
 
-  async show() {
-    this.targetEl?.classList.remove('hidden');
-    this.targetEl?.classList.add('block');
+  private toggleClass() {
+    this.targetEl?.classList.remove(
+      this.isVisible ? this.showClass : this.hideClass,
+    );
+    this.targetEl?.classList.add(
+      this.isVisible ? this.hideClass : this.showClass,
+    );
+  }
 
-    await this.popperInstance?.setOptions((options) => ({
-      ...options,
-      modifiers: [
-        ...options.modifiers,
-        { name: 'eventListeners', enabled: true },
-      ],
-    }));
+  private setPopperListeners(enabled = false) {
+    this.popperInstance
+      ?.setOptions((options) => ({
+        ...options,
+        modifiers: [...options.modifiers, { name: 'eventListeners', enabled }],
+      }))
+      .catch((error) => console.error(error));
+  }
+
+  async show() {
+    this.toggleClass();
 
     window.addEventListener(
       'click',
@@ -128,25 +147,20 @@ export class Dropdown {
       true,
     );
 
-    await this.popperInstance?.update();
+    this.setPopperListeners(true);
 
+    this.popperInstance?.update().catch((e) => console.error(e));
     this.isVisible = true;
+
     if (this.options?.onShow) {
       await this.options.onShow(this);
     }
   }
 
   async hide() {
-    this.targetEl?.classList.remove('block');
-    this.targetEl?.classList.add('hidden');
+    this.toggleClass();
 
-    await this.popperInstance?.setOptions((options) => ({
-      ...options,
-      modifiers: [
-        ...options.modifiers,
-        { name: 'eventListeners', enabled: false },
-      ],
-    }));
+    this.setPopperListeners();
 
     this.isVisible = false;
 

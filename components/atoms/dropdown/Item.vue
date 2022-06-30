@@ -56,49 +56,45 @@
 
   const ComponentRender = () => {
     const slotLeft = () =>
-      slotRender(
-        'left',
-        iconRender(
-          'button-text',
-          props?.iconName || props?.iconLeftName,
-          !props.iconOnly &&
-            !!(props.iconName || props.iconLeftName) &&
-            props.icon === 'left',
-        ),
+      slotRender({
+        slotName: 'left',
+        component: iconRender({
+          iconName: props?.iconName || props?.iconLeftName || '',
+          render: !!props.iconLeftName || props.icon === 'left' || !!slots.left,
+        }),
         slots,
-        props.iconName || props.iconLeftName,
-      );
+        slotProps: props.iconName || props.iconLeftName,
+      });
 
     const slotRight = () =>
-      slotRender(
-        'right',
-        iconRender(
-          'button-text',
-          props?.iconName || props?.iconRightName,
-          !props.iconOnly &&
-            !!(props.iconName || props.iconRightName) &&
-            props.icon === 'right',
-        ),
+      slotRender({
+        slotName: 'right',
+        component: iconRender({
+          iconName: props?.iconName || props?.iconRightName || '',
+          render:
+            !!props.iconRightName || props.icon === 'right' || !!slots.right,
+        }),
         slots,
-        props.iconName || props.iconRightName,
-      );
+        slotProps: props.iconName || props.iconRightName,
+      });
 
     const slotIconOnly = () =>
-      slotRender(
-        'right',
-        iconRender(
-          'button-text',
-          props?.iconName,
-          (!props.iconOnly && !!props.iconName) ||
-            (typeof props.icon === 'boolean' && props.icon),
-        ),
+      slotRender({
+        slotName: 'icon-only',
+        component: iconRender({
+          iconName: props?.iconName || '',
+          render:
+            props.iconOnly || (typeof props.icon === 'boolean' && props.icon),
+        }),
         slots,
-        props.iconName || props.iconRightName,
-      );
+        slotProps: props.iconName || props.iconRightName,
+      });
 
     const slotDefault = () =>
       (slots.default && slots.default()) ||
-      labelRender('button-text', props.label || '');
+      labelRender({
+        content: props.label || '',
+      });
 
     return h(
       props.tag,
@@ -110,7 +106,11 @@
         slotLeft(),
         slotIconOnly(),
         slotDefault(),
-        counterRender('counter-label', Number(props.counter), !!props.counter),
+        counterRender({
+          cssClass: 'counter-label',
+          counter: Number(props.counter),
+          render: !!props.counter,
+        }),
         slotRight(),
       ],
     );
