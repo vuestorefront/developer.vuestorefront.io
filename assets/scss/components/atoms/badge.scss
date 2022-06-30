@@ -1,52 +1,58 @@
-.card-badge {
-  @apply py-1 px-2 text-[0.6rem] leading-[0.6rem] uppercase text-white;
-  &-license {
-    &--enterprise {
-      @apply bg-secondary;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .card-badge {
+    @apply py-1 px-2 text-[0.6rem] leading-[0.6rem] uppercase text-white;
+    &-license {
+      &--enterprise {
+        @apply bg-secondary;
+      }
+
+      &--open-source {
+        @apply bg-primary;
+      }
+
+      &--paid {
+        @apply bg-orange-500;
+      }
     }
 
-    &--open-source {
-      @apply bg-primary;
+    &-status {
+      &--prod {
+        @apply hidden;
+      }
+
+      &--alpha {
+        @apply bg-rose
+      }
+
+      &--beta {
+        @apply bg-yellow
+      }
+
+      &--wip {
+        @apply bg-gray
+      }
     }
 
-    &--paid {
-      @apply bg-orange-500;
-    }
-  }
+    &-position {
+      &--top-left {
+        @apply rounded-tl-3xl rounded-tr-none rounded-br-3xl rounded-bl-none;
+      }
 
-  &-status {
-    &--prod {
-      @apply hidden;
-    }
+      &--top-right {
+        @apply rounded-tl-none rounded-tr-3xl rounded-br-none rounded-bl-3xl;
+      }
 
-    &--alpha {
-      @apply bg-rose
-    }
+      &--bottom-left {
+        @apply rounded-tr-3xl rounded-tl-none rounded-bl-3xl rounded-br-none;
+      }
 
-    &--beta {
-      @apply bg-yellow
-    }
-
-    &--wip {
-      @apply bg-gray
-    }
-  }
-
-  &-position {
-    &--top-left {
-      @apply rounded-tl-3xl rounded-tr-none rounded-br-3xl rounded-bl-none;
-    }
-
-    &--top-right {
-      @apply rounded-tl-none rounded-tr-3xl rounded-br-none rounded-bl-3xl;
-    }
-
-    &--bottom-left {
-      @apply rounded-tr-3xl rounded-tl-none rounded-bl-3xl rounded-br-none;
-    }
-
-    &--bottom-right {
-      @apply rounded-tl-none rounded-tr-3xl rounded-br-3xl rounded-bl-none;
+      &--bottom-right {
+        @apply rounded-tl-none rounded-tr-3xl rounded-br-3xl rounded-bl-none;
+      }
     }
   }
 }

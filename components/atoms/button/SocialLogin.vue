@@ -2,7 +2,7 @@
   <ComponentRender />
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
   import { socialButtonClasses } from '~/constants/css/atoms/button';
   import ButtonContent from '~/components/atoms/button/Content.vue';
 

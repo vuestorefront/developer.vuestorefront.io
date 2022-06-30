@@ -5,18 +5,28 @@
 </template>
 
 <script setup lang="ts">
-  defineProps<{
-    posts: {
-      author?: {
-        name?: string;
-        link?: string;
-        avatar?: string;
-      };
-      date: Date | number;
-      description: string;
-      image: string;
-      link: string;
-      title: string;
-    }[];
-  }>();
+  withDefaults(
+    defineProps<{
+      posts: {
+        author?: {
+          name?: string;
+          avatar?: string;
+        };
+        date: Date | number;
+        description: string;
+        id: string | number;
+        image: string;
+        readingTime: string | number;
+        slug: string;
+        tags: string[];
+        title: string;
+      }[];
+      loading?: boolean;
+      error?: string | Error | boolean;
+    }>(),
+    {
+      loading: false,
+      error: false,
+    },
+  );
 </script>

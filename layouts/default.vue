@@ -1,7 +1,11 @@
 <template>
-  <LazyOrganismsNavigationHeader />
-  <main class="py-20 px-10 main-layout">
-    <slot />
-  </main>
-  <LazyOrganismsNavigationFooter />
+  <div class="main-layout">
+    <LazyOrganismsNavigationHeader />
+    <main>
+      <slot />
+    </main>
+    <LazyOrganismsNavigationFooter />
+  </div>
 </template>
+
+<script setup lang="ts"></script>

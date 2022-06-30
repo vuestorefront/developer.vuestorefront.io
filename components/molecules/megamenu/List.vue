@@ -11,7 +11,7 @@
   </ul>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
   import { DropdownOption } from '~/constants/props/types/molecules/dropdownPropTypes';
   import { TagProps } from '~/constants/types/base';
 

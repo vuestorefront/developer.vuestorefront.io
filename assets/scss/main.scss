@@ -1,11 +1,14 @@
 @use "assets/scss/base/htmlElements";
+
 @use "assets/scss/layouts/default";
 
 @use 'assets/scss/components/atoms/buttons';
 @use 'assets/scss/components/atoms/badge';
+@use 'assets/scss/components/atoms/icons';
 
 @use 'assets/scss/components/molecules/dropdown';
 @use 'assets/scss/components/molecules/pagination';
 @use 'assets/scss/components/molecules/docsCard';
+@use 'assets/scss/components/molecules/videoBanner';
 
 @use 'assets/scss/components/organisms/navigation/header';

@@ -1,12 +1,8 @@
 <template>
-  <NuxtLink
-    v-if="socialIcon"
-    :to="socialIcon.link"
-    class="text-gray-400 hover:text-gray-500"
-  >
+  <NuxtLink v-if="socialIcon" :to="socialIcon.link">
     <span class="sr-only">{{ socialIcon.name }}</span>
     <Suspense>
-      <AtomsIcon :name="socialIcon.icon" class="social-icon" />
+      <AtomsIcon :name="socialIcon.icon" class="icon--social" />
     </Suspense>
   </NuxtLink>
 </template>

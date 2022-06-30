@@ -94,7 +94,7 @@
         }
       }
 
-      &--white {
+      &--transparent {
         @apply bg-white focus:ring-primary-500 hover:text-primary-700;
         &.button-text, & .button-text {
           @apply text-primary
@@ -111,7 +111,7 @@
         }
       }
 
-      &--transparent {
+      &--white {
         @apply bg-white focus:ring-primary-500 hover:text-primary-700 shadow-base bg-none;
         &.button-text, & .button-text {
           @apply text-primary

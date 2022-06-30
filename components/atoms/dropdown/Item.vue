@@ -5,7 +5,7 @@
   />
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
   import CounterProps from '~/constants/props/counter';
   import DisabledProps from '~/constants/props/disabled';
   import IconProps from '~/constants/props/icon';

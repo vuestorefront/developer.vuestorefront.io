@@ -9,8 +9,8 @@ export default async function fetchOrgArticles({
   page?: number;
   perPage?: number;
   [k: string]: unknown | unknown[];
-}) {
-  return $fetch<BlogArticleApiResponse>(
+}): Promise<BlogArticleApiResponse[]> {
+  return $fetch<BlogArticleApiResponse[]>(
     `https://dev.to/api/organizations/${organization}/articles`,
     {
       method: 'GET',

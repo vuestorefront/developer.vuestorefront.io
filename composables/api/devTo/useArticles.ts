@@ -1,6 +1,7 @@
 import { withQuery } from 'ufo';
 import { ApiUrl } from '~/enums/apiUrl';
 import { generateReturnMethods } from '~/composables/api/utils/generateReturnMethods';
+import { BlogArticleApiResponse } from '~/server/utils/devTo/types';
 
 export const useArticles = ({
   username,
@@ -16,7 +17,7 @@ export const useArticles = ({
   perPage?: number;
   collectionId?: number;
   urlQuery?: Record<string, string | string[] | undefined>;
-}) =>
+}): ReturnType<typeof generateReturnMethods<BlogArticleApiResponse[]>> =>
   generateReturnMethods(
     withQuery(
       !organization && username

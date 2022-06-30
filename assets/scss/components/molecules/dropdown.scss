@@ -1,57 +1,63 @@
-.dropdown {
-  &-options {
-    @apply z-10
-    absolute
-    bg-white
-    dark:bg-gray-700
-    divide-gray-100
-    divide-y
-    left-0
-    overflow-hidden
-    right-0
-    rounded-lg
-    shadow
-    shadow-lg
-    w-44
-    transition-all
-    duration-200;
-  }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  &-header {
-    @apply px-4
-    py-3
-    text-sm
-    text-gray-900
-    dark:text-white;
-  }
-
-  &-item {
-    @apply cursor-pointer
-    block
-    dark:hover:bg-gray-600
-    dark:hover:text-white
-    duration-200
-    hover:bg-gray-200
-    px-3
-    py-2
-    transition-colors;
-
-    &.button-text, & .button-text {
-      @apply text-white
+@layer components {
+  .dropdown {
+    &-options {
+      @apply z-10
+      absolute
+      bg-white
+      dark:bg-gray-700
+      divide-gray-100
+      divide-y
+      left-0
+      overflow-hidden
+      right-0
+      rounded-lg
+      shadow
+      shadow-lg
+      w-44
+      transition-all
+      duration-200;
     }
-  }
 
-  &-counter {
-    & > .counter-label {
-      @apply inline-flex
-      font-semibold
-      h-5
-      items-center
-      justify-center
-      ml-2
-      rounded-full
-      text-xs
-      w-5;
+    &-header {
+      @apply px-4
+      py-3
+      text-sm
+      text-gray-900
+      dark:text-white;
+    }
+
+    &-item {
+      @apply cursor-pointer
+      block
+      dark:hover:bg-gray-600
+      dark:hover:text-white
+      duration-200
+      hover:bg-gray-200
+      px-3
+      py-2
+      transition-colors;
+
+      &.button-text, & .button-text {
+        @apply text-white
+      }
+    }
+
+    &-counter {
+      & > .counter-label {
+        @apply inline-flex
+        font-semibold
+        h-5
+        items-center
+        justify-center
+        ml-2
+        rounded-full
+        text-xs
+        w-5;
+      }
     }
   }
 }

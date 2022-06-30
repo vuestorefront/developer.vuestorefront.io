@@ -1,8 +1,8 @@
-export const generateReturnMethods = (url: string) => ({
-  $apiFetch: <T>(): ReturnType<typeof useFetch> => useFetch<T>(url),
-  $apiLazyFetch: <T>(): ReturnType<typeof useLazyFetch> => useLazyFetch<T>(url),
-  $apiAsyncData: <T>(): ReturnType<typeof useAsyncData> =>
-    useAsyncData<T>(url, () => $fetch(url)),
-  $apiLazyAsyncData: <T>(): ReturnType<typeof useLazyAsyncData> =>
-    useLazyAsyncData<T>(url, () => $fetch(url)),
+export const generateReturnMethods = <K>(url: string) => ({
+  $apiFetch: (): ReturnType<typeof useFetch> => useFetch<K>(url),
+  $apiLazyFetch: (): ReturnType<typeof useLazyFetch> => useLazyFetch<K>(url),
+  $apiAsyncData: (): ReturnType<typeof useAsyncData> =>
+    useAsyncData<K>(url, () => $fetch(url)),
+  $apiLazyAsyncData: (): ReturnType<typeof useLazyAsyncData> =>
+    useLazyAsyncData<K>(url, () => $fetch(url)),
 });

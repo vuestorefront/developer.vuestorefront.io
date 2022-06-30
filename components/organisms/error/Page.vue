@@ -5,7 +5,7 @@
     <div class="text-gray-900">
       <div>
         <h1 class="text-6xl font-semibold">
-          <component :is="titleComponent" />
+          <AtomsTextFirstColoredWord :text="title" />
         </h1>
       </div>
       <div>
@@ -34,35 +34,10 @@
 </template>
 
 <script setup lang="ts">
-  const props = defineProps<{
+  defineProps<{
     code: number | string;
     title: string;
     message?: string;
     error?: string;
   }>();
-
-  const titleComponent = computed(() => {
-    const [first, ...words] = props.title.split(' ');
-    return h(
-      'span',
-      {
-        class: 'text-primary-500',
-      },
-      [
-        first,
-        ...(words.length > 0
-          ? [
-              ' ',
-              h(
-                'span',
-                {
-                  class: 'text-gray-900',
-                },
-                words.join(' '),
-              ),
-            ]
-          : []),
-      ],
-    );
-  });
 </script>

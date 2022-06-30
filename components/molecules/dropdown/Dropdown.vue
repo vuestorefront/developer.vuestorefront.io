@@ -25,7 +25,7 @@
   />
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
   import { useDropdown } from '~/composables/dynamicUi/useDropdown';
   import { DropdownOption } from '~/constants/props/types/molecules/dropdownPropTypes';
 
