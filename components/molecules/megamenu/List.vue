@@ -1,32 +1,23 @@
 <template>
-  <ul v-show="isVisible" class="dropdown-options">
-    <li v-for="option in options" :key="option.id">
-      <AtomsDropdownItem
-        :tag="itemTag"
-        :tag-props="itemPropsFn(option)"
-        v-bind="option"
-        @click="$emit('select', option)"
-      />
+  <ul v-show="isVisible" class="mega-menu-list">
+    <li v-for="(menu, index) in items" :key="index + UUID()">
+      <NuxtLink :to="menu.link">
+        <Suspense v-if="menu.iconName">
+          <AtomsIcon :name="menu.iconName" />
+        </Suspense>
+        {{ menu.label }}
+      </NuxtLink>
     </li>
   </ul>
 </template>
 
 <script setup lang="ts">
-  import { DropdownOption } from '~/constants/props/types/molecules/dropdownPropTypes';
-  import { TagProps } from '~/constants/types/base';
+  import { HeaderMenu } from '~/constants/props/types/molecules/menuPropTypes';
 
-  const props = defineProps<{
-    options: DropdownOption[];
+  defineProps<{
+    items?: HeaderMenu[];
     isVisible?: boolean;
-    selected?: string | boolean | number;
-    itemTag?: string;
-    itemTagProps?: Record<string, any>;
   }>();
 
-  defineEmits(['select']);
-
-  const itemPropsFn = (item: DropdownOption): TagProps | undefined =>
-    typeof props.itemTagProps === 'function'
-      ? props.itemTagProps(item)
-      : props.itemTagProps;
+  const UUID = useUuid;
 </script>

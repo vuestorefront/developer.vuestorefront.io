@@ -36,20 +36,9 @@
         </div>
         <div class="header-menu-navigation">
           <ul class="header-menu-navigation--list">
-            <li>
-              <a
-                href="#"
-                class="header-menu-navigation--item"
-                aria-current="page"
-              >
-                Getting started
-              </a>
+            <li v-for="(menu, index) in headerMenuItems" :key="index">
+              <MoleculesMegamenu v-bind="menu" />
             </li>
-            <!--            <MoleculesHeaderMenu
-              v-for="(menu, index) in headerMenuItems"
-              :key="index"
-              v-bind="menu"
-            /> -->
           </ul>
         </div>
       </div>

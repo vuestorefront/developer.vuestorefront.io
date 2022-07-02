@@ -1,14 +1,4 @@
-import { RouteLink } from '~/constants/types/base';
-
-export interface HeaderMenuItem {
-  label: string;
-  link?: RouteLink;
-  iconName?: string;
-}
-
-export interface HeaderMenu extends HeaderMenuItem {
-  subMenu?: HeaderMenu[];
-}
+import { HeaderMenu } from '~/constants/props/types/molecules/menuPropTypes';
 
 export const headerMenuItems: HeaderMenu[] = [
   {
@@ -19,43 +9,49 @@ export const headerMenuItems: HeaderMenu[] = [
   },
   {
     label: 'Documentation',
-
     subMenu: [
       {
         label: 'Home',
-
         iconName: 'carbon:home',
       },
       {
         label: 'Home',
-
         iconName: 'carbon:home',
       },
       {
         label: 'Home',
-
         iconName: 'carbon:home',
       },
     ],
   },
   {
     label: 'Community',
-
     subMenu: [
       {
         label: 'Home',
-
         iconName: 'carbon:home',
       },
       {
         label: 'Home',
-
         iconName: 'carbon:home',
       },
       {
         label: 'Home',
-
         iconName: 'carbon:home',
+        subMenu: [
+          {
+            label: 'Home',
+            iconName: 'carbon:home',
+          },
+          {
+            label: 'Home',
+            iconName: 'carbon:home',
+          },
+          {
+            label: 'Home',
+            iconName: 'carbon:home',
+          },
+        ],
       },
     ],
   },

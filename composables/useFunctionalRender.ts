@@ -10,10 +10,10 @@ export const useFunctionalRender = () => {
     render = false,
   }: {
     cssClass?: CssClass;
-    iconName: string;
+    iconName?: string;
     render: boolean;
   }): VNode | Array<VNode> =>
-    render
+    render && !!iconName
       ? h(
           Suspense,
           h(Icon, {

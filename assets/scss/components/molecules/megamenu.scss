@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .mega-menu {
+    @apply flex items-center space-x-2;
+
+    &-list {
+      @apply z-10
+      absolute
+      bg-white
+      dark:bg-gray-700
+      left-0
+      overflow-hidden
+      right-0
+      shadow
+      shadow-lg
+      max-w-sm
+      w-[19rem]
+      transition-all
+      duration-200;
+
+      li {
+        @apply px-5 py-3 font-semibold text-gray-900;
+      }
+    }
+
+    &-button {
+      @apply bg-white
+      border-0
+      border-b-2
+      border-transparent
+      focus:outline-none
+      focus:ring-2
+      focus:ring-offset-2
+      focus:ring-primary-500
+      font-medium
+      hover:no-underline
+      hover:text-primary-500
+      hover:border-primary
+      inline-flex
+      items-center
+      justify-center
+      px-5
+      py-3
+      text-base
+      text-center
+      text-gray-900
+      uppercase
+      w-fit ;
+
+      & svg, img, picture {
+        @apply w-5 h-5 ml-2;
+      }
+    }
+
+  }
+}
