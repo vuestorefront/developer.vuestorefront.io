@@ -4,6 +4,7 @@
 
 <script setup lang="ts">
   import { buttonCssClasses } from '~/constants/css/atoms/button';
+  import { baseColors } from '~/constants/css/base/color';
   import ColorProps from '~/constants/props/color';
   import CounterProps from '~/constants/props/counter';
   import DisabledProps from '~/constants/props/disabled';
