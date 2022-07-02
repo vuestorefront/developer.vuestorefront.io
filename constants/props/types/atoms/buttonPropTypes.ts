@@ -1,21 +1,19 @@
-import {
+import type {
   BaseCounterProps,
-  BaseCustomItemProps,
+  LabelBaseProps,
   BaseIconProps,
   BaseSizeProps,
   BaseTagProps,
   BaseVisualProps,
+  BaseFormProps,
 } from '~/constants/props/types/basePropTypes';
 
-export type ButtonProps = BaseCustomItemProps &
-  BaseTagProps &
-  BaseSizeProps &
-  BaseCounterProps &
-  BaseVisualProps &
-  BaseIconProps;
+export interface ButtonProps extends ButtonContentProps, BaseTagProps {}
 
-export type ButtonContentProps = BaseCustomItemProps &
-  BaseSizeProps &
-  BaseCounterProps &
-  BaseVisualProps &
-  BaseIconProps;
+export interface ButtonContentProps
+  extends LabelBaseProps,
+    BaseSizeProps,
+    BaseCounterProps,
+    BaseVisualProps,
+    BaseIconProps,
+    BaseFormProps {}

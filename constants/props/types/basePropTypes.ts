@@ -1,47 +1,45 @@
-import { TagProps } from '~/constants/types/base';
+import type { BaseColors, TagProps } from '~/constants/types/base';
+import { VNode } from 'vue';
 
-export type BaseCustomItemProps = {
+export interface LabelBaseProps {
   label?: string;
+}
+
+export interface BaseFormProps {
   disabled?: boolean;
-};
+}
 
-export type BaseOptionsItemProps = {
+export interface BaseOptionsItemProps {
   selected?: boolean;
-};
+}
 
-export type BaseTagProps = {
-  tag?: string | keyof HTMLElementTagNameMap;
+export interface BaseTagProps {
+  tag?: string | keyof HTMLElementTagNameMap | VNode;
   tagProps?: TagProps;
-};
+}
 
-export type BaseSizeProps = {
+export interface BaseSizeProps {
   size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl';
-};
+}
 
-export type BaseCounterProps = {
+export interface BaseCounterProps {
   counter?: number;
-};
+}
 
-export type BaseVisualProps = {
-  color?:
-    | 'success'
-    | 'primary'
-    | 'secondary'
-    | 'danger'
-    | 'warning'
-    | 'info'
-    | 'white'
-    | 'transparent';
+export interface BaseVisualProps {
+  color?: BaseColors;
   outline?: boolean;
   shadow?: boolean;
   rounded?: boolean;
   square?: boolean;
-};
+  textColor?: BaseColors;
+  bgColor?: BaseColors;
+}
 
-export type BaseIconProps = {
+export interface BaseIconProps {
   icon?: 'left' | 'right' | boolean;
   iconName?: string;
   iconLeftName?: string;
   iconRightName?: string;
   iconOnly?: boolean;
-};
+}

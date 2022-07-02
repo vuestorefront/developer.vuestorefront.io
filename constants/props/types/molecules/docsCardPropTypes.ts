@@ -1,4 +1,4 @@
-export type DocsCardProps = {
+export interface DocsCardProps {
   img: string;
   status: 'prod' | 'alpha' | 'beta' | 'wip';
   license: 'os' | 'enterprise' | 'paid';
@@ -12,4 +12,4 @@ export type DocsCardProps = {
   };
   description: string;
   name: string;
-};
+}

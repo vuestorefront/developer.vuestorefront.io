@@ -1,15 +1,30 @@
+* {
+  @apply font-sans;
+}
+
 html {
   font-size: 16px;
 }
-a, svg, img, input, textarea, button {
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-heading;
+}
+
+
+a, svg, img, input, textarea, button, select, optgroup, option {
   @apply text-gray-900 dark:text-white;
-  &:focus{
+  &:focus {
     @apply ring-2 ring-primary-500 rounded;
   }
 }
 a {
-  @apply cursor-pointer text-base text-gray-500 hover:text-gray-900 hover:underline hover:text-primary-500
+  @apply cursor-pointer text-base text-gray-500 hover:text-gray-900 hover:underline hover:text-primary-500;
 }
-p{
-  @apply text-gray-900;
+
+p {
+  @apply text-gray-900 dark:text-white;
+}
+
+code, pre {
+  @apply font-mono;
 }

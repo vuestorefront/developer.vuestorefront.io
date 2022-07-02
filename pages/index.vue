@@ -1,6 +1,6 @@
 <template>
-  <div class="main-layout-content">
-    <div class="main-layout-container">
+  <AtomsLayoutContent>
+    <AtomsLayoutContainer>
       <MoleculesBannersVideoBanner
         title="What is Vue Storefront"
         message="Vue Storefront is enormous but straightforward at the same time. Marc Backes created this fantastic video to explain to developers, what is Vue Storefront, is and how it works."
@@ -20,9 +20,9 @@
         button-text="Join our Discord server"
         button-text-color="secondary"
       />
-    </div>
-    <div class="main-layout-full-section">
-      <div class="main-layout-full-section--container">
+    </AtomsLayoutContainer>
+    <AtomsLayoutFullWidthSection>
+      <AtomsLayoutFullWidthContainer>
         <AtomsTextHeadingCenter
           title="Engage with us"
           message="Read our incredible content in our developer focus blog."
@@ -33,9 +33,12 @@
           :error="error"
         />
         <MoleculesTextFollowSocials />
-      </div>
-    </div>
-  </div>
+      </AtomsLayoutFullWidthContainer>
+    </AtomsLayoutFullWidthSection>
+    <AtomsLayoutContainer>
+      <MoleculesNewsletterSignUpSection />
+    </AtomsLayoutContainer>
+  </AtomsLayoutContent>
 </template>
 
 <script setup lang="ts">

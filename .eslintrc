@@ -5,6 +5,7 @@
   ],
   "rules": {
     "@typescript-eslint/no-unsafe-assignment": 0,
-    "@typescript-eslint/no-unsafe-member-access": 0
+    "@typescript-eslint/no-unsafe-member-access": 0,
+    "@typescript-eslint/no-empty-interface": 0
   }
 }

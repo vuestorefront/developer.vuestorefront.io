@@ -1,13 +1,13 @@
-import { TagProps } from '~/constants/types/base';
+import type { TagProps } from '~/constants/types/base';
 
-export type DropdownOption = {
+export interface DropdownOption {
   id?: string | number;
   label: string;
   selected?: boolean;
   value: string | number | boolean;
-};
+}
 
-export type DropdownProps = {
+export interface DropdownProps {
   options: DropdownOption[];
   modelValue: string | number | boolean;
   iconName?: string;
@@ -15,13 +15,13 @@ export type DropdownProps = {
   buttonTagProps?: Record<any, any>;
   itemTag?: string;
   itemTagProps?: Record<any, any> | ((item: DropdownOption) => TagProps);
-};
+}
 
-export type DropdownListProps = {
+export interface DropdownListProps {
   options: DropdownOption[];
   selected: string | number | boolean;
   iconName?: string;
   itemTag?: string;
   isVisible?: boolean;
   itemTagProps?: Record<any, any> | ((item: DropdownOption) => TagProps);
-};
+}

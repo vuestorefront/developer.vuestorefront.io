@@ -4,7 +4,21 @@
 
 @layer components {
   .button {
-    @apply inline-flex items-center text-center px-5 py-2.5 text-base uppercase rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 hover:no-underline;
+    @apply border
+    border-transparent
+    focus:outline-none
+    focus:ring-2
+    focus:ring-offset-2
+    font-medium
+    hover:no-underline
+    inline-flex
+    items-center
+    justify-center
+    rounded-md
+    text-base
+    text-center
+    uppercase
+    w-fit ;
 
     &-color {
       &--success,
@@ -12,7 +26,7 @@
         @apply bg-primary-500 hover:bg-primary-700 focus:ring-primary-500 hover:text-white;
 
         &.button-text, & .button-text {
-          @apply text-white
+          @apply text-white hover:no-underline;
         }
 
         &.button-disabled, [attr="disabled"] {
@@ -182,7 +196,7 @@
       }
 
       &-base {
-        @apply px-5 py-2.5 text-base;
+        @apply px-5 py-3 text-base;
       }
 
       &-lg {
@@ -218,7 +232,7 @@
 
     &-counter {
       & > .counter-label {
-        @apply inline-flex items-center justify-center w-5 h-5 ml-2 text-xs font-semibold rounded-full;
+        @apply inline-flex items-center justify-center w-5 h-5 ml-2 text-xs font-bold rounded-full;
       }
     }
 

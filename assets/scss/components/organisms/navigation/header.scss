@@ -4,20 +4,20 @@
 
 @layer components {
   .header-navigation {
-    @apply flex items-center justify-center w-full;
+    @apply flex items-center justify-center w-full container;
     &.scroll {
       &-down {
       }
 
       &-up {
-        @apply sticky top-0;
+        @apply sticky top-0 max-w-full px-0;
         z-index: 200;
       }
     }
   }
 
   .header-menu-bar {
-    @apply w-full  px-6 lg:px-12 bg-white border-gray-200 dark:bg-gray-800 shadow-base transition-all will-change-auto;
+    @apply w-full px-6 lg:px-12 bg-white border-gray-200 dark:bg-gray-800 shadow-base transition-all will-change-auto;
     &.scrolling-menu {
       @apply bg-white border-gray-200 dark:bg-gray-800 shadow-base rounded-b-2xl ;
     }

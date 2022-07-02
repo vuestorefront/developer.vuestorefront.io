@@ -10,7 +10,7 @@
     <div class="flex pt-2 pb-2 px-4 flex flex-col justify-between">
       <slot name="title">
         <NuxtLink :to="blogLink">
-          <h3 class="line-clamp-2 text-xl font-semibold text-gray-900 mb-3">
+          <h3 class="line-clamp-2 text-xl font-bold text-gray-900 mb-3">
             {{ title }}
           </h3>
         </NuxtLink>

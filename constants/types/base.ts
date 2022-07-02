@@ -1,4 +1,4 @@
-import { RouteLocationRaw } from 'vue-router';
+import type { RouteLocationRaw } from 'vue-router';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type TagProps = Record<string, string | number | boolean | Function>;
@@ -30,3 +30,15 @@ export declare type NuxtLinkProps = {
   replace?: boolean;
   ariaCurrentValue?: string;
 };
+
+export type BaseColors =
+  | 'success'
+  | 'primary'
+  | 'secondary'
+  | 'danger'
+  | 'warning'
+  | 'info'
+  | 'white'
+  | 'black'
+  | 'gray'
+  | 'transparent';

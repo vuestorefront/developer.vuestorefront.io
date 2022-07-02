@@ -1,7 +1,7 @@
 <template>
   <div class="md:grid md:gap-8">
     <div>
-      <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+      <h3 class="text-sm font-bold text-gray-400 tracking-wider uppercase">
         {{ title }}
       </h3>
       <ul role="list" class="mt-4 space-y-4">

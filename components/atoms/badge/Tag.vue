@@ -3,7 +3,7 @@
     class="inline-flex items-center text-sm"
     :class="`bg-${colors.bg} border-${colors.border} text-${colors.text} ${
       iconOnly
-        ? 'font-semibold items-center p-1.5 rounded-full'
+        ? 'font-bold items-center p-1.5 rounded-full'
         : 'px-2.5 py-0.5 rounded-xl font-medium '
     }`"
   >

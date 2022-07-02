@@ -6,23 +6,20 @@
     <div class="lg:w-8/12 w-12/12" :class="`text-${textColor}`">
       <slot name="left">
         <slot name="header" :header="header">
-          <h1 class="lg:text-4xl text-3xl font-semibold capitalize mb-4">
+          <h1 class="lg:text-4xl text-3xl font-bold capitalize mb-4">
             {{ header }}
           </h1>
         </slot>
         <slot name="message" :message="message">
-          <p class="text-lg mb-10 text-xl text-white">{{ message }}</p>
+          <p class="text-lg mb-10 text-white">{{ message }}</p>
         </slot>
         <slot name="button" :button="{ text: buttonText, link: buttonLink }">
-          <NuxtLink
-            v-if="buttonText && buttonLink"
-            :to="buttonLink"
-            class="px-5 py-2.5 mb-2 shadow-base cursor-pointer rounded text-base lg:text-lg text-center uppercase"
-            :class="`bg-${buttonColor} text-${buttonTextColor}${
-              buttonHoverColor ? ` hover:bg-${buttonHoverColor}` : ''
-            }`"
-          >
-            {{ buttonText }}
+          <NuxtLink v-if="buttonText && buttonLink" :to="buttonLink">
+            <AtomsButtonContent
+              :color="buttonColor"
+              :label="buttonText"
+              text-color="secondary"
+            />
           </NuxtLink>
         </slot>
       </slot>

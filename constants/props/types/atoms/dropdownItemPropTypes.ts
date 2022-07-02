@@ -1,15 +1,33 @@
-import {
+import type {
   BaseCounterProps,
-  BaseCustomItemProps,
+  LabelBaseProps,
   BaseIconProps,
   BaseOptionsItemProps,
   BaseSizeProps,
   BaseTagProps,
+  BaseFormProps,
 } from '~/constants/props/types/basePropTypes';
+import type { DropdownOption } from '~/constants/props/types/molecules/dropdownPropTypes';
 
-export type DropdownItemProps = BaseCustomItemProps &
-  BaseOptionsItemProps &
-  BaseTagProps &
-  BaseSizeProps &
-  BaseCounterProps &
-  BaseIconProps;
+export interface DropdownItemProps
+  extends LabelBaseProps,
+    BaseOptionsItemProps,
+    BaseTagProps,
+    BaseSizeProps,
+    BaseCounterProps,
+    BaseIconProps,
+    BaseFormProps {}
+
+export interface DropdownProps
+  extends BaseCounterProps,
+    BaseFormProps,
+    BaseIconProps,
+    BaseSizeProps,
+    BaseTagProps {
+  options: DropdownOption[];
+  modelValue: string | number | boolean;
+  buttonTag?: string;
+  buttonTagProps?: Record<string, any>;
+  itemTag?: string;
+  itemTagProps?: Record<string, any>;
+}

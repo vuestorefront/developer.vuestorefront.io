@@ -10,7 +10,7 @@ import {
 } from '~/constants/css/types/cssDataTypes';
 import {
   BaseCounterProps,
-  BaseCustomItemProps,
+  LabelBaseProps,
   BaseIconProps,
   BaseOptionsItemProps,
   BaseSizeProps,
@@ -30,7 +30,7 @@ type CssClasses = Partial<
 >;
 
 type PropsTypes = Partial<
-  BaseCustomItemProps &
+  LabelBaseProps &
     BaseOptionsItemProps &
     BaseTagProps &
     BaseSizeProps &
@@ -38,6 +38,10 @@ type PropsTypes = Partial<
     BaseVisualProps &
     BaseIconProps
 >;
+
+const tailwindColorRegex =
+  /(?<color>(primary|secondary|blue|yellow|gray|rose|white))(((-)?)|(?<weight>(-)?([12589])0+))+/gi;
+
 export const useCssClass = ({
   props,
   slots,
@@ -113,6 +117,31 @@ export const useCssClass = ({
     return base;
   });
 
+  const tailwindBaseColor = (colorClass) =>
+    computed(() => {
+      const result = tailwindColorRegex.exec(colorClass);
+
+      const groups = result ? result.groups : { color: '', weight: '' };
+
+      return {
+        color: '',
+        ...groups,
+        weight: groups.weight || 'DEFAULT',
+      };
+    });
+
+  const textClass = computed(() => {
+    const { color, weight } = tailwindBaseColor(props.textColor).value;
+
+    return color && cssClasses.text ? cssClasses.text[color][weight] : '';
+  });
+
+  const bgClass = computed(() => {
+    const { color, weight } = tailwindBaseColor(props.bgColor).value;
+
+    return '';
+  });
+
   const mergeClasses = (...classes: string[]) => {
     return classes.join(' ').replace(/  +/g, ' ');
   };
@@ -130,5 +159,7 @@ export const useCssClass = ({
     sizeClass,
     slotsClass,
     squareClass,
+    textClass,
+    bgClass,
   };
 };

@@ -27,17 +27,10 @@
 
 <script setup lang="ts">
   import { useDropdown } from '~/composables/dynamicUi/useDropdown';
-  import { DropdownOption } from '~/constants/props/types/molecules/dropdownPropTypes';
+  import type { DropdownOption } from '~/constants/props/types/molecules/dropdownPropTypes';
+  import type { DropdownProps } from '~/constants/props/types/atoms/dropdownItemPropTypes';
 
-  const props = defineProps<{
-    options: DropdownOption[];
-    modelValue: string | number | boolean;
-    iconName?: string;
-    buttonTag?: string;
-    buttonTagProps?: Record<string, any>;
-    itemTag?: string;
-    itemTagProps?: Record<string, any>;
-  }>();
+  const props = defineProps<DropdownProps>();
 
   const emit = defineEmits(['update:modelValue', 'show', 'hide']);
   const UUID = useUuid();

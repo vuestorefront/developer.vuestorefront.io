@@ -4,12 +4,12 @@
   >
     <div class="text-gray-900">
       <div>
-        <h1 class="text-6xl font-semibold">
+        <h1 class="text-6xl font-bold">
           <AtomsTextFirstColoredWord :text="title" />
         </h1>
       </div>
       <div>
-        <h2 class="text-5xl font-semibold">
+        <h2 class="text-5xl font-bold">
           Error <span class="text-secondary-900">{{ code }}</span>
         </h2>
       </div>

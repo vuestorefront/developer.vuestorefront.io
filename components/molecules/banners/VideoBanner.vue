@@ -13,12 +13,13 @@
           </p>
         </slot>
 
-        <div class="video-banner-content--buttons">
+        <div class="video-banner-content--buttons text">
           <slot name="button" :button="{ text: buttonText, link: buttonLink }">
             <NuxtLink v-if="buttonText && buttonLink" :to="buttonLink">
               <LazyAtomsButtonContent
                 :color="buttonColor"
                 :label="buttonText"
+                size="sm"
               />
             </NuxtLink>
           </slot>

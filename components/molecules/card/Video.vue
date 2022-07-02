@@ -9,7 +9,7 @@
       <div class="flex-1">
         <slot name="title" v-bind="{ link, title }">
           <NuxtLink class="block mt-1" :to="link">
-            <p class="text-xl font-semibold text-gray-900">
+            <p class="text-xl font-bold text-gray-900">
               {{ title }}
             </p>
           </NuxtLink>

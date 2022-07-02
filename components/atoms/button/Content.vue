@@ -42,8 +42,10 @@
     iconClass,
     slotsClass,
     mergeClasses,
+    bgClass,
+    textClass,
   } = useCssClass({
-    cssClasses: buttonCssClasses,
+    cssClasses: { ...buttonCssClasses, ...baseColors },
     props,
     slots,
   });
@@ -61,6 +63,7 @@
       counterClass.value,
       iconClass.value,
       slotsClass.value,
+      bgClass.value,
     ),
   );
   const { counterRender, slotRender, iconRender, labelRender } =
@@ -70,7 +73,7 @@
     slotRender({
       slotName: 'left',
       component: iconRender({
-        cssClass: 'button-text',
+        cssClass: textClass.value || 'button-text',
         iconName: props?.iconName || props?.iconLeftName || '',
         render: !!props.iconLeftName || props.icon === 'left' || !!slots.left,
       }),
@@ -82,7 +85,7 @@
     slotRender({
       slotName: 'right',
       component: iconRender({
-        cssClass: 'button-text',
+        cssClass: textClass.value || 'button-text',
         iconName: props?.iconName || props?.iconRightName || '',
         render:
           !!props.iconRightName || props.icon === 'right' || !!slots.right,
@@ -95,7 +98,7 @@
     slotRender({
       slotName: 'icon-only',
       component: iconRender({
-        cssClass: 'button-text',
+        cssClass: textClass.value || 'button-text',
         iconName: props?.iconName || '',
         render:
           props.iconOnly || (typeof props.icon === 'boolean' && props.icon),
@@ -108,7 +111,7 @@
     if (slots.default) return slots.default();
     if (props.label)
       return labelRender({
-        cssClass: 'button-text',
+        cssClass: textClass.value || 'button-text',
         content: props.label || '',
       });
     return [];
