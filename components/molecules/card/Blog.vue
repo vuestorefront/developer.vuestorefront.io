@@ -1,40 +1,30 @@
 <template>
-  <div
-    class="flex flex-col rounded-3xl shadow-lg overflow-hidden bg-white justify-between h-fit"
-  >
+  <NuxtLink :to="blogLink" class="blog-card">
     <slot name="image">
-      <NuxtLink :to="blogLink">
-        <img class="h-48 object-cover" :src="image" :alt="title" />
-      </NuxtLink>
+      <img class="h-48 object-cover" :src="image" :alt="title" />
     </slot>
-    <div class="flex pt-2 pb-2 px-4 flex flex-col justify-between">
+    <div class="blog-card-content">
       <slot name="title">
-        <NuxtLink :to="blogLink">
-          <h3 class="line-clamp-2 text-xl font-bold text-gray-900 mb-3">
-            {{ title }}
-          </h3>
-        </NuxtLink>
+        <h3 class="blog-card-title">
+          {{ title }}
+        </h3>
       </slot>
       <slot name="description">
-        <p class="mb-2 text-base text-gray-500 line-clamp-5">
+        <p class="blog-card-description">
           {{ description }}
         </p>
-        <div class="flex space-x-1 text-sm text-gray-400 mb-2">
+        <!--        <div class="blog-card-reading-time">
           Reading time: {{ readingTime }} Minutes
-        </div>
+        </div> -->
       </slot>
-      <slot name="read-more">
+      <!--      <slot name="read-more">
         <NuxtLink class="self-end" :to="blogLink">
           <AtomsButtonContent color="transparent" label="Read more..." />
         </NuxtLink>
-      </slot>
+      </slot> -->
     </div>
     <slot name="author">
-      <NuxtLink
-        :to="authorLink"
-        target="_blank"
-        class="cursor-pointer pt-2 pb-4 px-4 flex items-center justify-self-end"
-      >
+      <NuxtLink :to="authorLink" target="_blank" class="blog-card-author">
         <div class="flex-shrink-0">
           <span class="sr-only">{{ author.name }}</span>
           <AtomsAvatarDiamondShape
@@ -44,10 +34,10 @@
           />
         </div>
         <div class="ml-3">
-          <p class="text-base text-gray-900">
-            {{ author.name }}
+          <p class="blog-card-author--name">
+            <span class="text-gray-500">by </span> {{ author.name }}
           </p>
-          <div class="flex space-x-1 text-sm text-gray-500">
+          <div class="blog-card-author--date">
             <time :datetime="textDate">
               {{ textDate }}
             </time>
@@ -55,7 +45,7 @@
         </div>
       </NuxtLink>
     </slot>
-  </div>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">
@@ -93,7 +83,6 @@
     formatDate({
       date: props.date || '',
       options: {
-        weekday: 'short',
         year: 'numeric',
         month: 'long',
         day: 'numeric',
