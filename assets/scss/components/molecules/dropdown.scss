@@ -23,7 +23,8 @@
     }
 
     &-header {
-      @apply px-4
+      @apply
+      px-4
       py-3
       text-sm
       text-gray-900
@@ -31,7 +32,8 @@
     }
 
     &-item {
-      @apply cursor-pointer
+      @apply
+      cursor-pointer
       block
       dark:hover:bg-gray-600
       dark:hover:text-white
@@ -41,14 +43,17 @@
       py-2
       transition-colors;
 
-      &.button-text, & .button-text {
+      &.button-text,
+      & .button-text {
         @apply text-white
       }
     }
 
     &-counter {
+
       & > .counter-label {
-        @apply inline-flex
+        @apply
+        inline-flex
         font-bold
         h-5
         items-center

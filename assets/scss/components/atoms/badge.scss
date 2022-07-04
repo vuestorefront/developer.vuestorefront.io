@@ -4,7 +4,14 @@
 
 @layer components {
   .card-badge {
-    @apply py-1 px-2 text-[0.6rem] leading-[0.6rem] uppercase text-white;
+    @apply
+    py-1
+    px-2
+    text-[.6rem]
+    leading-[.6rem]
+    uppercase
+    text-white;
+
     &-license {
       &--enterprise {
         @apply bg-secondary;
@@ -39,19 +46,35 @@
 
     &-position {
       &--top-left {
-        @apply rounded-tl-3xl rounded-tr-none rounded-br-3xl rounded-bl-none;
+        @apply
+        rounded-tl-3xl
+        rounded-tr-none
+        rounded-br-3xl
+        rounded-bl-none;
       }
 
       &--top-right {
-        @apply rounded-tl-none rounded-tr-3xl rounded-br-none rounded-bl-3xl;
+        @apply
+        rounded-tl-none
+        rounded-tr-3xl
+        rounded-br-none
+        rounded-bl-3xl;
       }
 
       &--bottom-left {
-        @apply rounded-tr-3xl rounded-tl-none rounded-bl-3xl rounded-br-none;
+        @apply
+        rounded-tr-3xl
+        rounded-tl-none
+        rounded-bl-3xl
+        rounded-br-none;
       }
 
       &--bottom-right {
-        @apply rounded-tl-none rounded-tr-3xl rounded-br-3xl rounded-bl-none;
+        @apply
+        rounded-tl-none
+        rounded-tr-3xl
+        rounded-br-3xl
+        rounded-bl-none;
       }
     }
   }

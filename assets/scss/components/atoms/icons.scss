@@ -1,11 +1,16 @@
 @tailwind base;
+
 @tailwind components;
+
 @tailwind utilities;
 
 @layer components {
   .icon {
     &--social {
-      @apply text-gray-400 hover:text-gray-500 text-2xl;
+      @apply
+      text-gray-400
+      hover:text-gray-500
+      text-2xl;
     }
   }
 }

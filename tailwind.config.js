@@ -135,12 +135,13 @@ module.exports = {
         '6xl': '4.375rem',
       },
       fontFamily: {
-        sans: ['Red Hat Text', 'ui-sans-serif', 'system-ui'],
-        heading: ['Red Hat Display', 'ui-sans-serif', 'system-ui'],
-        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular'],
-        'red-hat-text': 'Red Hat Text',
-        'red-hat-display': 'Red Hat Display',
-        roboto: 'Roboto',
+        'red-hat-text': ['"Red Hat Text"', 'ui-sans-serif', 'system-ui'],
+        'red-hat-display': ['"Red Hat Display"', 'ui-sans-serif', 'system-ui'],
+        'jetbrains-mono': [
+          '"JetBrains Mono"',
+          'ui-monospace',
+          'SFMono-Regular',
+        ],
       },
       boxShadow: {
         sm: '0px 0px 2px 0px rgba(0,0,0,0.2)',

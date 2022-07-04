@@ -30,18 +30,8 @@ export default defineNuxtConfig({
     devToToken: process.env.DEV_TO_TOKEN,
   },
   modules: ['@nuxtjs/tailwindcss', '@intlify/nuxt3', '@vueuse/nuxt'],
-  buildModules: ['@nuxtjs/google-fonts', '@nuxt/content', '@nuxtjs/color-mode'],
+  buildModules: ['@nuxt/content', '@nuxtjs/color-mode'],
   css: ['@/assets/scss/main.scss'],
-  googleFonts: {
-    download: false,
-    prefetch: true,
-    display: 'auto',
-    families: {
-      'Red Hat Display': true,
-      'Red Hat Text': true,
-      'JetBrains Mono': true,
-    },
-  },
   content: {
     watch: true,
     markdown: {

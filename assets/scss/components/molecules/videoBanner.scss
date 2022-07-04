@@ -4,28 +4,57 @@
 
 @layer components {
   .video-banner {
-    @apply grid grid-cols-1 md:grid-cols-2 gap-10;
+    @apply
+    grid
+    grid-cols-1
+    md:grid-cols-2
+    gap-10;
+
     &-content {
       &--title {
-        @apply text-5xl font-bold leading-none mb-5;
+        @apply
+        text-5xl
+        font-bold
+        leading-none
+        mb-5;
       }
 
       &--text {
-        @apply mb-8 text-gray-500;
+        @apply
+        mt-3
+        max-w-md
+        mx-auto
+        text-lg
+        text-gray-500
+        sm:text-xl
+        md:mt-5
+        md:max-w-3xl;
       }
 
       &--buttons {
+        @apply
+        mt-10
+        flex
+        justify-center
+        lg:justify-start;
       }
     }
 
     &-image {
-      @apply flex flex-col items-end;
+      @apply
+      flex
+      flex-col
+      items-end;
+
       &--thumb {
-        @apply h-32 md:h-60;
+        @apply
+        h-auto
+        md:h-60;
       }
 
       &--links {
         @apply pt-5;
+
         & > a {
           @apply text-primary-500;
         }

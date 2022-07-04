@@ -3,33 +3,82 @@
 @tailwind utilities;
 
 @layer components {
+
   .docs-card {
-    @apply bg-white shadow-base rounded-3xl border relative flex flex-col items-start;
+    @apply
+    bg-white
+    shadow-base
+    rounded-3xl
+    border
+    relative
+    flex
+    flex-col
+    items-start;
+
     &-content {
-      @apply py-5 px-3 pb-3;
+      @apply
+      py-5
+      px-3
+      pb-3;
     }
 
     &-title {
-      @apply text-lg font-medium text-gray-900 text-center w-full mt-2 mb-2;
+      @apply
+      text-lg
+      font-medium
+      text-gray-900
+      text-center
+      w-full
+      mt-2
+      mb-2;
     }
 
     &-description {
-      @apply text-base text-gray-900 line-clamp-3;
+      @apply
+      text-base
+      text-gray-900
+      line-clamp-3;
     }
 
     &-image {
-      @apply flex items-center justify-center text-center w-full;
-      & img, svg, picture {
-        @apply max-h-[6rem] mx-auto;
+      @apply
+      flex
+      items-center
+      justify-center
+      text-center
+      w-full;
+
+      & img,
+      svg,
+      picture {
+        @apply
+        max-h-[6rem]
+        mx-auto;
       }
     }
 
     &-badge {
-      @apply absolute top-0 left-0 w-full z-50 overflow-hidden flex items-center justify-between;
+      @apply
+      absolute
+      top-0
+      left-0
+      w-full
+      z-50
+      overflow-hidden
+      flex
+      items-center
+      justify-between;
     }
 
     &-footer {
-      @apply border-t border-gray-100 w-full flex flex-row justify-between;
+      @apply
+      border-t
+      border-gray-100
+      w-full
+      flex
+      flex-row
+      justify-between;
+
       &--link {
 
       }

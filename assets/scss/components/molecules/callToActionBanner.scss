@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .call-to-action-banner {
+    @apply
+    flex
+    flex-col
+    md:flex-row
+    items-center
+    justify-between
+    w-full
+    shadow-xl
+    rounded-2xl
+    px-7
+    py-10
+    lg:px-16
+    lg:py-14;
+
+    &-background {
+      &--lines {
+        background-image: url('/backgrounds/bg-diamon-white.svg');
+        background-position: right center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+}
+

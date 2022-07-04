@@ -3,24 +3,51 @@
 @tailwind utilities;
 
 @layer components {
-  .pagination{
-    @apply px-4 flex items-center justify-between sm:px-0 mt-4;
-    .arrow-right{
+  .pagination {
+    @apply
+    px-4
+    flex
+    items-center
+    justify-between
+    sm:px-0
+    mt-4;
+
+    .arrow-right {
       @apply pr-1;
     }
-    .arrow-left{
+
+    .arrow-left {
       @apply pl-1;
     }
-    .item{
-      @apply hover:no-underline border-transparent pt-4 px-6 inline-flex items-center text-base;
+
+    .item {
+      @apply
+      hover:no-underline
+      border-transparent
+      pt-4
+      px-6
+      inline-flex
+      items-center
+      text-base;
     }
+
     .page {
-      @apply text-gray-400 hover:border-gray-300 hover:border-primary-500 border-b border-gray-200;
+      @apply
+      text-gray-400
+      hover:border-gray-300
+      hover:border-primary-500
+      border-b
+      border-gray-200;
+
       &.active {
         @apply font-medium;
       }
-      &.active,&:hover{
-        @apply border-primary-500 text-primary-600;
+
+      &.active,
+      &:hover {
+        @apply
+        border-primary-500
+        text-primary-600;
       }
     }
   }

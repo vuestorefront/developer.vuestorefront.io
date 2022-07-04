@@ -4,7 +4,10 @@
 
 @layer components {
   .mega-menu {
-    @apply flex items-center space-x-2;
+    @apply
+    flex
+    items-center
+    space-x-2;
 
     &-list {
       @apply z-10
@@ -22,12 +25,17 @@
       duration-200;
 
       li {
-        @apply px-5 py-3 font-semibold text-gray-900;
+        @apply
+        px-5
+        py-3
+        font-semibold
+        text-gray-900;
       }
     }
 
     &-button {
-      @apply bg-white
+      @apply
+      bg-white
       border-0
       border-b-2
       border-transparent
@@ -47,11 +55,16 @@
       text-base
       text-center
       text-gray-900
-      uppercase
-      w-fit ;
+      font-red-hat-display
+      w-fit;
 
-      & svg, img, picture {
-        @apply w-5 h-5 ml-2;
+      & svg,
+      img,
+      picture {
+        @apply
+        w-5
+        h-5
+        ml-2;
       }
     }
 

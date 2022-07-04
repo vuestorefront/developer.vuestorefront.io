@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .blog-card {
+    @apply
+    flex
+    flex-col
+    rounded-3xl
+    shadow-sm
+    overflow-hidden
+    bg-white
+    justify-between
+    h-fit
+    hover:no-underline;
+
+    &-content {
+      @apply
+      flex
+      pt-2
+      pb-2
+      px-4
+      flex
+      flex-col
+      justify-between;
+    }
+
+    &-title {
+      @apply
+      font-semibold
+      text-lg
+      text-gray-900
+      line-clamp-2
+      mb-4;
+    }
+
+    &-description {
+      @apply
+      mb-2
+      text-base
+      text-gray-500
+      line-clamp-5;
+    }
+
+    &-reading-time {
+      @apply
+      flex
+      space-x-1
+      text-sm
+      text-gray-400
+      mb-2;
+    }
+
+    &-author {
+      @apply
+      cursor-pointer
+      pt-2
+      pb-4
+      px-4
+      flex
+      items-center
+      justify-self-end;
+
+      &--name {
+        @apply
+        text-base
+        text-gray-900;
+      }
+
+      &--date {
+        @apply
+        flex space-x-1
+        text-sm
+        text-gray-500;
+      }
+    }
+  }
+}

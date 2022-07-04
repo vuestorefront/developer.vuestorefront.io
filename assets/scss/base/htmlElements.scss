@@ -1,30 +1,60 @@
-* {
-  @apply font-sans;
-}
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Red+Hat+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Red+Hat+Text:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 html {
-  font-size: 16px;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+  font-family: "Red Hat Text","Red Hat Display",sans-serif
 }
 
-h1, h2, h3, h4, h5, h6 {
-  @apply font-heading;
+code,
+kbd,
+samp,
+pre {
+  font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+  font-size: 1em
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-red-hat-display;
 }
 
 
-a, svg, img, input, textarea, button, select, optgroup, option {
-  @apply text-gray-900 dark:text-white;
+a,
+svg,
+img,
+input,
+textarea,
+button,
+select,
+optgroup,
+option {
+  @apply
+  text-gray-900
+  dark:text-white;
+
   &:focus {
-    @apply ring-2 ring-primary-500 rounded;
+    @apply
+    ring-2
+    ring-primary-500
+    rounded;
   }
 }
+
 a {
-  @apply cursor-pointer text-base text-gray-500 hover:text-gray-900 hover:underline hover:text-primary-500;
+  @apply
+  cursor-pointer
+  hover:underline
+  hover:text-primary-500;
 }
 
 p {
-  @apply text-gray-900 dark:text-white;
-}
-
-code, pre {
-  @apply font-mono;
+  @apply
+  text-gray-900
+  dark:text-white;
 }
