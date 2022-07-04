@@ -19,7 +19,7 @@
               <LazyAtomsButtonContent
                 :color="buttonColor"
                 :label="buttonText"
-                size="sm"
+                shadow
               />
             </NuxtLink>
           </slot>
