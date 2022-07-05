@@ -1,11 +1,12 @@
+import { ColorsEnum } from '~/enums/colors';
+import { SizeEnum } from '~/enums/size';
+
+type SizeObj = Partial<{
+  [key in SizeEnum]: Partial<ColorsObj>;
+}>;
+
 export type CssSizeClasses = Partial<{
-  size: Partial<{
-    xs: string;
-    sm: string;
-    base: string;
-    lg: string;
-    xl: string;
-  }>;
+  size: SizeObj;
 }>;
 
 export type CssCounterClasses = Partial<{
@@ -45,28 +46,13 @@ type ColorsObj = {
 };
 
 type Colors = {
-  success: Partial<ColorsObj>;
-  primary: Partial<ColorsObj>;
-  secondary: Partial<ColorsObj>;
-  danger: Partial<ColorsObj>;
-  warning: Partial<ColorsObj>;
-  info: Partial<ColorsObj>;
-  white: Partial<ColorsObj>;
-  black: Partial<ColorsObj>;
-  gray: Partial<ColorsObj>;
-}
+  [key in ColorsEnum]: Partial<ColorsObj>;
+};
 
 export type CssColorClasses = Partial<{
-  color: {
-    success: string;
-    primary: string;
-    secondary: string;
-    danger: string;
-    warning: string;
-    info: string;
-    white: string;
-    transparent: string;
-  };
+  color: Partial<{
+    [key in ColorsEnum]: string;
+  }>;
   bgColor: Colors;
   textColor: Colors;
 }>;
@@ -75,14 +61,7 @@ export type CssOutlineClasses = Partial<{
   outline: Partial<{
     base: string;
     color: Partial<{
-      success: string;
-      primary: string;
-      secondary: string;
-      danger: string;
-      warning: string;
-      info: string;
-      white: string;
-      transparent: string;
+      [key in ColorsEnum]: string;
     }>;
   }>;
 }>;
@@ -97,8 +76,10 @@ export type CssBaseClasses = Partial<{
   base: string;
 }>;
 
-export type DropdownItemCssClasses = Partial<CssBaseClasses &
-  CssSizeClasses &
-  CssCounterClasses &
-  CssIconClasses &
-  CssSlotsClasses>;
+export type DropdownItemCssClasses = Partial<
+  CssBaseClasses &
+    CssSizeClasses &
+    CssCounterClasses &
+    CssIconClasses &
+    CssSlotsClasses
+>;

@@ -1,17 +1,14 @@
-export type CssBadgeTypeClasses = {
-  prod: string;
-  alpha: string;
-  beta: string;
-  wip: string;
-  os: string;
-  enterprise: string;
-  paid: string;
-  none?: string;
+import { IntegrationLicense, IntegrationStatus } from '~/enums/integrations';
+import { BadgePosition } from '~/enums/badge';
+
+export type CssBadgeLicenseClasses = {
+  [key in IntegrationLicense]: string;
+};
+
+export type CssBadgeStatusClasses = {
+  [key in IntegrationStatus]: string;
 };
 
 export type CssBadgePositionClasses = {
-  'top-left': string;
-  'top-right': string;
-  'bottom-left': string;
-  'bottom-right': string;
+  [key in BadgePosition]: string;
 };

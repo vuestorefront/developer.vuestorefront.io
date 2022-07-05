@@ -1,5 +1,7 @@
 <template>
-  <div class="max-w-lg mx-auto grid gap-10 lg:grid-cols-3 lg:max-w-none">
+  <div
+    class="mx-auto grid max-w-lg grid-cols-1 gap-10 lg:max-w-none lg:grid-cols-3"
+  >
     <MoleculesCardBlog v-for="post in posts" :key="post.title" v-bind="post" />
   </div>
 </template>

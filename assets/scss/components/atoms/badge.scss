@@ -5,6 +5,7 @@
 @layer components {
   .card-badge {
     @apply
+    absolute
     py-1
     px-2
     text-[.6rem]
@@ -47,34 +48,42 @@
     &-position {
       &--top-left {
         @apply
-        rounded-tl-3xl
-        rounded-tr-none
-        rounded-br-3xl
-        rounded-bl-none;
+          top-0
+          left-0
+          rounded-tl-3xl
+          rounded-tr-none
+          rounded-br-3xl
+          rounded-bl-none;
       }
 
       &--top-right {
         @apply
-        rounded-tl-none
-        rounded-tr-3xl
-        rounded-br-none
-        rounded-bl-3xl;
+          top-0
+          right-0
+          rounded-tl-none
+          rounded-tr-3xl
+          rounded-br-none
+          rounded-bl-3xl;
       }
 
       &--bottom-left {
         @apply
-        rounded-tr-3xl
-        rounded-tl-none
-        rounded-bl-3xl
-        rounded-br-none;
+          bottom-0
+          left-0
+          rounded-tr-3xl
+          rounded-tl-none
+          rounded-bl-3xl
+          rounded-br-none;
       }
 
       &--bottom-right {
         @apply
-        rounded-tl-none
-        rounded-tr-3xl
-        rounded-br-3xl
-        rounded-bl-none;
+          bottom-0
+          right-0
+          rounded-tl-3xl
+          rounded-tr-none
+          rounded-br-3xl
+          rounded-bl-none;
       }
     }
   }

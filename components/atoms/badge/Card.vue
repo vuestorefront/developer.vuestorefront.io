@@ -9,40 +9,37 @@
 <script setup lang="ts">
   import {
     cssPositionClass,
-    cssTypeClass,
-    typeLabel,
+    cardBadgeCssClasses,
+    cardBadgeLabel,
   } from '~/constants/css/atoms/cardBadge';
+  import { IntegrationLicense, IntegrationStatus } from '~/enums/integrations';
+  import { BadgePosition } from '~/enums/badge';
 
   const props = withDefaults(
     defineProps<{
-      label: string;
-      type:
-        | 'prod'
-        | 'alpha'
-        | 'beta'
-        | 'wip'
-        | 'os'
-        | 'enterprise'
-        | 'paid'
-        | 'custom';
-      position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+      label?: string;
+      model: IntegrationStatus | IntegrationLicense;
+      position: BadgePosition;
     }>(),
     {
-      type: 'wip',
-      position: 'top-left',
+      model: IntegrationStatus.wip,
+      position: BadgePosition.topLeft,
       label: '',
     },
   );
 
-  const badgeType = computed<string>(() => cssTypeClass[props.type] || '');
+  const baseClass = computed<string>(
+    () => cardBadgeCssClasses[props.model] || '',
+  );
+
   const badgePosition = computed<string>(
     () => cssPositionClass[props.position],
   );
 
   const badgeLabel = computed<string>(
-    () => props.label || typeLabel[props.type] || '',
+    () => props.label || cardBadgeLabel[props.model] || '',
   );
   const cssClasses = computed<string>(
-    () => `${badgeType.value} ${badgePosition.value}`,
+    () => `${baseClass.value} ${badgePosition.value}`,
   );
 </script>

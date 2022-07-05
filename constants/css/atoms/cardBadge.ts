@@ -1,31 +1,50 @@
 import {
+  CssBadgeLicenseClasses,
   CssBadgePositionClasses,
-  CssBadgeTypeClasses,
+  CssBadgeStatusClasses,
 } from '~/constants/css/types/atoms/badge';
+import { IntegrationLicense, IntegrationStatus } from '~/enums/integrations';
+import { BadgePosition } from '~/enums/badge';
 
-export const cssTypeClass: CssBadgeTypeClasses = {
-  alpha: 'card-badge-status--alpha',
-  beta: 'card-badge-status--beta',
-  wip: 'card-badge-status--wip',
-  prod: 'card-badge-status--prod',
-  enterprise: 'card-badge-license--enterprise',
-  paid: 'card-badge-license--paid',
-  os: 'card-badge-license--open-source',
+export const cssLicenseClass: CssBadgeLicenseClasses = {
+  [IntegrationLicense.enterprise]: 'card-badge-license--enterprise',
+  [IntegrationLicense.paid]: 'card-badge-license--paid',
+  [IntegrationLicense.os]: 'card-badge-license--open-source',
 };
 
-export const typeLabel: CssBadgeTypeClasses = {
-  alpha: 'Alpha',
-  beta: 'Beta',
-  wip: 'In development',
-  prod: 'Production',
-  enterprise: 'Enterprise',
-  paid: 'Paid',
-  os: 'Open-Source',
+export const cssStatusClass: CssBadgeStatusClasses = {
+  [IntegrationStatus.alpha]: 'card-badge-status--alpha',
+  [IntegrationStatus.beta]: 'card-badge-status--beta',
+  [IntegrationStatus.wip]: 'card-badge-status--wip',
+  [IntegrationStatus.prod]: 'card-badge-status--prod',
+};
+
+export const typeLabel: CssBadgeLicenseClasses = {
+  [IntegrationLicense.enterprise]: 'Enterprise',
+  [IntegrationLicense.paid]: 'Paid',
+  [IntegrationLicense.os]: 'Open-Source',
+};
+
+export const statusLabel: CssBadgeStatusClasses = {
+  [IntegrationStatus.alpha]: 'Alpha',
+  [IntegrationStatus.beta]: 'Beta',
+  [IntegrationStatus.wip]: 'In development',
+  [IntegrationStatus.prod]: 'Production',
+};
+
+export const cardBadgeLabel = {
+  ...typeLabel,
+  ...statusLabel,
+};
+
+export const cardBadgeCssClasses = {
+  ...cssLicenseClass,
+  ...cssStatusClass,
 };
 
 export const cssPositionClass: CssBadgePositionClasses = {
-  'bottom-left': 'card-badge-position--bottom-left',
-  'bottom-right': 'card-badge-position--bottom-right',
-  'top-left': 'card-badge-position--top-left',
-  'top-right': 'card-badge-position--top-right',
+  [BadgePosition.bottomLeft]: 'card-badge-position--bottom-left',
+  [BadgePosition.bottomRight]: 'card-badge-position--bottom-right',
+  [BadgePosition.topLeft]: 'card-badge-position--top-left',
+  [BadgePosition.topRight]: 'card-badge-position--top-right',
 };

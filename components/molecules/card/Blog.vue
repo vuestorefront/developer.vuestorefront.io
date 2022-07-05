@@ -1,27 +1,28 @@
 <template>
-  <NuxtLink :to="blogLink" class="blog-card">
+  <div class="blog-card">
     <slot name="image">
-      <img class="h-48 object-cover" :src="image" :alt="title" />
+      <NuxtLink :to="blogLink">
+        <img class="object-fit" :src="image" :alt="title" />
+      </NuxtLink>
     </slot>
     <div class="blog-card-content">
       <slot name="title">
         <h3 class="blog-card-title">
-          {{ title }}
+          <NuxtLink :to="blogLink">
+            {{ title }}
+          </NuxtLink>
         </h3>
       </slot>
       <slot name="description">
         <p class="blog-card-description">
-          {{ description }}
+          <NuxtLink :to="blogLink">
+            {{ description }}
+          </NuxtLink>
         </p>
-        <!--        <div class="blog-card-reading-time">
+        <div class="blog-card-reading-time">
           Reading time: {{ readingTime }} Minutes
-        </div> -->
+        </div>
       </slot>
-      <!--      <slot name="read-more">
-        <NuxtLink class="self-end" :to="blogLink">
-          <AtomsButtonContent color="transparent" label="Read more..." />
-        </NuxtLink>
-      </slot> -->
     </div>
     <slot name="author">
       <NuxtLink :to="authorLink" target="_blank" class="blog-card-author">
@@ -45,7 +46,7 @@
         </div>
       </NuxtLink>
     </slot>
-  </NuxtLink>
+  </div>
 </template>
 
 <script setup lang="ts">

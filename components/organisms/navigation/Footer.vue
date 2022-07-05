@@ -31,10 +31,7 @@
           />
         </div>
       </div>
-      <hr
-        class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
-      />
-      <div class="pt-6">
+      <div class="mt-20 border-t border-gray-200 pt-8">
         <p class="text-base text-gray-400 text-center">
           &copy; {{ currentYear }} Vue Storefront. All rights reserved.
         </p>

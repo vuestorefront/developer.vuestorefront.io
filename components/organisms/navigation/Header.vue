@@ -58,8 +58,7 @@
     const scrollUp = 'scroll-up';
     const scrollDown = 'scroll-down';
     let lastScroll = 0;
-
-    window.addEventListener('scroll', () => {
+    const scrollFunction = () => {
       const currentScroll = window.scrollY;
       if (currentScroll <= 0) {
         navElBase.value?.classList.remove(scrollUp);
@@ -68,11 +67,10 @@
         return;
       }
 
-      if (currentScroll > 80) {
+      if (currentScroll > 120) {
         navElContent.value?.classList.add('scrolling-menu');
         navElContent.value?.classList.remove('floating-menu');
       }
-
       if (
         currentScroll > lastScroll &&
         !navElBase.value?.classList.contains(scrollDown)
@@ -86,8 +84,12 @@
         navElBase.value?.classList.remove(scrollDown);
         navElBase.value?.classList.add(scrollUp);
       }
+
       lastScroll = currentScroll;
-    });
+    };
+
+    window.addEventListener('scroll', scrollFunction);
+    window.addEventListener('touchmove', scrollFunction);
   });
 </script>
 

@@ -1,4 +1,6 @@
 import { CssButtonClasses } from '~/constants/css/types/atoms/button';
+import { ColorsEnum } from '~/enums/colors';
+import { SizeEnum } from '~/enums/size';
 
 const cssSlots = {
   left: 'button-icon--left',
@@ -11,14 +13,14 @@ export const buttonCssClasses: CssButtonClasses = {
   square: 'button-square',
   disabled: 'button-disabled',
   color: {
-    success: 'button-color--success',
-    primary: 'button-color--primary',
-    secondary: 'button-color--secondary',
-    danger: 'button-color--danger',
-    warning: 'button-color--warning',
-    info: 'button-color--info',
-    white: 'button-color--white',
-    transparent: 'button-color--transparent',
+    [ColorsEnum.success]: 'button-color--success',
+    [ColorsEnum.primary]: 'button-color--primary',
+    [ColorsEnum.secondary]: 'button-color--secondary',
+    [ColorsEnum.danger]: 'button-color--danger',
+    [ColorsEnum.warning]: 'button-color--warning',
+    [ColorsEnum.info]: 'button-color--info',
+    [ColorsEnum.white]: 'button-color--white',
+    [ColorsEnum.transparent]: 'button-color--transparent',
   },
   shadow: {
     base: 'shadow-base',
@@ -29,22 +31,22 @@ export const buttonCssClasses: CssButtonClasses = {
   outline: {
     base: 'button-outline',
     color: {
-      success: 'button-outline--success',
-      primary: 'button-outline--primary',
-      secondary: 'button-outline--secondary',
-      danger: 'button-outline--danger',
-      warning: 'button-outline--warning',
-      info: 'button-outline--info',
-      white: 'button-outline--white',
-      transparent: 'button-outline--transparent',
+      [ColorsEnum.success]: 'button-outline--success',
+      [ColorsEnum.primary]: 'button-outline--primary',
+      [ColorsEnum.secondary]: 'button-outline--secondary',
+      [ColorsEnum.danger]: 'button-outline--danger',
+      [ColorsEnum.warning]: 'button-outline--warning',
+      [ColorsEnum.info]: 'button-outline--info',
+      [ColorsEnum.white]: 'button-outline--white',
+      [ColorsEnum.transparent]: 'button-outline--transparent',
     },
   },
   size: {
-    xs: 'button-size-xs',
-    sm: 'button-size-sm',
-    base: 'button-size-base',
-    lg: 'button-size-lg',
-    xl: 'button-size-xl',
+    [SizeEnum.xs]: 'button-size-xs',
+    [SizeEnum.sm]: 'button-size-sm',
+    [SizeEnum.base]: 'button-size-base',
+    [SizeEnum.lg]: 'button-size-lg',
+    [SizeEnum.xl]: 'button-size-xl',
   },
   icon: {
     base: 'button-icon',
