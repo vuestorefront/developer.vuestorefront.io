@@ -28,8 +28,8 @@
         <div
           class="mt-8 grid content-center items-center justify-center gap-4 lg:mt-0"
           :class="{
-            'grid-cols-3': message && title,
-            'grid-cols-4': !(message && title),
+            'grid-cols-2 md:grid-cols-3': message && title,
+            'grid-cols-3 md:grid-cols-4': !(message && title),
             'order-last': direction === 'left',
             'order-first': direction === 'right',
           }"

@@ -10,7 +10,7 @@
       >
         <div
           ref="modal"
-          class="relative w-fit transform rounded-lg bg-white text-left shadow-xl transition-all"
+          class="absolute top-1/2 left-1/2 w-fit -translate-x-1/2 -translate-y-1/2 transform transform rounded-lg bg-white text-left shadow-xl transition-all"
         >
           <div class="absolute -top-8 -right-8 hidden sm:block">
             <button
