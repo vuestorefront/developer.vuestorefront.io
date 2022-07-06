@@ -34,11 +34,13 @@
             'order-first': direction === 'right',
           }"
         >
-          <AtomsBrands
-            v-for="brand in brands"
-            :key="brand.key"
-            v-bind="brand"
-          />
+          <ClientOnly>
+            <AtomsBrands
+              v-for="brand in brands"
+              :key="brand.key"
+              v-bind="brand"
+            />
+          </ClientOnly>
         </div>
       </div>
     </div>

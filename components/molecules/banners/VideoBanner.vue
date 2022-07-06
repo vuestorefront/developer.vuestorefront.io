@@ -16,7 +16,7 @@
         <div class="video-banner-content--buttons text">
           <slot name="button" :button="{ text: buttonText, link: buttonLink }">
             <NuxtLink v-if="buttonText && buttonLink" :to="buttonLink">
-              <LazyAtomsButtonContent
+              <AtomsButtonContent
                 :color="buttonColor"
                 :label="buttonText"
                 shadow
@@ -28,9 +28,10 @@
     </slot>
     <slot name="right">
       <div v-if="videoThumb" class="video-banner-image">
-        <LazyAtomsThumbVideo
+        <AtomsThumbVideo
           :image="videoThumb"
           class="video-banner-image--thumb"
+          @click="isOpen = true"
         />
         <div class="video-banner-image--links">
           <NuxtLink :to="thumbButtonLink">
@@ -39,6 +40,11 @@
         </div>
       </div>
     </slot>
+    <MoleculesVideoModal
+      :open="isOpen"
+      :video-id="videoId"
+      @close="isOpen = false"
+    />
   </div>
 </template>
 
@@ -47,6 +53,7 @@
     defineProps<{
       title: string;
       message: string;
+      videoId?: string;
       buttonText?: string;
       buttonLink?: string;
       buttonColor?: string;
@@ -61,4 +68,6 @@
       thumbButtonColor: 'transparent',
     },
   );
+
+  const isOpen = ref(false);
 </script>

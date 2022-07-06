@@ -1,10 +1,10 @@
 <template>
   <div class="main-layout">
-    <LazyOrganismsNavigationHeader />
+    <OrganismsNavigationHeader />
     <main>
       <slot />
     </main>
-    <LazyOrganismsNavigationFooter />
+    <OrganismsNavigationFooter />
   </div>
 </template>
 

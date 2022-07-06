@@ -1,2 +1,3 @@
 /// <reference types="histoire" />
-export {}
+/// <reference types=".nuxt/nuxt.d.ts" />
+export {};

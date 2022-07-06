@@ -1,7 +1,7 @@
 <template>
   <AtomsLayoutContent>
     <AtomsLayoutContainer>
-      <LazyMoleculesBannersVideoBanner
+      <MoleculesBannersVideoBanner
         title="What is Vue Storefront"
         message="Vue Storefront is enormous but straightforward at the same time. Marc Backes created this fantastic video to explain to developers, what is Vue Storefront, is and how it works."
         button-link="#"
@@ -9,10 +9,11 @@
         video-thumb="/thumbs/video/what-is-vue-storefront.jpg"
         thumb-button-text="Check our other videos"
         thumb-button-link="#"
+        video-id="MCN1rRwuIGs"
       />
-      <LazyMoleculesBannersCallToAction
+      <MoleculesBannersCallToAction
         message="Find help, new ideas, new projects, and much more on our Discord server. "
-        img="/brands/discord.svg"
+        img="/brands/logos/discord.svg"
         header="Join our Discord server"
         color="secondary"
         button-color="white"
@@ -20,19 +21,19 @@
         button-text="Join our Discord server"
         button-text-color="secondary"
       />
-      <LazyMoleculesSectionLogoClouds
+      <MoleculesSectionLogoClouds
         direction="left"
         title="Commerce integrations"
         message="Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit."
         :brands="commerceVendors"
       />
-      <LazyMoleculesSectionLogoClouds
+      <MoleculesSectionLogoClouds
         direction="right"
         title="CMS integrations"
         message="Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit."
         :brands="cmsVendors"
       />
-      <LazyMoleculesSectionLogoClouds
+      <MoleculesSectionLogoClouds
         direction="left"
         title="Payment integrations"
         message="Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit."
@@ -41,20 +42,20 @@
     </AtomsLayoutContainer>
     <AtomsLayoutFullWidthSection>
       <AtomsLayoutFullWidthContainer>
-        <LazyAtomsTextHeadingCenter
+        <AtomsTextHeadingCenter
           title="Engage with us"
           message="Read our incredible content in our developer focus blog."
         />
-        <LazyOrganismsSectionBlogPosts
+        <OrganismsSectionBlogPosts
           :posts="postsList"
           :loading="pending"
           :error="error"
         />
-        <LazyMoleculesTextFollowSocials />
+        <MoleculesTextFollowSocials />
       </AtomsLayoutFullWidthContainer>
     </AtomsLayoutFullWidthSection>
     <AtomsLayoutContainer>
-      <LazyMoleculesNewsletterSignUpSection />
+      <MoleculesNewsletterSignUpSection />
     </AtomsLayoutContainer>
   </AtomsLayoutContent>
 </template>

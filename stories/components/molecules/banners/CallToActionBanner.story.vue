@@ -57,7 +57,7 @@
       buttonLink: 'https://discord.gg/vuestorefront',
       buttonColor: 'white',
       buttonTextColor: 'secondary',
-      img: 'brands/discord.svg',
+      img: 'brands/logos/discord.svg',
       imgAlt: 'Discord Logo',
       color: 'secondary',
     };

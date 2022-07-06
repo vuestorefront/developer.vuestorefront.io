@@ -40,8 +40,10 @@
     "nuxt": "^3.0.0-rc.4",
     "ohmyfetch": "^0.4.18",
     "regexparam": "^2.0.1",
+    "shortid": "^2.2.16",
     "ufo": "^0.8.4",
-    "vue-github-button": "^3.0.3"
+    "vue-github-button": "^3.0.3",
+    "youtube-player": "^5.5.2"
   },
   "devDependencies": {
     "@histoire/plugin-nuxt": "^0.7.8",

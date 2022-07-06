@@ -5,17 +5,7 @@ import { defineNuxtConfig } from 'nuxt';
 export default defineNuxtConfig({
   debug: process.env.NODE_ENV !== 'production',
   sourcemap: process.env.NODE_ENV !== 'production',
-  components: {
-    dirs: [
-      {
-        watch: true,
-        path: '@/components',
-        transpile: 'auto',
-        isAsync: true,
-        enabled: true,
-      },
-    ],
-  },
+  components: true,
   experimental: {
     externalVue: true,
     reactivityTransform: true,
