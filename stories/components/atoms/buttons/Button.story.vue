@@ -129,7 +129,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useUuid } from '~/composables/useUuid';
+  import { useUUID } from '~/composables/useUUID';
 
   const buttonColors = [
     'success',
@@ -163,7 +163,7 @@
     },
   ];
   const { capitalize } = useTextCase();
-  const nanoid = useUuid;
+  const nanoid = useUUID;
   function initState() {
     return {
       size: 'base',

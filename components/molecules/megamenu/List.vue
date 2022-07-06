@@ -19,5 +19,5 @@
     isVisible?: boolean;
   }>();
 
-  const UUID = useUuid;
+  const UUID = useUUID;
 </script>

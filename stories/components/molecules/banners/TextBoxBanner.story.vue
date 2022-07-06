@@ -27,9 +27,9 @@
 </template>
 
 <script setup lang="ts">
-  import { useUuid } from '~/composables/useUuid';
+  import { useUUID } from '~/composables/useUUID';
 
-  const nanoid = useUuid;
+  const nanoid = useUUID;
 
   const componentType = [
     'Warning',

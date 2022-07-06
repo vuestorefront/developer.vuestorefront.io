@@ -56,13 +56,13 @@
 </template>
 
 <script setup lang="ts">
-  import { useUuid } from '~/composables/useUuid';
+  import { useUUID } from '~/composables/useUUID';
 
   const socialTypes = ['facebook', 'twitter', 'github', 'google', 'apple'];
 
   const { capitalize } = useTextCase();
 
-  const nanoid = useUuid;
+  const nanoid = useUUID;
 
   function initState() {
     return {

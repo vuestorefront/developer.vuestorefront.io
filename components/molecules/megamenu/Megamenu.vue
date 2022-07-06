@@ -34,7 +34,7 @@
   }>();
 
   const emit = defineEmits(['show', 'hide']);
-  const UUID = useUuid();
+  const UUID = useUUID();
 
   const onShow = () => emit('show');
   const onHide = () => emit('hide');

@@ -62,23 +62,24 @@
 <script setup lang="ts">
   import { useArticles } from '~/composables/api/devTo/useArticles';
   import { useDevTo } from '~/composables/data/dev.to/useDevTo';
-  import { integrationsList } from '~/constants/brands';
+  import { integrationsListByCategory } from '~/constants/brands';
   import { IntegrationCategory } from '~/enums/integrations';
 
-  const { randomElements, filterBy } = useArrayManipulation();
+  const { randomElements } = useArrayManipulation();
+  const { removeProperties } = useObjectManipulation();
 
   const commerceVendors = randomElements(
-    filterBy(integrationsList, { categories: [IntegrationCategory.commerce] }),
+    integrationsListByCategory([IntegrationCategory.commerce]),
     6,
   );
 
   const cmsVendors = randomElements(
-    filterBy(integrationsList, { categories: [IntegrationCategory.cms] }),
+    integrationsListByCategory([IntegrationCategory.cms]),
     6,
   );
 
   const paymentVendors = randomElements(
-    filterBy(integrationsList, { categories: [IntegrationCategory.payment] }),
+    integrationsListByCategory([IntegrationCategory.payment]),
     6,
   );
 

@@ -1,4 +1,5 @@
-export const useUuid = () => {
+// eslint-disable-next-line unicorn/filename-case
+export const useUUID = () => {
   const str = () =>
     // eslint-disable-next-line @typescript-eslint/no-loss-of-precision
     `00000000000000000${(Math.random() * 0xff_ff_ff_ff_ff_ff_ff_ff).toString(

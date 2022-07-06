@@ -40,7 +40,7 @@
   }>();
 
   const emit = defineEmits(['update:modelValue', 'show', 'hide']);
-  const UUID = useUuid();
+  const UUID = useUUID();
 
   const onShow = () => emit('show');
   const onHide = () => emit('hide');
@@ -57,7 +57,7 @@
   const dropdownOptions = computed<DropdownOption[]>(() =>
     props.options?.map((c, i) => ({
       selected: c.selected || props.modelValue === c.value,
-      id: useUuid(),
+      id: useUUID(),
       ...c,
     })),
   );

@@ -6,24 +6,24 @@ import {
 
 export const integrationsList: {
   name: string;
-  logo?: string;
+  logo: string;
   link:
     | string
     | Array<{
         name: string;
         link: string;
+        icon: string;
       }>;
-  license?: IntegrationLicense;
-  status?: IntegrationStatus;
+  license: IntegrationLicense;
+  status: IntegrationStatus;
   color?: string;
-  icon?: string;
-  maintainedBy?: { name: string; link: string }[];
-  categories?: IntegrationCategory[];
+  maintainedBy: { name: string; link: string }[];
+  categories: IntegrationCategory[];
 }[] = [
   {
     name: 'commercetools',
     link: 'https://docs.vuestorefront.io/v2/commercetools/',
-    logo: '/brands/commercetools.svg',
+    logo: '/brands/logos/commercetools.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -34,7 +34,7 @@ export const integrationsList: {
   {
     name: 'Magento',
     link: 'https://docs.vuestorefront.io/magento',
-    logo: '/brands/magento.svg',
+    logo: '/brands/logos/magento.svg',
     status: IntegrationStatus.beta,
     license: IntegrationLicense.os,
     maintainedBy: [
@@ -45,7 +45,7 @@ export const integrationsList: {
   {
     name: 'Salesforce Commerce Cloud',
     link: 'https://docs.vuestorefront.io/sfcc',
-    logo: '/brands/sfcc.svg',
+    logo: '/brands/logos/sfcc.svg',
     status: IntegrationStatus.beta,
     license: IntegrationLicense.enterprise,
     maintainedBy: [{ name: 'Forkpoint', link: 'https://forkpoint.com/' }],
@@ -54,7 +54,7 @@ export const integrationsList: {
   {
     name: 'SAP Commerce Cloud',
     link: '',
-    logo: '/brands/sap.svg',
+    logo: '/brands/logos/sap.svg',
     status: IntegrationStatus.wip,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -65,7 +65,7 @@ export const integrationsList: {
   {
     name: 'Shopify',
     link: 'https://docs.vuestorefront.io/shopify',
-    logo: '/brands/shopify.svg',
+    logo: '/brands/logos/shopify.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.os,
     maintainedBy: [
@@ -76,7 +76,7 @@ export const integrationsList: {
   {
     name: 'BigCommerce',
     link: 'https://docs.vuestorefront.io/bigcommerce',
-    logo: '/brands/bigcommerce.svg',
+    logo: '/brands/logos/bigcommerce.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -87,7 +87,7 @@ export const integrationsList: {
   {
     name: 'Scayle',
     link: '',
-    logo: '/brands/scayle.svg',
+    logo: '/brands/logos/scayle.svg',
     status: IntegrationStatus.wip,
     license: IntegrationLicense.enterprise,
     maintainedBy: [],
@@ -96,7 +96,7 @@ export const integrationsList: {
   {
     name: 'Sylius',
     link: '',
-    logo: '/brands/sylius.svg',
+    logo: '/brands/logos/sylius.svg',
     status: IntegrationStatus.beta,
     license: IntegrationLicense.os,
     maintainedBy: [{ name: 'BitBag', link: 'https://bitbag.io/' }],
@@ -105,7 +105,7 @@ export const integrationsList: {
   {
     name: 'WooCommerce',
     link: '',
-    logo: '/brands/woocommerce.svg',
+    logo: '/brands/logos/woocommerce.svg',
     status: IntegrationStatus.wip,
     license: IntegrationLicense.os,
     maintainedBy: [],
@@ -114,7 +114,7 @@ export const integrationsList: {
   {
     name: 'OpenCart',
     link: '',
-    logo: '/brands/opencart.svg',
+    logo: '/brands/logos/opencart.svg',
     status: IntegrationStatus.wip,
     license: IntegrationLicense.os,
     maintainedBy: [],
@@ -123,7 +123,7 @@ export const integrationsList: {
   {
     name: 'Vendure',
     link: 'https://docs.vuestorefront.io/vendure',
-    logo: '/brands/vendure.svg',
+    logo: '/brands/logos/vendure.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.os,
     maintainedBy: [
@@ -137,7 +137,7 @@ export const integrationsList: {
   {
     name: 'Odoo',
     link: 'https://docs.vuestorefront.io/odoo/',
-    logo: '/brands/odoo.svg',
+    logo: '/brands/logos/odoo.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.os,
     maintainedBy: [{ name: 'OdooGap', link: 'https://www.odoogap.com/' }],
@@ -146,7 +146,7 @@ export const integrationsList: {
   {
     name: 'PrestaShop',
     link: 'https://docs.vuestorefront.io/prestashop/',
-    logo: '/brands/prestashop.svg',
+    logo: '/brands/logos/prestashop.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.os,
     maintainedBy: [{ name: 'Binshops', link: 'https://www.binshops.com/' }],
@@ -155,7 +155,7 @@ export const integrationsList: {
   {
     name: 'Spree',
     link: 'https://docs.vuestorefront.io/spree/',
-    logo: '/brands/spree.svg',
+    logo: '/brands/logos/spree.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.os,
     maintainedBy: [{ name: 'Upside Lab', link: 'https://upsidelab.io/' }],
@@ -164,7 +164,7 @@ export const integrationsList: {
   {
     name: 'Elastic Path',
     link: '',
-    logo: '/brands/elasticpath.svg',
+    logo: '/brands/logos/elasticpath.svg',
     status: IntegrationStatus.wip,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -175,7 +175,7 @@ export const integrationsList: {
   {
     name: 'Swell',
     link: '',
-    logo: '/brands/swell.svg',
+    logo: '/brands/logos/swell.svg',
     status: IntegrationStatus.wip,
     license: IntegrationLicense.os,
     maintainedBy: [{ name: 'Swell', link: 'https://www.swell.is/' }],
@@ -184,7 +184,7 @@ export const integrationsList: {
   {
     name: 'Shopware PWA',
     link: 'https://shopware-pwa-docs.vuestorefront.io/',
-    logo: '/brands/shopware.svg',
+    logo: '/brands/logos/shopware.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.os,
     maintainedBy: [{ name: 'Shopware', link: 'https://www.shopware.com/' }],
@@ -193,7 +193,7 @@ export const integrationsList: {
   {
     name: 'Storyblok',
     link: 'https://docs.vuestorefront.io/storyblok',
-    logo: '/brands/storyblok.svg',
+    logo: '/brands/logos/storyblok.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.os,
     maintainedBy: [
@@ -204,7 +204,7 @@ export const integrationsList: {
   {
     name: 'Amplience',
     link: 'https://docs.vuestorefront.io/amplience',
-    logo: '/brands/amplience.svg',
+    logo: '/brands/logos/amplience.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -215,7 +215,7 @@ export const integrationsList: {
   {
     name: 'Contentstack',
     link: 'https://docs.vuestorefront.io/contentstack',
-    logo: '/brands/contentstack.svg',
+    logo: '/brands/logos/contentstack.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -226,7 +226,7 @@ export const integrationsList: {
   {
     name: 'Contentful',
     link: 'https://docs.vuestorefront.io/contentful',
-    logo: '/brands/contentful.svg',
+    logo: '/brands/logos/contentful.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -237,7 +237,7 @@ export const integrationsList: {
   {
     name: 'LexasCMS',
     link: 'https://github.com/LexasCMS/vsf-next-lexascms',
-    logo: '/brands/lexascms.svg',
+    logo: '/brands/logos/lexascms.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.os,
     maintainedBy: [{ name: 'LexasCMS', link: 'https://www.lexascms.com/' }],
@@ -246,7 +246,7 @@ export const integrationsList: {
   {
     name: 'Bloomreach Content',
     link: 'https://docs.vuestorefront.io/bloomreach/',
-    logo: '/brands/bloomreach.svg',
+    logo: '/brands/logos/bloomreach.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -257,7 +257,7 @@ export const integrationsList: {
   {
     name: 'Sanity',
     link: 'https://docs.vuestorefront.io/sanity/',
-    logo: '/brands/sanity.svg',
+    logo: '/brands/logos/sanity.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -280,7 +280,7 @@ export const integrationsList: {
   {
     name: 'Bazaarvoice',
     link: './bazaarvoice.html',
-    logo: '/brands/bazaarvoice.svg',
+    logo: '/brands/logos/bazaarvoice.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -291,7 +291,7 @@ export const integrationsList: {
   {
     name: 'Redis',
     link: './redis-cache.html',
-    logo: '/brands/redis.svg',
+    logo: '/brands/logos/redis.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.os,
     maintainedBy: [
@@ -306,9 +306,10 @@ export const integrationsList: {
       {
         name: 'commercetools',
         link: 'https://www.npmjs.com/package/@vue-storefront/checkout-com',
+        icon: '/brands/icons/commercetools.svg',
       },
     ],
-    logo: '/brands/checkout.com.svg',
+    logo: '/brands/logos/checkout.com.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -319,13 +320,18 @@ export const integrationsList: {
   {
     name: 'Adyen',
     link: [
-      { name: 'commercetools', link: 'https://docs.vuestorefront.io/adyen/' },
+      {
+        name: 'commercetools',
+        link: 'https://docs.vuestorefront.io/adyen/',
+        icon: '/brands/icons/commercetools.svg',
+      },
       {
         name: 'Magento',
         link: 'https://docs.vuestorefront.io/adyen/magento2/',
+        icon: '/brands/icons/magento.svg',
       },
     ],
-    logo: '/brands/adyen.svg',
+    logo: '/brands/logos/adyen.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -339,9 +345,10 @@ export const integrationsList: {
       {
         name: 'commercetools',
         link: 'https://docs.vuestorefront.io/paypal/commercetools',
+        icon: '/brands/icons/commercetools.svg',
       },
     ],
-    logo: '/brands/paypal.svg',
+    logo: '/brands/logos/paypal.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -355,9 +362,10 @@ export const integrationsList: {
       {
         name: 'commercetools',
         link: 'https://docs.vuestorefront.io/mollie/commercetools',
+        icon: '/brands/icons/commercetools.svg',
       },
     ],
-    logo: '/brands/mollie.svg',
+    logo: '/brands/logos/mollie.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -368,9 +376,13 @@ export const integrationsList: {
   {
     name: 'Auth0',
     link: [
-      { name: 'commercetools', link: 'https://docs.vuestorefront.io/auth0/' },
+      {
+        name: 'commercetools',
+        link: 'https://docs.vuestorefront.io/auth0/',
+        icon: '/brands/icons/commercetools.svg',
+      },
     ],
-    logo: '/brands/auth0.svg',
+    logo: '/brands/logos/auth0.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -382,7 +394,7 @@ export const integrationsList: {
   {
     name: 'Bloomreach Discovery',
     link: 'https://docs.vuestorefront.io/bloomreach-search/',
-    logo: '/brands/bloomreach.svg',
+    logo: '/brands/logos/bloomreach.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -394,9 +406,13 @@ export const integrationsList: {
   {
     name: 'Algolia',
     link: [
-      { name: 'commercetools', link: 'https://docs.vuestorefront.io/algolia' },
+      {
+        name: 'commercetools',
+        link: 'https://docs.vuestorefront.io/algolia',
+        icon: '/brands/icons/commercetools.svg',
+      },
     ],
-    logo: '/brands/algolia.svg',
+    logo: '/brands/logos/algolia.svg',
     status: IntegrationStatus.beta,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -407,7 +423,7 @@ export const integrationsList: {
   {
     name: 'Constructor.io',
     link: 'https://docs.vuestorefront.io/constructor-io/',
-    logo: '/brands/constructor.io.svg',
+    logo: '/brands/logos/constructor.io.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
@@ -416,3 +432,10 @@ export const integrationsList: {
     categories: [IntegrationCategory.search],
   },
 ];
+
+const { filterBy } = useArrayManipulation();
+
+export const integrationsListByCategory = (categories: IntegrationCategory[]) =>
+  filterBy(integrationsList, {
+    categories,
+  });
