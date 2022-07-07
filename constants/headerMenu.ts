@@ -2,30 +2,21 @@ import { HeaderMenu } from '~/constants/props/types/molecules/menuPropTypes';
 
 export const headerMenuItems: HeaderMenu[] = [
   {
-    label: 'Home',
-  },
-  {
-    label: 'Guide',
+    label: 'Get Started',
+    link: 'https://docs.vuestorefront.io/v2/getting-started/installation.html',
   },
   {
     label: 'Documentation',
-    subMenu: [
-      {
-        label: 'Home',
-        iconName: 'carbon:home',
-      },
-      {
-        label: 'Home',
-        iconName: 'carbon:home',
-      },
-      {
-        label: 'Home',
-        iconName: 'carbon:home',
-      },
-    ],
+    link: {
+      name: 'documentation',
+    },
   },
   {
     label: 'Community',
+    link: 'https://discord.gg/vuestorefront',
+  },
+  {
+    label: 'Videos',
     subMenu: [
       {
         label: 'Home',
@@ -54,8 +45,5 @@ export const headerMenuItems: HeaderMenu[] = [
         ],
       },
     ],
-  },
-  {
-    label: 'Videos',
   },
 ];

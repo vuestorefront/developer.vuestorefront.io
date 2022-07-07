@@ -1,21 +1,21 @@
 <template>
   <div class="blog-card">
     <slot name="image">
-      <NuxtLink :to="blogLink">
+      <NuxtLink :to="blogLink" target="_blank" no-rel>
         <img class="object-fit" :src="image" :alt="title" />
       </NuxtLink>
     </slot>
     <div class="blog-card-content">
       <slot name="title">
         <h3 class="blog-card-title">
-          <NuxtLink :to="blogLink">
+          <NuxtLink :to="blogLink" target="_blank" no-rel>
             {{ title }}
           </NuxtLink>
         </h3>
       </slot>
       <slot name="description">
         <p class="blog-card-description">
-          <NuxtLink :to="blogLink">
+          <NuxtLink :to="blogLink" target="_blank" no-rel>
             {{ description }}
           </NuxtLink>
         </p>
@@ -25,7 +25,12 @@
       </slot>
     </div>
     <slot name="author">
-      <NuxtLink :to="authorLink" target="_blank" class="blog-card-author">
+      <NuxtLink
+        :to="authorLink"
+        target="_blank"
+        no-rel
+        class="blog-card-author"
+      >
         <div class="flex-shrink-0">
           <span class="sr-only">{{ author.name }}</span>
           <AtomsAvatarDiamondShape
@@ -52,8 +57,9 @@
 <script setup lang="ts">
   const props = defineProps<{
     author?: {
-      name?: string;
-      avatar?: string;
+      name: string;
+      username: string;
+      avatar: string;
     };
     date: Date | number;
     description: string;
@@ -63,22 +69,13 @@
     slug: string;
     tags: string[];
     title: string;
+    url: string;
   }>();
   const { formatDate } = useDateTimeIntl();
 
-  const blogLink = computed(() => ({
-    to: 'blog/article',
-    params: {
-      slug: props.slug,
-    },
-  }));
+  const blogLink = computed(() => props.url);
 
-  const authorLink = computed(() => ({
-    to: 'blog/articles/by-author',
-    params: {
-      slug: props.slug,
-    },
-  }));
+  const authorLink = computed(() => `https://dev.to/${props.author?.username}`);
 
   const textDate = computed(() =>
     formatDate({

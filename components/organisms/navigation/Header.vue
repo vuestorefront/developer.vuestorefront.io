@@ -3,17 +3,14 @@
   <div id="header-base" class="header-navigation">
     <nav id="header-navigation" class="header-menu-bar floating-menu">
       <div class="header-container">
-        <NuxtLink
-          to="https://vuestorefront.io/"
-          class="my-3.5 flex items-center"
-        >
+        <NuxtLink to="/" class="header-content-left">
           <img
             src="/logo/vsf-full.svg"
             class="h-6 md:h-9"
             alt="Vue Storefront - Developer Portal"
           />
         </NuxtLink>
-        <div class="right-content">
+        <div class="header-content-right">
           <Suspense>
             <AtomsIcon name="carbon:search" class="text-3xl" />
           </Suspense>
@@ -34,9 +31,13 @@
             <span class="sr-only">Open main menu</span>
           </button>
         </div>
-        <div class="header-menu-navigation">
-          <ul class="header-menu-navigation--list">
-            <li v-for="(menu, index) in headerMenuItems" :key="index">
+        <div class="header-content-center">
+          <ul class="header-content-center--list">
+            <li
+              v-for="(menu, index) in headerMenuItems"
+              :key="index"
+              class="header-content-center--item"
+            >
               <MoleculesMegamenu v-bind="menu" />
             </li>
           </ul>

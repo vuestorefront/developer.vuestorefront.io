@@ -12,9 +12,9 @@
 </template>
 
 <script setup lang="ts">
-  import { useUser } from '~/composables/api/devTo/useUser';
+  import { useBlogUser } from '~/composables/api/devTo/useBlogUser';
 
-  const { $apiLazyAsyncData } = useUser({ username: 'bloodf' });
+  const { $apiLazyAsyncData } = useBlogUser({ username: 'bloodf' });
   const { data, error, isFetching, isFinished, response, statusCode } =
     await $apiLazyAsyncData();
 </script>

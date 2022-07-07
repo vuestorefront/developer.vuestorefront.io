@@ -1,8 +1,8 @@
-import { RouteLink } from '~/constants/types/base';
+import { RouteLocationRaw } from 'vue-router';
 
 export interface HeaderMenu {
   label: string;
-  link?: RouteLink;
+  link?: RouteLocationRaw | string;
   iconName?: string;
   subMenu?: HeaderMenu[];
 }

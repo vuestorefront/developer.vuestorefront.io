@@ -25,126 +25,118 @@
       }
     }
   }
-
-  .header-menu-bar {
-    @apply
-    w-full
-    px-6
-    lg:px-12
-    bg-white
-    border-gray-200
-    dark:bg-gray-800
-    shadow-base
-    transition-all
-    will-change-auto;
-
-    &.scrolling-menu {
+  .header{
+    &-menu-bar {
       @apply
+      w-full
+      px-6
+      lg:px-12
       bg-white
       border-gray-200
       dark:bg-gray-800
-      shadow-base rounded-none;
-    }
+      shadow-base
+      transition-all
+      will-change-auto;
 
-    &.floating-menu {
-      @apply
-      rounded-2xl
-      mt-2
-      lg:mt-8
-      bg-white
-      border-gray-200
-      dark:bg-gray-800
-      shadow-base;
-    }
+      &.scrolling-menu {
+        @apply
+        bg-white
+        border-gray-200
+        dark:bg-gray-800
+        shadow-base rounded-none;
+      }
 
-    .header-container {
+      &.floating-menu {
+        @apply
+        rounded-2xl
+        mt-2
+        lg:mt-8
+        bg-white
+        border-gray-200
+        dark:bg-gray-800
+        shadow-base;
+      }
+
+      .mobile-navigation {
+        @apply
+        inline-flex
+        items-center
+        lg:hidden
+        text-3xl
+        text-gray-900
+        rounded-lg
+        dark:text-white;
+
+        &-button {
+          &--open {
+            & .menu-icon {
+              @apply hidden;
+            }
+
+            & .close-icon {
+              @apply inline-block
+            }
+          }
+
+          &--closed {
+
+            & .menu-icon {
+              @apply inline-block;
+            }
+
+            & .close-icon {
+              @apply hidden;
+            }
+          }
+        }
+      }
+    }
+    &-container {
       @apply
       flex
-      flex-wrap
       justify-between
-      items-center;
+      items-stretch;
     }
 
-    .header-menu-navigation {
-      @apply
-      hidden
-      justify-between
-      lg:flex
-      lg:w-auto
-      lg:order-1
-      h-auto
-      items-center;
-
-      &--list {
-        @apply
-        flex
-        flex-col
-        mt-4
-        md:flex-row
-        md:mt-0
-        md:text-sm
-        md:font-medium;
+    &-content{
+      &-left {
+        @apply my-3.5;
       }
-
-      &--item {
+      &-center {
         @apply
-        block
-        py-2
-        pr-4
-        pl-3
-        text-gray-900
-        rounded
-        font-medium
-        text-base
-        dark:text-white
-        border;
-      }
-    }
+        hidden
+        justify-between
+        items-stretch
+        lg:flex
+        lg:w-fit;
 
-    .right-content {
-      @apply
-      flex md:order-2
-      items-center
-      justify-center
-      space-x-2
-      md:space-x-8;
-    }
-
-    .mobile-navigation {
-      @apply
-      inline-flex
-      items-center
-      lg:hidden
-      text-3xl
-      text-gray-900
-      rounded-lg
-      focus:outline-none
-      focus:ring-2
-      focus:ring-primary-500
-      dark:text-white
-      dark:focus:ring-primary-500;
-
-      &-button {
-        &--open {
-          & .menu-icon {
-            @apply hidden;
-          }
-
-          & .close-icon {
-            @apply inline-block
-          }
+        &--list {
+          @apply
+          flex
+          flex-row
+          mt-4
+          md:flex-row
+          md:mt-0
+          md:text-sm
+          md:font-medium;
         }
 
-        &--closed {
-
-          & .menu-icon {
-            @apply inline-block;
-          }
-
-          & .close-icon {
-            @apply hidden;
-          }
+        &--item {
+          @apply inline-flex
+          justify-center
+          text-base
+          font-medium
+          group-hover:text-primary-600
+          group-hover:focus:text-primary-500;
         }
+      }
+      &-right {
+        @apply
+        flex md:order-2
+        items-center
+        justify-center
+        space-x-2
+        md:space-x-8;
       }
     }
   }

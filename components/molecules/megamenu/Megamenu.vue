@@ -2,6 +2,7 @@
   <NuxtLink
     class="mega-menu-button"
     color="transparent"
+    :to="link"
     v-bind="subMenu?.length > 0 ? { dataDropdownToggle: UUID } : {}"
   >
     {{ label }}
@@ -24,12 +25,11 @@
 <script setup lang="ts">
   import { useDropdown } from '~/composables/dynamicUi/useDropdown';
   import type { HeaderMenu } from '~/constants/props/types/molecules/menuPropTypes';
-  import { RouteLink } from '~/constants/types/base';
+  import { RouteLocationRaw } from 'vue-router';
 
   const props = defineProps<{
     label: string;
-    link?: RouteLink;
-    iconName?: string;
+    link?: RouteLocationRaw;
     subMenu?: HeaderMenu[];
   }>();
 

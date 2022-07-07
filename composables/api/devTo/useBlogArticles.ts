@@ -3,7 +3,7 @@ import { ApiUrl } from '~/enums/apiUrl';
 import { generateReturnMethods } from '~/composables/api/utils/generateReturnMethods';
 import { BlogArticleApiResponse } from '~/server/utils/devTo/types';
 
-export const useArticles = ({
+export const useBlogArticles = ({
   username,
   page,
   perPage,

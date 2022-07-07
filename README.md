@@ -19,6 +19,7 @@
 - https://github.com/sergioramos/remark-hint
 - https://github.com/remarkjs/remark-squeeze-paragraphs
 - https://github.com/remarkjs/remark-rehype
+- https://github.com/docusgen/remark-github
 
 # ReHype
 - https://github.com/rehypejs/rehype-slug

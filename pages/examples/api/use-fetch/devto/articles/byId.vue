@@ -12,9 +12,9 @@
 </template>
 
 <script setup lang="ts">
-  import { useArticleById } from '~/composables/api/devTo/useArticlesById';
+  import { useBlogArticleById } from '~/composables/api/devTo/useBlogArticleById';
 
-  const { $apiFetch } = useArticleById(1_080_900);
+  const { $apiFetch } = useBlogArticleById(1_080_900);
   const { data, error, isFetching, isFinished, response, statusCode } =
     await $apiFetch();
 </script>

@@ -40,8 +40,9 @@ option {
 
   &:focus {
     @apply
-    ring-2
-    ring-primary-500
+      outline
+    outline-2
+    outline-primary
     rounded;
   }
 }

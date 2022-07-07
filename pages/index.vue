@@ -61,13 +61,11 @@
 </template>
 
 <script setup lang="ts">
-  import { useArticles } from '~/composables/api/devTo/useArticles';
   import { useDevTo } from '~/composables/data/dev.to/useDevTo';
   import { integrationsListByCategory } from '~/constants/brands';
   import { IntegrationCategory } from '~/enums/integrations';
 
   const { randomElements } = useArrayManipulation();
-  const { removeProperties } = useObjectManipulation();
 
   const commerceVendors = randomElements(
     integrationsListByCategory([IntegrationCategory.commerce]),
@@ -84,11 +82,13 @@
     6,
   );
 
-  const { convertPostsToProps } = useDevTo();
-  const { $apiLazyAsyncData } = useArticles({
+  const { convertPostsToProps, useBlogArticles } = useDevTo();
+
+  const { $apiLazyAsyncData } = useBlogArticles({
     organization: 'vue-storefront',
     perPage: 3,
   });
+
   const { data, error, pending } = await $apiLazyAsyncData();
 
   const postsList = convertPostsToProps(data.value);

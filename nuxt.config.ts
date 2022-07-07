@@ -1,6 +1,7 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable unicorn/relative-url-style */
 import { defineNuxtConfig } from 'nuxt';
+import path from 'node:path';
 
 export default defineNuxtConfig({
   debug: process.env.NODE_ENV !== 'production',
@@ -10,11 +11,7 @@ export default defineNuxtConfig({
     externalVue: true,
     reactivityTransform: true,
   },
-  typescript: {
-    shim: true,
-    strict: true,
-    typeCheck: true,
-  },
+  target: 'server',
   runtimeConfig: {
     githubToken: process.env.GITHUB_TOKEN,
     devToToken: process.env.DEV_TO_TOKEN,
@@ -23,13 +20,8 @@ export default defineNuxtConfig({
   buildModules: ['@nuxt/content', '@nuxtjs/color-mode'],
   css: ['@/assets/scss/main.scss'],
   content: {
-    watch: true,
-    markdown: {
-      remarkPlugins: [],
-    },
     highlight: {
       theme: 'material-darker',
-      preload: ['javascript', 'typescript', 'vue', 'css'],
     },
   },
   tailwindcss: {

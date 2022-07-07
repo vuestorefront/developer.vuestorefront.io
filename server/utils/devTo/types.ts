@@ -1,60 +1,64 @@
-export interface BlogUserApiResponse {
-  type_of: string;
+import type { CamelCase } from 'transform-object-keys';
+
+export type BlogUserApiResponse = CamelCase<{
+  github_username: string;
   id: number;
-  username: string;
+  joined_at: Date;
+  location: string;
   name: string;
+  profile_image: string;
   summary: string;
   twitter_username: string;
-  github_username: string;
-  website_url: string | null;
-  location: string;
-  joined_at: Date;
-  profile_image: string;
-}
-
-export interface BlogUser {
-  name: string;
-  username: string;
-  twitter_username: string;
-  github_username: string;
-  website_url: string;
-  profile_image: string;
-  profile_image_90: string;
-}
-
-export interface BlogOrganization {
-  name: string;
-  username: string;
-  slug: string;
-  profile_image: string;
-  profile_image_90: string;
-}
-
-export interface BlogArticleApiResponse {
   type_of: string;
-  id: number;
-  title: string;
-  description: string;
-  cover_image: string;
-  readable_publish_date: string;
-  social_image: string;
-  tag_list: string[];
-  tags: string;
+  username: string;
+  website_url: string | null;
+}>;
+
+export type BlogUser = CamelCase<{
+  github_username: string;
+  name: string;
+  profile_image: string;
+  profile_image_90: string;
+  twitter_username: string;
+  username: string;
+  website_url: string;
+}>;
+
+export type BlogOrganization = CamelCase<{
+  name: string;
+  profile_image: string;
+  profile_image_90: string;
   slug: string;
-  path: string;
-  url: string;
+  username: string;
+}>;
+
+export type BlogArticleApiResponse = CamelCase<{
+  body_html: string;
+  body_markdown: string;
   canonical_url: string;
+  collection_id: number;
   comments_count: number;
+  cover_image: string;
+  created_at: Date;
+  crossposted_at?: Date;
+  description: string;
+  edited_at?: Date;
+  id: number;
+  last_comment_at: Date;
+  organization: BlogOrganization;
+  path: string;
   positive_reactions_count: number;
   public_reactions_count: number;
-  collection_id?: number;
-  created_at: Date;
-  edited_at: Date;
-  crossposted_at?: Date;
   published_at: Date;
-  last_comment_at: Date;
   published_timestamp: Date;
+  readable_publish_date: string;
   reading_time_minutes: number;
+  slug: string;
+  social_image: string;
+  tag_list: string;
+  tags: string[];
+  title: string;
+  type_of: string;
+  url: string;
   user: BlogUser;
-  organization: BlogOrganization;
-}
+}>;

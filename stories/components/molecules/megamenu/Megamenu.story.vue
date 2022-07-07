@@ -33,7 +33,7 @@
 ```typescript
 export interface HeaderMenu {
   label: string;
-  link?: RouteLink;
+  link?: RouteLocationRaw | string;
   iconName?: string;
   subMenu?: HeaderMenu[];
 }

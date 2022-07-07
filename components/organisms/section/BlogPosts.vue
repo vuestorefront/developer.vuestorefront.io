@@ -11,8 +11,9 @@
     defineProps<{
       posts: {
         author?: {
-          name?: string;
-          avatar?: string;
+          name: string;
+          username: string;
+          avatar: string;
         };
         date: Date | number;
         description: string;
@@ -22,6 +23,7 @@
         slug: string;
         tags: string[];
         title: string;
+        url: string;
       }[];
       loading?: boolean;
       error?: string | Error | boolean;
