@@ -22,7 +22,7 @@
         </div>
       </li>
 
-      <li v-for="(crumb, index) in breadCrumbs" :key="index">
+      <li v-for="(crumb, index) in crumbs" :key="index">
         <div class="flex items-center">
           <span class="text-gray-400">/</span>
           <NuxtLink
@@ -42,7 +42,7 @@
 
 <script setup lang="ts">
   defineProps<{
-    breadCrumbs: {
+    crumbs: {
       title: string;
       link: string;
     }[];

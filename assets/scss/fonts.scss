@@ -1,0 +1,257 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .d-body-bg {
+    @apply bg-white dark:bg-gray-900
+  }
+
+  .d-body-text-color {
+    @apply text-gray-900 dark:text-gray-50
+  }
+
+  .d-secondary-bg {
+    @apply bg-gray-500 dark:bg-gray-400
+  }
+
+  .d-tertiary-text {
+    @apply text-gray-400 dark:text-gray-500
+  }
+
+  .d-border-tertiary {
+    @apply border-gray-400 dark:border-gray-500
+  }
+
+  .d-primary-text-hover {
+    @apply text-gray-600 dark:text-gray-400
+  }
+
+  .d-secondary-text-active {
+    @apply text-gray-900 dark:text-gray-300
+  }
+
+  .d-text-primary {
+    @apply text-primary-500 dark:text-primary-400
+  }
+
+  .d-border-primary {
+    @apply border-primary-500 dark:border-primary-400
+  }
+
+  .d-bg-primary {
+    @apply bg-primary-500 dark:bg-primary-400
+  }
+
+  .d-page-mobile-toc-bg {
+    @apply bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80
+  }
+
+  .d-aside-header-bg {
+    @apply bg-gray-50 dark:bg-gray-800
+  }
+
+  .d-active-aside-navigation-item-bg {
+    @apply bg-primary-50 dark:bg-primary-900
+  }
+
+  .d-active-aside-navigation-item-text {
+    @apply text-primary-500 dark:text-primary-400
+  }
+
+  .d-code-group-header-bg {
+    @apply bg-gray-200 dark:bg-gray-700
+  }
+
+  .d-code-group-tab {
+    @apply bg-gray-300 dark:bg-gray-600
+  }
+
+  .d-text-icon {
+    @apply d-secondary-text hover:d-secondary-text-hover
+  }
+
+  .d-icon {
+    @apply d-text-icon focus:outline-none
+  }
+
+  .light-img {
+    @apply dark:hidden
+  }
+
+  .dark-img {
+    @apply light:hidden
+  }
+
+  .d-scrollbar {
+    @apply scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-800 scrollbar-thumb-rounded
+  }
+
+  .d-border-color {
+    @apply border-warmgray-200
+  }
+
+  .d-border-color-hover {
+    @apply border-primary-200 dark:border-gray-700
+  }
+
+  .d-max-w-container {
+    @apply max-w-7xl
+  }
+
+  .d-container-padded {
+    @apply px-6 sm:px-6
+  }
+
+  .d-container {
+    @apply d-max-w-container mx-auto
+  }
+
+  .d-container-content {
+    @apply d-container d-container-padded
+  }
+
+  .d-header-blur {
+    @apply backdrop-filter backdrop-blur-12px
+  }
+
+  .d-header-bg {
+    @apply bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80
+  }
+
+  .d-header {
+    @apply sticky w-full top-0 z-10 d-header-blur h-header
+  }
+
+  .d-header-title {
+    @apply text-xl font-medium uppercase
+  }
+
+  .d-header-title-w-logo {
+    @apply d-header-title ml-4
+  }
+
+  .d-header-logo {
+    @apply flex items-center flex-none
+  }
+
+  .d-header-logo-size {
+    @apply w-auto max-h-8
+  }
+
+  .d-footer-title {
+    @apply text-xl font-medium uppercase
+  }
+
+  .d-footer-title-w-logo {
+    @apply d-footer-title ml-4
+  }
+
+  .d-footer-logo {
+    @apply flex items-center flex-none
+  }
+
+  .d-footer-logo-size {
+    @apply w-auto max-h-8
+  }
+
+  .d-text-secondary {
+    @apply text-warmgray-600 dark:text-warmgray-200
+  }
+
+  .d-text-secondary-hover {
+    @apply text-primary-500 dark:text-primary-400
+  }
+
+  .d-sticky-footer-container {
+    @apply flex flex-col min-h-screen
+  }
+
+  .d-prose-code-filename-bg {
+    @apply bg-gray-200 dark:bg-gray-700
+  }
+
+  .d-prose-code-filename-text {
+    @apply text-gray-600 dark:text-gray-400
+  }
+
+  .d-prose-hr-border-color {
+    @apply border-t d-border-color
+  }
+
+  .d-prose-ul-li-bullet {
+    @apply bg-warmgray-900
+  }
+
+  .d-prose-code-inline-border {
+    @apply border border-warmgray-200
+  }
+
+  .d-prose-code-inline-bg-color {
+    @apply bg-warmgray-50
+  }
+
+  .d-prose-code-inline-text-color {
+    @apply text-warmgray-600
+  }
+
+  .d-prose-code-inline-in-heading-border-hover {
+    @apply border-warmgray-400 border-dashed
+  }
+
+  .d-prose-code-bg {
+    @apply bg-gray-100 dark:bg-gray-800
+  }
+
+  .d-prose-thead-border {
+    @apply border-b border-gray-200 dark:border-gray-700
+  }
+
+  .d-prose-tr-border {
+    @apply border-b d-border-color
+  }
+
+  .d-prose-blockquote-border {
+    @apply border-l
+  }
+
+  .d-prose-blockquote-border-color {
+    @apply d-border-color
+  }
+
+  .d-prose-blockquote-text-color {
+    @apply d-secondary-text
+  }
+
+  .d-prose-a-text-color {
+    @apply text-primary-500
+  }
+
+  .d-prose-a-border-color {
+    @apply border-b border-transparent
+  }
+
+  .d-prose-a-border-color-hover {
+    @apply hover:border-primary-200
+  }
+
+  .d-prose-a-headline-border {
+    @apply border-b border-dashed border-gray-900 dark:border-gray-100
+  }
+
+  .d-heading-title {
+    @apply mb-0 mt-0 text-4xl font-medium
+  }
+
+  .d-heading-description {
+    @apply mt-2 mb-0 text-xl font-base d-secondary-text
+  }
+
+  .d-aside-title-text {
+    @apply text-xl font-semibold text-gray-900 dark:text-gray-100
+  }
+
+  .d-aside-title {
+    @apply d-aside-title-text cursor-pointer
+  }
+}

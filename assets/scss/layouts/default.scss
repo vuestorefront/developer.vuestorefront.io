@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 @layer components {
-  .main-layout {
+  .layout {
     @apply
     w-full
     mx-auto;
 
     &-container {
       @apply
-      py-20
-      px-10
+      py-10
+      px-8
       container
       mx-auto
       max-w-screen-xl

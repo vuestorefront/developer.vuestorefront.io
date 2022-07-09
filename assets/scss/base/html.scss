@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply font-sans;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+  }
+
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+
+
+  a,
+  svg,
+  img,
+  input,
+  textarea,
+  button,
+  select,
+  optgroup,
+  option {
+    @apply
+    text-gray-900
+    dark:text-white;
+  }
+
+  a {
+    @apply
+    cursor-pointer
+  }
+
+  p {
+    @apply
+    text-gray-900
+    dark:text-white;
+  }
+}

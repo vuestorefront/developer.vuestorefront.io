@@ -18,6 +18,7 @@
     }>(),
     { text: '' },
   );
+  const slots = useSlots();
 
   const { firstColoredWord } = useTextStyle();
 

@@ -3,12 +3,12 @@
     class="grid grid-cols-1 items-center justify-center md:grid-cols-2 md:gap-24"
   >
     <div class="text-gray-900">
-      <h1 v-if="title" class="text-6xl font-bold">
+      <h2 v-if="title" class="text-6xl font-bold">
         <AtomsTextFirstColoredWord :text="title" />
-      </h1>
-      <h2 class="text-5xl font-bold">
-        Error <span class="text-secondary-900">{{ code }}</span>
       </h2>
+      <h1 class="text-5xl font-bold">
+        Error <span class="text-secondary-900">{{ code }}</span>
+      </h1>
       <p class="my-4 text-gray-500">
         <slot>{{ message }}</slot>
       </p>

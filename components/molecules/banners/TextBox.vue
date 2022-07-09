@@ -37,7 +37,7 @@
     icon?: string;
     title?: string;
     message?: string;
-    type?: ['default', 'success', 'danger', 'info', 'warning'];
+    type?: 'default' | 'success' | 'danger' | 'info' | 'warning';
   }>();
 
   const colors = computed(() => useGetTypeProperties(props.type));
@@ -45,7 +45,7 @@
 
 <style scoped>
   .colored-banner {
-    @apply p-4 border-l-4;
+    @apply border-l-4 p-4;
     .title {
       @apply m-0 text-base font-medium;
     }
@@ -53,9 +53,9 @@
       @apply mt-2 text-sm text-gray-900;
     }
     .icon-box {
-      @apply flex-shrink-0 mr-3;
+      @apply mr-3 flex-shrink-0;
       > .icon-img {
-        @apply w-auto h-8;
+        @apply h-8 w-auto;
       }
     }
   }

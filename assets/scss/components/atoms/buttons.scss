@@ -8,7 +8,6 @@
     border-transparent
     focus:outline
     focus:outline-2
-    focus:outline-primary
     font-medium
     hover:no-underline
     inline-flex
@@ -26,7 +25,6 @@
         @apply
         bg-primary-500
         hover:bg-primary-700
-        focus:outline-primary
         hover:text-white;
 
         &.button-text,
@@ -56,7 +54,6 @@
         @apply
         bg-secondary-500
         hover:bg-secondary-700
-        focus:outline-primary
         hover:text-white;
 
         &.button-text,
@@ -85,7 +82,6 @@
         @apply
         bg-rose-500
         hover:bg-rose-700
-        focus:outline-primary
         hover:text-white;
 
         &.button-text,
@@ -114,7 +110,6 @@
         @apply
         bg-yellow-500
         hover:bg-yellow-700
-        focus:outline-primary
         hover:text-white;
 
         &.button-text,
@@ -143,7 +138,6 @@
         @apply
         bg-blue-500
         hover:bg-blue-700
-        focus:outline-primary
         hover:text-white;
 
         &.button-text,
@@ -170,7 +164,6 @@
       &--transparent {
         @apply
         bg-white
-        focus:outline-primary
         hover:text-primary-700;
 
         &.button-text,
@@ -197,7 +190,6 @@
       &--white {
         @apply
         bg-white
-        focus:outline-primary
         hover:text-primary-700
         hover:bg-gray-100
         bg-none;
@@ -402,3 +394,4 @@
     }
   }
 }
+

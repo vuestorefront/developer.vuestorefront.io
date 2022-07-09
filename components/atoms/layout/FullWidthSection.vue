@@ -1,5 +1,5 @@
 <template>
-  <div class="main-layout-full-section">
+  <div class="layout-full-section">
     <slot />
   </div>
 </template>

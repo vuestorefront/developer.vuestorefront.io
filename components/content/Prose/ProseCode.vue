@@ -1,5 +1,11 @@
 <template>
-  <slot />
+  <div class="code-block" :class="{ 'line-counter': !!language }">
+    <slot />
+    <div class="code-block--attrs">
+      <span v-if="filename">[ {{ filename }} ]</span>
+      <CopyButton />
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -26,10 +32,3 @@
     },
   });
 </script>
-
-<style>
-  pre code .line {
-    display: block;
-    min-height: 1rem;
-  }
-</style>

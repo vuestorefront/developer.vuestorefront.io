@@ -56,7 +56,11 @@
   .video-container {
     overflow: hidden;
     position: relative;
-    width: 100%;
+  }
+  @media (max-width: 640px) {
+    .video-container {
+      width: 100%;
+    }
   }
 
   .video-container iframe {

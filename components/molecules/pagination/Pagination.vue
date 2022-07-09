@@ -1,6 +1,6 @@
 <template>
   <nav class="pagination">
-    <div class="mt-px w-0 flex-1 flex">
+    <div class="mt-px flex w-0 flex-1">
       <slot v-if="currentPage > 1" name="previous">
         <NuxtLink
           class="pagination arrow-right item"
@@ -53,7 +53,7 @@
         </a>
       </slot>
     </div>
-    <div class="-mt-px w-0 flex-1 flex justify-end">
+    <div class="-mt-px flex w-0 flex-1 justify-end">
       <slot v-if="currentPage < total" name="next">
         <NuxtLink
           class="pagination arrow-left item"
@@ -111,5 +111,5 @@
 </script>
 
 <style lang="scss" scoped>
-  @use '../../../assets/scss/components/molecules/pagination';
+  @use 'assets/scss/components/molecules/pagination';
 </style>

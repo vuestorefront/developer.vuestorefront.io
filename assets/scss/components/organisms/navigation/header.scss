@@ -8,7 +8,10 @@
     flex
     items-center
     justify-center
-    w-full container;
+    w-full container
+    px-4
+    lg:px-0
+    lg:mx-auto;
 
     &.scroll {
       &-down {
@@ -25,7 +28,8 @@
       }
     }
   }
-  .header{
+
+  .header {
     &-menu-bar {
       @apply
       w-full
@@ -49,7 +53,7 @@
       &.floating-menu {
         @apply
         rounded-2xl
-        mt-2
+        mt-4
         lg:mt-8
         bg-white
         border-gray-200
@@ -91,6 +95,7 @@
         }
       }
     }
+
     &-container {
       @apply
       flex
@@ -98,10 +103,11 @@
       items-stretch;
     }
 
-    &-content{
+    &-content {
       &-left {
         @apply my-3.5;
       }
+
       &-center {
         @apply
         hidden
@@ -130,6 +136,7 @@
           group-hover:focus:text-primary-500;
         }
       }
+
       &-right {
         @apply
         flex md:order-2
@@ -141,3 +148,4 @@
     }
   }
 }
+

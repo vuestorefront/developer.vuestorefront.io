@@ -1,4 +1,5 @@
-@use "assets/scss/base/htmlElements";
+@use "base/content";
+@use "base/html";
 
 @use "assets/scss/layouts/default";
 
@@ -15,3 +16,4 @@
 @use "assets/scss/components/molecules/videoBanner";
 
 @use "assets/scss/components/organisms/navigation/header";
+@use "assets/scss/content/prose";

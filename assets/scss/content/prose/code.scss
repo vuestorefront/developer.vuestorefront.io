@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .code-block {
+    @apply relative text-base mb-6;
+    counter-reset: lineNumber;
+
+    &--attrs {
+      @apply absolute top-0 right-0 text-gray-400 text-sm pr-2 pt-1;
+      .copy {
+        @apply ml-2;
+      }
+    }
+
+    pre {
+      @apply w-full rounded-2xl bg-gray-800 py-2 px-4 font-monospace text-gray-50 flex flex-1 overflow-x-auto ;
+    }
+
+    code {
+      @apply flex flex-col;
+    }
+
+    &.line-counter {
+      counter-reset: lineNumber;
+
+      .line {
+        counter-increment: lineNumber;
+
+        &::before {
+          @apply mr-4 text-gray-600;
+          content: counter(lineNumber);
+        }
+      }
+    }
+
+    span {
+      @apply break-words w-fit;
+    }
+  }
+
+  .code-block.active{
+    .code-block--attrs > span {
+      @apply hidden;
+    }
+  }
+
+  .code-inline {
+    @apply bg-gray-800 rounded-lg font-monospace text-gray-50 px-1 py-0.5;
+  }
+
+  pre code .line {
+    display: inline-table;
+    min-height: 1rem;
+  }
+}
+

@@ -5,25 +5,23 @@
         <img class="object-fit" :src="image" :alt="title" />
       </NuxtLink>
     </slot>
-    <div class="blog-card-content">
-      <slot name="title">
-        <h3 class="blog-card-title">
-          <NuxtLink :to="blogLink" target="_blank" no-rel>
+    <NuxtLink :to="blogLink" target="_blank" no-rel>
+      <div class="blog-card-content">
+        <slot name="title">
+          <h3 class="blog-card-title">
             {{ title }}
-          </NuxtLink>
-        </h3>
-      </slot>
-      <slot name="description">
-        <p class="blog-card-description">
-          <NuxtLink :to="blogLink" target="_blank" no-rel>
+          </h3>
+        </slot>
+        <slot name="description">
+          <p class="blog-card-description">
             {{ description }}
-          </NuxtLink>
-        </p>
-        <div class="blog-card-reading-time">
-          Reading time: {{ readingTime }} Minutes
-        </div>
-      </slot>
-    </div>
+          </p>
+          <div class="blog-card-reading-time">
+            Reading time: {{ readingTime }} Minutes
+          </div>
+        </slot>
+      </div>
+    </NuxtLink>
     <slot name="author">
       <NuxtLink
         :to="authorLink"
