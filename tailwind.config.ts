@@ -1,7 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-const colors = require('tailwindcss/colors');
+import { Config } from 'tailwindcss';
 
-module.exports = {
+export default {
   darkMode: 'class',
   plugins: [
     // eslint-disable-next-line import/no-extraneous-dependencies
@@ -180,107 +179,4 @@ module.exports = {
       },
     },
   },
-  shortcuts: {
-    /**
-     * Body background
-     */
-    'd-body-bg': 'bg-white dark:bg-gray-900',
-    'd-body-text-color': 'text-gray-900 dark:text-gray-50',
-    'd-secondary-bg': 'bg-gray-500 dark:bg-gray-400',
-    // 'd-secondary-text': 'text-gray-500 dark:text-gray-400',
-    // 'd-secondary-text-hover': 'text-primary-500 dark:text-primary-400',
-    'd-tertiary-text': 'text-gray-400 dark:text-gray-500',
-    'd-border-tertiary': 'border-gray-400 dark:border-gray-500',
-    'd-primary-text-hover': 'text-gray-600 dark:text-gray-400',
-    'd-secondary-text-active': 'text-gray-900 dark:text-gray-300',
-    // Primary
-    'd-text-primary': 'text-primary-500 dark:text-primary-400',
-    'd-border-primary': 'border-primary-500 dark:border-primary-400',
-    'd-bg-primary': 'bg-primary-500 dark:bg-primary-400',
-    'd-page-mobile-toc-bg':
-      'bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80',
-    'd-aside-header-bg': 'bg-gray-50 dark:bg-gray-800',
-    'd-active-aside-navigation-item-bg': 'bg-primary-50 dark:bg-primary-900',
-    'd-active-aside-navigation-item-text':
-      'text-primary-500 dark:text-primary-400 ',
-    'd-code-group-header-bg': '',
-    'd-code-group-tab': '',
-
-    // Icons
-    'd-text-icon': 'd-secondary-text hover:d-secondary-text-hover',
-    'd-icon': 'd-text-icon focus:outline-none',
-    // Images utils
-    'light-img': 'dark:hidden',
-    'dark-img': 'light:hidden',
-
-    // 'd-heading-hr': '!mt-4 !mb-0 d-border',
-    'd-scrollbar':
-      'scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-800 scrollbar-thumb-rounded',
-
-    //
-    // New
-    //
-
-    'd-border-color': 'border-warmgray-200',
-    'd-border-color-hover': 'border-primary-200 dark:border-gray-700',
-    // 'd-border-header': 'border-b border-gray-200 dark:border-gray-800 border-opacity-50',
-
-    // Container
-
-    'd-max-w-container': 'max-w-7xl',
-    'd-container-padded': 'px-6 sm:px-6',
-    'd-container': 'd-max-w-container mx-auto',
-    'd-container-content': 'd-container d-container-padded',
-
-    // Header
-    'd-header-blur': 'backdrop-filter backdrop-blur-12px',
-    'd-header-bg': 'bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80',
-    'd-header': 'sticky w-full top-0 z-10 d-header-blur h-header',
-    'd-header-title': 'text-xl font-medium uppercase',
-    'd-header-title-w-logo': 'd-header-title ml-4',
-    'd-header-logo': 'flex items-center flex-none',
-    'd-header-logo-size': 'w-auto max-h-8',
-
-    // Footer
-    'd-footer-title': 'text-xl font-medium uppercase',
-    'd-footer-title-w-logo': 'd-footer-title ml-4',
-    'd-footer-logo': 'flex items-center flex-none',
-    'd-footer-logo-size': 'w-auto max-h-8',
-
-    'd-text-secondary': 'text-warmgray-600 dark:text-warmgray-200',
-    'd-text-secondary-hover': 'text-primary-500 dark:text-primary-400',
-    'd-sticky-footer-container': 'flex flex-col min-h-screen',
-
-    // Prose
-    'd-prose-code-filename-bg': 'bg-gray-200 dark:bg-gray-700',
-    'd-prose-code-filename-text': 'text-gray-600 dark:text-gray-400',
-    'd-prose-hr-border-color': 'border-t d-border-color',
-    'd-prose-ul-li-bullet': 'bg-warmgray-900',
-    'd-prose-code-inline-border': 'border border-warmgray-200',
-    'd-prose-code-inline-bg-color': 'bg-warmgray-50',
-    'd-prose-code-inline-text-color': 'text-warmgray-600',
-    'd-prose-code-inline-in-heading-border-hover':
-      'border-warmgray-400 border-dashed',
-    'd-prose-code-bg': 'bg-gray-100 dark:bg-gray-800',
-    'd-prose-thead-border': 'border-b border-gray-200 dark:border-gray-700',
-    'd-prose-tr-border': 'border-b d-border-color',
-    'd-prose-blockquote-border': 'border-l',
-    'd-prose-blockquote-border-color': 'd-border-color',
-    'd-prose-blockquote-text-color': 'd-secondary-text',
-    'd-prose-a-text-color': 'text-primary-500',
-    'd-prose-a-border-color': 'border-b border-transparent',
-    'd-prose-a-border-color-hover': 'hover:border-primary-200',
-    'd-prose-a-headline-border':
-      'border-b border-dashed border-gray-900 dark:border-gray-100',
-
-    // Heading
-    'd-heading-title': '!mb-0 !mt-0 !text-4xl !font-medium',
-    'd-heading-description':
-      '!mt-2 !mb-0 !text-xl !font-base !d-secondary-text',
-
-    // Aside
-    'd-aside-title-text':
-      'text-xl font-semibold text-gray-900 dark:text-gray-100',
-    'd-aside-title': 'd-aside-title-text cursor-pointer',
-  },
-};
+} as Config;
