@@ -2,7 +2,7 @@ import {
   CssBadgeLicenseClasses,
   CssBadgePositionClasses,
   CssBadgeStatusClasses,
-} from '~/constants/css/types/atoms/badge';
+} from '~/types/css/types/atoms/badge';
 import { IntegrationLicense, IntegrationStatus } from '~/enums/integrations';
 import { BadgePosition } from '~/enums/badge';
 

@@ -1,4 +1,4 @@
-import { DropdownItemCssClasses } from '~/constants/css/types/cssDataTypes';
+import { DropdownItemCssClasses } from '~/types/css/types/cssDataTypes';
 
 export const dropdownItemCssClasses: DropdownItemCssClasses = {
   base: 'dropdown-item',

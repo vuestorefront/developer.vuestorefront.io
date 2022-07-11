@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .code-group:deep(pre) {
+    @apply rounded-tl-none rounded-tr-none;
+  }
+  .code-group:deep(> .code-block:not(.active)) {
+    display: none;
+  }
+  .code-group:deep(pre[class*='language-']) {
+    @apply mt-0 rounded-t-none;
+  }
+
+  .first-tab:deep(.code-block:nth-child(2), .docus-highlight:nth-child(2)) {
+    display: block;
+  }
+}

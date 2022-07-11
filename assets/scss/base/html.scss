@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+@layer components {
   html {
     @apply font-sans;
     line-height: 1.5;
@@ -14,7 +14,7 @@
   kbd,
   samp,
   pre {
-    font-family: "JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   }
 
   h1,

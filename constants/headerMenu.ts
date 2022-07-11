@@ -1,4 +1,4 @@
-import { HeaderMenu } from '~/constants/props/types/molecules/menuPropTypes';
+import { HeaderMenu } from '~/types/props/types/molecules/menuPropTypes';
 
 export const headerMenuItems: HeaderMenu[] = [
   {

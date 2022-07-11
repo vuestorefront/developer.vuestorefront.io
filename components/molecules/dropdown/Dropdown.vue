@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
   import { useDropdown } from '~/composables/dynamicUi/useDropdown';
-  import { DropdownOption } from '~/constants/props/types/molecules/dropdownPropTypes';
+  import { DropdownOption } from '~/types/props/types/molecules/dropdownPropTypes';
 
   const props = defineProps<{
     options: DropdownOption[];

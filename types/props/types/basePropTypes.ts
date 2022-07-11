@@ -1,4 +1,4 @@
-import type { BaseColors, TagProps } from '~/constants/types/base';
+import type { BaseColors, TagProps } from '~/types/base';
 import { VNode } from 'vue';
 
 export interface LabelBaseProps {

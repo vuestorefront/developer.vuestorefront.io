@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .colored-banner {
+    @apply border-l-4 p-4;
+    .title {
+      @apply m-0 text-base font-medium;
+    }
+
+    .message {
+      @apply mt-2 text-sm text-gray-900;
+    }
+
+    .icon-box {
+      @apply mr-3 flex-shrink-0;
+      > .icon-img {
+        @apply h-8 w-auto;
+      }
+    }
+  }
+}

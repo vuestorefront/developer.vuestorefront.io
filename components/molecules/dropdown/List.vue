@@ -12,8 +12,8 @@
 </template>
 
 <script setup lang="ts">
-  import { DropdownOption } from '~/constants/props/types/molecules/dropdownPropTypes';
-  import { TagProps } from '~/constants/types/base';
+  import { DropdownOption } from '~/types/props/types/molecules/dropdownPropTypes';
+  import { TagProps } from '~/types/base';
 
   const props = defineProps<{
     options: DropdownOption[];

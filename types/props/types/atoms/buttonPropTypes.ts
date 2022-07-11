@@ -6,7 +6,7 @@ import type {
   BaseTagProps,
   BaseVisualProps,
   BaseFormProps,
-} from '~/constants/props/types/basePropTypes';
+} from '~/types/props/types/basePropTypes';
 
 export interface ButtonProps extends ButtonContentProps, BaseTagProps {}
 

@@ -7,7 +7,7 @@ import {
   CssShadowClasses,
   CssSizeClasses,
   CssSlotsClasses,
-} from '~/constants/css/types/cssDataTypes';
+} from '~/types/css/types/cssDataTypes';
 
 export type CssButtonClasses = Partial<
   {

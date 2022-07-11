@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-  import { HeaderMenu } from '~/constants/props/types/molecules/menuPropTypes';
+  import { HeaderMenu } from '~/types/props/types/molecules/menuPropTypes';
 
   defineProps<{
     items?: HeaderMenu[];

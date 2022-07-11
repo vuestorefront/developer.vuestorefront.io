@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .layout {
+    &-content {
+      h1:first-child {
+        @apply mb-4 md:mb-8;
+      }
+    }
+  }
+}
+

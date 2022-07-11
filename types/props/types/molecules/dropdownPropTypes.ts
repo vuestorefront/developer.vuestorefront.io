@@ -1,4 +1,4 @@
-import type { TagProps } from '~/constants/types/base';
+import type { TagProps } from '~/types/base';
 
 export interface DropdownOption {
   id?: string | number;

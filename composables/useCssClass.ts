@@ -7,7 +7,7 @@ import {
   CssShadowClasses,
   CssSizeClasses,
   CssSlotsClasses,
-} from '~/constants/css/types/cssDataTypes';
+} from '~/types/css/types/cssDataTypes';
 import {
   BaseCounterProps,
   LabelBaseProps,
@@ -16,7 +16,7 @@ import {
   BaseSizeProps,
   BaseTagProps,
   BaseVisualProps,
-} from '~/constants/props/types/basePropTypes';
+} from '~/types/props/types/basePropTypes';
 
 type CssClasses = Partial<
   CssSizeClasses &

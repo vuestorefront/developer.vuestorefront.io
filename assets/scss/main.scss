@@ -1,10 +1,14 @@
 @use "base/content";
 @use "base/html";
+@use "base/typography";
+
+@use "assets/scss/content/prose";
 
 @use "assets/scss/layouts/default";
 
-@use "assets/scss/components/atoms/buttons";
+@use "assets/scss/components/atoms/avatar";
 @use "assets/scss/components/atoms/badge";
+@use "assets/scss/components/atoms/buttons";
 @use "assets/scss/components/atoms/icons";
 
 @use "assets/scss/components/molecules/blogCard";
@@ -13,7 +17,10 @@
 @use "assets/scss/components/molecules/dropdown";
 @use "assets/scss/components/molecules/megamenu";
 @use "assets/scss/components/molecules/pagination";
+@use "assets/scss/components/molecules/textBanner";
+@use "assets/scss/components/molecules/video";
 @use "assets/scss/components/molecules/videoBanner";
+@use "assets/scss/components/molecules/videoModal";
 
+@use "assets/scss/components/organisms/navigation/footer";
 @use "assets/scss/components/organisms/navigation/header";
-@use "assets/scss/content/prose";

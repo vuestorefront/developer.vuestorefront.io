@@ -6,8 +6,8 @@ import type {
   BaseSizeProps,
   BaseTagProps,
   BaseFormProps,
-} from '~/constants/props/types/basePropTypes';
-import type { DropdownOption } from '~/constants/props/types/molecules/dropdownPropTypes';
+} from '~/types/props/types/basePropTypes';
+import type { DropdownOption } from '~/types/props/types/molecules/dropdownPropTypes';
 
 export interface DropdownItemProps
   extends LabelBaseProps,

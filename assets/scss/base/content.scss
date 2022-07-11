@@ -2,41 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    @apply font-serif;
-  }
+@layer components {
   .content {
     @apply text-gray-900;
   }
+
   .content > h1,
   .content > :not(.embed) h1 {
     @apply font-extrabold mb-10 text-3xl lg:text-6xl mt-4;
   }
+
   .content > h2,
   .content > :not(.embed) h2 {
     @apply font-extrabold mb-6 text-xl lg:text-4xl mt-4;
   }
+
   .content > h3,
   .content > :not(.embed) h3 {
     @apply font-semibold mb-6 text-xl mt-6;
   }
+
   .content > h4,
   .content > :not(.embed) h4 {
     @apply text-lg my-6;
   }
+
   .content > h5,
   .content > :not(.embed) h5 {
     @apply text-base my-6;
   }
+
   .content > h6,
   .content > :not(.embed) h6 {
     @apply text-sm my-6;
   }
+
   .content > p,
   .content > :not(.embed) p {
     @apply text-lg pb-2;
   }
+
   .content h1:last-child,
   .content h2:last-child,
   .content h3:last-child,
@@ -46,6 +51,7 @@
   .content p:last-child {
     @apply mb-0;
   }
+
   .content > a,
   .content > a > u,
   .content > :not(.embed) a,
@@ -53,70 +59,84 @@
     @apply no-underline font-medium text-primary-500 hover:text-primary-600 hover:underline
     focus:text-primary-700 focus:underline;
   }
+
   .content hr {
     @apply bg-secondary-700 h-0.5;
   }
+
   .content ul,
   .content ol {
     @apply pl-10;
   }
+
   .content ul {
     @apply list-disc mb-4;
   }
+
   .content ol {
     @apply list-decimal;
   }
+
   .content li {
     @apply text-base leading-6 font-normal lg:text-lg lg:leading-7;
   }
+
   .content ul li::marker {
     @apply text-primary-500;
   }
+
   .content ol li::marker {
     @apply text-gray-500 font-medium;
   }
+
   .content iframe,
   .content figure,
   .content img {
     @apply w-full;
   }
+
   .content iframe,
   .content figure {
     @apply mb-6;
   }
+
   .content figcaption {
     @apply mt-4 text-gray-500;
   }
+
   .content strong,
   .content b {
     @apply font-semibold;
   }
+
   .content blockquote {
     @apply relative italic px-2 font-medium before:absolute before:-top-10 mt-16 mb-2 before:content-[''] before:left-1
     before:w-10 before:h-8 before:bg-quote before:bg-no-repeat lg:pl-14 lg:before:-top-4;
   }
+
   .content blockquote > p {
     @apply text-sm px-2 font-medium text-left pb-0;
   }
+
   .content blockquote > p > p,
   .content blockquote > p > em {
     @apply text-sm px-2 text-gray-500 text-right pb-10;
   }
-}
 
-@layer components {
-  .line-clamp-3{
+  .line-clamp-3 {
     display: -webkit-box;
     overflow: hidden;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
   }
-  .line-clamp-4{
+
+  .line-clamp-4 {
     @apply line-clamp-3;
     -webkit-line-clamp: 4;
   }
-  .line-clamp-5{
+
+  .line-clamp-5 {
     @apply line-clamp-3;
-    -webkit-line-clamp:5;
+    -webkit-line-clamp: 5;
   }
 }

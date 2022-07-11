@@ -1,4 +1,4 @@
-import { CssButtonClasses } from '~/constants/css/types/atoms/button';
+import { CssButtonClasses } from '~/types/css/types/atoms/button';
 import { ColorsEnum } from '~/enums/colors';
 import { SizeEnum } from '~/enums/size';
 

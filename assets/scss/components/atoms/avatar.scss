@@ -1,0 +1,16 @@
+.svg-hidden {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.avatar {
+  width: v-bind(width);
+  height: v-bind(height);
+  clip-path: url(#my-clip-path);
+  background-repeat: no-repeat;
+  background-image: v-bind(avatarBgUrl);
+  background-position: center center;
+  background-size: cover;
+  border-radius: 0 0 0 8px;
+}

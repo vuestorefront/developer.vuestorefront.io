@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
   import { useDropdown } from '~/composables/dynamicUi/useDropdown';
-  import type { HeaderMenu } from '~/constants/props/types/molecules/menuPropTypes';
+  import type { HeaderMenu } from '~/types/props/types/molecules/menuPropTypes';
   import { RouteLocationRaw } from 'vue-router';
 
   const props = defineProps<{
