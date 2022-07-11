@@ -26,8 +26,20 @@ export default defineNuxtConfig({
   },
   modules: ['@nuxtjs/tailwindcss', '@vueuse/nuxt'],
   buildModules: ['@nuxt/content', '@nuxtjs/color-mode'],
-  css: ['@/assets/scss/main.scss'],
+  css: [],
+  tailwindcss: {
+    cssPath: '@/assets/scss/main.scss',
+    viewer: false,
+    injectPosition: 0,
+  },
   content: {
+    markdown: {
+      mdc: true,
+      toc: {
+        depth: 2,
+        searchDepth: 4,
+      },
+    },
     highlight: {
       theme: 'material-darker',
     },

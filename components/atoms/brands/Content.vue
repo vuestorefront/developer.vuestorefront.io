@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative flex h-32 w-full items-center justify-center rounded-3xl border-none shadow-sm hover:shadow-lg"
+    class="relative flex h-32 w-full items-center justify-center rounded-3xl border-none shadow-sm transition delay-150 duration-200 ease-in-out hover:-translate-y-1 hover:scale-110 hover:shadow-lg"
     :style="{ backgroundColor: color || 'white' }"
   >
     <slot name="top-badge">
