@@ -13,19 +13,132 @@
         vestibulum mus tempor sagittis donec dictumst laoreet, sit sapien diam
         scelerisque ultricies potenti montes tellus dictum ullamcorper.
       </p>
-      <div class="grid grid-cols-3 space-x-4">
+      <div class="my-8 grid grid-cols-3 space-x-4">
         <MoleculesCardDocs
           description="Vivamus ullamcorper integer egestas condimentum sociosqu id risus mi phasellus, habitasse pretium eget fringilla suscipit nunc nascetur."
           docs="https://docs.vuestorefront.io/v2/"
           img="/brands/icons/vsf.svg"
           name="Vue Storefront"
-          repo="https://github.com/vuestorefront/vue-storefront"
+          repository="https://github.com/vuestorefront/vue-storefront"
+        />
+        <MoleculesCardDocs
+          description="Vivamus ullamcorper integer egestas condimentum sociosqu id risus mi phasellus, habitasse pretium eget fringilla suscipit nunc nascetur."
+          docs="https://docs.storefrontui.io/?path=/story/welcome--page"
+          img="/brands/icons/sfui.svg"
+          name="Storefront UI"
+          repository="https://github.com/vuestorefront/storefront-ui"
         />
       </div>
+      <template v-for="integrations in integrationsList">
+        <div v-if="integrations.list.length > 0" :key="integrations.title">
+          <h2>{{ integrations.title }}</h2>
+          <p class="text-gray-500">
+            {{ integrations.description }}
+          </p>
+          <div
+            class="my-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
+          >
+            <MoleculesCardDocs
+              v-for="brand in integrations.list"
+              :key="brand.key"
+              :docs="brand.link"
+              :img="brand.logo"
+              :name="brand.name"
+              :repository="brand.repository"
+              :status="brand.status"
+              :license="brand.license"
+            />
+          </div>
+        </div>
+      </template>
     </AtomsLayoutContent>
   </AtomsLayoutContainer>
 </template>
 
 <script setup lang="ts">
-  import { IntegrationLicense, IntegrationStatus } from '~/enums/integrations';
+  import { integrationsListByCategory } from '~/constants/brands';
+  import { IntegrationCategory } from '~/enums/integrations';
+
+  const commerceVendors = computed(() =>
+    integrationsListByCategory([IntegrationCategory.commerce]),
+  );
+
+  const cmsVendors = computed(() =>
+    integrationsListByCategory([IntegrationCategory.cms]),
+  );
+
+  const paymentVendors = computed(() =>
+    integrationsListByCategory([IntegrationCategory.payment]),
+  );
+
+  const reviewsVendors = computed(() =>
+    integrationsListByCategory([IntegrationCategory.reviews]),
+  );
+
+  const analyticsVendors = computed(() =>
+    integrationsListByCategory([IntegrationCategory.analytics]),
+  );
+
+  const authVendors = computed(() =>
+    integrationsListByCategory([IntegrationCategory.auth]),
+  );
+
+  const cacheVendors = computed(() =>
+    integrationsListByCategory([IntegrationCategory.cache]),
+  );
+
+  const searchVendors = computed(() =>
+    integrationsListByCategory([IntegrationCategory.search]),
+  );
+
+  const integrationsList = computed(() => [
+    {
+      title: 'Commerce Integrations',
+      description:
+        'Posuere vel etiam netus nascetur eget finibus nostra porta rutrum donec facilisi est volutpat eros massa, congue curabitur dapibus gravida ut magna sodales natoque ad neque cursus per primis.',
+      list: commerceVendors.value,
+    },
+    {
+      title: 'CMS Integrations',
+      description:
+        'Posuere vel etiam netus nascetur eget finibus nostra porta rutrum donec facilisi est volutpat eros massa, congue curabitur dapibus gravida ut magna sodales natoque ad neque cursus per primis.',
+      list: cmsVendors.value,
+    },
+    {
+      title: 'Payments Integrations',
+      description:
+        'Posuere vel etiam netus nascetur eget finibus nostra porta rutrum donec facilisi est volutpat eros massa, congue curabitur dapibus gravida ut magna sodales natoque ad neque cursus per primis.',
+      list: paymentVendors.value,
+    },
+    {
+      title: 'Reviews Integrations',
+      description:
+        'Posuere vel etiam netus nascetur eget finibus nostra porta rutrum donec facilisi est volutpat eros massa, congue curabitur dapibus gravida ut magna sodales natoque ad neque cursus per primis.',
+      list: reviewsVendors.value,
+    },
+    {
+      title: 'Analytics Integrations',
+      description:
+        'Posuere vel etiam netus nascetur eget finibus nostra porta rutrum donec facilisi est volutpat eros massa, congue curabitur dapibus gravida ut magna sodales natoque ad neque cursus per primis.',
+      list: analyticsVendors.value,
+    },
+    {
+      title: 'Auth Integrations',
+      description:
+        'Posuere vel etiam netus nascetur eget finibus nostra porta rutrum donec facilisi est volutpat eros massa, congue curabitur dapibus gravida ut magna sodales natoque ad neque cursus per primis.',
+      list: authVendors.value,
+    },
+    {
+      title: 'Cache Integrations',
+      description:
+        'Posuere vel etiam netus nascetur eget finibus nostra porta rutrum donec facilisi est volutpat eros massa, congue curabitur dapibus gravida ut magna sodales natoque ad neque cursus per primis.',
+      list: cacheVendors.value,
+    },
+    {
+      title: 'Search Integrations',
+      description:
+        'Posuere vel etiam netus nascetur eget finibus nostra porta rutrum donec facilisi est volutpat eros massa, congue curabitur dapibus gravida ut magna sodales natoque ad neque cursus per primis.',
+      list: searchVendors.value,
+    },
+  ]);
 </script>

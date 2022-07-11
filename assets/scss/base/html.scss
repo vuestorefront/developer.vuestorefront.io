@@ -2,12 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
+@layer base {
   html {
-    @apply font-sans;
+    @apply font-sans scroll-smooth select-text;
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
     tab-size: 4;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+    overflow: auto;
   }
 
   code,

@@ -1,5 +1,5 @@
 <template>
-  <div class="layout">
+  <div class="layout layout-background">
     <OrganismsNavigationHeader />
     <main class="content">
       <slot />

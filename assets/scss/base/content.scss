@@ -7,119 +7,119 @@
     @apply text-gray-900;
   }
 
-  .content > h1,
-  .content > :not(.embed) h1 {
+  .content > h1:not([class]),
+  .content > :not(.embed) h1:not([class]) {
     @apply font-extrabold mb-10 text-3xl lg:text-6xl mt-4;
   }
 
-  .content > h2,
-  .content > :not(.embed) h2 {
+  .content > h2:not([class]),
+  .content > :not(.embed) h2:not([class]) {
     @apply font-extrabold mb-6 text-xl lg:text-4xl mt-4;
   }
 
-  .content > h3,
-  .content > :not(.embed) h3 {
+  .content > h3:not([class]),
+  .content > :not(.embed) h3:not([class]) {
     @apply font-semibold mb-6 text-xl mt-6;
   }
 
-  .content > h4,
-  .content > :not(.embed) h4 {
+  .content > h4:not([class]),
+  .content > :not(.embed) h4:not([class]) {
     @apply text-lg my-6;
   }
 
-  .content > h5,
-  .content > :not(.embed) h5 {
+  .content > h5:not([class]),
+  .content > :not(.embed) h5:not([class]) {
     @apply text-base my-6;
   }
 
-  .content > h6,
-  .content > :not(.embed) h6 {
+  .content > h6:not([class]),
+  .content > :not(.embed) h6:not([class]) {
     @apply text-sm my-6;
   }
 
-  .content > p,
-  .content > :not(.embed) p {
+  .content > p:not([class]),
+  .content > :not(.embed) p:not([class]) {
     @apply text-lg pb-2;
   }
 
-  .content h1:last-child,
-  .content h2:last-child,
-  .content h3:last-child,
-  .content h4:last-child,
-  .content h5:last-child,
-  .content h6:last-child,
-  .content p:last-child {
+  .content h1:last-child:not([class]),
+  .content h2:last-child:not([class]),
+  .content h3:last-child:not([class]),
+  .content h4:last-child:not([class]),
+  .content h5:last-child:not([class]),
+  .content h6:last-child:not([class]),
+  .content p:last-child:not([class]) {
     @apply mb-0;
   }
 
-  .content > a,
-  .content > a > u,
-  .content > :not(.embed) a,
-  .content > :not(.embed) a > u {
+  .content > a:not([class]),
+  .content > a:not([class]) > u,
+  .content > :not(.embed) a:not([class]),
+  .content > :not(.embed) a:not([class]) > u {
     @apply no-underline font-medium text-primary-500 hover:text-primary-600 hover:underline
     focus:text-primary-700 focus:underline;
   }
 
-  .content hr {
+  .content hr:not([class]) {
     @apply bg-secondary-700 h-0.5;
   }
 
-  .content ul,
-  .content ol {
+  .content ul:not([class]),
+  .content ol:not([class]) {
     @apply pl-10;
   }
 
-  .content ul {
+  .content ul:not([class]) {
     @apply list-disc mb-4;
   }
 
-  .content ol {
+  .content ol:not([class]) {
     @apply list-decimal;
   }
 
-  .content li {
+  .content li:not([class]) {
     @apply text-base leading-6 font-normal lg:text-lg lg:leading-7;
   }
 
-  .content ul li::marker {
+  .content ul li::marker:not([class]) {
     @apply text-primary-500;
   }
 
-  .content ol li::marker {
+  .content ol li::marker:not([class]) {
     @apply text-gray-500 font-medium;
   }
 
-  .content iframe,
-  .content figure,
-  .content img {
+  .content iframe:not([class]),
+  .content figure:not([class]),
+  .content img:not([class]) {
     @apply w-full;
   }
 
-  .content iframe,
-  .content figure {
+  .content iframe:not([class]),
+  .content figure:not([class]) {
     @apply mb-6;
   }
 
-  .content figcaption {
+  .content figcaption:not([class]) {
     @apply mt-4 text-gray-500;
   }
 
-  .content strong,
-  .content b {
+  .content strong:not([class]),
+  .content b:not([class]) {
     @apply font-semibold;
   }
 
-  .content blockquote {
+  .content blockquote:not([class]) {
     @apply relative italic px-2 font-medium before:absolute before:-top-10 mt-16 mb-2 before:content-[''] before:left-1
     before:w-10 before:h-8 before:bg-quote before:bg-no-repeat lg:pl-14 lg:before:-top-4;
   }
 
-  .content blockquote > p {
+  .content blockquote > p:not([class]) {
     @apply text-sm px-2 font-medium text-left pb-0;
   }
 
-  .content blockquote > p > p,
-  .content blockquote > p > em {
+  .content blockquote > p > p:not([class]),
+  .content blockquote > p > em:not([class]) {
     @apply text-sm px-2 text-gray-500 text-right pb-10;
   }
 

@@ -14,6 +14,7 @@ export const integrationsList: {
         link: string;
         icon: string;
       }>;
+  repository?: string;
   license: IntegrationLicense;
   status: IntegrationStatus;
   color?: string;
@@ -37,6 +38,7 @@ export const integrationsList: {
     logo: '/brands/logos/magento.svg',
     status: IntegrationStatus.beta,
     license: IntegrationLicense.os,
+    repository: 'https://github.com/vuestorefront/template-magento.git',
     maintainedBy: [
       { name: 'Vue Storefront', link: 'https://vuestorefront.io/' },
     ],
@@ -48,6 +50,7 @@ export const integrationsList: {
     logo: '/brands/logos/sfcc.svg',
     status: IntegrationStatus.beta,
     license: IntegrationLicense.enterprise,
+    repository: 'https://github.com/vuestorefront/salesforce-commerce-cloud',
     maintainedBy: [{ name: 'Forkpoint', link: 'https://forkpoint.com/' }],
     categories: [IntegrationCategory.commerce],
   },
@@ -68,6 +71,7 @@ export const integrationsList: {
     logo: '/brands/logos/shopify.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.os,
+    repository: 'https://github.com/vuestorefront/template-shopify.git',
     maintainedBy: [
       { name: 'Vue Storefront', link: 'https://vuestorefront.io/' },
     ],
@@ -126,6 +130,7 @@ export const integrationsList: {
     logo: '/brands/logos/vendure.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.os,
+    repository: 'https://github.com/vuestorefront/template-vendure.git',
     maintainedBy: [
       {
         name: 'Jakub Andrzejewski',
@@ -140,6 +145,7 @@ export const integrationsList: {
     logo: '/brands/logos/odoo.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.os,
+    repository: 'https://github.com/vuestorefront-community/template-odoo',
     maintainedBy: [{ name: 'OdooGap', link: 'https://www.odoogap.com/' }],
     categories: [IntegrationCategory.commerce],
   },
@@ -149,6 +155,8 @@ export const integrationsList: {
     logo: '/brands/logos/prestashop.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.os,
+    repository:
+      'https://github.com/vuestorefront-community/template-prestashop',
     maintainedBy: [{ name: 'Binshops', link: 'https://www.binshops.com/' }],
     categories: [IntegrationCategory.commerce],
   },
@@ -158,6 +166,7 @@ export const integrationsList: {
     logo: '/brands/logos/spree.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.os,
+    repository: 'https://github.com/vuestorefront/spree',
     maintainedBy: [{ name: 'Upside Lab', link: 'https://upsidelab.io/' }],
     categories: [IntegrationCategory.commerce],
   },
@@ -187,6 +196,7 @@ export const integrationsList: {
     logo: '/brands/logos/shopware.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.os,
+    repository: 'https://github.com/vuestorefront/shopware-pwa',
     maintainedBy: [{ name: 'Shopware', link: 'https://www.shopware.com/' }],
     categories: [IntegrationCategory.commerce],
   },
@@ -196,6 +206,7 @@ export const integrationsList: {
     logo: '/brands/logos/storyblok.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.os,
+    repository: 'https://github.com/vuestorefront/storyblok',
     maintainedBy: [
       { name: 'Vue Storefront', link: 'https://vuestorefront.io/' },
     ],
@@ -279,7 +290,7 @@ export const integrationsList: {
 
   {
     name: 'Bazaarvoice',
-    link: './bazaarvoice.html',
+    link: 'https://docs.vuestorefront.io/v2/integrations/bazaarvoice.html',
     logo: '/brands/logos/bazaarvoice.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.enterprise,
@@ -312,6 +323,7 @@ export const integrationsList: {
     logo: '/brands/logos/checkout.com.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.enterprise,
+    repository: 'https://github.com/vuestorefront/checkout-com',
     maintainedBy: [
       { name: 'Vue Storefront', link: 'https://vuestorefront.io/' },
     ],

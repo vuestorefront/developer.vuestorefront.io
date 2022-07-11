@@ -12,11 +12,19 @@
     relative
     flex
     flex-col
-    items-start;
+    overflow-hidden
+    items-start
+    min-h-[240px];
 
     &-content {
       @apply
-      py-5
+      flex
+      w-full
+      grow
+      flex-col
+      items-center
+      justify-center
+      pt-6
       px-3
       pb-3;
     }
@@ -35,8 +43,7 @@
     &-description {
       @apply
       text-base
-      text-gray-900
-      line-clamp-3;
+      text-gray-900;
     }
 
     &-image {
@@ -52,6 +59,7 @@
       picture {
         @apply
         max-h-[6rem]
+        max-w-[90%]
         mx-auto;
       }
     }
@@ -63,7 +71,6 @@
       left-0
       w-full
       z-50
-      overflow-hidden
       flex
       items-center
       justify-between;
@@ -73,13 +80,40 @@
       @apply
       border-t
       border-gray-100
-      w-full
-      flex
-      flex-row
-      justify-between;
+      relative
+      w-full;
+
+      > small {
+        @apply absolute top-0 left-0 text-xs text-gray-900 bg-gray-100 p-1 rounded-br-xl;
+      }
+
+      &--buttons {
+        @apply
+        w-full
+        flex
+        flex-row
+        h-[58px]
+        justify-between;
+      }
+
+      &--icons {
+        @apply
+        w-full
+        flex
+        flex-row
+        items-center
+        space-x-6
+        p-2
+        pl-[5.5rem]
+        h-[58px]
+        justify-start;
+
+        > .doc-icon {
+          @apply w-fit transition ease-in-out delay-150 hover:scale-125 duration-300 will-change-transform hover:-translate-y-1;
+        }
+      }
 
       &--link {
-
       }
     }
   }
