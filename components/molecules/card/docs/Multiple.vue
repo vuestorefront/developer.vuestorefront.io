@@ -5,7 +5,7 @@
         <small>Available for:</small>
         <div class="docs-card-footer--icons">
           <NuxtLink
-            v-for="(doc, index) in docs"
+            v-for="(doc, index) in documentation"
             :key="index"
             :to="doc.link"
             class="doc-icon"
@@ -26,18 +26,12 @@
     img: string;
     status?: IntegrationStatus;
     license?: IntegrationLicense;
-    docs?: {
+    documentation?: {
       link: string;
       disabled?: boolean;
       name: string;
       icon?: string;
     }[];
-    repository?:
-      | {
-          link?: string;
-          disabled?: boolean;
-        }[]
-      | string;
     description?: string;
     name: string;
   }>();

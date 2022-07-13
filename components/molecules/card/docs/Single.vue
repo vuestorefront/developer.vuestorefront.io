@@ -10,18 +10,12 @@
     img: string;
     status?: IntegrationStatus;
     license?: IntegrationLicense;
-    docs?:
+    documentation?:
       | {
           link: string;
           disabled?: boolean;
           name: string;
           icon?: string;
-        }
-      | string;
-    repository?:
-      | {
-          link?: string;
-          disabled?: boolean;
         }
       | string;
     description?: string;

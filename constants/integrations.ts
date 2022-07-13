@@ -279,7 +279,7 @@ export const integrationsList: {
   {
     name: 'Adobe Experience Manager',
     link: '',
-    logo: 'https://www.rackspace.com/sites/default/files/styles/rxt_image/public/2020-11/AEM.png',
+    logo: '/brands/logos/AEM.svg',
     status: IntegrationStatus.wip,
     license: IntegrationLicense.enterprise,
     maintainedBy: [

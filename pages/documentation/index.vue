@@ -13,20 +13,18 @@
         vestibulum mus tempor sagittis donec dictumst laoreet, sit sapien diam
         scelerisque ultricies potenti montes tellus dictum ullamcorper.
       </p>
-      <div class="my-8 grid grid-cols-3 space-x-4">
+      <div class="my-8 grid grid-cols-1 gap-8 md:grid-cols-3">
         <MoleculesCardDocs
           description="Vivamus ullamcorper integer egestas condimentum sociosqu id risus mi phasellus, habitasse pretium eget fringilla suscipit nunc nascetur."
-          docs="https://docs.vuestorefront.io/v2/"
+          documentation="https://docs.vuestorefront.io/v2/"
           img="/brands/icons/vsf.svg"
           name="Vue Storefront"
-          repository="https://github.com/vuestorefront/vue-storefront"
         />
         <MoleculesCardDocs
           description="Vivamus ullamcorper integer egestas condimentum sociosqu id risus mi phasellus, habitasse pretium eget fringilla suscipit nunc nascetur."
-          docs="https://docs.storefrontui.io/?path=/story/welcome--page"
+          documentation="https://docs.storefrontui.io/?path=/story/welcome--page"
           img="/brands/icons/sfui.svg"
           name="Storefront UI"
-          repository="https://github.com/vuestorefront/storefront-ui"
         />
       </div>
       <template v-for="integrations in integrationsList">
@@ -41,10 +39,9 @@
             <MoleculesCardDocs
               v-for="brand in integrations.list"
               :key="brand.key"
-              :docs="brand.link"
+              :documentation="brand.link"
               :img="brand.logo"
               :name="brand.name"
-              :repository="brand.repository"
               :status="brand.status"
               :license="brand.license"
             />
@@ -56,7 +53,7 @@
 </template>
 
 <script setup lang="ts">
-  import { integrationsListByCategory } from '~/constants/brands';
+  import { integrationsListByCategory } from '~/constants/integrations';
   import { IntegrationCategory } from '~/enums/integrations';
 
   const commerceVendors = computed(() =>

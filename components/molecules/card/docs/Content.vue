@@ -22,22 +22,12 @@
     <slot name="footer">
       <div class="docs-card-footer docs-card-footer--buttons">
         <AtomsButtonLink
-          v-if="!buttonProps.docs?.disabled"
           color="white"
           icon="left"
           icon-name="carbon:document"
           square
-          label="Docs"
-          v-bind="buttonProps.docs"
-        />
-        <AtomsButtonLink
-          v-if="!buttonProps.repository?.disabled"
-          color="white"
-          icon="left"
-          icon-name="carbon:logo-github"
-          square
-          label="Repository"
-          v-bind="buttonProps.repository"
+          label="Documentation"
+          v-bind="buttonProps"
         />
       </div>
     </slot>
@@ -51,7 +41,7 @@
     img: string;
     status?: IntegrationStatus;
     license?: IntegrationLicense;
-    docs?:
+    documentation?:
       | {
           link: string;
           disabled?: boolean;
@@ -65,29 +55,16 @@
           icon?: string;
         }[]
       | string;
-    repository?:
-      | {
-          link?: string;
-          disabled?: boolean;
-        }
-      | string;
     description?: string;
     name: string;
   }>();
 
   const buttonProps = computed(() => ({
-    link: {
-      to: typeof props.docs === 'object' ? props.docs.link : props.docs,
-      target: '_blank',
-      disabled: props.docs?.disabled || !props.docs,
-    },
-    repository: {
-      to:
-        typeof props.repository === 'object'
-          ? props.repository.link
-          : props.repository,
-      target: '_blank',
-      disabled: props.repository?.disabled || !props.repository,
-    },
+    to:
+      typeof props.documentation === 'object'
+        ? props.documentation.link
+        : props.documentation,
+    target: '_blank',
+    disabled: props.documentation?.disabled || !props.documentation,
   }));
 </script>

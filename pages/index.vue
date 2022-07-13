@@ -62,7 +62,7 @@
 
 <script setup lang="ts">
   import { useDevTo } from '~/composables/data/dev.to/useDevTo';
-  import { integrationsListByCategory } from '~/constants/brands';
+  import { integrationsListByCategory } from '~/constants/integrations';
   import { IntegrationCategory } from '~/enums/integrations';
 
   const { randomElements } = useArrayManipulation();
