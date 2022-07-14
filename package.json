@@ -13,6 +13,7 @@
   },
   "scripts": {
     "build": "nuxi build",
+    "build:vercel": "NITRO_PRESET=vercel-edge nuxi build",
     "dev": "nuxi dev",
     "lint": "eslint . --ext .js,.ts,.vue --ignore-path .eslintignore --fix",
     "lint:fix": "eslint . --ext .js,.ts,.vue --ignore-path .eslintignore  --fix",
