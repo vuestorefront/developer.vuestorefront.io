@@ -49,7 +49,7 @@
 
 <script setup lang="ts">
   import { headerMenuItems } from '~/constants/headerMenu';
-
+  /*
   const navElBase = computed(() => document?.querySelector('#header-base'));
   const navElContent = computed(() =>
     document?.querySelector('#header-navigation'),
@@ -91,9 +91,5 @@
 
     window.addEventListener('scroll', scrollFunction);
     window.addEventListener('touchmove', scrollFunction);
-  });
+  }); */
 </script>
-
-<style lang="scss" scoped>
-  @use 'assets/scss/components/organisms/navigation/header';
-</style>

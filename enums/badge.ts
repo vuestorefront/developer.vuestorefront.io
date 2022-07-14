@@ -3,4 +3,6 @@ export enum BadgePosition {
   topRight = 'top-right',
   bottomLeft = 'bottom-left',
   bottomRight = 'bottom-right',
+  bottom = 'bottom',
+  top = 'top',
 }

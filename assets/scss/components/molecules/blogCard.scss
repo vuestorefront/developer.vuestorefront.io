@@ -12,7 +12,6 @@
     overflow-hidden
     bg-white
     justify-between
-    h-fit
     hover:no-underline;
 
     &-content {
@@ -22,8 +21,7 @@
       pb-2
       px-4
       flex
-      flex-col
-      justify-between;
+      flex-col;
     }
 
     &-title {

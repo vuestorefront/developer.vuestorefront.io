@@ -37,13 +37,14 @@
             class="my-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
           >
             <MoleculesCardDocs
-              v-for="brand in integrations.list"
-              :key="brand.key"
-              :documentation="brand.link"
-              :img="brand.logo"
-              :name="brand.name"
-              :status="brand.status"
-              :license="brand.license"
+              v-for="(integration, index) in integrations.list"
+              :key="integration.name + index"
+              :documentation="integration.link"
+              :img="integration.logo"
+              :name="integration.name"
+              :status="integration.status"
+              :license="integration.license"
+              :maintainers="integration.maintainedBy"
             />
           </div>
         </div>

@@ -1,6 +1,6 @@
 <template>
   <NuxtLink :to="link">
-    <AtomsBrandsContent v-bind="$props" />
+    <AtomsBrandsContent v-bind="$props" :shaped="shaped" />
   </NuxtLink>
 </template>
 
@@ -14,5 +14,6 @@
     license?: IntegrationLicense;
     status?: IntegrationStatus;
     color?: string;
+    shaped?: boolean;
   }>();
 </script>

@@ -1,6 +1,7 @@
 <template>
   <AtomsBrandsContent
     v-bind="$props"
+    :shaped="shaped"
     @mouseover="isHover = true"
     @mouseleave="isHover = false"
   >
@@ -40,6 +41,7 @@
     license?: IntegrationLicense;
     status?: IntegrationStatus;
     color?: string;
+    shaped?: boolean;
   }>();
 
   const isHover = ref(false);

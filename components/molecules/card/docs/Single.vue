@@ -4,6 +4,7 @@
 
 <script setup lang="ts">
   import { IntegrationLicense, IntegrationStatus } from '~/enums/integrations';
+  import { NuxtLinkProps } from '#app';
   import Content from './Content.vue';
 
   const props = defineProps<{
@@ -12,12 +13,14 @@
     license?: IntegrationLicense;
     documentation?:
       | {
-          link: string;
+          link: string | NuxtLinkProps;
           disabled?: boolean;
           name: string;
           icon?: string;
         }
-      | string;
+      | string
+      | NuxtLinkProps;
+    maintainers?: { name: string; link: string };
     description?: string;
     name: string;
   }>();

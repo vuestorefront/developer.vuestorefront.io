@@ -6,9 +6,9 @@
   .docs-card {
     @apply
     bg-white
-    shadow-base
     rounded-3xl
     border
+    border-gray-200
     relative
     flex
     flex-col
@@ -27,23 +27,6 @@
       pt-6
       px-3
       pb-3;
-    }
-
-    &-title {
-      @apply
-      text-xl
-      font-medium
-      text-gray-900
-      text-center
-      w-full
-      mt-2
-      mb-2;
-    }
-
-    &-description {
-      @apply
-      text-base
-      text-gray-900;
     }
 
     &-image {
@@ -66,20 +49,51 @@
 
     &-badge {
       @apply
-      absolute
-      top-0
-      left-0
+      relative
       w-full
-      z-50
-      flex
-      items-center
-      justify-between;
+      px-2
+      space-x-2
+      mb-2
+      z-50;
+    }
+
+    &-information{
+      @apply
+      border-t
+      border-gray-100
+      relative
+      text-left
+      px-3
+      w-full;
+
+      &--title {
+        @apply
+        text-xl
+        font-medium
+        text-gray-900
+        w-full
+        mt-2
+        mb-2;
+      }
+
+      &--description {
+        @apply
+        text-base
+        text-gray-900;
+      }
+
+      &--maintainer {
+        @apply
+        text-xs
+        text-gray-500;
+        &-link {
+          @apply text-gray-500
+        }
+      }
     }
 
     &-footer {
       @apply
-      border-t
-      border-gray-100
       relative
       w-full;
 
@@ -92,8 +106,7 @@
         w-full
         flex
         flex-row
-        h-[58px]
-        justify-between;
+        h-[58px];
       }
 
       &--icons {

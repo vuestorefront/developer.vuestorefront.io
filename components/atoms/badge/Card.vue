@@ -11,6 +11,7 @@
     cssPositionClass,
     cardBadgeCssClasses,
     cardBadgeLabel,
+    cssShapedClass,
   } from '~/constants/css/atoms/cardBadge';
   import { IntegrationLicense, IntegrationStatus } from '~/enums/integrations';
   import { BadgePosition } from '~/enums/badge';
@@ -20,6 +21,7 @@
       label?: string;
       model: IntegrationStatus | IntegrationLicense;
       position: BadgePosition;
+      shaped?: boolean;
     }>(),
     {
       model: IntegrationStatus.wip,
@@ -32,8 +34,10 @@
     () => cardBadgeCssClasses[props.model] || '',
   );
 
-  const badgePosition = computed<string>(
-    () => cssPositionClass[props.position],
+  const badgePosition = computed<string>(() =>
+    props.shaped
+      ? cssShapedClass[props.position]
+      : cssPositionClass[props.position],
   );
 
   const badgeLabel = computed<string>(

@@ -19,5 +19,6 @@
     license?: IntegrationLicense;
     status?: IntegrationStatus;
     color?: string;
+    shaped?: boolean;
   }>();
 </script>

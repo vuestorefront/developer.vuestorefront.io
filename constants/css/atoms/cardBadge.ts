@@ -32,6 +32,25 @@ export const statusLabel: CssBadgeStatusClasses = {
   [IntegrationStatus.prod]: 'Production',
 };
 
+export const cssPositionClass: CssBadgePositionClasses = {
+  [BadgePosition.bottomLeft]: 'card-badge-position--bottom-left',
+  [BadgePosition.bottomRight]: 'card-badge-position--bottom-right',
+  [BadgePosition.topLeft]: 'card-badge-position--top-left',
+  [BadgePosition.topRight]: 'card-badge-position--top-right',
+  [BadgePosition.top]: 'card-badge-position--top',
+  [BadgePosition.bottom]: 'card-badge-position--bottom',
+};
+
+export const cssShapedClass: CssBadgePositionClasses = {
+  [BadgePosition.bottomLeft]: 'card-badge-shaped--bottom-left',
+  [BadgePosition.bottomRight]:
+    'card-badge-shaped card-badge-shaped--bottom-right',
+  [BadgePosition.topLeft]: 'card-badge-shaped card-badge-shaped--top-left',
+  [BadgePosition.topRight]: 'card-badge-shaped card-badge-shaped--top-right',
+  [BadgePosition.top]: 'card-badge-shaped card-badge-shaped--top',
+  [BadgePosition.bottom]: 'card-badge-shaped card-badge-shaped--bottom',
+};
+
 export const cardBadgeLabel = {
   ...typeLabel,
   ...statusLabel,
@@ -40,11 +59,4 @@ export const cardBadgeLabel = {
 export const cardBadgeCssClasses = {
   ...cssLicenseClass,
   ...cssStatusClass,
-};
-
-export const cssPositionClass: CssBadgePositionClasses = {
-  [BadgePosition.bottomLeft]: 'card-badge-position--bottom-left',
-  [BadgePosition.bottomRight]: 'card-badge-position--bottom-right',
-  [BadgePosition.topLeft]: 'card-badge-position--top-left',
-  [BadgePosition.topRight]: 'card-badge-position--top-right',
 };

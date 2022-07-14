@@ -35,9 +35,10 @@
           }"
         >
           <AtomsBrands
-            v-for="brand in brands"
-            :key="brand.key"
+            v-for="(brand, index) in brands"
+            :key="Math.random() + index"
             v-bind="brand"
+            shaped
           />
         </div>
       </div>

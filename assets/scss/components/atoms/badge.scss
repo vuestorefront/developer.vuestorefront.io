@@ -5,47 +5,123 @@
 @layer components {
   .card-badge {
     @apply
-    absolute
     py-1
     px-2
     text-[.6rem]
     leading-[.6rem]
     uppercase
+    rounded-xl
     text-white;
 
-    &-license {
-      &--enterprise {
-        @apply bg-secondary;
+    &-color, &-license, &-status  {
+      @apply
+      border
+      border-transparent
+      bg-transparent;
+
+      &--success,
+      &--primary, &--open-source {
+        @apply
+        text-primary
+        bg-primary-100;
       }
 
-      &--open-source {
-        @apply bg-primary;
+      &--secondary, &--enterprise {
+        @apply
+        text-secondary
+        bg-secondary-100;
       }
 
-      &--paid {
-        @apply bg-orange-500;
+      &--danger, &--alpha {
+        @apply
+        text-rose
+        bg-rose-100;
       }
-    }
 
-    &-status {
-      &--prod {
+      &--warning, &--beta {
+        @apply
+        text-yellow
+        bg-yellow-100;
+      }
+
+      &--info {
+        @apply
+        text-blue
+        bg-blue-100;
+      }
+
+      &--info {
+        @apply
+        text-blue
+        bg-blue-100;
+      }
+
+      &--white {
+        @apply
+        text-gray-500
+        border
+        border-gray-100
+        bg-white;
+      }
+
+      &--orange, &--paid {
+        @apply
+        text-orange-500
+        bg-orange-100;
+      }
+
+      &--gray, &--wip {
+        @apply
+        text-gray-500
+        bg-gray-100;
+      }
+
+      &--prod, &--none {
         @apply hidden;
       }
+    }
 
-      &--alpha {
-        @apply bg-rose
+
+    &-position {
+      &--top-left {
+        @apply
+        top-0
+        left-0;
       }
 
-      &--beta {
-        @apply bg-yellow
+      &--top-right {
+        @apply
+        top-0
+        right-0;
       }
 
-      &--wip {
-        @apply bg-gray
+      &--top {
+        @apply
+        top-0;
+      }
+
+      &--bottom {
+        @apply
+        bottom-0;
+      }
+
+      &--bottom-left {
+        @apply
+        bottom-0
+        left-0;
+      }
+
+      &--bottom-right {
+        @apply
+        bottom-0
+        right-0;
       }
     }
 
-    &-position {
+    &-shaped {
+      @apply
+      absolute;
+
       &--top-left {
         @apply
         top-0
