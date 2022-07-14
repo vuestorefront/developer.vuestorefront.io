@@ -87,7 +87,7 @@
         text-xs
         text-gray-500;
         &-link {
-          @apply text-gray-500
+          @apply text-gray-500 hover:underline hover:text-gray-700;
         }
       }
     }

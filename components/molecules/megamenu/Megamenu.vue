@@ -1,15 +1,21 @@
 <template>
   <NuxtLink
-    class="mega-menu-button"
+    class="mega-menu-button group"
     color="transparent"
     :to="link"
+    :target="target || ''"
     v-bind="subMenu?.length > 0 ? { dataDropdownToggle: UUID } : {}"
   >
     {{ label }}
+    <AtomsIcon
+      v-if="!(subMenu?.length > 0) && iconName"
+      :name="iconName"
+      class="group-hover:text-primary"
+    />
     <Suspense v-if="subMenu?.length > 0">
       <AtomsIcon
         name="ph:caret-down-bold"
-        class="button-text transform transition-transform duration-200 ease-in-out"
+        class="group-hover:text-primary transform transition-transform duration-200 ease-in-out"
         :class="isVisible ? 'rotate-180' : 'rotate-0'"
       />
     </Suspense>
@@ -30,6 +36,8 @@
   const props = defineProps<{
     label: string;
     link?: RouteLocationRaw;
+    iconName?: string;
+    target?: string;
     subMenu?: HeaderMenu[];
   }>();
 

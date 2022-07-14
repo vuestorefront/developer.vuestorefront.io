@@ -5,4 +5,5 @@ export interface HeaderMenu {
   link?: RouteLocationRaw | string;
   iconName?: string;
   subMenu?: HeaderMenu[];
+  target?: string;
 }

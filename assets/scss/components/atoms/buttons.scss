@@ -31,9 +31,7 @@
 
         &.button-text,
         & .button-text {
-          @apply
-          text-white
-          hover:no-underline;
+          @apply text-white;
         }
 
         &.button-disabled,
@@ -44,15 +42,13 @@
 
           &.button-text,
           & .button-text {
-            @apply text-gray-300;
+            @apply text-gray-200;
           }
         }
 
         &.button-counter {
           & > .counter-label {
-            @apply
-            bg-primary-200
-            text-primary-800;
+            @apply bg-primary-200 text-primary-800;
           }
         }
       }
@@ -60,12 +56,11 @@
       &--secondary {
         @apply
         bg-secondary-500
-        hover:bg-secondary-700
-        hover:text-white;
+        hover:bg-secondary-700;
 
         &.button-text,
         & .button-text {
-          @apply text-white
+          @apply text-white;
         }
 
         &.button-disabled,
@@ -83,9 +78,7 @@
         &.button-counter {
 
           & > .counter-label {
-            @apply
-            bg-secondary-200
-            text-secondary-800;
+            @apply bg-secondary-200 text-secondary-800;
           }
         }
       }
@@ -98,7 +91,7 @@
 
         &.button-text,
         & .button-text {
-          @apply text-white
+          @apply text-white;
         }
 
         &.button-disabled,
@@ -116,9 +109,7 @@
         &.button-counter {
 
           & > .counter-label {
-            @apply
-            bg-rose-200
-            text-rose-800;
+            @apply bg-rose-200 text-rose-800;
           }
         }
       }
@@ -131,7 +122,7 @@
 
         &.button-text,
         & .button-text {
-          @apply text-white
+          @apply text-white;
         }
 
         &.button-disabled,
@@ -149,9 +140,7 @@
         &.button-counter {
 
           & > .counter-label {
-            @apply
-            bg-yellow-200
-            text-yellow-800;
+            @apply bg-yellow-200 text-yellow-800;
           }
         }
       }
@@ -164,7 +153,7 @@
 
         &.button-text,
         & .button-text {
-          @apply text-white
+          @apply text-white;
         }
 
         &.button-disabled,
@@ -181,9 +170,7 @@
 
         &.button-counter {
           & > .counter-label {
-            @apply
-            bg-blue-200
-            text-blue-800;
+            @apply bg-blue-200 text-blue-800;
           }
         }
       }
@@ -195,7 +182,7 @@
 
         &.button-text,
         & .button-text {
-          @apply text-primary
+          @apply text-primary;
         }
 
         &.button-disabled,
@@ -208,9 +195,7 @@
 
         &.button-counter {
           & > .counter-label {
-            @apply
-            bg-gray-200
-            text-gray-800;
+            @apply bg-gray-200 text-gray-800;
           }
         }
       }
@@ -223,22 +208,20 @@
 
         &.button-text,
         & .button-text {
-          @apply text-primary hover:underline;
+          @apply text-primary;
         }
 
         &.button-disabled,
         [attr="disabled"] {
           &.button-text,
           & .button-text {
-            @apply text-gray-300 hover:no-underline;
+            @apply text-gray-300;
           }
         }
 
         &.button-counter {
           & > .counter-label {
-            @apply
-            bg-gray-200
-            text-gray-800;
+            @apply bg-gray-200 text-gray-800;
           }
         }
       }
@@ -253,25 +236,16 @@
 
       &--success,
       &--primary {
-        @apply
-        hover:bg-primary-500
-        border-primary-500
-        bg-transparent;
+        @apply hover:bg-primary-500 border-primary-500 bg-transparent;
 
         &.button-text,
         & .button-text {
-          @apply
-          text-primary-500
-          hover:text-white
+          @apply text-primary-500 hover:text-white;
         }
       }
 
       &--secondary {
-        @apply
-        text-secondary-500
-        hover:bg-secondary-500
-        border-secondary-500
-        bg-transparent;
+        @apply text-secondary-500 hover:bg-secondary-500 border-secondary-500 bg-transparent;
 
         &.button-text,
         & .button-text {
@@ -280,32 +254,20 @@
       }
 
       &--danger {
-        @apply
-        text-rose-500
-        hover:bg-rose-500
-        border-rose-500
-        bg-transparent;
+        @apply text-rose-500 hover:bg-rose-500 border-rose-500 bg-transparent;
 
         &.button-text,
         & .button-text {
-          @apply
-          text-rose-500
-          hover:text-white
+          @apply text-rose-500 hover:text-white
         }
       }
 
       &--warning {
-        @apply
-        text-yellow-500
-        hover:bg-yellow-500
-        border-yellow-500
-        bg-transparent;
+        @apply text-yellow-500 hover:bg-yellow-500 border-yellow-500 bg-transparent;
 
         &.button-text,
         & .button-text {
-          @apply
-          text-yellow-500
-          hover:text-white;
+          @apply text-yellow-500 hover:text-white;
         }
       }
 
@@ -333,9 +295,7 @@
 
         &.button-text,
         & .button-text {
-          @apply
-          text-primary-500
-          hover:text-primary-700;
+          @apply text-primary-500;
         }
       }
     }

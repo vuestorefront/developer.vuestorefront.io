@@ -4,6 +4,8 @@ export const headerMenuItems: HeaderMenu[] = [
   {
     label: 'Get Started',
     link: 'https://docs.vuestorefront.io/v2/getting-started/installation.html',
+    iconName: 'akar-icons:link-out',
+    target: '_blank',
   },
   {
     label: 'Documentation',
@@ -14,6 +16,8 @@ export const headerMenuItems: HeaderMenu[] = [
   {
     label: 'Community',
     link: 'https://discord.gg/vuestorefront',
+    iconName: 'akar-icons:link-out',
+    target: '_blank',
   },
   {
     label: 'Videos',
