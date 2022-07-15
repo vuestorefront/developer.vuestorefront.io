@@ -42,7 +42,7 @@
     </slot>
     <MoleculesVideoModal
       :open="isOpen"
-      :video-id="videoId"
+      :src="videoSrc"
       @close="isOpen = false"
     />
   </div>
@@ -53,7 +53,7 @@
     defineProps<{
       title: string;
       message: string;
-      videoId?: string;
+      videoSrc?: string;
       buttonText?: string;
       buttonLink?: string;
       buttonColor?: string;

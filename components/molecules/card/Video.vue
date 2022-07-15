@@ -1,14 +1,14 @@
 <template>
-  <div class="flex flex-col overflow-hidden hover:shadow-base rounded-3xl">
+  <div class="hover:shadow-base flex flex-col overflow-hidden rounded-3xl">
     <slot name="image" v-bind="{ image, link, title }">
       <NuxtLink class="flex-shrink-0" :to="link">
         <AtomsThumbVideo class="h-48 w-full object-cover" :image="image" />
       </NuxtLink>
     </slot>
-    <div class="flex-1 bg-white p-2 flex flex-col justify-between">
+    <div class="flex flex-1 flex-col justify-between bg-white p-2">
       <div class="flex-1">
         <slot name="title" v-bind="{ link, title }">
-          <NuxtLink class="block mt-1" :to="link">
+          <NuxtLink class="mt-1 block" :to="link">
             <p class="text-xl font-bold text-gray-900">
               {{ title }}
             </p>
@@ -44,6 +44,8 @@
 </template>
 
 <script setup lang="ts">
+  import { formatDate } from '~/utils/date';
+
   const props = defineProps<{
     author: {
       name: string;
@@ -54,7 +56,6 @@
     link: string;
     title: string;
   }>();
-  const { formatDate } = useDateTimeIntl();
 
   const textDate = computed(() =>
     formatDate({
