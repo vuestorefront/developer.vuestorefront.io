@@ -3,7 +3,6 @@
 import { defineNuxtConfig } from 'nuxt';
 
 export default defineNuxtConfig({
-  target: 'server',
   debug: process.env.NODE_ENV !== 'production',
   sourcemap: process.env.NODE_ENV !== 'production',
   runtimeConfig: {
@@ -12,7 +11,6 @@ export default defineNuxtConfig({
   },
   components: true,
   experimental: {
-    externalVue: true,
     reactivityTransform: true,
   },
   head: {

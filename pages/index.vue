@@ -61,7 +61,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useDevTo } from '~/composables/data/dev.to/useDevTo';
+  import { useDevTo } from '~/composables/useDevTo';
   import { IntegrationCategory } from '~/enums/integrations';
   import { ApiUrl } from '~/enums/apiUrl';
   import { IntegrationList } from '~/types/integrations';

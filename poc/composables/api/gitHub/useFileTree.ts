@@ -1,5 +1,5 @@
 import { withQuery } from 'ufo';
-import { generateReturnMethods } from '~/composables/api/utils/generateReturnMethods';
+import { generateReturnMethods } from '~/composables/utils/generateReturnMethods';
 import { ApiUrl } from '~/enums/apiUrl';
 
 export const useFileTree = ({

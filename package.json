@@ -34,7 +34,7 @@
     "@iconify/vue": "^3.2.1",
     "@nuxtjs/color-mode": "^3.1.4",
     "@popperjs/core": "^2.11.5",
-    "@vueuse/nuxt": "^8.9.2",
+    "@vueuse/nuxt": "^8.9.3",
     "clipboard": "^2.0.11",
     "lodash": "^4.17.21",
     "nuxt": "^3.0.0-rc.4",
@@ -42,7 +42,7 @@
     "regexparam": "^2.0.1",
     "transform-object-keys": "^1.0.7",
     "ufo": "^0.8.5",
-    "unstorage": "^0.5.4",
+    "unstorage": "^0.5.5",
     "vue-github-button": "^3.0.3",
     "youtube-player": "^5.5.2"
   },

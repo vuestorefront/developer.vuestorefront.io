@@ -3,14 +3,14 @@ import { IntegrationList } from '~/types/integrations';
 import { useArrayManipulation } from '~/composables/useArrayManipulation';
 
 export default defineEventHandler((event) => {
-  const query = useQuery(event); // {category, compatibility, name}
+  const query = useQuery(event);
 
   const { randomElements, filterBy } = useArrayManipulation();
 
   const defaultQuery = {
-    category: 'all', // or IntegrationCategory
-    categories: ['all'], // or IntegrationCategory
-    compatibility: 'all', // or CommerceIntegrationsName
+    category: 'all',
+    categories: ['all'],
+    compatibility: 'all',
     status: 'all',
     license: 'all',
     name: '',
