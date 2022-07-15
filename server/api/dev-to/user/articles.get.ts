@@ -6,9 +6,8 @@ export default defineEventHandler(async (event) => {
   const query = useQuery(event);
   const username = returnSingleParams(query?.user);
 
-  const data = await $fetch<BlogArticleApiResponse>(
-    'https://dev.to/api/articles',
-    {
+  return transformObjectKeys(
+    await $fetch<BlogArticleApiResponse>('https://dev.to/api/articles', {
       method: 'GET',
       params: {
         page: 1,
@@ -22,8 +21,7 @@ export default defineEventHandler(async (event) => {
         ),
       },
       responseType: 'json',
-    },
+    }),
+    { deep: true },
   );
-
-  return transformObjectKeys(data, { deep: true });
 });
