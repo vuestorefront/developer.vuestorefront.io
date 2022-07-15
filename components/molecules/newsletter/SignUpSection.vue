@@ -35,12 +35,7 @@
           placeholder="Enter your email"
         />
         <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-          <AtomsButtonDefault
-            color="primary"
-            label="Subscribe"
-            type="submit"
-            shadow
-          />
+          <AtomsButton color="primary" label="Subscribe" type="submit" shadow />
         </div>
       </form>
       <p class="mt-3 text-sm text-gray-300">
@@ -52,3 +47,19 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+  import scriptLoader from '~/utils/scriptLoader';
+
+  onMounted(async () => {
+    await scriptLoader('//js.hsforms.net/forms/v2.js', 'hub-spot');
+
+    if (hbspt) {
+      hbspt.forms.create({
+        region: 'na1',
+        portalId: '8443671',
+        formId: '1355cce5-1417-4409-bb75-8a9f5081230d',
+      });
+    }
+  });
+</script>

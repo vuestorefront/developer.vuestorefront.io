@@ -11,7 +11,6 @@ export default defineNuxtConfig({
       },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
     ],
-    script: [{ src: '//js.hsforms.net/forms/v2.js', type: 'text/partytown' }],
   },
   debug: process.env.NODE_ENV !== 'production',
   sourcemap: process.env.NODE_ENV !== 'production',

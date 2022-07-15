@@ -1,5 +1,5 @@
 <template>
-  <AtomsButtonDefault
+  <AtomsButton
     :data-dropdown-toggle="UUID()"
     :tag="buttonTag"
     :tag-props="buttonTagProps"
@@ -14,7 +14,7 @@
       </Suspense>
     </template>
     {{ selected.label }}
-  </AtomsButtonDefault>
+  </AtomsButton>
   <MoleculesDropdownList
     :data-dropdown-menu="UUID()"
     :is-visible="isVisible"

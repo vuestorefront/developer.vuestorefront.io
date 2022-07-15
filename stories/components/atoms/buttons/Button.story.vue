@@ -10,7 +10,7 @@
       :title="capitalize(color)"
     >
       <template #default="{ state }">
-        <AtomsButtonDefault
+        <AtomsButton
           :color="state.color || color"
           :counter="state.counter"
           :disabled="state.disabled"
@@ -34,7 +34,7 @@
       :title="btn.title"
     >
       <template #default="{ state }">
-        <AtomsButtonDefault
+        <AtomsButton
           :counter="state.counter"
           :disabled="state.disabled"
           :icon-name="state.iconName || btn.iconName"
@@ -54,7 +54,7 @@
     </Variant>
     <Variant title="With Counter">
       <template #default="{ state }">
-        <AtomsButtonDefault
+        <AtomsButton
           :counter="state.counter || 5"
           :disabled="state.disabled"
           :icon-name="state.iconName"

@@ -60,12 +60,12 @@
               v-if="buttons"
               class="mt-5 gap-8 sm:mt-4 sm:flex sm:flex-row-reverse"
             >
-              <AtomsButtonDefault
+              <AtomsButton
                 :color="cancelButton.color"
                 :label="cancelButton.label"
                 @click="onCancel"
               />
-              <AtomsButtonDefault
+              <AtomsButton
                 :color="okButton.color"
                 :label="okButton.label"
                 @click="onOk"
