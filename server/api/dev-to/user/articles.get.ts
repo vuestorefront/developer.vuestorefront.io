@@ -14,9 +14,12 @@ export default defineEventHandler(async (event) => {
         page: 1,
         per_page: 10,
         ...(username ? { username } : {}),
-        ...transformObjectKeys({
-          ...query,
-        }),
+        ...transformObjectKeys(
+          {
+            ...query,
+          },
+          { snakeCase: true },
+        ),
       },
       responseType: 'json',
     },
