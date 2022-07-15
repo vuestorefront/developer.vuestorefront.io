@@ -43,8 +43,7 @@
     "transform-object-keys": "^1.0.7",
     "ufo": "^0.8.5",
     "unstorage": "^0.5.5",
-    "vue-github-button": "^3.0.3",
-    "youtube-player": "^5.5.2"
+    "vue-github-button": "^3.0.3"
   },
   "devDependencies": {
     "@histoire/plugin-nuxt": "^0.7.9",

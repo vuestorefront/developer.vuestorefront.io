@@ -1,6 +1,6 @@
 <template>
   <AtomsButtonDefault
-    :data-dropdown-toggle="UUID"
+    :data-dropdown-toggle="UUID()"
     :tag="buttonTag"
     :tag-props="buttonTagProps"
   >
@@ -16,7 +16,7 @@
     {{ selected.label }}
   </AtomsButtonDefault>
   <MoleculesDropdownList
-    :data-dropdown-menu="UUID"
+    :data-dropdown-menu="UUID()"
     :is-visible="isVisible"
     :options="dropdownOptions"
     :selected="modelValue"
@@ -28,6 +28,7 @@
 <script setup lang="ts">
   import { useDropdown } from '~/composables/dynamicUi/useDropdown';
   import { DropdownOption } from '~/types/props/types/molecules/dropdownPropTypes';
+  import { UUID } from '~/utils/uuid';
 
   const props = defineProps<{
     options: DropdownOption[];
@@ -40,14 +41,13 @@
   }>();
 
   const emit = defineEmits(['update:modelValue', 'show', 'hide']);
-  const UUID = useUUID();
 
   const onShow = () => emit('show');
   const onHide = () => emit('hide');
 
   const { isVisible, hide } = useDropdown({
-    targetElement: `[data-dropdown-menu="${UUID}"]`,
-    triggerElement: `[data-dropdown-toggle="${UUID}"]`,
+    targetElement: `[data-dropdown-menu="${UUID()}"]`,
+    triggerElement: `[data-dropdown-toggle="${UUID()}"]`,
     options: {
       onHide,
       onShow,
@@ -57,7 +57,7 @@
   const dropdownOptions = computed<DropdownOption[]>(() =>
     props.options?.map((c, i) => ({
       selected: c.selected || props.modelValue === c.value,
-      id: useUUID(),
+      id: UUID(),
       ...c,
     })),
   );

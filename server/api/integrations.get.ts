@@ -1,11 +1,9 @@
 import { integrationsList } from '~/constants/integrations';
 import { IntegrationList } from '~/types/integrations';
-import { useArrayManipulation } from '~/composables/useArrayManipulation';
+import { randomElements, filterBy } from '~/utils/array';
 
 export default defineEventHandler((event) => {
   const query = useQuery(event);
-
-  const { randomElements, filterBy } = useArrayManipulation();
 
   const defaultQuery = {
     category: 'all',

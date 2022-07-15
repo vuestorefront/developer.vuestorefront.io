@@ -1,6 +1,6 @@
 import { ApiUrl } from '~/enums/apiUrl';
 import { withQuery } from 'ufo';
-import { generateReturnMethods } from '~/composables/utils/generateReturnMethods';
+import { generateReturnMethods } from '~/utils/fetch';
 import { BlogArticleApiResponse } from '~/types/api/devTo';
 
 export const useDevTo = () => {

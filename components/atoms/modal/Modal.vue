@@ -15,7 +15,7 @@
           <div class="absolute -top-8 -right-8 hidden sm:block">
             <button
               type="button"
-              class="rounded-full bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              class="focus:ring-primary-500 rounded-full bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2"
               @click="$emit('close', $event)"
             >
               <span class="sr-only">Close</span>
@@ -24,7 +24,8 @@
               </Suspense>
             </button>
           </div>
-          <div class="sm:flex sm:items-start">
+          <slot name="content" />
+          <div v-if="!$slots.content" class="sm:flex sm:items-start">
             <slot name="right-icon">
               <div
                 v-if="icon"
@@ -54,7 +55,7 @@
               </slot>
             </div>
           </div>
-          <slot name="buttons">
+          <slot v-if="!$slots.content" name="buttons">
             <div
               v-if="buttons"
               class="mt-5 gap-8 sm:mt-4 sm:flex sm:flex-row-reverse"

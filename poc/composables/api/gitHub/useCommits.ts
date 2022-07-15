@@ -1,4 +1,4 @@
-import { generateReturnMethods } from '~/composables/utils/generateReturnMethods';
+import { generateReturnMethods } from '~/utils/fetch';
 import { ApiUrl } from '~/enums/apiUrl';
 
 export const useCommits = ({

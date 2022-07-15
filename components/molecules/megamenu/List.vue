@@ -13,11 +13,10 @@
 
 <script setup lang="ts">
   import { HeaderMenu } from '~/types/props/types/molecules/menuPropTypes';
+  import { UUID } from '~/utils/uuid';
 
   defineProps<{
     items?: HeaderMenu[];
     isVisible?: boolean;
   }>();
-
-  const UUID = useUUID;
 </script>

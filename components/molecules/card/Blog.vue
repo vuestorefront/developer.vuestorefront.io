@@ -53,6 +53,8 @@
 </template>
 
 <script setup lang="ts">
+  import { formatDate } from '~/utils/date';
+
   const props = defineProps<{
     author?: {
       name: string;
@@ -69,7 +71,6 @@
     title: string;
     url: string;
   }>();
-  const { formatDate } = useDateTimeIntl();
 
   const blogLink = computed(() => props.url);
 

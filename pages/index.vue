@@ -9,7 +9,7 @@
         video-thumb="/thumbs/video/what-is-vue-storefront.jpg"
         thumb-button-text="Check our other videos"
         thumb-button-link="#"
-        video-id="MCN1rRwuIGs"
+        video-src="https://www.youtube.com/watch?v=MCN1rRwuIGs&t=1s"
       />
       <MoleculesBannersCallToAction
         message="Find help, new ideas, new projects, and much more on our Discord server. "

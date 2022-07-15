@@ -68,12 +68,11 @@
     IntegrationLicense,
     IntegrationStatus,
   } from '~/enums/integrations';
+  import { filterBy } from '~/utils/array';
 
   definePageMeta({
     layout: 'internal-side-bar',
   });
-
-  const { filterBy } = useArrayManipulation();
 
   const filters = ref({
     categories: {

@@ -48,6 +48,7 @@
 
 <script setup lang="ts">
   import { IntegrationList } from '~/types/integrations';
+  import { addKey } from '~/utils/array';
 
   const props = withDefaults(
     defineProps<{
@@ -65,8 +66,6 @@
       brands: () => [],
     },
   );
-
-  const { addKey } = useArrayManipulation();
 
   const elements = computed(() => addKey(props.brands));
 </script>
