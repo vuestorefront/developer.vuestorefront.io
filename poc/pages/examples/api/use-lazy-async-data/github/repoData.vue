@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useRepo } from '~/composables/api/gitHub/useRepo';
+  import { useRepo } from '~/poc/composables/api/gitHub/useRepo';
 
   const { $apiLazyAsyncData } = useRepo({
     organization: 'vuestorefront',

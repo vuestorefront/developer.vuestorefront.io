@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useFileTree } from '~/composables/api/gitHub/useFileTree';
+  import { useFileTree } from '~/poc/composables/api/gitHub/useFileTree';
 
   const { $apiFetch } = useFileTree({
     organization: 'vuestorefront',

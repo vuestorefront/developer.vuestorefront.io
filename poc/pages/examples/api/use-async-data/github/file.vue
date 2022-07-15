@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useFile } from '~/composables/api/gitHub/useFile';
+  import { useFile } from '~/poc/composables/api/gitHub/useFile';
 
   const { $apiAsyncData } = useFile({
     filePath: 'README.md',

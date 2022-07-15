@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useCommits } from '~/composables/api/gitHub/useCommits';
+  import { useCommits } from '~/poc/composables/api/gitHub/useCommits';
 
   const { $apiFetch } = useCommits({
     organization: 'vuestorefront',
