@@ -1,28 +1,14 @@
 import {
+  CommerceIntegrationsName,
   IntegrationCategory,
   IntegrationLicense,
   IntegrationStatus,
 } from '~/enums/integrations';
+import { IntegrationList } from '~/types/integrations';
 
-export const integrationsList: {
-  name: string;
-  logo: string;
-  link:
-    | string
-    | Array<{
-        name: string;
-        link: string;
-        icon: string;
-      }>;
-  repository?: string;
-  license: IntegrationLicense;
-  status: IntegrationStatus;
-  color?: string;
-  maintainedBy: { name: string; link: string }[];
-  categories: IntegrationCategory[];
-}[] = [
+export const integrationsList: IntegrationList = [
   {
-    name: 'commercetools',
+    name: CommerceIntegrationsName.commercetools,
     link: 'https://docs.vuestorefront.io/v2/commercetools/',
     logo: '/brands/logos/commercetools.svg',
     status: IntegrationStatus.prod,
@@ -33,7 +19,7 @@ export const integrationsList: {
     categories: [IntegrationCategory.commerce],
   },
   {
-    name: 'Magento',
+    name: CommerceIntegrationsName.magento,
     link: 'https://docs.vuestorefront.io/magento',
     logo: '/brands/logos/magento.svg',
     status: IntegrationStatus.beta,
@@ -45,7 +31,7 @@ export const integrationsList: {
     categories: [IntegrationCategory.commerce],
   },
   {
-    name: 'Salesforce Commerce Cloud',
+    name: CommerceIntegrationsName.sfcc,
     link: 'https://docs.vuestorefront.io/sfcc',
     logo: '/brands/logos/sfcc.svg',
     status: IntegrationStatus.beta,
@@ -55,7 +41,7 @@ export const integrationsList: {
     categories: [IntegrationCategory.commerce],
   },
   {
-    name: 'SAP Commerce Cloud',
+    name: CommerceIntegrationsName.sap,
     link: '',
     logo: '/brands/logos/sap.svg',
     status: IntegrationStatus.wip,
@@ -66,7 +52,7 @@ export const integrationsList: {
     categories: [IntegrationCategory.commerce],
   },
   {
-    name: 'Shopify',
+    name: CommerceIntegrationsName.shopify,
     link: 'https://docs.vuestorefront.io/shopify',
     logo: '/brands/logos/shopify.svg',
     status: IntegrationStatus.prod,
@@ -78,7 +64,7 @@ export const integrationsList: {
     categories: [IntegrationCategory.commerce],
   },
   {
-    name: 'BigCommerce',
+    name: CommerceIntegrationsName.bigcommerce,
     link: 'https://docs.vuestorefront.io/bigcommerce',
     logo: '/brands/logos/bigcommerce.svg',
     status: IntegrationStatus.prod,
@@ -89,7 +75,7 @@ export const integrationsList: {
     categories: [IntegrationCategory.commerce],
   },
   {
-    name: 'Scayle',
+    name: CommerceIntegrationsName.scayle,
     link: '',
     logo: '/brands/logos/scayle.svg',
     status: IntegrationStatus.wip,
@@ -98,7 +84,7 @@ export const integrationsList: {
     categories: [IntegrationCategory.commerce],
   },
   {
-    name: 'Sylius',
+    name: CommerceIntegrationsName.sylius,
     link: '',
     logo: '/brands/logos/sylius.svg',
     status: IntegrationStatus.beta,
@@ -107,7 +93,7 @@ export const integrationsList: {
     categories: [IntegrationCategory.commerce],
   },
   {
-    name: 'WooCommerce',
+    name: CommerceIntegrationsName.woocommerce,
     link: '',
     logo: '/brands/logos/woocommerce.svg',
     status: IntegrationStatus.wip,
@@ -116,7 +102,7 @@ export const integrationsList: {
     categories: [IntegrationCategory.commerce],
   },
   {
-    name: 'OpenCart',
+    name: CommerceIntegrationsName.opencart,
     link: '',
     logo: '/brands/logos/opencart.svg',
     status: IntegrationStatus.wip,
@@ -125,7 +111,7 @@ export const integrationsList: {
     categories: [IntegrationCategory.commerce],
   },
   {
-    name: 'Vendure',
+    name: CommerceIntegrationsName.vendure,
     link: 'https://docs.vuestorefront.io/vendure',
     logo: '/brands/logos/vendure.svg',
     status: IntegrationStatus.prod,
@@ -140,7 +126,7 @@ export const integrationsList: {
     categories: [IntegrationCategory.commerce],
   },
   {
-    name: 'Odoo',
+    name: CommerceIntegrationsName.odoo,
     link: 'https://docs.vuestorefront.io/odoo/',
     logo: '/brands/logos/odoo.svg',
     status: IntegrationStatus.prod,
@@ -150,7 +136,7 @@ export const integrationsList: {
     categories: [IntegrationCategory.commerce],
   },
   {
-    name: 'PrestaShop',
+    name: CommerceIntegrationsName.prestashop,
     link: 'https://docs.vuestorefront.io/prestashop/',
     logo: '/brands/logos/prestashop.svg',
     status: IntegrationStatus.prod,
@@ -161,7 +147,7 @@ export const integrationsList: {
     categories: [IntegrationCategory.commerce],
   },
   {
-    name: 'Spree',
+    name: CommerceIntegrationsName.spree,
     link: 'https://docs.vuestorefront.io/spree/',
     logo: '/brands/logos/spree.svg',
     status: IntegrationStatus.prod,
@@ -171,7 +157,7 @@ export const integrationsList: {
     categories: [IntegrationCategory.commerce],
   },
   {
-    name: 'Elastic Path',
+    name: CommerceIntegrationsName.elasticpath,
     link: '',
     logo: '/brands/logos/elasticpath.svg',
     status: IntegrationStatus.wip,
@@ -182,7 +168,7 @@ export const integrationsList: {
     categories: [IntegrationCategory.commerce],
   },
   {
-    name: 'Swell',
+    name: CommerceIntegrationsName.swell,
     link: '',
     logo: '/brands/logos/swell.svg',
     status: IntegrationStatus.wip,
@@ -191,7 +177,7 @@ export const integrationsList: {
     categories: [IntegrationCategory.commerce],
   },
   {
-    name: 'Shopware PWA',
+    name: CommerceIntegrationsName.shopware,
     link: 'https://shopware-pwa-docs.vuestorefront.io/',
     logo: '/brands/logos/shopware.svg',
     status: IntegrationStatus.prod,
@@ -301,7 +287,7 @@ export const integrationsList: {
   },
   {
     name: 'Redis',
-    link: './redis-cache.html',
+    link: 'https://docs.vuestorefront.io/v2/integrations/redis-cache.html',
     logo: '/brands/logos/redis.svg',
     status: IntegrationStatus.prod,
     license: IntegrationLicense.os,
@@ -315,7 +301,7 @@ export const integrationsList: {
     name: 'Checkout.com',
     link: [
       {
-        name: 'commercetools',
+        name: CommerceIntegrationsName.commercetools,
         link: 'https://www.npmjs.com/package/@vue-storefront/checkout-com',
         icon: '/brands/icons/commercetools.svg',
       },
@@ -333,12 +319,12 @@ export const integrationsList: {
     name: 'Adyen',
     link: [
       {
-        name: 'commercetools',
+        name: CommerceIntegrationsName.commercetools,
         link: 'https://docs.vuestorefront.io/adyen/',
         icon: '/brands/icons/commercetools.svg',
       },
       {
-        name: 'Magento',
+        name: CommerceIntegrationsName.magento,
         link: 'https://docs.vuestorefront.io/adyen/magento2/',
         icon: '/brands/icons/magento.svg',
       },
@@ -355,7 +341,7 @@ export const integrationsList: {
     name: 'PayPal',
     link: [
       {
-        name: 'commercetools',
+        name: CommerceIntegrationsName.commercetools,
         link: 'https://docs.vuestorefront.io/paypal/commercetools',
         icon: '/brands/icons/commercetools.svg',
       },
@@ -372,7 +358,7 @@ export const integrationsList: {
     name: 'Mollie',
     link: [
       {
-        name: 'commercetools',
+        name: CommerceIntegrationsName.commercetools,
         link: 'https://docs.vuestorefront.io/mollie/commercetools',
         icon: '/brands/icons/commercetools.svg',
       },
@@ -389,7 +375,7 @@ export const integrationsList: {
     name: 'Auth0',
     link: [
       {
-        name: 'commercetools',
+        name: CommerceIntegrationsName.commercetools,
         link: 'https://docs.vuestorefront.io/auth0/',
         icon: '/brands/icons/commercetools.svg',
       },
@@ -419,7 +405,7 @@ export const integrationsList: {
     name: 'Algolia',
     link: [
       {
-        name: 'commercetools',
+        name: CommerceIntegrationsName.commercetools,
         link: 'https://docs.vuestorefront.io/algolia',
         icon: '/brands/icons/commercetools.svg',
       },
@@ -444,10 +430,3 @@ export const integrationsList: {
     categories: [IntegrationCategory.search],
   },
 ];
-
-const { filterBy } = useArrayManipulation();
-
-export const integrationsListByCategory = (categories: IntegrationCategory[]) =>
-  filterBy(integrationsList, {
-    categories,
-  });

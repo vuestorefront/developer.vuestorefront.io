@@ -62,24 +62,35 @@
 
 <script setup lang="ts">
   import { useDevTo } from '~/composables/data/dev.to/useDevTo';
-  import { integrationsListByCategory } from '~/constants/integrations';
   import { IntegrationCategory } from '~/enums/integrations';
+  import { ApiUrl } from '~/enums/apiUrl';
+  import { IntegrationList } from '~/types/integrations';
 
-  const { randomElements } = useArrayManipulation();
-
-  const commerceVendors = randomElements(
-    integrationsListByCategory([IntegrationCategory.commerce]),
-    6,
+  const { data: commerceVendors } = useAsyncData('commerce', () =>
+    $fetch<IntegrationList>(ApiUrl.Integrations, {
+      params: {
+        category: IntegrationCategory.commerce,
+        random: 6,
+      },
+    }),
   );
 
-  const cmsVendors = randomElements(
-    integrationsListByCategory([IntegrationCategory.cms]),
-    6,
+  const { data: cmsVendors } = useAsyncData('cms', () =>
+    $fetch<IntegrationList>(ApiUrl.Integrations, {
+      params: {
+        category: IntegrationCategory.cms,
+        random: 6,
+      },
+    }),
   );
 
-  const paymentVendors = randomElements(
-    integrationsListByCategory([IntegrationCategory.payment]),
-    6,
+  const { data: paymentVendors } = useAsyncData('payment', () =>
+    $fetch<IntegrationList>(ApiUrl.Integrations, {
+      params: {
+        category: IntegrationCategory.payment,
+        random: 6,
+      },
+    }),
   );
 
   const { convertPostsToProps, useBlogArticles } = useDevTo();

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="brands.length > 0" class="bg-white">
+  <div v-if="elements.length > 0" class="bg-white">
     <div class="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
       <div
         class="lg:grid lg:items-center lg:gap-8"
@@ -35,8 +35,8 @@
           }"
         >
           <AtomsBrands
-            v-for="(brand, index) in brands"
-            :key="Math.random() + index"
+            v-for="brand in elements"
+            :key="brand.key"
             v-bind="brand"
             shaped
           />
@@ -47,23 +47,15 @@
 </template>
 
 <script setup lang="ts">
+  import { IntegrationList } from '~/types/integrations';
+
   const props = withDefaults(
     defineProps<{
       direction: 'left' | 'right';
       title?: string;
       message?: string;
       allLinks?: string;
-      brands?: Array<
-        | {
-            name: string;
-            logo: string;
-            link: string;
-            type?: 'os' | 'enterprise' | 'paid' | 'custom';
-            status?: 'prod' | 'alpha' | 'beta' | 'wip';
-            color?: string;
-          }
-        | never
-      >;
+      brands?: IntegrationList;
     }>(),
     {
       direction: 'left',
