@@ -29,20 +29,36 @@
         "integrations": {
           "commerce": {
             "title": "Commerce Integrations",
-            "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit."
+            "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit.",
+            "buttonText": "View all Commerce Integrations"
           },
           "cms": {
             "title": "CMS Integrations",
-            "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit."
+            "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit.",
+            "buttonText": "View all CMS Integrations"
           },
           "payment": {
             "title": "Payment Integrations",
-            "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit."
+            "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit.",
+            "buttonText": "View all Payment Integrations"
           }
         },
         "blog": {
           "title": "Engage with us",
           "message": "Read our incredible content in our developer focus blog."
+        }
+      },
+      "documentation": {
+        "title": "Documentation",
+        "text": "Consequat potenti purus interdum pharetra consectetur sollicitudin at dis torquent, proin eu ullamcorper etiam morbi maecenas phasellus suspendisse. Varius quam cubilia urna ridiculus neque sapien etiam maximus, accumsan consectetur mollis finibus dui suscipit posuere natoque, rutrum lorem nascetur nostra parturient eu integer. Auctor per suspendisse semper natoque taciti porta pulvinar magna dictum vestibulum mollis nisi litora, vulputate pharetra erat sapien malesuada quam lacus arcu urna justo nullam.",
+        "filter": {
+          "title": "Filter by:",
+          "checkAll": "Check All",
+          "uncheckAll": "Uncheck All",
+          "categories": "Categories",
+          "compatibility": "Compatibility",
+          "status": "Status",
+          "license": "License"
         }
       }
     }
