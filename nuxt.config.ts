@@ -3,16 +3,6 @@
 import { defineNuxtConfig } from 'nuxt';
 
 export default defineNuxtConfig({
-  debug: process.env.NODE_ENV !== 'production',
-  sourcemap: process.env.NODE_ENV !== 'production',
-  runtimeConfig: {
-    githubToken: process.env.GITHUB_TOKEN,
-    devToToken: process.env.DEV_TO_TOKEN,
-  },
-  components: true,
-  experimental: {
-    reactivityTransform: true,
-  },
   head: {
     link: [
       {
@@ -21,10 +11,30 @@ export default defineNuxtConfig({
       },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
     ],
+    script: [{ src: '//js.hsforms.net/forms/v2.js', type: 'text/partytown' }],
   },
-  modules: ['@nuxtjs/tailwindcss', '@vueuse/nuxt'],
+  debug: process.env.NODE_ENV !== 'production',
+  sourcemap: process.env.NODE_ENV !== 'production',
+  runtimeConfig: {
+    githubToken: process.env.GITHUB_TOKEN,
+    devToToken: process.env.DEV_TO_TOKEN,
+  },
+  components: true,
+  modules: [
+    '@intlify/nuxt3',
+    '@nuxtjs/tailwindcss',
+    '@vueuse/nuxt',
+    '@nuxtjs/partytown',
+    'nuxt-schema-org',
+    ...(process.env.LIGHTHOUSE ? ['@unlighthouse/nuxt'] : []),
+  ],
   buildModules: ['@nuxt/content', '@nuxtjs/color-mode'],
-  css: [],
+  experimental: {
+    reactivityTransform: true,
+  },
+  schemaOrg: {
+    canonicalHost: 'https://vuestorefront.io/developer',
+  },
   tailwindcss: {
     cssPath: '@/assets/scss/main.scss',
     viewer: false,
@@ -41,5 +51,15 @@ export default defineNuxtConfig({
     highlight: {
       theme: 'material-darker',
     },
+  },
+  intlify: {
+    localeDir: 'locales',
+    vueI18n: {
+      fallbackLocale: 'en',
+      locale: 'en',
+    },
+  },
+  partytown: {
+    forward: ['hbspt'],
   },
 });

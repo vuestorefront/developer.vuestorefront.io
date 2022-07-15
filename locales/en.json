@@ -1,0 +1,76 @@
+{
+  "head": {
+    "page": {
+      "home": {
+        "title": ""
+      },
+      "documentation": {
+        "title": "Documentation"
+      },
+      "videos": {
+        "title": "Videos"
+      }
+    }
+  },
+  "content": {
+    "page": {
+      "home": {
+        "videoBanner": {
+          "title": "What is Vue Storefront",
+          "message": "Vue Storefront is enormous but straightforward at the same time. Marc Backes created this fantastic video to explain to developers, what is Vue Storefront, is and how it works.",
+          "button": "Getting started",
+          "link": "Check our other videos"
+        },
+        "discordCTA": {
+          "message": "Find help, new ideas, new projects, and much more on our Discord server.",
+          "title": "Join our Discord server",
+          "button": "Join now!"
+        },
+        "integrations": {
+          "commerce": {
+            "title": "Commerce Integrations",
+            "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit."
+          },
+          "cms": {
+            "title": "CMS Integrations",
+            "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit."
+          },
+          "payment": {
+            "title": "Payment Integrations",
+            "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit."
+          }
+        },
+        "blog": {
+          "title": "Engage with us",
+          "message": "Read our incredible content in our developer focus blog."
+        }
+      }
+    }
+  },
+  "global": {
+    "integration": {
+      "title": "{name} Integration",
+      "status": {
+        "alpha":  "Alpha",
+        "beta": "Beta",
+        "prod":  "Production",
+        "wip": "Work in progress"
+      },
+      "license": {
+        "enterprise": "Enterprise",
+        "os": "Open Source",
+        "paid":  "Paid"
+      },
+      "category": {
+        "analytics":  "Analytics",
+        "auth": "Auth",
+        "cache":  "Cache",
+        "cms": "CMS",
+        "commerce":  "Commerce",
+        "payment": "Payment",
+        "reviews":  "Reviews",
+        "search": "Search"
+      }
+    }
+  }
+}

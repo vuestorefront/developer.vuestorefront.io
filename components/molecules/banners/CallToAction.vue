@@ -5,23 +5,24 @@
   >
     <div class="w-12/12 lg:w-8/12" :class="`text-${textColor}`">
       <slot name="left">
-        <slot name="header" :header="header">
+        <slot name="title" :title="title">
           <h1 class="mb-4 text-3xl font-bold capitalize lg:text-4xl">
-            {{ header }}
+            {{ title }}
           </h1>
         </slot>
         <slot name="message" :message="message">
           <p class="mb-10 text-lg text-white">{{ message }}</p>
         </slot>
         <slot name="button" :button="{ text: buttonText, link: buttonLink }">
-          <NuxtLink v-if="buttonText && buttonLink" :to="buttonLink">
-            <AtomsButtonContent
-              :color="buttonColor"
-              :label="buttonText"
-              text-color="secondary"
-              :shadow="false"
-            />
-          </NuxtLink>
+          <AtomsButtonLink
+            v-if="buttonText && buttonLink"
+            :nuxt-link="{ to: buttonLink, target: '_blank' }"
+            :color="buttonColor"
+            :label="buttonText"
+            icon-right-name="akar-icons:link-out"
+            text-color="secondary"
+            :shadow="false"
+          />
         </slot>
       </slot>
     </div>
@@ -45,7 +46,7 @@
   // @TODO: Add support for general colors like button
   withDefaults(
     defineProps<{
-      header: string;
+      title: string;
       message: string;
       buttonText?: string;
       buttonLink?: string;

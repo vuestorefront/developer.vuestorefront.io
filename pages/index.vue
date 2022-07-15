@@ -2,49 +2,49 @@
   <AtomsLayoutContent>
     <AtomsLayoutContainer>
       <MoleculesBannersVideoBanner
-        title="What is Vue Storefront"
-        message="Vue Storefront is enormous but straightforward at the same time. Marc Backes created this fantastic video to explain to developers, what is Vue Storefront, is and how it works."
+        :title="$t('content.page.home.videoBanner.title')"
+        :message="$t('content.page.home.videoBanner.message')"
         button-link="#"
-        button-text="Getting started"
+        :button-text="$t('content.page.home.videoBanner.button')"
         video-thumb="/thumbs/video/what-is-vue-storefront.jpg"
-        thumb-button-text="Check our other videos"
+        :thumb-button-text="$t('content.page.home.videoBanner.link')"
         thumb-button-link="#"
         video-src="https://www.youtube.com/watch?v=MCN1rRwuIGs&t=1s"
       />
       <MoleculesBannersCallToAction
-        message="Find help, new ideas, new projects, and much more on our Discord server. "
+        :title="$t('content.page.home.discordCTA.title')"
         img="/brands/logos/discord.svg"
-        header="Join our Discord server"
+        :message="$t('content.page.home.discordCTA.message')"
         color="secondary"
         button-color="white"
         button-link="https://discord.gg/vuestorefront"
-        button-text="Join our Discord server"
+        :button-text="$t('content.page.home.discordCTA.button')"
         button-text-color="secondary"
       />
       <MoleculesSectionLogoClouds
         direction="left"
-        title="Commerce integrations"
-        message="Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit."
+        :title="$t('content.page.home.integrations.commerce.title')"
+        :message="$t('content.page.home.integrations.commerce.message')"
         :brands="commerceVendors"
       />
       <MoleculesSectionLogoClouds
         direction="right"
-        title="CMS integrations"
-        message="Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit."
+        :title="$t('content.page.home.integrations.cms.title')"
+        :message="$t('content.page.home.integrations.cms.message')"
         :brands="cmsVendors"
       />
       <MoleculesSectionLogoClouds
         direction="left"
-        title="Payment integrations"
-        message="Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit."
+        :title="$t('content.page.home.integrations.payment.title')"
+        :message="$t('content.page.home.integrations.payment.message')"
         :brands="paymentVendors"
       />
     </AtomsLayoutContainer>
     <AtomsLayoutFullWidthSection>
       <AtomsLayoutFullWidthContainer>
         <AtomsTextHeadingCenter
-          title="Engage with us"
-          message="Read our incredible content in our developer focus blog."
+          :title="$t('content.page.home.blog.title')"
+          :message="$t('content.page.home.blog.message')"
         />
         <OrganismsSectionBlogPosts
           :posts="postsList"

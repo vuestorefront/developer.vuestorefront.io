@@ -16,7 +16,8 @@
 .vite-ssg-dist
 .vite-ssg-temp
 .yarn/*
+.vercel
+.unlighthouse
 dist
 dist-ssr
 node_modules
-.vercel

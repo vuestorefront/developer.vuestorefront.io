@@ -1,64 +1,72 @@
 <template>
-  <h1>Documentation</h1>
-  <p class="text-gray-500">
-    Netus sem nostra pulvinar rhoncus penatibus ex tortor conubia laoreet varius
-    interdum adipiscing integer egestas condimentum, eu etiam cursus amet
-    malesuada tellus lacinia fames dis sapien primis hendrerit cubilia. Id etiam
-    placerat laoreet hac varius curabitur enim tempus elementum lobortis auctor
-    eleifend, facilisi quam lorem justo sem class aptent fames ultrices a. Proin
-    in maximus tristique taciti maecenas consequat euismod torquent facilisis
-    nostra tempus, nisi semper nunc consectetur vestibulum mus tempor sagittis
-    donec dictumst laoreet, sit sapien diam scelerisque ultricies potenti montes
-    tellus dictum ullamcorper.
-  </p>
-  <div class="my-8 grid grid-cols-1 gap-8 md:grid-cols-3">
-    <MoleculesCardDocs
-      description="Vivamus ullamcorper integer egestas condimentum sociosqu id risus mi phasellus, habitasse pretium eget fringilla suscipit nunc nascetur."
-      documentation="https://docs.vuestorefront.io/v2/"
-      img="/brands/icons/vsf.svg"
-      name="Vue Storefront"
-    />
-    <MoleculesCardDocs
-      description="Vivamus ullamcorper integer egestas condimentum sociosqu id risus mi phasellus, habitasse pretium eget fringilla suscipit nunc nascetur."
-      documentation="https://docs.storefrontui.io/?path=/story/welcome--page"
-      img="/brands/icons/sfui.svg"
-      name="Storefront UI"
-    />
-  </div>
-  <template v-for="integrations in integrationsList">
-    <div
-      v-if="Array.isArray(integrations.list) && integrations.list.length > 0"
-      :key="integrations.title"
-    >
-      <h2>{{ integrations.title }}</h2>
-      <p class="text-gray-500">
-        {{ integrations.description }}
-      </p>
-      <div class="my-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <MoleculesCardDocs
-          v-for="(integration, index) in integrations.list"
-          :key="integration.name + index"
-          :documentation="integration.link"
-          :img="integration.logo"
-          :name="integration.name"
-          :status="integration.status"
-          :license="integration.license"
-          :maintainers="integration.maintainedBy"
-        />
+  <section id="documentation">
+    <h1>Documentation</h1>
+    <p class="text-gray-500">
+      Netus sem nostra pulvinar rhoncus penatibus ex tortor conubia laoreet
+      varius interdum adipiscing integer egestas condimentum, eu etiam cursus
+      amet malesuada tellus lacinia fames dis sapien primis hendrerit cubilia.
+      Id etiam placerat laoreet hac varius curabitur enim tempus elementum
+      lobortis auctor eleifend, facilisi quam lorem justo sem class aptent fames
+      ultrices a. Proin in maximus tristique taciti maecenas consequat euismod
+      torquent facilisis nostra tempus, nisi semper nunc consectetur vestibulum
+      mus tempor sagittis donec dictumst laoreet, sit sapien diam scelerisque
+      ultricies potenti montes tellus dictum ullamcorper.
+    </p>
+    <div class="my-8 grid grid-cols-1 gap-8 md:grid-cols-3">
+      <MoleculesCardDocs
+        description="Vivamus ullamcorper integer egestas condimentum sociosqu id risus mi phasellus, habitasse pretium eget fringilla suscipit nunc nascetur."
+        documentation="https://docs.vuestorefront.io/v2/"
+        img="/brands/icons/vsf.svg"
+        name="Vue Storefront"
+      />
+      <MoleculesCardDocs
+        description="Vivamus ullamcorper integer egestas condimentum sociosqu id risus mi phasellus, habitasse pretium eget fringilla suscipit nunc nascetur."
+        documentation="https://docs.storefrontui.io/?path=/story/welcome--page"
+        img="/brands/icons/sfui.svg"
+        name="Storefront UI"
+      />
+    </div>
+    <template v-for="integrations in integrationsList">
+      <div
+        v-if="Array.isArray(integrations.list) && integrations.list.length > 0"
+        :key="integrations.title"
+      >
+        <h2>{{ integrations.title }}</h2>
+        <p class="text-gray-500">
+          {{ integrations.description }}
+        </p>
+        <div class="my-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <MoleculesCardDocs
+            v-for="(integration, index) in integrations.list"
+            :key="integration.name + index"
+            :documentation="integration.link"
+            :img="integration.logo"
+            :name="integration.name"
+            :status="integration.status"
+            :license="integration.license"
+            :maintainers="integration.maintainedBy"
+          />
+        </div>
       </div>
-    </div>
-  </template>
-  <Teleport to="#layout-sidebar">
-    <h3 class="mb-10 text-lg font-medium text-gray-500">Filter by:</h3>
-    <div v-for="(key, index) in Object.keys(filters)" :key="index">
-      <h4 class="mb-3 mt-2 text-lg text-gray-900">{{ key }}</h4>
-      <ul>
-        <li v-for="(name, i) in Object.keys(filters[key])" :key="i">
-          <input v-model="filters[key][name]" type="checkbox" /> {{ name }}
-        </li>
-      </ul>
-    </div>
-  </Teleport>
+    </template>
+    <Teleport to="#layout-sidebar">
+      <h3 class="mb-5 text-lg font-medium text-gray-500">Filter by:</h3>
+      <div v-for="(key, index) in Object.keys(filters)" :key="index">
+        <h4 class="mb-3 mt-2 text-lg font-medium text-gray-900">{{ key }}</h4>
+        <div class="space-y-3 pl-2">
+          <span
+            class="text-primary hover:text-primary-700 cursor-pointer text-sm hover:underline"
+            @click="toggleAll(key)"
+          >{{ toggleAllStatus[key] ? 'Uncheck all' : 'Check all' }}</span>
+          <ul class="space-y-1">
+            <li v-for="(name, i) in Object.keys(filters[key])" :key="i">
+              <input v-model="filters[key][name]" type="checkbox" /> {{ name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </Teleport>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -115,8 +123,21 @@
       [IntegrationLicense.os]: true,
     },
   });
+  const toggleAllStatus = ref(
+    Object.fromEntries(Object.keys(filters.value).map((c) => [c, true])),
+  );
+
+  const toggleAll = (key: string) => {
+    Object.keys(filters.value[key]).forEach((k) => {
+      filters.value[key][k] = !toggleAllStatus.value[key];
+    });
+
+    toggleAllStatus.value[key] = !toggleAllStatus.value[key];
+  };
 
   const isEverythingChecked = (obj: Record<any, unknown>, key: any) => {
+    if (Object.values(obj[key]).filter(Boolean).length === 0) return '';
+
     return Object.keys(obj[key]).length ===
       Object.values(obj[key]).filter(Boolean).length
       ? 'all'

@@ -1,9 +1,0 @@
-{
-  components: {
-    list: {
-      contributors: {
-        title: 'Contributors to this page'
-      }
-    }
-  }
-}

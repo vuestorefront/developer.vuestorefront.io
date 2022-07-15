@@ -76,7 +76,7 @@
       component: iconRender({
         cssClass: textClass.value || 'button-text',
         iconName: props?.iconName || props?.iconLeftName || '',
-        render: !!props.iconLeftName || props.icon === 'left' || !!slots.left,
+        render: !!props.iconLeftName || props.icon === 'left' || !slots.left,
       }),
       slots,
       slotProps: props.iconName || props.iconLeftName,
@@ -88,8 +88,7 @@
       component: iconRender({
         cssClass: textClass.value || 'button-text',
         iconName: props?.iconName || props?.iconRightName || '',
-        render:
-          !!props.iconRightName || props.icon === 'right' || !!slots.right,
+        render: !!props.iconRightName || props.icon === 'right' || !slots.right,
       }),
       slots,
       slotProps: props.iconName || props.iconRightName,
