@@ -14,7 +14,11 @@
           <Suspense>
             <AtomsIcon name="carbon:search" class="text-3xl" />
           </Suspense>
-          <AtomsButtonGitHubStars class="hidden md:inline-block" />
+          <AtomsButtonGitHubStars
+            class="hidden md:inline-block"
+            size="large"
+            repository="vuestorefront/vue-storefront"
+          />
           <button
             data-collapse-toggle="header-menu"
             type="button"

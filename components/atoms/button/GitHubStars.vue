@@ -1,10 +1,10 @@
 <template>
   <GithubButton
-    href="https://github.com/vuestorefront/vue-storefront"
+    :aria-label="`Star ${repository} on GitHub`"
+    :data-size="size || 'large'"
+    :href="`https://github.com/${repository}`"
     data-color-scheme="no-preference: light; light: light; dark: light;"
-    data-size="large"
     data-show-count="true"
-    aria-label="Star vuestorefront/vue-storefront on GitHub"
   >
     Star
   </GithubButton>
@@ -14,4 +14,9 @@
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   import GithubButton from 'vue-github-button';
+
+  defineProps<{
+    repository: string;
+    size?: string;
+  }>();
 </script>

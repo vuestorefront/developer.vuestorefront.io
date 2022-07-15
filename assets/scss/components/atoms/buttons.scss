@@ -7,7 +7,7 @@
     @apply border
     border-transparent
     focus:outline
-    focus:outline-2
+    focus:outline-offset-0
     font-medium
     hover:no-underline
     inline-flex
@@ -354,9 +354,7 @@
         @apply p-2.5;
       }
 
-      &--left svg,
-      img,
-      picture {
+      &--left {
         @apply
         w-5
         h-5
@@ -364,9 +362,7 @@
         -ml-1;
       }
 
-      &--right svg,
-      img,
-      picture {
+      &--right {
         @apply
         w-5
         h-5

@@ -99,12 +99,6 @@ export const useCssClass = ({
 
     if (props.iconOnly) base += cssClasses?.icon?.iconOnly || '';
 
-    if (props.icon === 'right')
-      base += `${base} ${cssClasses?.icon?.right || ''} `;
-
-    if (props.icon === 'left')
-      base += `${base} ${cssClasses?.icon?.left || ''} `;
-
     return base;
   });
 

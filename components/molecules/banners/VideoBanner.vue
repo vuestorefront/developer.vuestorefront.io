@@ -15,13 +15,15 @@
 
         <div class="video-banner-content--buttons text">
           <slot name="button" :button="{ text: buttonText, link: buttonLink }">
-            <NuxtLink v-if="buttonText && buttonLink" :to="buttonLink">
-              <AtomsButtonContent
-                :color="buttonColor"
-                :label="buttonText"
-                shadow
-              />
-            </NuxtLink>
+            <AtomsButton
+              v-if="buttonText && buttonLink"
+              :to="{ to: buttonLink, target: '_blank' }"
+              :color="buttonColor"
+              :label="buttonText"
+              icon-right-name="akar-icons:link-out"
+              text-color="secondary"
+              :shadow="false"
+            />
           </slot>
         </div>
       </div>
@@ -40,7 +42,7 @@
         </div>
       </div>
     </slot>
-    <MoleculesVideoModal
+    <MoleculesModalVideo
       :open="isOpen"
       :src="videoSrc"
       @close="isOpen = false"

@@ -19,16 +19,10 @@
           {{ error }}
       </pre>
       <div class="flex flex-row gap-4">
-        <NuxtLink>
-          <AtomsButtonContent color="primary" shadow>
-            Go Back
-          </AtomsButtonContent>
-        </NuxtLink>
-        <NuxtLink to="/">
-          <AtomsButtonContent color="white" shadow>
-            Go to Home
-          </AtomsButtonContent>
-        </NuxtLink>
+        <AtomsButton color="primary" shadow @click="() => $router.go(-1)">
+          Go Back
+        </AtomsButton>
+        <AtomsButton to="/" color="white" shadow> Go to Home </AtomsButton>
       </div>
     </div>
     <div>

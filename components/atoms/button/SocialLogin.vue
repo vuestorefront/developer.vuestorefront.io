@@ -4,9 +4,11 @@
 
 <script setup lang="ts">
   import { socialButtonClasses } from '~/constants/css/atoms/button';
-  import ButtonContent from '~/components/atoms/button/Content.vue';
+  import Button from '~/components/atoms/button/Button.vue';
+  import { buttonProps } from './commons/buttonProps';
 
   const props = defineProps({
+    ...buttonProps,
     type: {
       type: String,
       required: true,
@@ -17,18 +19,11 @@
 
   const attrs = useAttrs();
   const ComponentRender = () =>
-    h(
-      'a',
-      {
-        ...attrs,
-      },
-      [
-        h(ButtonContent, {
-          class: `${socialButtonClasses[props.type].class}`,
-          icon: 'left',
-          iconName: socialButtonClasses[props.type].icon,
-          label: socialButtonClasses[props.type].label,
-        }),
-      ],
-    );
+    h(Button, {
+      class: `${socialButtonClasses[props.type].class}`,
+      icon: 'left',
+      iconName: socialButtonClasses[props.type].icon,
+      label: socialButtonClasses[props.type].label,
+      ...attrs,
+    });
 </script>

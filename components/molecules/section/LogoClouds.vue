@@ -16,13 +16,13 @@
             {{ message }}
           </p>
           <div class="mt-8 sm:flex">
-            <NuxtLink :to="allLinks">
-              <AtomsButtonContent
-                shadow
-                color="primary"
-                label="View all Vendor Integrations"
-              />
-            </NuxtLink>
+            <AtomsButtonContent
+              shadow
+              color="primary"
+              :label="buttonText"
+              :to="buttonLink"
+              target="_blank"
+            />
           </div>
         </div>
         <div
@@ -55,14 +55,16 @@
       direction: 'left' | 'right';
       title?: string;
       message?: string;
-      allLinks?: string;
+      buttonText?: string;
+      buttonLink?: string;
       brands?: IntegrationList;
     }>(),
     {
       direction: 'left',
       title: '',
       message: '',
-      allLinks: '',
+      buttonText: '',
+      buttonLink: '',
       brands: () => [],
     },
   );

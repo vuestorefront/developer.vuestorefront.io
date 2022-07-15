@@ -35,14 +35,20 @@
     </slot>
     <slot name="footer">
       <div class="docs-card-footer docs-card-footer--buttons">
-        <AtomsButtonLink
+        <AtomsButton
           color="white"
           icon="left"
           icon-name="carbon:document"
           size="sm"
           outline
           label="Documentation"
-          v-bind="buttonProps"
+          :to="
+            typeof props.documentation === 'object'
+              ? props.documentation.link
+              : props.documentation
+          "
+          target="_blank"
+          :disabled="props.documentation?.disabled || !props.documentation"
         />
       </div>
     </slot>
@@ -75,13 +81,4 @@
     description?: string;
     name: string;
   }>();
-
-  const buttonProps = computed(() => ({
-    to:
-      typeof props.documentation === 'object'
-        ? props.documentation.link
-        : props.documentation,
-    target: '_blank',
-    disabled: props.documentation?.disabled || !props.documentation,
-  }));
 </script>

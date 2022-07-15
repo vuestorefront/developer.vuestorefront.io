@@ -14,9 +14,9 @@
           <p class="mb-10 text-lg text-white">{{ message }}</p>
         </slot>
         <slot name="button" :button="{ text: buttonText, link: buttonLink }">
-          <AtomsButtonLink
+          <AtomsButton
             v-if="buttonText && buttonLink"
-            :nuxt-link="{ to: buttonLink, target: '_blank' }"
+            :to="{ to: buttonLink, target: '_blank' }"
             :color="buttonColor"
             :label="buttonText"
             icon-right-name="akar-icons:link-out"

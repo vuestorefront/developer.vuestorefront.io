@@ -5,30 +5,11 @@
 <script setup lang="ts">
   import { buttonCssClasses } from '~/constants/css/atoms/button';
   import { baseColors } from '~/constants/css/base/color';
-  import ColorProps from '~/constants/props/color';
-  import CounterProps from '~/constants/props/counter';
-  import DisabledProps from '~/constants/props/disabled';
-  import IconProps from '~/constants/props/icon';
-  import LabelProps from '~/constants/props/label';
-  import OutlineProps from '~/constants/props/outline';
-  import RoundedProps from '~/constants/props/rounded';
-  import ShadowProps from '~/constants/props/shadow';
-  import SizeProps from '~/constants/props/size';
-  import SquareProps from '~/constants/props/square';
+  import { buttonProps } from './commons/buttonProps';
 
-  const props = defineProps({
-    ...ColorProps,
-    ...CounterProps,
-    ...DisabledProps,
-    ...IconProps,
-    ...LabelProps,
-    ...OutlineProps,
-    ...RoundedProps,
-    ...ShadowProps,
-    ...SizeProps,
-    ...SquareProps,
-  });
+  const props = defineProps(buttonProps);
   const slots = useSlots();
+  const attrs = useAttrs();
 
   const {
     baseClass,
@@ -120,22 +101,57 @@
   };
 
   const ComponentRender = () => {
+    const {
+      tagProps,
+      tag,
+      to,
+      href,
+      target,
+      rel,
+      noRel,
+      activeClass,
+      exactActiveClass,
+      replace,
+      ariaCurrentValue,
+      external,
+      custom,
+      ...bindProps
+    } = props;
     return h(
-      'div',
+      to || href ? defineNuxtLink({}) : tag,
       {
-        class: cssClass.value,
+        ...(to || href
+          ? {
+              to,
+              href,
+              target,
+              rel,
+              noRel,
+              activeClass,
+              exactActiveClass,
+              replace,
+              ariaCurrentValue,
+              external,
+              custom,
+            }
+          : {}),
+        ...tagProps,
+        ...attrs,
+        class: [cssClass.value, attrs?.class || ''],
       },
-      [
-        slotLeft(),
-        slotIconOnly(),
-        slotDefault(),
-        counterRender({
-          cssClass: 'counter-label',
-          counter: Number(props.counter),
-          render: !!props.counter,
-        }),
-        slotRight(),
-      ],
+      {
+        default: () => [
+          slotLeft(),
+          slotIconOnly(),
+          slotDefault(),
+          counterRender({
+            cssClass: 'counter-label',
+            counter: Number(props.counter),
+            render: !!props.counter,
+          }),
+          slotRight(),
+        ],
+      },
     );
   };
 </script>
