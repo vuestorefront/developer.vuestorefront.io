@@ -1,4 +1,4 @@
-import { GitTree } from '~/server/utils/github/type';
+import { GitTree } from '~/poc/server/utils/github/type';
 import { gitHubFetch } from './utils/gitHubFetch';
 
 export default (GITHUB_TOKEN: string) => {

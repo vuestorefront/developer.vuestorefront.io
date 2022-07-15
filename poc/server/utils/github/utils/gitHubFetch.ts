@@ -1,5 +1,5 @@
 import { $fetch } from 'ohmyfetch';
-import { sanitizeRepo } from '~/server/utils/github/utils/sanitize';
+import { sanitizeRepo } from '~/poc/server/utils/github/utils/sanitize';
 
 export const gitHubFetch = async <T, K = 'json'>(
   GITHUB_TOKEN: string,

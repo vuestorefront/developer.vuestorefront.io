@@ -2,7 +2,7 @@ import createFetchRepo from './fetchRepoData';
 import createFetchFile from './fetchFileContent';
 import createFetchTree from './fetchTree';
 
-export { gitHubFetch } from '~/server/utils/github/utils/gitHubFetch';
+export { gitHubFetch } from '~/poc/server/utils/github/utils/gitHubFetch';
 
 const fetchRepoData = (GITHUB_TOKEN: string) => createFetchRepo(GITHUB_TOKEN);
 

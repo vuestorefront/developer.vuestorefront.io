@@ -1,5 +1,5 @@
-import { GitHubRepositoryInformation } from '~/server/utils/github/type';
-import { sanitizeJsonResponse } from '~/server/utils/github/utils/sanitize';
+import { GitHubRepositoryInformation } from '~/poc/server/utils/github/type';
+import { sanitizeJsonResponse } from '~/poc/server/utils/github/utils/sanitize';
 import { gitHubFetch } from './utils/gitHubFetch';
 
 export default (GITHUB_TOKEN: string) => {

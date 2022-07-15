@@ -1,6 +1,6 @@
 import { parse } from 'regexparam';
 import isEmpty from 'lodash/isEmpty';
-import { gitHubFetch } from '~/server/utils/github/utils/gitHubFetch';
+import { gitHubFetch } from '~/poc/server/utils/github/utils/gitHubFetch';
 import { parseContent } from '#content/server';
 
 const githubBlobUrl = parse('blob/:ref/*');

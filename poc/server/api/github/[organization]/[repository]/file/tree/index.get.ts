@@ -1,4 +1,4 @@
-import { fetchTree } from '~/server/utils/github';
+import { fetchTree } from '~/poc/server/utils/github';
 import { useRuntimeConfig } from '#imports';
 
 export default defineEventHandler(async (event) => {

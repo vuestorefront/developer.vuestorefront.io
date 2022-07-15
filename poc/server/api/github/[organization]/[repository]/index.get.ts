@@ -1,4 +1,4 @@
-import { fetchRepoData, fetchFileContent } from '~/server/utils/github';
+import { fetchRepoData, fetchFileContent } from '~/poc/server/utils/github';
 import { useRuntimeConfig } from '#imports';
 
 export default defineEventHandler(async (event) => {
