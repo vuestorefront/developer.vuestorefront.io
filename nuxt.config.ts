@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     '@intlify/nuxt3',
     '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
-    '@nuxtjs/partytown',
+    // '@nuxtjs/partytown',
     'nuxt-schema-org',
     ...(process.env.LIGHTHOUSE ? ['@unlighthouse/nuxt'] : []),
   ],

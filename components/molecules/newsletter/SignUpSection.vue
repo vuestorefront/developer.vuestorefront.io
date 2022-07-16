@@ -13,37 +13,7 @@
       </p>
     </div>
     <div class="mt-8 lg:mt-0 lg:ml-8">
-      <form class="space-y-2 space-x-2 sm:flex">
-        <label for="first-name" class="sr-only">Email address</label>
-        <input
-          id="first-name"
-          name="first-name"
-          type="text"
-          autocomplete="name"
-          required
-          class="w-full rounded-md border border-gray-300 px-5 py-3 placeholder-gray-300 focus:border-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 sm:max-w-xs"
-          placeholder="Enter your first name"
-        />
-        <label for="email-address" class="sr-only">Email address</label>
-        <input
-          id="email-address"
-          name="email-address"
-          type="email"
-          autocomplete="email"
-          required
-          class="w-full rounded-md border border-gray-300 px-5 py-3 placeholder-gray-300 focus:border-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 sm:max-w-xs"
-          placeholder="Enter your email"
-        />
-        <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-          <AtomsButton color="primary" label="Subscribe" type="submit" shadow />
-        </div>
-      </form>
-      <p class="mt-3 text-sm text-gray-300">
-        We care about the protection of your data. Read our
-        <NuxtLink href="#" class="text-sm text-gray-400 underline">
-          Privacy Policy.
-        </NuxtLink>
-      </p>
+      <form id="newsletter-form" />
     </div>
   </div>
 </template>
@@ -56,6 +26,7 @@
 
     if (hbspt) {
       hbspt.forms.create({
+        target: '#newsletter-form',
         region: 'na1',
         portalId: '8443671',
         formId: '1355cce5-1417-4409-bb75-8a9f5081230d',
