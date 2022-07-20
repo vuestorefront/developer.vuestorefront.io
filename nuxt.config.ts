@@ -27,7 +27,7 @@ export default defineNuxtConfig({
     'nuxt-schema-org',
     ...(process.env.LIGHTHOUSE ? ['@unlighthouse/nuxt'] : []),
   ],
-  buildModules: ['@pinia/nuxt', '@nuxt/content', '@nuxtjs/color-mode'],
+  buildModules: ['@pinia/nuxt', '@nuxt/content'],
   experimental: {
     reactivityTransform: true,
     viteNode: false,
@@ -41,6 +41,7 @@ export default defineNuxtConfig({
     injectPosition: 0,
   },
   content: {
+    watch: true,
     markdown: {
       mdc: true,
       toc: {
@@ -49,6 +50,7 @@ export default defineNuxtConfig({
       },
     },
     highlight: {
+      preload: ['json', 'js', 'ts', 'html', 'css', 'vue'],
       theme: 'material-darker',
     },
   },

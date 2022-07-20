@@ -19,7 +19,7 @@
     }
 
     code {
-      @apply flex flex-col;
+      @apply flex flex-col border-0 bg-transparent p-0 text-base;
     }
 
     &.line-counter {

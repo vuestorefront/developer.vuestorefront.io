@@ -9,32 +9,32 @@
 
   .content > h1:not([class]),
   .content > :not(.embed) h1:not([class]) {
-    @apply font-extrabold mb-10 text-3xl lg:text-6xl mt-4;
+    @apply font-extrabold mb-10 text-3xl lg:text-4xl mt-4;
   }
 
   .content > h2:not([class]),
   .content > :not(.embed) h2:not([class]) {
-    @apply font-extrabold mb-6 text-xl lg:text-4xl mt-4;
+    @apply font-extrabold mb-6 text-xl lg:text-3xl mt-4;
   }
 
   .content > h3:not([class]),
   .content > :not(.embed) h3:not([class]) {
-    @apply font-semibold mb-6 text-xl mt-6;
+    @apply font-semibold mb-6 text-2xl mt-6;
   }
 
   .content > h4:not([class]),
   .content > :not(.embed) h4:not([class]) {
-    @apply text-lg my-6;
+    @apply text-xl my-6;
   }
 
   .content > h5:not([class]),
   .content > :not(.embed) h5:not([class]) {
-    @apply text-base my-6;
+    @apply text-lg my-6;
   }
 
   .content > h6:not([class]),
   .content > :not(.embed) h6:not([class]) {
-    @apply text-sm my-6;
+    @apply text-lg my-6;
   }
 
   .content > p:not([class]),

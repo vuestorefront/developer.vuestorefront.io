@@ -1,8 +1,11 @@
 <template>
   <AtomsLayoutContent>
     <AtomsLayoutContainer>
-      <h1 class="text-6xl font-bold">
-        <AtomsTextFirstColoredWord text="All Videos" />
+      <h1 class="text-4xl font-bold">
+        <AtomsTextFirstColoredWord
+          first-part="Videos by"
+          :second-part="params.author"
+        />
       </h1>
       <div
         class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
@@ -31,8 +34,10 @@
   definePageMeta({
     layout: 'video',
   });
+  const { path, params } = useRoute();
 
   const videos = await queryContent('videos')
+    .where({ author: params.author })
     .sort({ publishedAt: 1 })
     .limit(12)
     .find();

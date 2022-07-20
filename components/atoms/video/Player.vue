@@ -76,7 +76,8 @@
       name: 'youtube',
       src: `https://www.youtube-nocookie.com/embed/${match[1]}?autoplay=1`,
       poster:
-        props.poster || `https://i3.ytimg.com/vi/${match[1]}/hqdefault.jpg`,
+        props.poster ||
+        `https://img.youtube.com/vi/${match[1]}/maxresdefault.jpg`,
     };
   }
 

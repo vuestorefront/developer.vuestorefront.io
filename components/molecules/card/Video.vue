@@ -1,8 +1,10 @@
 <template>
-  <div class="hover:shadow-base flex flex-col overflow-hidden rounded-3xl">
-    <slot name="image" v-bind="{ image, link, title }">
+  <div
+    class="flex flex-col overflow-hidden rounded-3xl border border-gray-100 hover:shadow-xl"
+  >
+    <slot name="image">
       <NuxtLink class="flex-shrink-0" :to="link">
-        <AtomsThumbVideo class="h-48 w-full object-cover" :image="image" />
+        <AtomsThumbVideo class="w-full object-cover" :image="poster" />
       </NuxtLink>
     </slot>
     <div class="flex flex-1 flex-col justify-between bg-white p-2">
@@ -17,15 +19,14 @@
         <slot name="author" :author="author">
           <NuxtLink :to="author.link" class="cursor-pointer">
             <div class="mt-6 flex items-center">
-              <div class="flex-shrink-0">
-                <span class="sr-only">{{ author.name }}</span>
+              <div v-if="author.avatar" class="mr-3 flex-shrink-0">
                 <AtomsAvatarDiamondShape
                   :img="author.avatar"
                   width="3rem"
                   height="3rem"
                 />
               </div>
-              <div class="ml-3">
+              <div>
                 <p class="text-base text-gray-900">
                   {{ author.name }}
                 </p>
@@ -51,8 +52,8 @@
       name: string;
       avatar: string;
     };
-    date: Date | number;
-    image: string;
+    date: Date | number | string;
+    video: string;
     link: string;
     title: string;
   }>();
@@ -68,4 +69,10 @@
       },
     }),
   );
+
+  const poster = computed(() => {
+    const match = props.video.match(/\?v=([^&]*)/);
+
+    return `https://img.youtube.com/vi/${match[1]}/maxresdefault.jpg`;
+  });
 </script>

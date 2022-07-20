@@ -8,7 +8,7 @@
 <script setup lang="ts">
   const props = withDefaults(
     defineProps<{
-      text: string;
+      text?: string;
       firstPart?: string;
       secondPart?: string;
       cssClass?: {

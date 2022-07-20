@@ -21,33 +21,8 @@ export const headerMenuItems: HeaderMenu[] = [
   },
   {
     label: 'Videos',
-    subMenu: [
-      {
-        label: 'Home',
-        iconName: 'carbon:home',
-      },
-      {
-        label: 'Home',
-        iconName: 'carbon:home',
-      },
-      {
-        label: 'Home',
-        iconName: 'carbon:home',
-        subMenu: [
-          {
-            label: 'Home',
-            iconName: 'carbon:home',
-          },
-          {
-            label: 'Home',
-            iconName: 'carbon:home',
-          },
-          {
-            label: 'Home',
-            iconName: 'carbon:home',
-          },
-        ],
-      },
-    ],
+    link: {
+      name: 'videos-all',
+    },
   },
 ];

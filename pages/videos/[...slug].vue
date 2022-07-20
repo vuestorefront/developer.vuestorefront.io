@@ -2,27 +2,81 @@
   <AtomsLayoutContent>
     <AtomsLayoutContainer>
       <h1 class="text-4xl font-bold">
-        <AtomsTextFirstColoredWord :text="data.title" />
+        <AtomsTextFirstColoredWord :text="contentQuery.title" />
       </h1>
-      <MoleculesVideo :video-id="data.videoId" height="625" />
-      <ContentDoc />
+      <div class="flex w-full items-center justify-center">
+        <AtomsVideoPlayer
+          :src="contentQuery.video"
+          :width="playerSizes.width"
+          :height="playerSizes.height"
+        />
+      </div>
+      <ContentDoc>
+        <template #empty>
+          <p>{{ contentQuery.description }}</p>
+          <NuxtLink
+            :to="{
+              name: 'videos-author',
+              params: { author: contentQuery.author },
+            }"
+            class="cursor-pointer"
+          >
+            <div class="mt-6 flex items-center">
+              <div v-if="contentQuery.avatar" class="mr-3 flex-shrink-0">
+                <AtomsAvatarDiamondShape
+                  :img="contentQuery.avatar"
+                  width="3rem"
+                  height="3rem"
+                />
+              </div>
+              <div>
+                <p class="text-base text-gray-900">
+                  {{ contentQuery.author }}
+                </p>
+                <div class="flex space-x-1 text-sm text-gray-500">
+                  <time :datetime="textDate">
+                    {{ textDate }}
+                  </time>
+                </div>
+              </div>
+            </div>
+          </NuxtLink>
+        </template>
+      </ContentDoc>
     </AtomsLayoutContainer>
   </AtomsLayoutContent>
 </template>
 
 <script setup lang="ts">
+  import { formatDate } from '~/utils/date';
+
   definePageMeta({
     layout: 'video',
   });
   const { path, params } = useRoute();
 
-  const { data } = await useAsyncData('video', () =>
-    queryContent(path).findOne(),
+  const playerSizes = ref({
+    height: 560,
+    width: 1000,
+  });
+
+  const contentQuery = await queryContent(path).findOne();
+
+  const textDate = computed(() =>
+    formatDate({
+      date: new Date(contentQuery.publishedAt || ''),
+      options: {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      },
+    }),
   );
 
   useHead({
-    title: data.value.title,
+    title: contentQuery.title,
     charset: 'utf-8',
-    meta: [{ name: 'description', content: data.value.description }],
+    meta: [{ name: 'description', content: contentQuery.description }],
   });
 </script>
