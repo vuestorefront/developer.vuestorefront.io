@@ -12,8 +12,8 @@
       firstPart?: string;
       secondPart?: string;
       cssClass?: {
-        firstPart: string | string[] | Record<string, any>;
-        secondPart: string | string[] | Record<string, any>;
+        firstPart: string | string[] | Record<string, string | number>;
+        secondPart: string | string[] | Record<string, string | number>;
       };
     }>(),
     { text: '' },

@@ -16,7 +16,7 @@
 <script setup lang="ts">
   import Clipboard from 'clipboard';
 
-  const copy = ref();
+  const copy = ref<string | Element | NodeListOf<Element>>('');
 
   const state = ref('init');
 

@@ -27,7 +27,7 @@
     <DisclosurePanel class="pt-3">
       <button
         class="text-primary hover:text-primary-700 mb-4 text-sm hover:underline"
-        @click="toggleAll(key)"
+        @click="store.toggleAll(key)"
       >
         {{
           toggleAllStatus[key]
@@ -74,6 +74,7 @@
   import { storeToRefs } from 'pinia';
 
   const { t } = useI18n();
-  const { filters, toggleAllStatus } = storeToRefs(useIntegrationsList());
-  const { toggleAll } = useIntegrationsList();
+  const store = useIntegrationsList();
+
+  const { filters, toggleAllStatus } = storeToRefs(store);
 </script>

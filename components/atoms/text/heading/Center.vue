@@ -1,9 +1,9 @@
 <template>
-  <div class="flex items-center justify-center flex-col text-center">
+  <div class="flex flex-col items-center justify-center text-center">
     <slot name="title">
       <h3
         v-if="title"
-        class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl"
+        class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl"
       >
         {{ title }}
       </h3>
@@ -11,7 +11,7 @@
     <slot name="message">
       <p
         v-if="message"
-        class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4"
+        class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4"
       >
         {{ message }}
       </p>

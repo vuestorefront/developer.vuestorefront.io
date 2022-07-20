@@ -26,6 +26,9 @@
     ...SelectedProps,
     ...TagProps,
   });
+
+  defineEmits(['click', 'mouseover']);
+
   const attrs = useAttrs();
   const slots = useSlots();
   const {

@@ -91,12 +91,22 @@
       okButton?: Partial<{
         label: string;
         color: ColorsEnum;
-        callback: Function;
+        callback: (
+          e: Event,
+        ) =>
+          | Promise<undefined | Record<string, unknown>>
+          | undefined
+          | Record<string, unknown>;
       }>;
       cancelButton?: Partial<{
         label: string;
         color: ColorsEnum;
-        callback: Function;
+        callback: (
+          e: Event,
+        ) =>
+          | Promise<undefined | Record<string, unknown>>
+          | undefined
+          | Record<string, unknown>;
       }>;
     }>(),
     {
@@ -117,29 +127,33 @@
 
   const emit = defineEmits(['close']);
   const modal = ref(null);
-  const closeModal = (e: Event) => {
-    if (props.open) emit('close', e);
+  const closeModal = () => {
+    if (props.open) emit('close');
   };
 
-  const onOk = (e: Event) => {
-    props.okButton?.callback(e);
-    closeModal(e);
+  const onOk = async (e: Event) => {
+    if (props.okButton?.callback) {
+      await props.okButton.callback(e);
+    }
+    closeModal();
   };
 
-  const onCancel = (e: Event) => {
-    props.okButton?.callback(e);
-    closeModal(e);
+  const onCancel = async (e: Event) => {
+    if (props.cancelButton?.callback) {
+      await props.cancelButton.callback(e);
+    }
+    closeModal();
   };
 
   onKeyStroke(
     'Escape',
     (e: Event) => {
-      closeModal(e);
+      closeModal();
     },
     { eventName: 'keyup' },
   );
 
-  onClickOutside(modal, (e: Event) => {
-    closeModal(e);
+  onClickOutside(modal, () => {
+    closeModal();
   });
 </script>

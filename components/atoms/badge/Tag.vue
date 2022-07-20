@@ -3,8 +3,8 @@
     class="inline-flex items-center text-sm"
     :class="`bg-${colors.bg} border-${colors.border} text-${colors.text} ${
       iconOnly
-        ? 'font-bold items-center p-1.5 rounded-full'
-        : 'px-2.5 py-0.5 rounded-xl font-medium '
+        ? 'items-center rounded-full p-1.5 font-bold'
+        : 'rounded-xl px-2.5 py-0.5 font-medium '
     }`"
   >
     <slot

@@ -11,7 +11,7 @@
 
   /* Link with code snippet (NOT in headings) */
   :not(h1, h2, h3, h4) > a code {
-    @apply pointer-events-none border-primary-200 bg-primary-50 text-primary-500;
+    @apply border-primary-200 bg-primary-50 text-primary-500 pointer-events-none;
   }
 
   tbody code {

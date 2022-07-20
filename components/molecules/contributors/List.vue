@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="text-gray dark:text-white font-lg mb-2">
+    <p class="text-gray font-lg mb-2 dark:text-white">
       Contributors to this page:
     </p>
     <div class="flex flex-row gap-4">

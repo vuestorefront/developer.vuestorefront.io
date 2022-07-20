@@ -5,7 +5,7 @@
       :key="index"
       class="flex items-center space-x-2"
     >
-      <AtomsIcon :name="icon" class="flex-shrink-0 w-6 h-6 text-emerald-500" />
+      <AtomsIcon :name="icon" class="h-6 w-6 flex-shrink-0 text-emerald-500" />
       <span><Markdown :use="() => item" unwrap="li" /></span>
     </li>
   </ul>

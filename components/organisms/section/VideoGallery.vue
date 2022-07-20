@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-lg mx-auto grid gap-10 lg:grid-cols-4 lg:max-w-none">
+  <div class="mx-auto grid max-w-lg gap-10 lg:max-w-none lg:grid-cols-4">
     <MoleculesCardVideo v-for="post in posts" :key="post.title" v-bind="post" />
   </div>
 </template>
