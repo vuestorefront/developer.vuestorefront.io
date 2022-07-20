@@ -8,7 +8,7 @@
         button-link="https://docs.vuestorefront.io/v2/getting-started/installation.html"
         video-thumb="/thumbs/video/what-is-vue-storefront.jpg"
         :thumb-button-text="t('content.page.home.videoBanner.link')"
-        thumb-button-link="#"
+        thumb-button-link="/videos/all"
         video-src="https://www.youtube.com/watch?v=MCN1rRwuIGs&t=1s"
       />
       <MoleculesBannersCallToAction
