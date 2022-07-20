@@ -27,9 +27,10 @@ export default defineNuxtConfig({
     'nuxt-schema-org',
     ...(process.env.LIGHTHOUSE ? ['@unlighthouse/nuxt'] : []),
   ],
-  buildModules: ['@nuxt/content', '@nuxtjs/color-mode'],
+  buildModules: ['@pinia/nuxt', '@nuxt/content', '@nuxtjs/color-mode'],
   experimental: {
     reactivityTransform: true,
+    viteNode: false,
   },
   schemaOrg: {
     canonicalHost: 'https://vuestorefront.io/developer',
