@@ -1,7 +1,7 @@
 <template>
   <div>
     <p class="text-gray font-lg mb-2 dark:text-white">
-      Contributors to this page:
+      {{ t('components.molecules.contributors.list.contributorsPage') }}
     </p>
     <div class="flex flex-row gap-4">
       <AtomsContributorItem
@@ -14,6 +14,8 @@
 </template>
 
 <script setup lang="ts">
+  import { useI18n } from 'vue-i18n';
+
   defineProps<{
     contributors?: {
       name?: string;
@@ -22,4 +24,6 @@
       url?: string;
     }[];
   }>();
+
+  const { t } = useI18n();
 </script>

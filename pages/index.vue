@@ -2,55 +2,55 @@
   <AtomsLayoutContent>
     <AtomsLayoutContainer>
       <MoleculesBannersVideoBanner
-        :title="t('content.page.home.videoBanner.title')"
-        :message="t('content.page.home.videoBanner.message')"
-        :button-text="t('content.page.home.videoBanner.button')"
+        :title="t('page.home.videoBanner.title')"
+        :message="t('page.home.videoBanner.message')"
+        :button-text="t('page.home.videoBanner.button')"
         button-link="https://docs.vuestorefront.io/v2/getting-started/installation.html"
         video-thumb="/thumbs/video/what-is-vue-storefront.jpg"
-        :thumb-button-text="t('content.page.home.videoBanner.link')"
+        :thumb-button-text="t('page.home.videoBanner.link')"
         thumb-button-link="/videos/all"
         video-src="https://www.youtube.com/watch?v=MCN1rRwuIGs&t=1s"
       />
       <MoleculesBannersCallToAction
-        :title="t('content.page.home.discordCTA.title')"
+        :title="t('page.home.discordCTA.title')"
         img="/brands/logos/discord.svg"
-        :message="t('content.page.home.discordCTA.message')"
+        :message="t('page.home.discordCTA.message')"
         color="secondary"
         button-color="white"
         button-link="https://discord.gg/vuestorefront"
-        :button-text="t('content.page.home.discordCTA.button')"
+        :button-text="t('page.home.discordCTA.button')"
         button-text-color="secondary"
       />
       <MoleculesSectionLogoClouds
         direction="left"
-        :title="t('content.page.home.integrations.commerce.title')"
-        :message="t('content.page.home.integrations.commerce.message')"
+        :title="t('page.home.integrations.commerce.title')"
+        :message="t('page.home.integrations.commerce.message')"
         :brands="commerceVendors"
         :button-link="`documentation/#${IntegrationCategory.commerce}`"
-        :button-text="t('content.page.home.integrations.commerce.buttonText')"
+        :button-text="t('page.home.integrations.commerce.buttonText')"
       />
       <MoleculesSectionLogoClouds
         direction="right"
-        :title="t('content.page.home.integrations.cms.title')"
-        :message="t('content.page.home.integrations.cms.message')"
+        :title="t('page.home.integrations.cms.title')"
+        :message="t('page.home.integrations.cms.message')"
         :brands="cmsVendors"
         :button-link="`documentation/#${IntegrationCategory.cms}`"
-        :button-text="t('content.page.home.integrations.cms.buttonText')"
+        :button-text="t('page.home.integrations.cms.buttonText')"
       />
       <MoleculesSectionLogoClouds
         direction="left"
-        :title="t('content.page.home.integrations.payment.title')"
-        :message="t('content.page.home.integrations.payment.message')"
+        :title="t('page.home.integrations.payment.title')"
+        :message="t('page.home.integrations.payment.message')"
         :brands="paymentVendors"
         :button-link="`documentation/#${IntegrationCategory.payment}`"
-        :button-text="t('content.page.home.integrations.payment.buttonText')"
+        :button-text="t('page.home.integrations.payment.buttonText')"
       />
     </AtomsLayoutContainer>
     <AtomsLayoutFullWidthSection>
       <AtomsLayoutFullWidthContainer>
         <AtomsTextHeadingCenter
-          :title="t('content.page.home.blog.title')"
-          :message="t('content.page.home.blog.message')"
+          :title="t('page.home.blog.title')"
+          :message="t('page.home.blog.message')"
         />
         <OrganismsSectionBlogPosts
           :posts="postsList"

@@ -1,90 +1,138 @@
 {
-  "head": {
-    "page": {
-      "home": {
+  "page": {
+    "home": {
+      "head": {
         "title": ""
       },
-      "documentation": {
+      "videoBanner": {
+        "title": "What is Vue Storefront",
+        "message": "Vue Storefront is enormous but straightforward at the same time. Marc Backes created this fantastic video to explain to developers, what is Vue Storefront, is and how it works.",
+        "button": "Getting started",
+        "link": "Check our other videos"
+      },
+      "discordCTA": {
+        "message": "Find help, new ideas, new projects, and much more on our Discord server.",
+        "title": "Join our Discord server",
+        "button": "Join now!"
+      },
+      "integrations": {
+        "commerce": {
+          "title": "Commerce Integrations",
+          "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit.",
+          "buttonText": "View all Commerce Integrations"
+        },
+        "cms": {
+          "title": "CMS Integrations",
+          "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit.",
+          "buttonText": "View all CMS Integrations"
+        },
+        "payment": {
+          "title": "Payment Integrations",
+          "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit.",
+          "buttonText": "View all Payment Integrations"
+        }
+      },
+      "blog": {
+        "title": "Engage with us",
+        "message": "Read our incredible content in our developer focus blog."
+      }
+    },
+    "documentation": {
+      "head": {
         "title": "Documentation"
       },
-      "videos": {
+      "title": "Documentation",
+      "text": "Consequat potenti purus interdum pharetra consectetur sollicitudin at dis torquent, proin eu ullamcorper etiam morbi maecenas phasellus suspendisse. Varius quam cubilia urna ridiculus neque sapien etiam maximus, accumsan consectetur mollis finibus dui suscipit posuere natoque, rutrum lorem nascetur nostra parturient eu integer. Auctor per suspendisse semper natoque taciti porta pulvinar magna dictum vestibulum mollis nisi litora, vulputate pharetra erat sapien malesuada quam lacus arcu urna justo nullam.",
+      "filter": {
+        "title": "Filter by:",
+        "checkAll": "Check All",
+        "uncheckAll": "Uncheck All",
+        "categories": "Categories",
+        "compatibility": "Compatibility",
+        "status": "Status",
+        "license": "License"
+      }
+    },
+    "videos": {
+      "head": {
         "title": "Videos"
       }
     }
   },
-  "content": {
-    "page": {
-      "home": {
-        "videoBanner": {
-          "title": "What is Vue Storefront",
-          "message": "Vue Storefront is enormous but straightforward at the same time. Marc Backes created this fantastic video to explain to developers, what is Vue Storefront, is and how it works.",
-          "button": "Getting started",
-          "link": "Check our other videos"
-        },
-        "discordCTA": {
-          "message": "Find help, new ideas, new projects, and much more on our Discord server.",
-          "title": "Join our Discord server",
-          "button": "Join now!"
-        },
-        "integrations": {
-          "commerce": {
-            "title": "Commerce Integrations",
-            "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit.",
-            "buttonText": "View all Commerce Integrations"
-          },
-          "cms": {
-            "title": "CMS Integrations",
-            "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit.",
-            "buttonText": "View all CMS Integrations"
-          },
-          "payment": {
-            "title": "Payment Integrations",
-            "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit.",
-            "buttonText": "View all Payment Integrations"
-          }
+  "components": {
+    "atoms": {
+      "text": {
+        "editPage": "Edit this page on GitHub",
+        "updatedAt": "Updated at"
+      },
+      "buttons": {
+        "stars": "Starts"
+      }
+    },
+    "molecules": {
+      "card": {
+        "docs": {
+          "maintainedBy": "Maintained by:",
+          "availableFor": "Available for:"
         },
         "blog": {
-          "title": "Engage with us",
-          "message": "Read our incredible content in our developer focus blog."
+          "by": "by",
+          "readingTime": "Reading time: {time} minutes"
         }
       },
-      "documentation": {
-        "title": "Documentation",
-        "text": "Consequat potenti purus interdum pharetra consectetur sollicitudin at dis torquent, proin eu ullamcorper etiam morbi maecenas phasellus suspendisse. Varius quam cubilia urna ridiculus neque sapien etiam maximus, accumsan consectetur mollis finibus dui suscipit posuere natoque, rutrum lorem nascetur nostra parturient eu integer. Auctor per suspendisse semper natoque taciti porta pulvinar magna dictum vestibulum mollis nisi litora, vulputate pharetra erat sapien malesuada quam lacus arcu urna justo nullam.",
-        "filter": {
-          "title": "Filter by:",
-          "checkAll": "Check All",
-          "uncheckAll": "Uncheck All",
-          "categories": "Categories",
-          "compatibility": "Compatibility",
-          "status": "Status",
-          "license": "License"
+      "contributors": {
+        "list": {
+          "contributorsPage": "Contributors to this page:"
+        }
+      },
+      "text": {
+        "social": {
+          "title": "Follow us",
+          "message": "Check our social medias, and connect directly to Vue Storefront development process."
+        }
+      }
+    },
+    "organisms": {
+      "navigation": {
+        "footer": {
+          "name": "Footer",
+          "tagLine": "Frontend Platform for Headless Commerce",
+          "copyright": "© {year} Vue Storefront. All rights reserved."
+        },
+        "header": {
+          "title": "Vue Storefront - Developer Portal",
+          "openMenu": "Open main menu"
         }
       }
     }
   },
   "global": {
+    "interface": {
+      "home": "Home",
+      "filters": "Filters",
+      "close": "Close"
+    },
     "integration": {
       "title": "{name} Integration",
       "status": {
-        "alpha":  "Alpha",
+        "alpha": "Alpha",
         "beta": "Beta",
-        "prod":  "Production",
+        "prod": "Production",
         "wip": "Work in progress"
       },
       "license": {
         "enterprise": "Enterprise",
         "os": "Open Source",
-        "paid":  "Paid"
+        "paid": "Paid"
       },
       "category": {
-        "analytics":  "Analytics",
+        "analytics": "Analytics",
         "auth": "Auth",
-        "cache":  "Cache",
+        "cache": "Cache",
         "cms": "CMS",
-        "commerce":  "Commerce",
+        "commerce": "Commerce",
         "payment": "Payment",
-        "reviews":  "Reviews",
+        "reviews": "Reviews",
         "search": "Search"
       }
     }

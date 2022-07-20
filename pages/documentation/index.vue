@@ -9,9 +9,9 @@
         />
       </AtomsLayoutSideBar>
       <section id="documentation">
-        <h1>{{ t('content.page.documentation.title') }}</h1>
+        <h1>{{ t('page.documentation.title') }}</h1>
         <p class="text-gray-500">
-          {{ t('content.page.documentation.text') }}
+          {{ t('page.documentation.text') }}
         </p>
         <div class="my-8 grid grid-cols-1 gap-8 md:grid-cols-3">
           <MoleculesCardDocs

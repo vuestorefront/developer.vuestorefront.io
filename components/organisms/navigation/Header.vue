@@ -7,7 +7,7 @@
           <img
             src="/logo/vsf-full.svg"
             class="h-6 md:h-9"
-            alt="Vue Storefront - Developer Portal"
+            :alt="t('components.organisms.navigation.header.title')"
           />
         </NuxtLink>
         <div class="header-content-right">
@@ -32,7 +32,9 @@
             <Suspense>
               <AtomsIcon name="carbon:close" class="close-icon" />
             </Suspense>
-            <span class="sr-only">Open main menu</span>
+            <span class="sr-only">{{
+              t('components.organisms.navigation.header.openMenu')
+            }}</span>
           </button>
         </div>
         <div class="header-content-center">
@@ -53,6 +55,9 @@
 
 <script setup lang="ts">
   import { headerMenuItems } from '~/constants/headerMenu';
+  import { useI18n } from 'vue-i18n';
+
+  const { t } = useI18n();
   /*
   const navElBase = computed(() => document?.querySelector('#header-base'));
   const navElContent = computed(() =>

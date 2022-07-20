@@ -1,7 +1,7 @@
 <template>
   <AtomsTextHeadingCenter
-    title="Follow us"
-    message="Check our social medias, and connect directly to Vue Storefront development process."
+    :title="t('components.molecules.text.social.title')"
+    :message="t('components.molecules.text.social.message')"
   />
   <div class="flex justify-center space-x-5">
     <AtomsIconSocial name="twitter" />
@@ -12,3 +12,9 @@
     <AtomsIconSocial name="linkedin" />
   </div>
 </template>
+
+<script setup lang="ts">
+  import { useI18n } from 'vue-i18n';
+
+  const { t } = useI18n();
+</script>

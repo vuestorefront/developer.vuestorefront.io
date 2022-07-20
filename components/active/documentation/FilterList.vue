@@ -11,7 +11,7 @@
         class="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500"
       >
         <span class="font-medium text-gray-900">
-          {{ t(`content.page.documentation.filter.${key}`) }}
+          {{ t(`page.documentation.filter.${key}`) }}
         </span>
         <span class="ml-6 flex items-center">
           <Suspense>
@@ -31,8 +31,8 @@
       >
         {{
           toggleAllStatus[key]
-            ? t('content.page.documentation.filter.uncheckAll')
-            : t('content.page.documentation.filter.checkAll')
+            ? t('page.documentation.filter.uncheckAll')
+            : t('page.documentation.filter.checkAll')
         }}
       </button>
       <ul class="list-none space-y-2">

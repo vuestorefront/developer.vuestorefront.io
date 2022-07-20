@@ -17,7 +17,11 @@
             {{ description }}
           </p>
           <div class="blog-card-reading-time">
-            Reading time: {{ readingTime }} Minutes
+            {{
+              t('components.molecules.card.blog.readingTime', {
+                time: readingTime,
+              })
+            }}
           </div>
         </slot>
       </div>
@@ -39,7 +43,10 @@
         </div>
         <div class="ml-3">
           <p class="blog-card-author--name">
-            <span class="text-gray-500">by </span> {{ author.name }}
+            <span class="text-gray-500">
+              {{ t('components.molecules.card.blog.by') }}
+            </span>
+            {{ author.name }}
           </p>
           <div class="blog-card-author--date">
             <time :datetime="textDate">
@@ -54,6 +61,7 @@
 
 <script setup lang="ts">
   import { formatDate } from '~/utils/date';
+  import { useI18n } from 'vue-i18n';
 
   const props = defineProps<{
     author?: {
@@ -71,6 +79,8 @@
     title: string;
     url: string;
   }>();
+
+  const { t } = useI18n();
 
   const blogLink = computed(() => props.url);
 

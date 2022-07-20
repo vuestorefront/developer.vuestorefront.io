@@ -27,13 +27,15 @@
             class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-2xl"
           >
             <div class="flex items-center justify-between px-4">
-              <h2 class="text-lg font-medium text-gray-900">Filters</h2>
+              <h2 class="text-lg font-medium text-gray-900">
+                {{ t('global.interface.filters') }}
+              </h2>
               <button
                 type="button"
                 class="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
                 @click="$emit('close')"
               >
-                <span class="sr-only">Close menu</span>
+                <span class="sr-only">{{ t('global.interface.close') }}</span>
                 <Suspense>
                   <AtomsIcon name="carbon:close" class="text-3xl" />
                 </Suspense>

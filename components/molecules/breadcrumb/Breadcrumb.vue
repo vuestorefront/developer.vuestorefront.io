@@ -17,7 +17,7 @@
             <Suspense>
               <AtomsIcon name="carbon:home" />
             </Suspense>
-            <span class="sr-only">Home</span>
+            <span class="sr-only">{{ t('global.interface.home') }}</span>
           </NuxtLink>
         </div>
       </li>
@@ -41,10 +41,14 @@
 </template>
 
 <script setup lang="ts">
+  import { useI18n } from 'vue-i18n';
+
   defineProps<{
     crumbs: {
       title: string;
       link: string;
     }[];
   }>();
+
+  const { t } = useI18n();
 </script>

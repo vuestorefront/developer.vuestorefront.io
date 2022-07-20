@@ -21,7 +21,7 @@
           v-if="maintainers && maintainers.length > 0"
           class="docs-card-information--maintainer"
         >
-          Maintained by:
+          {{ t('components.molecules.card.docs.maintainedBy') }}
           <span v-for="(maintainer, index) in maintainers" :key="index">
             <NuxtLink
               :to="maintainer.link"
@@ -58,6 +58,7 @@
 <script setup lang="ts">
   import { IntegrationLicense, IntegrationStatus } from '~/enums/integrations';
   import { NuxtLinkProps } from '#app';
+  import { useI18n } from 'vue-i18n';
 
   const props = defineProps<{
     img: string;
@@ -81,4 +82,6 @@
     description?: string;
     name: string;
   }>();
+
+  const { t } = useI18n();
 </script>

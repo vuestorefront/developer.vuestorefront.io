@@ -2,7 +2,7 @@
   <Content v-bind="$props">
     <template #footer>
       <div class="docs-card-footer">
-        <small>Available for:</small>
+        <small>{{ t('components.molecules.card.docs.availableFor') }}</small>
         <div class="docs-card-footer--icons">
           <NuxtLink
             v-for="(doc, index) in documentation"
@@ -21,6 +21,7 @@
 <script setup lang="ts">
   import { IntegrationLicense, IntegrationStatus } from '~/enums/integrations';
   import { NuxtLinkProps } from '#app';
+  import { useI18n } from 'vue-i18n';
   import Content from './Content.vue';
 
   const props = defineProps<{
@@ -38,4 +39,6 @@
     description?: string;
     name: string;
   }>();
+
+  const { t } = useI18n();
 </script>
