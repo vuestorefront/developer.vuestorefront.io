@@ -38,7 +38,7 @@ export default defineEventHandler((event) => {
     baseData = baseData.filter(
       (i) =>
         Array.isArray(i.link) &&
-        i.link.some((l) => l.name === defaultQuery.compatibility),
+        i.link.some((l) => defaultQuery.compatibility.includes(l.name)),
     );
   }
 
