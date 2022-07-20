@@ -1,9 +1,9 @@
 <template>
-  <div class="docs-card">
+  <div class="docs-card group">
     <div class="docs-card-content">
       <slot name="image">
         <div class="docs-card-image">
-          <img :src="img" />
+          <img :src="img" :alt="name" class="docs-card-image--img" />
         </div>
       </slot>
     </div>

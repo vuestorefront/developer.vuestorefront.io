@@ -8,7 +8,6 @@ export enum IntegrationStatus {
 export enum IntegrationLicense {
   'enterprise' = 'enterprise',
   'os' = 'os',
-  'paid' = 'paid',
 }
 
 export enum IntegrationCategory {

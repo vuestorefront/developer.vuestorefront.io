@@ -11,11 +11,11 @@ export type Integration = {
     icon: string;
   }[];
   repository?: string;
-  license: IntegrationLicense;
-  status: IntegrationStatus;
+  license: `${IntegrationLicense}`;
+  status: `${IntegrationStatus}`;
   color?: string;
   maintainedBy: { name: string; link: string }[];
-  categories: IntegrationCategory[];
+  categories: `${IntegrationCategory}`[];
 };
 
 export type IntegrationList = Integration[]
