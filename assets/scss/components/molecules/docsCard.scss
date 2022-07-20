@@ -35,15 +35,20 @@
       items-center
       justify-center
       text-center
+      aspect-w-3
+      aspect-h-1
+      opacity-100
+      group-hover:opacity-75
       w-full;
 
-      & img,
-      svg,
-      picture {
+      &--img {
         @apply
-        max-h-[6rem]
-        max-w-[90%]
-        mx-auto;
+        h-full
+        w-full
+        object-contain
+        object-center
+        sm:h-full
+        sm:w-full;
       }
     }
 
@@ -95,10 +100,11 @@
     &-footer {
       @apply
       relative
+        mt-2
       w-full;
 
       > small {
-        @apply absolute top-0 left-0 text-xs text-gray-900 bg-gray-100 p-1 rounded-br-xl;
+        @apply absolute top-0 left-0 text-xs text-gray-900 bg-gray-100 p-1 rounded-r-xl pr-2;
       }
 
       &--buttons {
@@ -106,7 +112,7 @@
         w-full
         flex
         flex-row
-        pt-3 pb-1;
+        p-2 pb-3;
       }
 
       &--icons {

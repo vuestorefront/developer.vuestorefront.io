@@ -14,13 +14,14 @@
     &-container {
       @apply
       py-10
+      px-6
       container
       mx-auto
       max-w-screen-xl
       space-y-14;
     }
     &-sidebar {
-      @apply lg:pr-6 lg:pt-20;
+      @apply md:pr-12 md:pt-20;
     }
     &-content {
       &--sidebar {
