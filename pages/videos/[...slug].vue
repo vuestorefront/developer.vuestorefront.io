@@ -16,8 +16,8 @@
           <p>{{ contentQuery.description }}</p>
           <NuxtLink
             :to="{
-              name: 'videos-author',
-              params: { author: contentQuery.author },
+              name: 'videos-author-name',
+              params: { name: contentQuery.author },
             }"
             class="cursor-pointer"
           >
@@ -64,7 +64,7 @@
 
   const textDate = computed(() =>
     formatDate({
-      date: new Date(contentQuery.publishedAt || ''),
+      date: new Date(contentQuery.publishedAt || '').toUTCString(),
       options: {
         weekday: 'short',
         year: 'numeric',
@@ -73,10 +73,4 @@
       },
     }),
   );
-
-  useHead({
-    title: contentQuery.title,
-    charset: 'utf-8',
-    meta: [{ name: 'description', content: contentQuery.description }],
-  });
 </script>

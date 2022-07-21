@@ -23,6 +23,9 @@ export const headerMenuItems: HeaderMenu[] = [
     label: 'Videos',
     link: {
       name: 'videos-all',
+      params: {
+        page: 1,
+      },
     },
   },
 ];

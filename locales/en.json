@@ -90,6 +90,11 @@
           "title": "Follow us",
           "message": "Check our social medias, and connect directly to Vue Storefront development process."
         }
+      },
+      "pagination": {
+        "next": "Next",
+        "previous": "Previous",
+        "ellipsis": "…"
       }
     },
     "organisms": {

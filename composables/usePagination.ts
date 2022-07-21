@@ -1,10 +1,26 @@
+type PartialPageData = { number: number; ellipsis?: boolean; active?: boolean };
+type PageData = Omit<PartialPageData, 'number'> & {
+  link: string;
+  page: number;
+};
+
+const generatePageObj = (
+  { number, ellipsis = false, active = false }: PartialPageData,
+  linkRule: (pageNumber: number) => string,
+): PageData => ({
+  page: number,
+  link: linkRule(number),
+  active,
+  ellipsis,
+});
+
 export const usePagination = ({
   total,
   numberOfElements = 12,
   pagesToDisplay = 6,
   currentPage = 1,
   pageLinkRule = (pageNumber) => {
-    return `/page/${pageNumber}`;
+    return `${pageNumber}`;
   },
 }: {
   total: number;
@@ -13,23 +29,19 @@ export const usePagination = ({
   currentPage?: number;
   pageLinkRule?: (pageNumber: number) => string;
 }) => {
-  const generatePageObj = (
-    {
-      number,
-      ellipsis = false,
-      active = false,
-    }: { number: number; ellipsis?: boolean; active?: boolean },
-    linkRule: (pageNumber: number) => string,
-  ) => ({
-    page: number,
-    link: linkRule(number),
-    active,
-    ellipsis,
-  });
   const pagesCount = Math.ceil(total / numberOfElements);
+  const displaySize = pagesToDisplay < pagesCount ? pagesToDisplay : pagesCount;
   const hasPrevious = currentPage !== 1;
   const hasNext = currentPage !== pagesCount;
-  const baseData = {
+  const baseData: {
+    pagesCount: number;
+    currentPage: number;
+    previousPage: PageData | null;
+    nextPage: PageData | null;
+    firstPage: PageData;
+    lastPage: PageData;
+    pages: PageData[];
+  } = {
     pagesCount,
     currentPage,
     previousPage: hasPrevious
@@ -43,10 +55,11 @@ export const usePagination = ({
     lastPage: generatePageObj({ number: pagesCount }, pageLinkRule),
   };
 
-  if (baseData.currentPage < pagesToDisplay) {
+  if (baseData.currentPage < displaySize) {
     baseData.firstPage.ellipsis = false;
-    baseData.lastPage.ellipsis = baseData.pagesCount >= pagesToDisplay;
-    new Array(pagesToDisplay).fill('').forEach((_, i) => {
+    baseData.lastPage.ellipsis = baseData.pagesCount > displaySize;
+
+    new Array(displaySize).fill('').forEach((_, i) => {
       baseData.pages.push(
         generatePageObj(
           {
@@ -59,15 +72,15 @@ export const usePagination = ({
     });
   }
 
-  if (baseData.currentPage >= pagesToDisplay) {
-    const count = Math.floor(pagesToDisplay / 2);
-    baseData.firstPage.ellipsis = baseData.currentPage - count > 1;
-    if (baseData.currentPage - count + pagesToDisplay <= baseData.pagesCount) {
+  if (baseData.currentPage >= displaySize) {
+    const count = Math.floor(displaySize / 2);
+    baseData.firstPage.ellipsis = displaySize === pagesToDisplay;
+    if (baseData.currentPage - count + displaySize <= baseData.pagesCount) {
       baseData.lastPage.ellipsis =
-        baseData.currentPage - count + pagesToDisplay < baseData.pagesCount;
+        baseData.currentPage - count + displaySize < baseData.pagesCount;
       for (
         let j = baseData.currentPage - count;
-        j < baseData.currentPage - count + pagesToDisplay;
+        j < baseData.currentPage - count + displaySize;
         j += 1
       ) {
         baseData.pages.push(
@@ -83,7 +96,7 @@ export const usePagination = ({
     } else {
       baseData.lastPage.ellipsis = false;
       for (
-        let k = baseData.pagesCount - pagesToDisplay + 1;
+        let k = baseData.pagesCount - displaySize + 1;
         k <= baseData.pagesCount;
         k += 1
       ) {

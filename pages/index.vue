@@ -6,10 +6,10 @@
         :message="t('page.home.videoBanner.message')"
         :button-text="t('page.home.videoBanner.button')"
         button-link="https://docs.vuestorefront.io/v2/getting-started/installation.html"
-        video-thumb="/thumbs/video/what-is-vue-storefront.jpg"
+        video-thumb="https://img.youtube.com/vi/MCN1rRwuIGs/maxresdefault.jpg"
         :thumb-button-text="t('page.home.videoBanner.link')"
         thumb-button-link="/videos/all"
-        video-src="https://www.youtube.com/watch?v=MCN1rRwuIGs&t=1s"
+        video="https://www.youtube.com/watch?v=MCN1rRwuIGs"
       />
       <MoleculesBannersCallToAction
         :title="t('page.home.discordCTA.title')"

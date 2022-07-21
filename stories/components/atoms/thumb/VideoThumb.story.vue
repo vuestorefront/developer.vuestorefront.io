@@ -1,7 +1,7 @@
 <template>
   <Story title="Atoms/Thumb/Video" :init-state="initState">
     <template #default="{ state }">
-      <AtomsThumbVideo class="h-screen" :image="state.image" />
+      <AtomsVideoThumb class="h-screen" :image="state.image" />
     </template>
     <template #controls="{ state }">
       <HstText v-model="state.image" title="Image" />

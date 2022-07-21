@@ -29,8 +29,9 @@
       </div>
     </slot>
     <slot name="right">
-      <div v-if="videoThumb" class="video-banner-image">
-        <AtomsThumbVideo
+      <div v-if="video || videoThumb" class="video-banner-image">
+        <AtomsVideoThumb
+          :video="video"
           :image="videoThumb"
           class="video-banner-image--thumb"
           @click="isOpen = true"
@@ -42,11 +43,7 @@
         </div>
       </div>
     </slot>
-    <MoleculesModalVideo
-      :open="isOpen"
-      :src="videoSrc"
-      @close="isOpen = false"
-    />
+    <MoleculesModalVideo :open="isOpen" :src="video" @close="isOpen = false" />
   </div>
 </template>
 
@@ -55,11 +52,11 @@
     defineProps<{
       title: string;
       message: string;
-      videoSrc?: string;
+      video?: string;
+      videoThumb?: string;
       buttonText?: string;
       buttonLink?: string;
       buttonColor?: string;
-      videoThumb?: string;
       thumbButtonText?: string;
       thumbButtonLink?: string;
     }>(),

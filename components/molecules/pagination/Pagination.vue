@@ -1,15 +1,15 @@
 <template>
   <nav class="pagination">
     <div class="mt-px flex w-0 flex-1">
-      <slot v-if="currentPage > 1" name="previous">
+      <slot v-if="pagination.previousPage" name="previous">
         <NuxtLink
           class="pagination arrow-right item"
-          @click="goToPage(currentPage - 1, 'pagination:previous')"
+          :to="goToPage(pagination.previousPage.link)"
         >
           <Suspense>
             <AtomsIcon name="carbon:arrow-left" class="mr-2 text-lg" />
           </Suspense>
-          Previous
+          {{ $t('components.molecules.pagination.previous') }}
         </NuxtLink>
       </slot>
     </div>
@@ -22,9 +22,9 @@
         <NuxtLink
           class="pagination item page"
           aria-current="step"
-          @click="goToPage(pagination.firstPage.link, 'pagination:switching')"
+          :to="goToPage(pagination.firstPage.link)"
         >
-          …
+          {{ $t('components.molecules.pagination.ellipsis') }}
         </NuxtLink>
       </slot>
       <slot name="page" :pagination="pagination">
@@ -34,32 +34,28 @@
           class="pagination item page"
           :class="{ active: page.active }"
           :aria-current="page.active ? 'page' : 'step'"
-          @click="goToPage(page.link, 'pagination:switching')"
+          :to="goToPage(page.link)"
         >
           {{ page.page }}
         </NuxtLink>
       </slot>
-      <slot
-        v-if="pagination.lastPage.ellipsis"
-        name="lastPage"
-        :last-page="pagination.lastPage"
-      >
-        <a
+      <slot v-if="pagination.lastPage.ellipsis" name="lastPage">
+        <NuxtLink
           class="pagination item page"
           aria-current="step"
-          @click="goToPage(pagination.lastPage.link, 'pagination:switching')"
+          :to="goToPage(pagination.lastPage.link)"
         >
-          …
-        </a>
+          {{ $t('components.molecules.pagination.ellipsis') }}
+        </NuxtLink>
       </slot>
     </div>
     <div class="-mt-px flex w-0 flex-1 justify-end">
-      <slot v-if="currentPage < total" name="next">
+      <slot v-if="pagination.nextPage" name="next">
         <NuxtLink
           class="pagination arrow-left item"
-          @click="goToPage(currentPage + 1, 'pagination:next')"
+          :to="goToPage(pagination.nextPage.link)"
         >
-          Next
+          {{ $t('components.molecules.pagination.next') }}
           <Suspense>
             <AtomsIcon name="carbon:arrow-right" class="ml-2 text-lg" />
           </Suspense>
@@ -75,28 +71,17 @@
       total: number;
       numberOfElements?: number;
       pagesToDisplay?: number;
-      currentPage?: number;
+      currentPage?: number | string;
       pageLinkRule?: (pageNumber: number) => string;
     }>(),
     {
       numberOfElements: 12,
-      pagesToDisplay: 6,
       currentPage: 1,
-      pageLinkRule: (pageNumber: number) => `${pageNumber}`,
     },
   );
 
-  const emit = defineEmits([
-    'pagination:switching',
-    'pagination:next',
-    'pagination:previous',
-  ]);
-
-  const router = useRouter();
-
-  const goToPage = async (link: string, emitType) => {
-    emit(emitType, link);
-    await router.push({ path: link });
+  const goToPage = (link: string) => {
+    return { path: useRoute().path, query: { page: link } };
   };
 
   const pagination = computed(() =>
@@ -104,8 +89,8 @@
       total: props.total,
       numberOfElements: props.numberOfElements,
       pagesToDisplay: props.pagesToDisplay,
-      currentPage: props.currentPage,
-      pageLinkRule: props.pageLinkRule,
+      currentPage: Number(props.currentPage),
+      pageLinkRule: props?.pageLinkRule,
     }),
   );
 </script>

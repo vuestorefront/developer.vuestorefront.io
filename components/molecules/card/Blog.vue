@@ -88,7 +88,7 @@
 
   const textDate = computed(() =>
     formatDate({
-      date: props.date || '',
+      date: new Date(props.date || '').toUTCString(),
       options: {
         year: 'numeric',
         month: 'long',

@@ -16,8 +16,8 @@
           :author="{
             name: video.author,
             link: {
-              name: 'videos-author',
-              params: { author: video.author },
+              name: 'videos-author-name',
+              params: { name: video.author },
             },
           }"
           :date="video.publishedAt"
@@ -37,7 +37,7 @@
   const { path, params } = useRoute();
 
   const videos = await queryContent('videos')
-    .where({ author: params.author })
+    .where({ author: params.name })
     .sort({ publishedAt: 1 })
     .limit(12)
     .find();

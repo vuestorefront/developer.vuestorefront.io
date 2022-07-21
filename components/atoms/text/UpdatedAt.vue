@@ -21,7 +21,7 @@
 
   const textDate = computed(() =>
     formatDate({
-      date: props.date || '',
+      date: new Date(props.date || '').toUTCString(),
       options: {
         weekday: 'short',
         year: 'numeric',
