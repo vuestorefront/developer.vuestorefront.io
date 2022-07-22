@@ -1,12 +1,12 @@
 <template>
   <div :class="`colored-banner bg-${colors.bg} border-${colors.border}`">
     <div class="flex">
-      <slot
-        name="icon"
-        :icon="icon || colors.icon"
-        :color="`text-${colors.border}`"
-      >
-        <div v-if="!!(icon || colors.icon) && !error" class="icon-box">
+      <div v-if="!!(icon || colors.icon)" class="icon-box">
+        <slot
+          name="icon"
+          :icon="icon || colors.icon"
+          :color="`text-${colors.border}`"
+        >
           <Suspense>
             <AtomsIcon
               aria-hidden="true"
@@ -14,19 +14,19 @@
               :name="icon || colors.icon"
             />
           </Suspense>
-        </div>
-      </slot>
+        </slot>
+      </div>
       <div>
-        <slot name="title" :title="title">
-          <h3 :class="`title text-${colors.text}`">
+        <h3 :class="`title text-${colors.text}`">
+          <slot name="title" :title="title">
             {{ title }}
-          </h3>
-        </slot>
-        <slot :message="message">
-          <div class="message">
+          </slot>
+        </h3>
+        <div class="message">
+          <slot>
             {{ message }}
-          </div>
-        </slot>
+          </slot>
+        </div>
       </div>
     </div>
   </div>
@@ -46,14 +46,18 @@
 <style scoped>
   .colored-banner {
     @apply border-l-4 p-4;
+
     .title {
       @apply m-0 text-base font-medium;
     }
+
     .message {
       @apply mt-2 text-sm text-gray-900;
     }
+
     .icon-box {
       @apply mr-3 flex-shrink-0;
+
       > .icon-img {
         @apply h-8 w-auto;
       }
