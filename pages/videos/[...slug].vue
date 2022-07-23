@@ -16,8 +16,8 @@
           <p>{{ contentQuery.description }}</p>
           <NuxtLink
             :to="{
-              name: 'videos-author-name',
-              params: { name: contentQuery.author },
+              name: 'videos',
+              query: { author: contentQuery.author },
             }"
             class="cursor-pointer"
           >

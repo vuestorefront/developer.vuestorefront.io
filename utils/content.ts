@@ -3,7 +3,7 @@ export const whereObj = (
   key: string,
   isArray = false,
 ) => {
-  if (data[key] && Array.isArray(data[key])) {
+  if (data[key] && Array.isArray(data[key]) && isArray) {
     return data[key].map((d) => ({
       [key]: {
         $contains: [d],
@@ -15,7 +15,7 @@ export const whereObj = (
     ? [
         {
           [key]: {
-            ...(isArray ? { $contains: [data[key]] } : { $eq: data[key] }),
+            ...(isArray ? { $contains: [data[key]] } : { $in: data[key] }),
           },
         },
       ]

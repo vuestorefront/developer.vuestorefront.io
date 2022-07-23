@@ -92,8 +92,8 @@ export const useVideosList = defineStore('videosList', {
         orQuery.push(...wherePlaylist);
       }
 
-      if (wherePlaylist.length === 1) {
-        andQuery.push(...wherePlaylist);
+      if (wherePlaylist.length > 1) {
+        orQuery.push(...wherePlaylist);
       }
 
       if (whereAuthor.length === 1) {

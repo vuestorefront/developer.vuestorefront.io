@@ -141,7 +141,10 @@
               :key="filter.id"
               v-slot="{ open }"
             >
-              <AtomsFilterHorizontalPopOverButton :open="open">
+              <AtomsFilterHorizontalPopOverButton
+                :counter="getCounter(filter.id)"
+                :open="open"
+              >
                 {{ filter.name }}
               </AtomsFilterHorizontalPopOverButton>
               <AtomsFilterHorizontalPopOverList>
@@ -195,6 +198,11 @@
     Promise.all([store.getBaseData(i18n), store.fetch()]);
 
   const routeDebounce = debounce(router.push, 1500);
+
+  const getCounter = (key: string) => {
+    if (selectedFilters.value[key]) return selectedFilters.value[key].length;
+    return 0;
+  };
 
   const changeFilter = async (index: number, item: string) => {
     if (store.filters[index].selected.has(item)) {
