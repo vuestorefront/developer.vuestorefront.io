@@ -35,5 +35,5 @@
 
   onBeforeMount(async () => store.fetch());
 
-  watch(filterParams, async () => store.fetch());
+  watch(filterParams, async () => store.fetch(), { deep: true });
 </script>

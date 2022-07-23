@@ -1,0 +1,245 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .filter {
+    &-horizontal {
+      @apply relative;
+
+      &-wrapper {
+        @apply
+        lg:max-w-7xl
+        lg:px-8
+        max-w-3xl
+        mx-auto
+        px-4
+        sm:px-6
+        text-center
+        after:absolute
+        after:border-b-2
+        after:border-gray-200
+        after:bottom-0
+        after:content-['']
+        after:left-0
+        after:w-full
+        text-gray-900;
+      }
+
+      &-content {
+        @apply
+        flex
+        items-stretch
+        justify-between;
+      }
+
+      &-menu {
+        &-button {
+          @apply
+          font-medium
+          py-4
+          px-3
+          text-gray-700
+          text-sm;
+          &:hover {
+            @apply
+            after:absolute
+            after:border-b-2
+            after:border-primary-600
+            after:bottom-0
+            after:content-['']
+            after:focus:border-primary-500
+            after:left-0
+            after:w-full
+            text-gray-900;
+          }
+
+          &--active {
+            @apply
+            after:absolute
+            after:border-b-2
+            after:border-primary-600
+            after:bottom-0
+            after:content-['']
+            after:focus:border-primary-500
+            after:left-0
+            after:w-full
+            text-gray-900
+          }
+
+          &--icon {
+            @apply -mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500;
+          }
+        }
+
+        &-list-wrapper {
+          @apply
+          inline-block
+          relative
+          text-left
+          z-10;
+        }
+
+        &-list {
+          @apply
+          absolute
+          bg-white
+          focus:outline-none
+          left-0
+          origin-top-left
+          overflow-hidden
+          rounded-md
+          shadow-2xl
+          top-16
+          w-40
+          z-10;
+
+          &-item {
+            @apply
+            block
+            font-medium
+            hover:text-primary-700
+            px-2
+            py-2
+            text-gray-900
+            text-sm ;
+
+            &--active {
+              @apply bg-gray-100;
+            }
+
+            &--icon {
+              @apply
+              duration-200
+              ease-in-out
+              flex-shrink-0
+              group-hover:text-gray-500
+              group-hover:text-primary-700
+              h-5
+              ml-1
+              mr-2
+              text-gray-400
+              transform
+              transition-transform
+              w-5;
+            }
+          }
+        }
+      }
+
+      &-pop-over {
+        &-wrapper {
+          @apply
+          hidden
+          sm:flex
+          sm:items-stretch
+          sm:space-x-8;
+        }
+
+        &-content {
+          @apply
+          relative
+          z-10
+          flex
+          items-center
+          text-left;
+        }
+
+        &-button {
+          @apply
+          inline-flex
+          items-center
+          justify-center
+          text-sm
+          font-medium
+          text-gray-700
+          outline-none
+          hover:text-gray-900;
+          &:hover {
+            @apply
+            after:absolute
+            after:border-b-2
+            after:border-primary-600
+            after:bottom-0
+            after:content-['']
+            after:focus:border-primary-500
+            after:left-0
+            after:w-full
+            text-gray-900;
+          }
+
+          &--counter {
+            @apply
+            ml-1.5
+            rounded
+            bg-gray-200
+            py-0.5
+            px-1.5
+            text-xs
+            font-semibold
+            tabular-nums
+            text-gray-700;
+          }
+
+          &--icon {
+            @apply
+            -mr-1
+            ml-1
+            h-5
+            w-5
+            flex-shrink-0
+            transform
+            text-gray-400
+            transition-transform
+            duration-200
+            ease-in-out
+            group-hover:text-gray-500;
+          }
+        }
+
+        &-list {
+          @apply
+          absolute
+          right-0
+          top-14
+          mt-2
+          origin-top-right
+          rounded-md
+          bg-white
+          p-4
+          shadow-2xl
+          focus:outline-none;
+          & > form {
+            @apply space-y-4;
+          }
+        }
+
+        &-item {
+          @apply
+          flex
+          items-center;
+
+          & > input[type=checkbox] {
+            @apply
+            text-primary-600
+            focus:ring-primary-500
+            h-4
+            w-4
+            rounded
+            border-gray-300;
+          }
+
+          & > label {
+            @apply
+            ml-3
+            whitespace-nowrap
+            pr-6
+            text-sm
+            font-medium
+            text-gray-900;
+          }
+        }
+      }
+    }
+  }
+}

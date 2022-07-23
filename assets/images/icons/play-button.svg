@@ -1,22 +1,5 @@
-<svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-<ellipse opacity="0.5" cx="29.0883" cy="29.3678" rx="28.6177" ry="28.5426" fill="#EDE9FE"/>
-<g filter="url(#filter0_dd_123_17230)">
-<path d="M21.5328 21.5586C21.5328 19.253 24.0323 17.8137 26.0342 18.9665L39.4467 26.6899C41.4507 27.8439 41.4531 30.729 39.4512 31.8818L26.0387 39.6052C24.0367 40.758 21.5328 39.3133 21.5328 37.0054L21.5328 21.5586Z" fill="white"/>
-</g>
-<defs>
-<filter id="filter0_dd_123_17230" x="17.5327" y="16.5605" width="27.4185" height="29.4497" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="2"/>
-<feGaussianBlur stdDeviation="2"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_123_17230"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset/>
-<feGaussianBlur stdDeviation="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"/>
-<feBlend mode="normal" in2="effect1_dropShadow_123_17230" result="effect2_dropShadow_123_17230"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_123_17230" result="shape"/>
-</filter>
-</defs>
+<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 28C0 12.536 12.536 0 28 0V0C43.464 0 56 12.536 56 28V28C56 43.464 43.464 56 28 56V56C12.536 56 0 43.464 0 28V28Z" fill="#18181B" fill-opacity="0.4"/>
+  <path d="M23.9271 17.7495L38.3606 26.5245C39.7055 27.2789 39.7055 29.2225 38.3606 29.9688L23.9271 38.2517C22.6231 38.9734 20.9993 38.0385 20.9993 36.5295V19.4717C20.9993 17.9545 22.6313 17.0278 23.9271 17.7495Z" fill="white"/>
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M51.3327 28.0001C51.3327 40.8867 40.886 51.3334 27.9994 51.3334C15.1127 51.3334 4.66602 40.8867 4.66602 28.0001C4.66602 15.1134 15.1127 4.66675 27.9994 4.66675C40.886 4.66675 51.3327 15.1134 51.3327 28.0001ZM46.666 28.0001C46.666 38.3094 38.3087 46.6668 27.9994 46.6668C17.69 46.6668 9.33268 38.3094 9.33268 28.0001C9.33268 17.6908 17.69 9.33342 27.9994 9.33342C38.3087 9.33342 46.666 17.6908 46.666 28.0001Z" fill="white"/>
 </svg>

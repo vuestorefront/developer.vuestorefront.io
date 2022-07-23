@@ -56,6 +56,11 @@
     "videos": {
       "head": {
         "title": "Videos"
+      },
+      "filter": {
+        "category": "Category",
+        "author": "Author",
+        "playlist": "Playlist"
       }
     }
   },
@@ -139,6 +144,16 @@
         "payment": "Payment",
         "reviews": "Reviews",
         "search": "Search"
+      }
+    },
+    "filter": {
+      "title": "Filter | Filters",
+      "sort": {
+        "title": "Sort by",
+        "oldest": "Oldest",
+        "newest": "Newest",
+        "az": "A-Z",
+        "za": "ZA"
       }
     }
   }

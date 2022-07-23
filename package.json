@@ -44,6 +44,7 @@
     "pinia": "^2.0.16",
     "regexparam": "^2.0.1",
     "transform-object-keys": "^1.0.7",
+    "ts-debounce": "^4.0.0",
     "ufo": "^0.8.5",
     "unstorage": "^0.5.5",
     "vue-github-button": "^3.0.3",

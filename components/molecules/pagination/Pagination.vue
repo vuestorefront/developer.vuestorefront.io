@@ -1,5 +1,5 @@
 <template>
-  <nav class="pagination">
+  <nav v-if="total > numberOfElements" class="pagination">
     <div class="mt-px flex w-0 flex-1">
       <slot v-if="pagination.previousPage" name="previous">
         <NuxtLink
@@ -80,9 +80,12 @@
     },
   );
 
-  const goToPage = (link: string) => {
-    return { path: useRoute().path, query: { page: link } };
-  };
+  const route = useRoute();
+
+  const goToPage = (link: string) => ({
+    path: route.path,
+    query: { ...route.query, page: link },
+  });
 
   const pagination = computed(() =>
     usePagination({

@@ -6,35 +6,26 @@
     <slot name="image">
       <AtomsVideoThumb :video="video" :image="poster" />
     </slot>
-    <div class="flex flex-1 flex-col justify-between bg-white p-2">
-      <div class="flex-1">
-        <slot name="title">
-          <p class="text-xl font-bold text-gray-900">
-            {{ title }}
-          </p>
-        </slot>
-        <slot name="author">
-          <div class="mt-6 flex items-center">
-            <div v-if="author.avatar" class="mr-3 flex-shrink-0">
-              <AtomsAvatarDiamondShape
-                :img="author.avatar"
-                width="3rem"
-                height="3rem"
-              />
-            </div>
-            <div>
-              <p class="text-base text-gray-900">
-                {{ author.name }}
-              </p>
-              <div v-if="date" class="flex space-x-1 text-sm text-gray-500">
-                <time :datetime="textDate">
-                  {{ textDate }}
-                </time>
-              </div>
+    <div class="flex h-max flex-1 flex-col justify-between bg-white p-2 px-4">
+      <slot name="title">
+        <p class="line-clamp-2 text-xl font-bold text-gray-900">
+          {{ title }}
+        </p>
+      </slot>
+      <slot name="author">
+        <div class="mt-6 flex items-center">
+          <div>
+            <p class="text-base text-gray-900">
+              {{ author.name }}
+            </p>
+            <div v-if="date" class="flex space-x-1 text-sm text-gray-500">
+              <time :datetime="textDate">
+                {{ textDate }}
+              </time>
             </div>
           </div>
-        </slot>
-      </div>
+        </div>
+      </slot>
     </div>
   </NuxtLink>
 </template>

@@ -21,13 +21,14 @@ export default defineNuxtConfig({
   components: true,
   modules: [
     '@intlify/nuxt3',
+    '@pinia/nuxt',
     '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
     // '@nuxtjs/partytown',
     'nuxt-schema-org',
     ...(process.env.LIGHTHOUSE ? ['@unlighthouse/nuxt'] : []),
   ],
-  buildModules: ['@pinia/nuxt', '@nuxt/content'],
+  buildModules: ['@nuxt/content'],
   experimental: {
     reactivityTransform: true,
     viteNode: false,
