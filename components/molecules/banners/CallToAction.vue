@@ -21,6 +21,7 @@
             :label="buttonText"
             icon-right-name="akar-icons:link-out"
             text-color="secondary"
+            class="w-full md:w-fit"
             :shadow="false"
           />
         </slot>

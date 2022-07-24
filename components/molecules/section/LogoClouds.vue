@@ -1,6 +1,8 @@
 <template>
-  <div v-if="elements.length > 0" class="bg-white">
-    <div class="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+  <div v-if="elements.length > 0">
+    <div
+      class="mx-auto max-w-7xl py-0 sm:px-6 md:px-4 md:py-12 lg:py-16 lg:px-8"
+    >
       <div
         class="lg:grid lg:items-center lg:gap-8"
         :class="{ 'lg:grid-cols-2': message && title }"
@@ -22,6 +24,7 @@
               :label="buttonText"
               :to="buttonLink"
               target="_blank"
+              class="w-full md:w-fit"
             />
           </div>
         </div>

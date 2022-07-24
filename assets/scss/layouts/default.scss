@@ -18,7 +18,8 @@
       container
       mx-auto
       max-w-screen-xl
-      space-y-14;
+      space-y-8
+      md:space-y-14;
     }
     &-sidebar {
       @apply md:pr-12 md:pt-20;

@@ -12,7 +12,7 @@
         </NuxtLink>
         <div class="header-content-right">
           <Suspense>
-            <AtomsIcon name="carbon:search" class="text-3xl" />
+            <AtomsIcon name="eva:search-outline" class="text-3xl" />
           </Suspense>
           <AtomsButtonGitHubStars
             class="hidden md:inline-block"

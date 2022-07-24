@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .form-style {
+    &-item {
+      @apply
+      flex
+      items-center;
+
+      & > input[type=checkbox] {
+        @apply
+        text-primary
+        focus:ring-primary
+        mr-2
+        h-4
+        w-4
+        rounded
+        border-gray-300;
+      }
+
+      & > label {
+        @apply
+        ml-3
+        whitespace-nowrap
+        pr-6
+        text-base
+        text-gray-900;
+      }
+    }
+  }
+}

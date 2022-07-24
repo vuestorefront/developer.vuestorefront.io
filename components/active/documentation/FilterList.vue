@@ -37,13 +37,11 @@
       </button>
       <ul class="list-none space-y-2">
         <li v-for="(name, i) in Object.keys(filters[key])" :key="i">
-          <input
+          <AtomsFormCheckbox
             :id="`${key}-${name}`"
             v-model="filters[key][name]"
-            type="checkbox"
-            class="text-primary focus:ring-primary mr-2 h-4 w-4 rounded border-gray-300"
-          />
-          <label :for="`${key}-${name}`">
+            :section-id="key"
+          >
             <span v-if="key === 'status'">
               {{ t(`global.integration.status.${name}`) }}
             </span>
@@ -56,7 +54,7 @@
             <span v-else>
               {{ name }}
             </span>
-          </label>
+          </AtomsFormCheckbox>
         </li>
       </ul>
     </DisclosurePanel>

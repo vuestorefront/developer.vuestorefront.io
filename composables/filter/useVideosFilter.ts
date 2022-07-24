@@ -1,70 +1,58 @@
 import { useI18n } from 'vue-i18n';
+import { useSortOptions } from '~/composables/filter/base';
+import { useVideosList } from '~/store/videos/videoList';
+import { storeToRefs } from 'pinia';
+import { debounce } from 'ts-debounce';
 
-export const useVideosFilter = async () => {
-  const { t } = useI18n();
+export const useVideosFilter = () => {
+  const { sortOptions } = useSortOptions();
+  const route = useRoute();
+  const router = useRouter();
+  const store = useVideosList();
+  const i18n = useI18n();
 
-  const { data: allVideosRaw } = await useAsyncData('allVideos', async () =>
-    queryContent('videos').only(['category', 'author', 'playlist']).find(),
-  );
+  const { data: videos, filters, selectedFilters } = storeToRefs(store);
 
-  const availableFilters = computed(() =>
-    allVideosRaw.value.reduce(
-      (acc, { category, author, playlist }) => {
-        if (category)
-          acc.category.add(
-            ...(Array.isArray(category) ? category : [category]),
-          );
-        if (author) acc.author.add(author);
-        if (playlist)
-          acc.playlist.add(
-            ...(Array.isArray(playlist) ? playlist : [playlist]),
-          );
+  const fetchData = async () =>
+    Promise.all([store.getBaseData(i18n), store.fetch()]);
 
-        return {
-          ...acc,
-          total: acc.total + 1,
-        };
-      },
-      {
-        category: new Set(),
-        author: new Set(),
-        playlist: new Set(),
-        total: 0,
-      },
-    ),
-  );
+  const routeDebounce = debounce(router.push, 1500);
 
-  const filters = computed(() => {
-    return [
-      {
-        id: 'category',
-        name: t('page.videos.filter.category'),
-        options: [...availableFilters.value.category].map((c) => ({
-          value: c,
-          label: c,
-        })),
+  const getCounter = (key: string) => {
+    if (selectedFilters.value[key]) return selectedFilters.value[key].length;
+    return 0;
+  };
+
+  const changeFilter = async (index: number, item: string) => {
+    if (store.filters[index].selected.has(item)) {
+      store.filters[index].selected.delete(item);
+    } else {
+      store.filters[index].selected.add(item);
+    }
+
+    const { author, category, playlist, ...query } = route.query;
+
+    await routeDebounce({
+      name: route.name,
+      query: {
+        ...query,
+        ...selectedFilters.value,
       },
-      {
-        id: 'author',
-        name: t('page.videos.filter.author'),
-        options: [...availableFilters.value.author].map((c) => ({
-          value: c,
-          label: c,
-        })),
-      },
-      {
-        id: 'playlist',
-        name: t('page.videos.filter.playlist'),
-        options: [...availableFilters.value.playlist].map((c) => ({
-          value: c,
-          label: c,
-        })),
-      },
-    ];
+    });
+  };
+
+  onBeforeMount(fetchData);
+
+  watch([computed(() => route.query)], fetchData, {
+    deep: true,
   });
 
   return {
+    sortOptions,
+    videos,
     filters,
-    pagesTotal: availableFilters.value.total,
+    selectedFilters,
+    getCounter,
+    changeFilter,
   };
 };

@@ -1,8 +1,8 @@
 <template>
   <div
-    class="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:flex lg:items-center lg:py-16 lg:px-8"
+    class="mx-auto grid max-w-7xl grid-cols-1 py-12 px-4 sm:px-6 md:grid-cols-2 lg:py-16 lg:px-8"
   >
-    <div class="lg:w-0 lg:flex-1">
+    <div class="">
       <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
         Sign up for our #developer Monthly newsletter
       </h2>
@@ -13,7 +13,7 @@
       </p>
     </div>
     <div class="mt-8 lg:mt-0 lg:ml-8">
-      <form id="newsletter-form" />
+      <form id="newsletter-form" class="sm:flex" />
     </div>
   </div>
 </template>

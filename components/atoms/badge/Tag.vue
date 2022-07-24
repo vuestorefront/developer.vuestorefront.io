@@ -21,7 +21,9 @@
         />
       </Suspense>
     </slot>
-    <span v-if="!iconOnly">2 minutes ago</span>
+    <span v-if="!iconOnly">
+      <slot />
+    </span>
   </span>
 </template>
 
