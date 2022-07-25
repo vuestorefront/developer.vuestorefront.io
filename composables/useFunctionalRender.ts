@@ -1,4 +1,5 @@
-import { Suspense, VNode } from 'vue';
+import { Suspense } from 'vue';
+import type { VNode } from 'vue';
 import Icon from '~/components/atoms/icon/Icon.vue';
 
 type CssClass = string | string[] | Record<string, boolean>;
