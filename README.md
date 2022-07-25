@@ -9,6 +9,9 @@
 <p align="center">
     Welcome to our community developer portal repository. This project is dedicated to all our community members and contributors.
 </p>
+<p align="center">
+The developer portal is a hub of information about the Vue Storefront framework and the community materials. You will find videos, blog posts, documentation and much more.
+</p>
 
 <p align="center">
   <a href="https://github.com/vuestorefront/vue-storefront/">
@@ -34,6 +37,10 @@
     <a href="https://github.com/vuestorefront/developer.vuestorefront.io/pulls">
         <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" />
     </a>
+</p>
+<p align="center">
+<a href="https://stackblitz.com/github/vuestorefront/developer.vuestorefront.io"><img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt=""></a>
+
 </p>
 
 > # #TechForUkraine
@@ -67,11 +74,30 @@
 >   </div>
 > </div>
 
-### Open on Stackblitz
-
-<a href="https://stackblitz.com/github/vuestorefront/developer.vuestorefront.io"><img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt=""></a>
-
 -------
+## How it works?
+
+### Tech Stack
+The project use as it's tech stack the following technologies:
+
+- [Nuxt 3](https://v3.nuxtjs.org/)
+- [Nuxt Content](https://content.nuxtjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+### How to components works
+
+In this project we are using two components naming approach:
+- Atomic Design
+- Active Components
+
+#### What is Atomic Design?
+
+> Atomic design is atoms, molecules, organisms, templates, and pages concurrently working together to create effective interface design systems
+> [Atomic Design by Brad Frost](https://atomicdesign.bradfrost.com/)
+
+#### What is Active Components?
+
+The principle of Active Components is to create reusable components which takes data manipulation upon itself, removing the need to add those code bits into a page, component or layout.
 
 ## Contributing
 
