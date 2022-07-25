@@ -27,6 +27,13 @@ export default defineNuxtConfig({
     // '@nuxtjs/partytown',
     'nuxt-schema-org',
     ...(process.env.LIGHTHOUSE ? ['@unlighthouse/nuxt'] : []),
+    [
+      '@nuxtjs/algolia',
+      {
+        apiKey: 'd000711cadb616a764b6f54433502dd8',
+        applicationId: 'IRCBVT08D6',
+      },
+    ],
   ],
   buildModules: ['@nuxt/content'],
   experimental: {
