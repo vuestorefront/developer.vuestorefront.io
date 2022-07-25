@@ -1,9 +1,13 @@
 import { useGetTypeColors } from '~/composables/useGetTypeColors';
-import { iconsData } from '~/constants/iconsData';
+import { IconTypeName } from '~/enums/icons';
+import { KeyOfEnum } from '~/types/helpers';
+import { TypeColors } from '~/enums/colors';
 
-export const useGetTypeProperties = (type?: string) => {
+export const useGetTypeProperties = (
+  type?: KeyOfEnum<TypeColors> | KeyOfEnum<IconTypeName>,
+) => {
   return {
     ...useGetTypeColors(type),
-    icon: iconsData[type.toLowerCase()] ? iconsData[type.toLowerCase()] : '',
+    icon: IconTypeName[type] || '',
   };
 };

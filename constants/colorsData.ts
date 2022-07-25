@@ -1,4 +1,6 @@
-export const colorsData = {
+import { ColorType } from '~/types/props/types/basePropTypes';
+
+export const colorsData: Record<ColorType, string> = {
   warning: 'yellow',
   info: 'blue',
   success: 'primary',

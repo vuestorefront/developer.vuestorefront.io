@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,7 +14,7 @@
     rounded-xl
     text-white;
 
-    &-color, &-license, &-status  {
+    &-color, &-license, &-status {
       @apply
       border
       border-transparent
@@ -64,7 +65,7 @@
         bg-white;
       }
 
-      &--orange, &--paid {
+      &--orange {
         @apply
         text-orange-500
         bg-orange-100;
@@ -160,6 +161,153 @@
         rounded-tr-none
         rounded-br-3xl
         rounded-bl-none;
+      }
+    }
+  }
+
+  .tag-badge {
+    @apply inline-flex items-center text-sm;
+    &-color {
+      &--success,
+      &--primary {
+        @apply
+        bg-primary-50
+        text-primary
+        hover:bg-primary-100
+        hover:text-primary-600;
+      }
+
+      &--secondary {
+        @apply
+        bg-secondary-50
+        text-secondary
+        hover:bg-secondary-100
+        hover:text-secondary-600;
+      }
+
+      &--danger {
+        @apply
+        bg-rose-50
+        text-rose
+        hover:bg-rose-100
+        hover:text-rose-600;
+      }
+
+      &--warning {
+        @apply
+        bg-yellow-50
+        text-yellow
+        hover:bg-yellow-100
+        hover:text-yellow-600;
+      }
+
+      &--info {
+        @apply
+        bg-blue-50
+        text-blue
+        hover:bg-blue-100
+        hover:text-blue-600;
+      }
+
+      &--transparent {
+        @apply
+        bg-transparent
+        text-primary
+        hover:text-primary-600;
+      }
+
+      &--white {
+        @apply
+        bg-white
+        text-primary
+        hover:text-primary-600;
+      }
+
+      &--black {
+        @apply
+        bg-black
+        text-white;
+      }
+
+      &--gray {
+        @apply
+        bg-gray-50
+        text-gray
+        hover:bg-gray-100
+        hover:text-gray-600;
+      }
+    }
+
+    &-icon {
+     &--only {
+       @apply
+       items-center
+       rounded-full
+       p-1.5
+       font-bold;
+     }
+
+      &--none {
+        @apply
+        rounded-xl
+        px-2.5
+        py-0.5
+        font-medium;
+      }
+
+      &-color {
+        &--success,
+        &--primary {
+          @apply
+          text-primary
+          hover:text-primary-600;
+        }
+
+        &--secondary {
+          @apply
+          text-secondary
+          hover:text-secondary-600;
+        }
+
+        &--danger {
+          @apply
+          text-rose
+          hover:text-rose-600;
+        }
+
+        &--warning {
+          @apply
+          text-yellow
+          hover:text-yellow-600;
+        }
+
+        &--info {
+          @apply
+          text-blue
+          hover:text-blue-600;
+        }
+
+        &--transparent {
+          @apply
+          text-primary
+          hover:text-primary-600;
+        }
+
+        &--white {
+          @apply
+          text-primary
+          hover:text-primary-600;
+        }
+
+        &--black {
+          @apply text-white;
+        }
+
+        &--gray {
+          @apply
+          text-gray
+          hover:text-gray-600;
+        }
       }
     }
   }

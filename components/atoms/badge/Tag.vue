@@ -1,23 +1,16 @@
 <template>
   <span
-    class="inline-flex items-center text-sm"
-    :class="`bg-${colors.bg} border-${colors.border} text-${colors.text} ${
-      iconOnly
-        ? 'items-center rounded-full p-1.5 font-bold'
-        : 'rounded-xl px-2.5 py-0.5 font-medium '
+    class="tag-badge"
+    :class="`${cssColors} ${
+      iconOnly ? 'tag-badge-icon--only' : 'tag-badge-icon--none'
     }`"
   >
-    <slot
-      v-if="enableIcon"
-      name="icon"
-      :icon="icon || colors.icon"
-      :color="`text-${colors.border}`"
-    >
+    <slot v-if="enableIcon" name="icon">
       <Suspense>
         <AtomsIcon
           aria-hidden="true"
-          :class="`text-${colors.border} ${iconOnly ? '' : 'mr-2'}`"
-          :name="icon || colors.icon"
+          :class="`${iconColors} ${iconOnly ? '' : 'mr-2'}`"
+          :name="icon || iconName"
         />
       </Suspense>
     </slot>
@@ -28,18 +21,45 @@
 </template>
 
 <script setup lang="ts">
+  import { KeyOfEnum } from '~/types/helpers';
+  import { ColorTypeName } from '~/enums/colors';
+  import {
+    TagBadgeColorClass,
+    TagBadgeIconColorClass,
+  } from '~/components/atoms/badge/common/cssClasses';
+  import { IconTypeName } from '~/enums/icons';
+
   const props = withDefaults(
     defineProps<{
       icon?: string;
       iconOnly?: boolean;
-      textOnly?: boolean;
-      type?: string;
+      type?: KeyOfEnum<ColorTypeName>;
     }>(),
-    { type: 'default', iconOnly: false, textOnly: true },
+    {
+      type: ColorTypeName.default,
+      iconOnly: false,
+    },
   );
 
-  const enableIcon = computed(
-    () => !props.textOnly || props.icon || props.iconOnly,
-  );
-  const colors = computed(() => useGetTypeProperties(props.type));
+  const enableIcon = computed(() => props.icon || props.iconOnly);
+
+  const cssColors = computed(() => TagBadgeColorClass[props.type]);
+  const iconColors = computed(() => TagBadgeIconColorClass[props.type]);
+
+  const iconName = computed(() => {
+    switch (props.type) {
+      case ColorTypeName.success:
+        return IconTypeName.success;
+      case ColorTypeName.info:
+        return IconTypeName.info;
+      case ColorTypeName.warning:
+        return IconTypeName.warning;
+      case ColorTypeName.danger:
+        return IconTypeName.danger;
+      case ColorTypeName.default:
+        return IconTypeName.default;
+      default:
+        return IconTypeName.default;
+    }
+  });
 </script>

@@ -1,4 +1,4 @@
-import { ColorsEnum } from '~/enums/colors';
+import { ColorTypeName } from '~/enums/colors';
 import { SizeEnum } from '~/enums/size';
 
 type SizeObj = Partial<{
@@ -46,12 +46,12 @@ type ColorsObj = {
 };
 
 type Colors = {
-  [key in ColorsEnum]: Partial<ColorsObj>;
+  [key in ColorTypeName]: Partial<ColorsObj>;
 };
 
 export type CssColorClasses = Partial<{
   color: Partial<{
-    [key in ColorsEnum]: string;
+    [key in ColorTypeName]: string;
   }>;
   bgColor: Colors;
   textColor: Colors;
@@ -61,7 +61,7 @@ export type CssOutlineClasses = Partial<{
   outline: Partial<{
     base: string;
     color: Partial<{
-      [key in ColorsEnum]: string;
+      [key in ColorTypeName]: string;
     }>;
   }>;
 }>;

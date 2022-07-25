@@ -8,11 +8,11 @@
 
 <script setup lang="ts">
   import {
-    cssPositionClass,
     cardBadgeCssClasses,
     cardBadgeLabel,
+    cssPositionClass,
     cssShapedClass,
-  } from '~/constants/css/atoms/cardBadge';
+  } from '~/components/atoms/badge/common/cssClasses';
   import { IntegrationLicense, IntegrationStatus } from '~/enums/integrations';
   import { BadgePosition } from '~/enums/badge';
 

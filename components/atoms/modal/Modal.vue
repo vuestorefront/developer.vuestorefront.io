@@ -79,7 +79,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ColorsEnum } from '~/enums/colors';
+  import { ColorTypeName } from '~/enums/colors';
 
   const props = withDefaults(
     defineProps<{
@@ -90,7 +90,7 @@
       buttons?: boolean;
       okButton?: Partial<{
         label: string;
-        color: ColorsEnum;
+        color: ColorTypeName;
         callback: (
           e: Event,
         ) =>
@@ -100,7 +100,7 @@
       }>;
       cancelButton?: Partial<{
         label: string;
-        color: ColorsEnum;
+        color: ColorTypeName;
         callback: (
           e: Event,
         ) =>
@@ -114,12 +114,12 @@
       buttons: false,
       okButton: () => ({
         label: 'Ok',
-        color: ColorsEnum.primary,
+        color: ColorTypeName.primary,
         callback: () => ({}),
       }),
       cancelButton: () => ({
         label: 'Cancel',
-        color: ColorsEnum.white,
+        color: ColorTypeName.white,
         callback: () => ({}),
       }),
     },

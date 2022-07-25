@@ -1,5 +1,5 @@
 import { CssButtonClasses } from '~/types/css/types/atoms/button';
-import { ColorsEnum } from '~/enums/colors';
+import { ColorTypeName } from '~/enums/colors';
 import { SizeEnum } from '~/enums/size';
 
 const cssSlots = {
@@ -13,14 +13,14 @@ export const buttonCssClasses: CssButtonClasses = {
   square: 'button-square',
   disabled: 'button-disabled',
   color: {
-    [ColorsEnum.success]: 'button-color--success',
-    [ColorsEnum.primary]: 'button-color--primary',
-    [ColorsEnum.secondary]: 'button-color--secondary',
-    [ColorsEnum.danger]: 'button-color--danger',
-    [ColorsEnum.warning]: 'button-color--warning',
-    [ColorsEnum.info]: 'button-color--info',
-    [ColorsEnum.white]: 'button-color--white',
-    [ColorsEnum.transparent]: 'button-color--transparent',
+    [ColorTypeName.success]: 'button-color--success',
+    [ColorTypeName.primary]: 'button-color--primary',
+    [ColorTypeName.secondary]: 'button-color--secondary',
+    [ColorTypeName.danger]: 'button-color--danger',
+    [ColorTypeName.warning]: 'button-color--warning',
+    [ColorTypeName.info]: 'button-color--info',
+    [ColorTypeName.white]: 'button-color--white',
+    [ColorTypeName.transparent]: 'button-color--transparent',
   },
   shadow: {
     base: 'shadow-base',
@@ -31,14 +31,14 @@ export const buttonCssClasses: CssButtonClasses = {
   outline: {
     base: 'button-outline',
     color: {
-      [ColorsEnum.success]: 'button-outline--success',
-      [ColorsEnum.primary]: 'button-outline--primary',
-      [ColorsEnum.secondary]: 'button-outline--secondary',
-      [ColorsEnum.danger]: 'button-outline--danger',
-      [ColorsEnum.warning]: 'button-outline--warning',
-      [ColorsEnum.info]: 'button-outline--info',
-      [ColorsEnum.white]: 'button-outline--white',
-      [ColorsEnum.transparent]: 'button-outline--transparent',
+      [ColorTypeName.success]: 'button-outline--success',
+      [ColorTypeName.primary]: 'button-outline--primary',
+      [ColorTypeName.secondary]: 'button-outline--secondary',
+      [ColorTypeName.danger]: 'button-outline--danger',
+      [ColorTypeName.warning]: 'button-outline--warning',
+      [ColorTypeName.info]: 'button-outline--info',
+      [ColorTypeName.white]: 'button-outline--white',
+      [ColorTypeName.transparent]: 'button-outline--transparent',
     },
   },
   size: {

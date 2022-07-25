@@ -1,11 +1,8 @@
-import { colorsData } from '~/constants/colorsData';
+import { KeyOfEnum } from '~/types/helpers';
+import { TypeColors } from '~/enums/colors';
 
-export const useGetTypeColors = (type?: string) => {
-  const color = computed(() => {
-    return colorsData[type.toLowerCase()]
-      ? colorsData[type.toLowerCase()]
-      : 'gray';
-  });
+export const useGetTypeColors = (type?: KeyOfEnum<TypeColors>) => {
+  const color = computed(() => TypeColors[type] || 'gray');
 
   return {
     bg: `${color.value}-50`,
