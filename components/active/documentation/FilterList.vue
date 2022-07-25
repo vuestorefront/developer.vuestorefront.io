@@ -37,24 +37,28 @@
       </button>
       <ul class="list-none space-y-2">
         <li v-for="(name, i) in Object.keys(filters[key])" :key="i">
-          <AtomsFormCheckbox
-            :id="`${key}-${name}`"
-            v-model="filters[key][name]"
-            :section-id="key"
-          >
-            <span v-if="key === 'status'">
-              {{ t(`global.integration.status.${name}`) }}
-            </span>
-            <span v-else-if="key === 'license'">
-              {{ t(`global.integration.license.${name}`) }}
-            </span>
-            <span v-else-if="key === 'categories'">
-              {{ t(`global.integration.category.${name}`) }}
-            </span>
-            <span v-else>
-              {{ name }}
-            </span>
-          </AtomsFormCheckbox>
+          <div class="form-style-item">
+            <input
+              :id="`${key}-${name}`"
+              v-model="filters[key][name]"
+              :name="`${key}[]`"
+              type="checkbox"
+            />
+            <label :id="`${key}-${name}`">
+              <span v-if="key === 'status'">
+                {{ t(`global.integration.status.${name}`) }}
+              </span>
+              <span v-else-if="key === 'license'">
+                {{ t(`global.integration.license.${name}`) }}
+              </span>
+              <span v-else-if="key === 'categories'">
+                {{ t(`global.integration.category.${name}`) }}
+              </span>
+              <span v-else>
+                {{ name }}
+              </span>
+            </label>
+          </div>
         </li>
       </ul>
     </DisclosurePanel>

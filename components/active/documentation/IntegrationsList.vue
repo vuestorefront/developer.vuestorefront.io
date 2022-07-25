@@ -1,11 +1,11 @@
 <template>
   <template v-for="integration in integrations">
-    <section
+    <div
       v-if="Array.isArray(integration.list) && integration.list.length > 0"
       :id="integration.type"
       :key="integration.title"
     >
-      <h2>{{ integration.title }}</h2>
+      <h1>{{ integration.title }}</h1>
       <p class="text-gray-500">
         {{ integration.description }}
       </p>
@@ -21,7 +21,7 @@
           :maintainers="ext.maintainedBy"
         />
       </div>
-    </section>
+    </div>
   </template>
 </template>
 
@@ -33,7 +33,7 @@
 
   const { integrations, filterParams } = storeToRefs(store);
 
-  onBeforeMount(async () => store.fetch());
+  onServerPrefetch(async () => store.fetch());
 
   watch(filterParams, async () => store.fetch(), { deep: true });
 </script>

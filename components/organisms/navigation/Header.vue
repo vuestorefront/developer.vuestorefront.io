@@ -58,7 +58,7 @@
   import { useI18n } from 'vue-i18n';
 
   const { t } = useI18n();
-  /*
+
   const navElBase = computed(() => document?.querySelector('#header-base'));
   const navElContent = computed(() =>
     document?.querySelector('#header-navigation'),
@@ -100,5 +100,5 @@
 
     window.addEventListener('scroll', scrollFunction);
     window.addEventListener('touchmove', scrollFunction);
-  }); */
+  });
 </script>

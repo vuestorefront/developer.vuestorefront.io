@@ -22,8 +22,8 @@
     defineProps<{
       sectionId: string;
       modelValue?: string | boolean | number | null;
-      value: string | boolean | number;
-      checked: boolean;
+      value?: string | boolean | number;
+      checked?: boolean;
       label?: string;
     }>(),
     {

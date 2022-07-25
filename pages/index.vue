@@ -8,7 +8,7 @@
         button-link="https://docs.vuestorefront.io/v2/getting-started/installation.html"
         video-thumb="https://img.youtube.com/vi/MCN1rRwuIGs/maxresdefault.jpg"
         :thumb-button-text="t('page.home.videoBanner.link')"
-        thumb-button-link="/videos/all"
+        thumb-button-link="/videos"
         video="https://www.youtube.com/watch?v=MCN1rRwuIGs"
       />
       <MoleculesBannersCallToAction
@@ -104,12 +104,12 @@
 
   const { convertPostsToProps, useBlogArticles } = useDevTo();
 
-  const { $apiLazyAsyncData } = useBlogArticles({
+  const { $apiAsyncData } = useBlogArticles({
     organization: 'vue-storefront',
     perPage: 3,
   });
 
-  const { data, error, pending } = await $apiLazyAsyncData();
+  const { data, error, pending } = await $apiAsyncData();
 
   const postsList = convertPostsToProps(data.value);
 </script>

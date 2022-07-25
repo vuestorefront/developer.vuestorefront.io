@@ -18,12 +18,11 @@
             {{ message }}
           </p>
           <div class="mt-8 sm:flex">
-            <AtomsButtonContent
+            <AtomsButton
               shadow
               color="primary"
               :label="buttonText"
               :to="buttonLink"
-              target="_blank"
               class="w-full md:w-fit"
             />
           </div>

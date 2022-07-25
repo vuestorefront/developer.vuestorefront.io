@@ -8,13 +8,7 @@
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
     tab-size: 4;
-    overflow: hidden;
-    height: 100%;
-  }
-
-  body {
-    height: 100%;
-    overflow: auto;
+    scroll-behavior: smooth;
   }
 
   code,

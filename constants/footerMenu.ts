@@ -4,19 +4,15 @@ export const footerMenuItems = [
     subMenu: [
       {
         title: 'Getting Started',
-        link: '#',
+        link: 'https://docs.vuestorefront.io/v2/getting-started/introduction.html',
+        iconName: 'akar-icons:link-out',
+        target: '_blank',
       },
       {
         title: 'Create your own Integration',
         link: '#',
-      },
-      {
-        title: 'Create your own Extension',
-        link: '#',
-      },
-      {
-        title: 'Deploy Vue Storefront',
-        link: '#',
+        iconName: 'akar-icons:link-out',
+        target: '_blank',
       },
     ],
   },
@@ -25,27 +21,31 @@ export const footerMenuItems = [
     subMenu: [
       {
         title: 'Vue Storefront 2',
-        link: '#',
+        link: 'https://docs.vuestorefront.io/v2/',
+        iconName: 'akar-icons:link-out',
+        target: '_blank',
       },
       {
         title: 'Vue Storefront 1',
-        link: '#',
+        link: 'https://docs.vuestorefront.io/v1/',
+        iconName: 'akar-icons:link-out',
+        target: '_blank',
       },
       {
         title: 'Vue Storefront Cloud',
-        link: '#',
+        link: 'https://docs.vuestorefront.io/cloud/',
+        iconName: 'akar-icons:link-out',
+        target: '_blank',
       },
       {
         title: 'Storefront-UI',
-        link: '#',
+        link: 'https://www.storefrontui.io/',
+        iconName: 'akar-icons:link-out',
+        target: '_blank',
       },
       {
         title: 'Integrations',
-        link: '#',
-      },
-      {
-        title: 'Extensions',
-        link: '#',
+        link: 'documentation/',
       },
     ],
   },
@@ -54,19 +54,21 @@ export const footerMenuItems = [
     subMenu: [
       {
         title: 'About',
-        link: '#',
+        link: 'https://vuestorefront.io/about-us',
+        iconName: 'akar-icons:link-out',
+        target: '_blank',
       },
       {
-        title: 'Contact Us',
-        link: '#',
-      },
-      {
-        title: 'Contact for Partners',
-        link: '#',
+        title: 'Contact us',
+        link: 'https://vuestorefront.io/contact/sales',
+        iconName: 'akar-icons:link-out',
+        target: '_blank',
       },
       {
         title: 'Careers',
-        link: '#',
+        link: 'https://vuestorefront.io/careers',
+        iconName: 'akar-icons:link-out',
+        target: '_blank',
       },
     ],
   },
