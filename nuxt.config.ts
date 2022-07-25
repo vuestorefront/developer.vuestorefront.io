@@ -27,13 +27,7 @@ export default defineNuxtConfig({
     // '@nuxtjs/partytown',
     'nuxt-schema-org',
     ...(process.env.LIGHTHOUSE ? ['@unlighthouse/nuxt'] : []),
-    [
-      '@nuxtjs/algolia',
-      {
-        apiKey: 'd000711cadb616a764b6f54433502dd8',
-        applicationId: 'IRCBVT08D6',
-      },
-    ],
+    '@nuxtjs/algolia',
   ],
   buildModules: ['@nuxt/content'],
   experimental: {
@@ -74,5 +68,9 @@ export default defineNuxtConfig({
   },
   partytown: {
     forward: ['hbspt'],
+  },
+  algolia: {
+    apiKey: process.env.ALGOLIA_TOKEN,
+    applicationId: process.env.ALGOLIA_ID,
   },
 });
