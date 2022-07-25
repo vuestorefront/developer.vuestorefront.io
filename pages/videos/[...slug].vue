@@ -34,8 +34,8 @@
                   {{ contentQuery.author }}
                 </p>
                 <div class="flex space-x-1 text-sm text-gray-500">
-                  <time :datetime="textDate">
-                    {{ textDate }}
+                  <time>
+                    {{ d(new Date(props.date || ''), 'medium') }}
                   </time>
                 </div>
               </div>
@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-  import { formatDate } from '~/utils/date';
+  import { useI18n } from 'vue-i18n';
 
   definePageMeta({
     layout: 'video',
@@ -62,15 +62,5 @@
 
   const contentQuery = await queryContent(path).findOne();
 
-  const textDate = computed(() =>
-    formatDate({
-      date: new Date(contentQuery.publishedAt || '').toUTCString(),
-      options: {
-        weekday: 'short',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      },
-    }),
-  );
+  const { d } = useI18n();
 </script>

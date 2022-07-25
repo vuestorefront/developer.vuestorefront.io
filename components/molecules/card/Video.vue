@@ -19,8 +19,8 @@
               {{ author.name }}
             </p>
             <div v-if="date" class="flex space-x-1 text-sm text-gray-500">
-              <time :datetime="textDate">
-                {{ textDate }}
+              <time>
+                {{ d(new Date(props.date || ''), 'medium') }}
               </time>
             </div>
           </div>
@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-  import { formatDate } from '~/utils/date';
+  import { useI18n } from 'vue-i18n';
 
   const props = withDefaults(
     defineProps<{
@@ -51,15 +51,5 @@
     },
   );
 
-  const textDate = computed(() =>
-    formatDate({
-      date: new Date(props.date || '').toUTCString(),
-      options: {
-        weekday: 'short',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      },
-    }),
-  );
+  const { d } = useI18n();
 </script>

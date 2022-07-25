@@ -1,6 +1,7 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable unicorn/relative-url-style */
 import { defineNuxtConfig } from 'nuxt';
+import { datetimeFormats } from '~/locales/dateTime';
 
 export default defineNuxtConfig({
   head: {
@@ -59,6 +60,7 @@ export default defineNuxtConfig({
   intlify: {
     localeDir: 'locales',
     vueI18n: {
+      datetimeFormats,
       legacy: false,
       availableLocales: ['en'],
       sync: true,
@@ -66,9 +68,9 @@ export default defineNuxtConfig({
       locale: 'en',
     },
   },
-  partytown: {
+  /*  partytown: {
     forward: ['hbspt'],
-  },
+  }, */
   algolia: {
     apiKey: process.env.ALGOLIA_TOKEN,
     applicationId: process.env.ALGOLIA_ID,

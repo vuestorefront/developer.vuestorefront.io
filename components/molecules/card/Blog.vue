@@ -49,8 +49,8 @@
             {{ author.name }}
           </p>
           <div class="blog-card-author--date">
-            <time :datetime="textDate">
-              {{ textDate }}
+            <time>
+              {{ d(new Date(props.date || ''), 'medium') }}
             </time>
           </div>
         </div>
@@ -60,7 +60,6 @@
 </template>
 
 <script setup lang="ts">
-  import { formatDate } from '~/utils/date';
   import { useI18n } from 'vue-i18n';
 
   const props = defineProps<{
@@ -80,20 +79,9 @@
     url: string;
   }>();
 
-  const { t } = useI18n();
+  const { t, d } = useI18n();
 
   const blogLink = computed(() => props.url);
 
   const authorLink = computed(() => `https://dev.to/${props.author?.username}`);
-
-  const textDate = computed(() =>
-    formatDate({
-      date: new Date(props.date || '').toUTCString(),
-      options: {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      },
-    }),
-  );
 </script>
