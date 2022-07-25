@@ -12,7 +12,7 @@
     </slot>
     <div class="px-2">
       <slot name="logo">
-        <img :src="logo" :alt="name" class="w-full" />
+        <img :src="logo" :alt="name" class="h-24 w-full object-contain" />
       </slot>
     </div>
     <slot name="bottom-badge">
