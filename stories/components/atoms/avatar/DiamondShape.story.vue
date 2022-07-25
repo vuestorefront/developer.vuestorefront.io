@@ -29,4 +29,14 @@
 # Avatar Diamond Shape
 
 Component for displaying an avatar image inside a diamond shape
+
+## Props
+
+```typescript
+type Props = {
+  img: string;
+  width?: string; //Default: '2rem'
+  height?: string; //Default: '2rem'
+};
+```
 </docs>

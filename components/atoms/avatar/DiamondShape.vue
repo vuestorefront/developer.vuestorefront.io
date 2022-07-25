@@ -13,7 +13,7 @@
 <script setup lang="ts">
   const props = withDefaults(
     defineProps<{
-      img?: string;
+      img: string;
       width?: string;
       height?: string;
     }>(),
