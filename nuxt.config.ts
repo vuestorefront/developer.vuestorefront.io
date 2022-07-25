@@ -1,7 +1,7 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable unicorn/relative-url-style */
 import { defineNuxtConfig } from 'nuxt';
-import { datetimeFormats } from '~/locales/dateTime';
+import { datetimeFormats } from './locales/dateTimeFormat';
 
 export default defineNuxtConfig({
   head: {

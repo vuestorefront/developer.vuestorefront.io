@@ -10,7 +10,7 @@
     </template>
     <Variant
       v-for="(type, index) in componentType"
-      :key="nanoid() + index"
+      :key="UUID() + index"
       :title="type"
       :init-state="initState"
     >
@@ -27,9 +27,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useUUID } from '~/composables/useUUID';
-
-  const nanoid = useUUID;
+  import { UUID } from '~/utils/uuid';
 
   const componentType = [
     'Warning',

@@ -1,6 +1,6 @@
 import { defineSetupVue3 } from 'histoire/client';
 import { createI18n } from 'vue-i18n';
-import { datetimeFormats } from '~/locales/dateTime';
+import { datetimeFormats } from '../locales/dateTimeFormat';
 // eslint-disable-next-line import/extensions
 import en from '../locales/en.json';
 
