@@ -9,7 +9,6 @@ export enum ColorTypeName {
   transparent = 'transparent',
   black = 'black',
   gray = 'gray',
-  default = 'gray',
 }
 
 export enum TypeColors {
@@ -20,5 +19,4 @@ export enum TypeColors {
   white = 'white',
   transparent = 'transparent',
   gray = 'gray',
-  default = 'gray',
 }

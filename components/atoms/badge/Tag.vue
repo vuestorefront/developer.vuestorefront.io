@@ -9,6 +9,7 @@
       <Suspense>
         <AtomsIcon
           aria-hidden="true"
+          class="text-sm"
           :class="`${iconColors} ${iconOnly ? '' : 'mr-2'}`"
           :name="icon || iconName"
         />
@@ -21,7 +22,6 @@
 </template>
 
 <script setup lang="ts">
-  import { KeyOfEnum } from '~/types/helpers';
   import { ColorTypeName } from '~/enums/colors';
   import {
     TagBadgeColorClass,
@@ -33,7 +33,7 @@
     defineProps<{
       icon?: string;
       iconOnly?: boolean;
-      type?: KeyOfEnum<ColorTypeName>;
+      type?: ColorTypeName;
     }>(),
     {
       type: ColorTypeName.default,
@@ -41,10 +41,11 @@
     },
   );
 
-  const enableIcon = computed(() => props.icon || props.iconOnly);
-
   const cssColors = computed(() => TagBadgeColorClass[props.type]);
   const iconColors = computed(() => TagBadgeIconColorClass[props.type]);
+  const enableIcon = computed(
+    () => props.icon || props.iconOnly || !!iconColors.value,
+  );
 
   const iconName = computed(() => {
     switch (props.type) {

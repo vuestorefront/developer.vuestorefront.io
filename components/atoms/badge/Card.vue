@@ -19,8 +19,8 @@
   const props = withDefaults(
     defineProps<{
       label?: string;
-      model: IntegrationStatus | IntegrationLicense;
-      position: BadgePosition;
+      model?: IntegrationStatus | IntegrationLicense;
+      position?: BadgePosition;
       shaped?: boolean;
     }>(),
     {

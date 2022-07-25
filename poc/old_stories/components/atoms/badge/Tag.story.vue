@@ -1,24 +1,32 @@
 <template>
-  <Story title="Atoms/Badge/Tag" :layout="{ type: 'single', iframe: true }">
+  <Story title="Atoms/Badge/Tag" :layout="{ type: 'grid', width: 200 }">
     <Variant title="With Text & Icon">
-      <AtomsBadgeTag icon="carbon:checkmark" type="success">
-        Success
-      </AtomsBadgeTag>
+      <template>
+        <AtomsBadgeTag icon="carbon:checkmark" type="success">
+          Success
+        </AtomsBadgeTag>
+      </template>
     </Variant>
     <Variant title="Text Only">
-      <AtomsBadgeTag type="warning"> Warning </AtomsBadgeTag>
+      <template>
+        <AtomsBadgeTag type="warning"> Warning </AtomsBadgeTag>
+      </template>
     </Variant>
     <Variant title="Icon only">
-      <AtomsBadgeTag icon="carbon:close-outline" icon-only type="danger" />
+      <template>
+        <AtomsBadgeTag icon="carbon:close-outline" icon-only type="danger" />
+      </template>
     </Variant>
     <Variant
       v-for="(color, index) in colors"
       :key="color + index"
       :title="`Badge Type: ${capitalize(color)}`"
     >
-      <AtomsBadgeTag :type="color">
-        {{ color }}
-      </AtomsBadgeTag>
+      <template>
+        <AtomsBadgeTag :type="color">
+          {{ color }}
+        </AtomsBadgeTag>
+      </template>
     </Variant>
   </Story>
 </template>
@@ -37,6 +45,7 @@
     'transparent',
     'black',
     'gray',
+    'default',
   ];
 </script>
 

@@ -4,31 +4,31 @@ import { IntegrationLicense, IntegrationStatus } from '~/enums/integrations';
 import { BadgePosition } from '~/enums/badge';
 
 export const TagBadgeColorClass: EnumRecord<ColorTypeName, string> = {
-  [ColorTypeName.success]: '.tag-badge-color--success',
-  [ColorTypeName.primary]: '.tag-badge-color--primary',
-  [ColorTypeName.secondary]: '.tag-badge-color--secondary',
-  [ColorTypeName.danger]: '.tag-badge-color--danger',
-  [ColorTypeName.warning]: '.tag-badge-color--warning',
-  [ColorTypeName.info]: '.tag-badge-color--info',
-  [ColorTypeName.white]: '.tag-badge-color--white',
-  [ColorTypeName.transparent]: '.tag-badge-color--transparent',
-  [ColorTypeName.black]: '.tag-badge-color--black',
-  [ColorTypeName.gray]: '.tag-badge-color--gray',
-  [ColorTypeName.default]: '.tag-badge-color--default',
+  [ColorTypeName.success]: 'tag-badge-color--success',
+  [ColorTypeName.primary]: 'tag-badge-color--primary',
+  [ColorTypeName.secondary]: 'tag-badge-color--secondary',
+  [ColorTypeName.danger]: 'tag-badge-color--danger',
+  [ColorTypeName.warning]: 'tag-badge-color--warning',
+  [ColorTypeName.info]: 'tag-badge-color--info',
+  [ColorTypeName.white]: 'tag-badge-color--white',
+  [ColorTypeName.transparent]: 'tag-badge-color--transparent',
+  [ColorTypeName.black]: 'tag-badge-color--black',
+  [ColorTypeName.gray]: 'tag-badge-color--gray',
+  [ColorTypeName.default]: 'tag-badge-color--default',
 };
 
 export const TagBadgeIconColorClass: EnumRecord<ColorTypeName, string> = {
-  [ColorTypeName.success]: '.tag-badge-icon-color--success',
-  [ColorTypeName.primary]: '.tag-badge-icon-color--primary',
-  [ColorTypeName.secondary]: '.tag-badge-icon-color--secondary',
-  [ColorTypeName.danger]: '.tag-badge-icon-color--danger',
-  [ColorTypeName.warning]: '.tag-badge-icon-color--warning',
-  [ColorTypeName.info]: '.tag-badge-icon-color--info',
-  [ColorTypeName.white]: '.tag-badge-icon-color--white',
-  [ColorTypeName.transparent]: '.tag-badge-icon-color--transparent',
-  [ColorTypeName.black]: '.tag-badge-icon-color--black',
-  [ColorTypeName.gray]: '.tag-badge-icon-color--gray',
-  [ColorTypeName.default]: '.tag-badge-icon-color--default',
+  [ColorTypeName.success]: 'tag-badge-icon-color--success',
+  [ColorTypeName.primary]: 'tag-badge-icon-color--primary',
+  [ColorTypeName.secondary]: 'tag-badge-icon-color--secondary',
+  [ColorTypeName.danger]: 'tag-badge-icon-color--danger',
+  [ColorTypeName.warning]: 'tag-badge-icon-color--warning',
+  [ColorTypeName.info]: 'tag-badge-icon-color--info',
+  [ColorTypeName.white]: 'tag-badge-icon-color--white',
+  [ColorTypeName.transparent]: 'tag-badge-icon-color--transparent',
+  [ColorTypeName.black]: 'tag-badge-icon-color--black',
+  [ColorTypeName.gray]: 'tag-badge-icon-color--gray',
+  [ColorTypeName.default]: 'tag-badge-icon-color--default',
 };
 
 export const cssLicenseClass: EnumRecord<IntegrationLicense, string> = {

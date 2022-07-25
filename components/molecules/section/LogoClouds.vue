@@ -36,7 +36,7 @@
             'order-first': direction === 'right',
           }"
         >
-          <AtomsBrands
+          <AtomsBrandsBox
             v-for="brand in elements"
             :key="brand.key"
             v-bind="brand"

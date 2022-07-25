@@ -1,5 +1,5 @@
 <template>
-  <AtomsBrandsContent
+  <AtomsBrandsCommonContent
     v-bind="$props"
     :shaped="shaped"
     @mouseover="isHover = true"
@@ -24,7 +24,7 @@
         </div>
       </transition>
     </template>
-  </AtomsBrandsContent>
+  </AtomsBrandsCommonContent>
 </template>
 
 <script setup lang="ts">

@@ -1,25 +1,34 @@
 <template>
-  <Story title="Atoms/Badge/Card" :layout="{ type: 'single', iframe: true }">
+  <Story title="Atoms/Badge/Card" :layout="{ type: 'grid', width: 200 }">
     <Variant
       v-for="(type, index) in status"
       :key="type + index"
       :title="`Status: ${capitalize(type)}`"
     >
-      <AtomsBadgeCard :model="type" />
+      <template>
+        <AtomsBadgeCard :model="type" />
+      </template>
     </Variant>
     <Variant
       v-for="(type, index) in license"
       :key="type + index"
       :title="`Status: ${capitalize(type)}`"
     >
-      <AtomsBadgeCard :model="type" />
+      <template>
+        <AtomsBadgeCard :model="type" />
+      </template>
     </Variant>
     <Variant
       v-for="(type, index) in position"
       :key="type + index"
-      :title="`Position Shaped: ${capitalize(type)}`"
+      :title="`Position: ${capitalize(type)}`"
     >
-      <AtomsBadgeCard :position="type" model="os" shaped />
+      <template>
+        <AtomsBadgeCard
+          :position="type"
+          :model="randomElements([...status, ...license, 1]).pop()"
+        />
+      </template>
     </Variant>
   </Story>
 </template>
@@ -28,7 +37,7 @@
   import { capitalize } from '~/utils/string';
   import { randomElements } from '~/utils/array';
 
-  const status = ['alpha', 'beta', 'wip'];
+  const status = ['alpha', 'beta', 'prod', 'wip'];
 
   const license = ['enterprise', 'os'];
 
@@ -40,9 +49,6 @@
     'bottom',
     'top',
   ];
-
-  const positionRandomData = () =>
-    randomElements([...status, ...license], 1).pop();
 </script>
 
 <docs lang="md">

@@ -55,7 +55,7 @@
                 >
                   <span class="font-medium text-gray-900">
                     {{ filter.name }}
-                    <AtomsBadgeTag v-if="getCounter(filter.id)" type="default">
+                    <AtomsBadgeTag v-if="getCounter(filter.id)" type="gray">
                       {{ getCounter(filter.id) }}
                     </AtomsBadgeTag>
                   </span>

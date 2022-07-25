@@ -1,29 +1,14 @@
 <template>
-  <Story title="Atoms/Avatar/Diamond Shape" :init-state="initState">
-    <template #default="{ state }">
+  <Story title="Atoms/Avatar/Diamond Shape">
+    <Variant title="Default">
       <AtomsAvatarDiamondShape
-        :width="state.width"
-        :height="state.height"
-        :img="state.img"
+        width="2rem"
+        height="2rem"
+        img="https://i.pravatar.cc/100"
       />
-    </template>
-    <template #controls="{ state }">
-      <HstText v-model="state.width" title="Width" />
-      <HstText v-model="state.height" title="Height" />
-      <HstText v-model="state.img" title="Image URL" />
-    </template>
+    </Variant>
   </Story>
 </template>
-
-<script setup lang="ts">
-  function initState() {
-    return {
-      width: '2rem',
-      height: '2rem',
-      img: 'https://i.pravatar.cc/100',
-    };
-  }
-</script>
 
 <docs lang="md">
 # Avatar Diamond Shape

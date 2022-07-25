@@ -1,7 +1,8 @@
-import {defineConfig} from 'histoire';
-import {HstNuxt} from "@histoire/plugin-nuxt";
+import { defineConfig } from 'histoire';
+import { HstNuxt } from '@histoire/plugin-nuxt';
 
 export default defineConfig({
+  storyIgnored: ['**/node_modules/**', '**/dist/**', '**/poc/**'],
   theme: {
     title: 'Developer Portal - System',
     logo: {
@@ -23,9 +24,13 @@ export default defineConfig({
         800: '#166534',
         900: '#14532d',
       },
-    }
+    },
+    favicon: 'public/favicon.ico',
   },
-  plugins: [
-    HstNuxt(),
-  ],
-})
+  vite: {
+    server: {
+      port: 3042,
+    },
+  },
+  plugins: [HstNuxt()],
+});

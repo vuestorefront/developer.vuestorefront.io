@@ -229,7 +229,7 @@
         text-white;
       }
 
-      &--gray {
+      &--gray, &--default {
         @apply
         bg-gray-50
         text-gray

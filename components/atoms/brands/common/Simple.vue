@@ -1,6 +1,7 @@
 <template>
-  <AtomsBrandsSimple v-if="typeof link === 'string'" v-bind="$props" />
-  <AtomsBrandsDocs v-else v-bind="$props" />
+  <NuxtLink :to="link">
+    <AtomsBrandsCommonContent v-bind="$props" :shaped="shaped" />
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">
@@ -9,13 +10,7 @@
   defineProps<{
     name: string;
     logo?: string;
-    link:
-      | string
-      | Array<{
-          name: string;
-          link: string;
-          icon: string;
-        }>;
+    link: string;
     license?: IntegrationLicense;
     status?: IntegrationStatus;
     color?: string;
