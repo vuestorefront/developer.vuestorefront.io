@@ -72,5 +72,7 @@ export default defineNuxtConfig({
   algolia: {
     apiKey: process.env.ALGOLIA_TOKEN,
     applicationId: process.env.ALGOLIA_ID,
+    lite: false,
+    instantSearch: true,
   },
 });
