@@ -4,6 +4,8 @@
   </Story>
 </template>
 
+<script setup lang="ts"></script>
+
 <docs lang="md">
 # Edit Page Text
 

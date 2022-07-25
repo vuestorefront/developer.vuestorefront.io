@@ -1,6 +1,6 @@
 <template>
   <Story
-    title="Atoms/Item/Contributor"
+    title="Atoms/Contributor/Item"
     :init-state="initState"
     :layout="{ type: 'grid', width: 200 }"
   >

@@ -3,6 +3,7 @@ import { HstNuxt } from '@histoire/plugin-nuxt';
 
 export default defineConfig({
   storyIgnored: ['**/node_modules/**', '**/dist/**', '**/poc/**'],
+  setupFile: '/stories/setup.ts',
   theme: {
     title: 'Developer Portal - System',
     logo: {

@@ -6,7 +6,7 @@
   >
     <Variant
       v-for="(color, index) in buttonColors"
-      :key="nanoid() + index"
+      :key="UUID() + index"
       :title="capitalize(color)"
     >
       <template #default="{ state }">
@@ -30,7 +30,7 @@
     </Variant>
     <Variant
       v-for="(btn, index) in iconButtons"
-      :key="nanoid() + index"
+      :key="UUID() + index"
       :title="btn.title"
     >
       <template #default="{ state }">
@@ -129,7 +129,8 @@
 </template>
 
 <script setup lang="ts">
-  import { useUUID } from '~/composables/useUUID';
+  import { capitalize } from '~/utils/string';
+  import { UUID } from '~/utils/uuid';
 
   const buttonColors = [
     'success',
@@ -162,8 +163,6 @@
       iconName: 'mdi:home',
     },
   ];
-  const { capitalize } = useTextCase();
-  const nanoid = useUUID;
   function initState() {
     return {
       size: 'base',

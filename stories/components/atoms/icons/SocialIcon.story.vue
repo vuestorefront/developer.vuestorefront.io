@@ -33,15 +33,13 @@
 </script>
 
 <docs lang="md">
-# Contributor Item
+# Social Icon
 
-Contributor list item for be used with [Contributors]() list component
+Showcase a specific social icon, based on the name prop.
 
 ```typescript
 type Props = {
-  name?: string;
-  avatar?: string;
-  url?: string;
+  name: string;
 };
 ```
 </docs>

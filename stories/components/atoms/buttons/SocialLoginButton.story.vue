@@ -6,7 +6,7 @@
   >
     <Variant
       v-for="(type, index) in socialTypes"
-      :key="nanoid() + index"
+      :key="UUID() + index"
       :title="`${capitalize(type)} Login`"
     >
       <template #default="{ state }">
@@ -56,13 +56,10 @@
 </template>
 
 <script setup lang="ts">
-  import { useUUID } from '~/composables/useUUID';
+  import { capitalize } from '~/utils/string';
+  import { UUID } from '~/utils/uuid';
 
   const socialTypes = ['facebook', 'twitter', 'github', 'google', 'apple'];
-
-  const { capitalize } = useTextCase();
-
-  const nanoid = useUUID;
 
   function initState() {
     return {
