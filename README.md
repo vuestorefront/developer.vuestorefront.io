@@ -80,13 +80,13 @@ The developer portal is a hub of information about the Vue Storefront framework 
 ### Tech Stack
 The project use as it's tech stack the following technologies:
 
-- [Nuxt 3](https://v3.nuxtjs.org/)
-- [Nuxt Content](https://content.nuxtjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
+- [Nuxt 3][nuxt]
+- [Nuxt Content][nuxt-content]
+- [Tailwind CSS][tailwind-css]
 
-### How to components works
+### How do we use `components`?
 
-In this project we are using two components naming approach:
+In this project we are using two components structures:
 - Atomic Design
 - Active Components
 
@@ -98,6 +98,30 @@ In this project we are using two components naming approach:
 #### What is Active Components?
 
 The principle of Active Components is to create reusable components which takes data manipulation upon itself, removing the need to add those code bits into a page, component or layout.
+
+### How do we use `layouts`?
+We are following the default [Nuxt 3 Layout](https://v3.nuxtjs.org/guide/directory-structure/layouts) structure.
+
+### How do we use `pages`?
+We are following the default [Nuxt 3 Pages](https://v3.nuxtjs.org/guide/directory-structure/pages) structure, with automatic route generation.
+
+### How do we use `composables`?
+We are following the default [Nuxt 3 Composables](https://v3.nuxtjs.org/guide/directory-structure/composables) structure, with automatic import, for most of the composables.
+
+There are other composables, which needs to be imported manually, those are related to specific usages, such as `UI` or [`activeComponents`](#how-do-we-use-components).
+
+### How do we use `content`?
+We are using [Nuxt Content][nuxt-content] as our content management system. In the `content` folder you will find, different types of content, like `video`, `blog` or `documentation`.
+
+We are heavily using the front-matter field to manipulate the data and fetch information across different areas of the portal.
+
+### How do we use `server`?
+We are following the default [Nuxt 3 Server Routes](https://v3.nuxtjs.org/guide/features/server-routes) structure.
+
+The `server` folder has special APIs developed for the usage of the portal, like fetching data from [Dev.to](https://dev.to/), or internal data to render content.
+
+### How do we use `locales`?
+All the `components`, `pages` and `layouts` are using internationalization to handle text and time. We are using the [Vue i18n](https://vue-i18n.intlify.dev/) plugin to handle the translations.
 
 ## Contributing
 
@@ -121,3 +145,8 @@ Vue Storefront is a Community effort brought to You by our great Core Team and s
 [**See Vue Storefront partners directory**](https://www.vuestorefront.io/partner-agencies?utm_source=github.com&utm_medium=referral&utm_campaign=readme)
 
 Vue Storefront source code is completely free and released under the [MIT License](https://github.com/vuestorefront/vue-storefront/blob/master/LICENSE).
+
+
+[nuxt]: https://v3.nuxtjs.org/
+[nuxt-content]: https://content.nuxtjs.org/
+[tailwind-css]: https://tailwindcss.com/
