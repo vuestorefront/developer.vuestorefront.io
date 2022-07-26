@@ -4,6 +4,7 @@
     :key="key"
     v-slot="{ open }"
     as="div"
+    default-open
     class="border-b border-gray-100 px-4 py-4 lg:border-none lg:px-0 lg:py-2"
   >
     <h3 class="-mx-2 -my-3 flow-root">
