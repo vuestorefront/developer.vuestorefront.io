@@ -60,39 +60,15 @@
         dark:bg-gray-800
         shadow-base;
       }
+    }
 
-      .mobile-navigation {
-        @apply
-        inline-flex
-        items-center
-        lg:hidden
-        text-3xl
-        text-gray-900
-        rounded-lg
-        dark:text-white;
+    &-mobile-navigation {
+      &--popover {
+        @apply absolute inset-x-0 top-0 origin-top-right transform p-2 transition md:hidden z-20;
+      }
 
-        &-button {
-          &--open {
-            & .menu-icon {
-              @apply hidden;
-            }
-
-            & .close-icon {
-              @apply inline-block
-            }
-          }
-
-          &--closed {
-
-            & .menu-icon {
-              @apply inline-block;
-            }
-
-            & .close-icon {
-              @apply hidden;
-            }
-          }
-        }
+      &--close {
+        @apply inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary
       }
     }
 

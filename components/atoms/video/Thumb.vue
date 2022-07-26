@@ -1,6 +1,10 @@
 <template>
   <div aria-hidden="true" class="relative" @click="$emit('click', $event)">
-    <img :src="src" alt="Video Thumb" class="object-cover object-center" />
+    <img
+      :src="src"
+      alt="Video Thumb"
+      class="w-full object-cover object-center"
+    />
     <div
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform"
     >
