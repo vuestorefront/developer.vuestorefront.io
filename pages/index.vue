@@ -73,6 +73,10 @@
   import { useI18n } from 'vue-i18n';
   import { IntegrationList } from '~/types/integrations';
 
+  definePageMeta({
+    documentDriven: false,
+  });
+
   const { t } = useI18n();
 
   const { data: commerceVendors } = useAsyncData('commerce', () =>

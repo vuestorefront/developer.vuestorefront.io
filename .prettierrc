@@ -4,5 +4,69 @@
   "trailingComma": "all",
   "semi": true,
   "vueIndentScriptAndStyle": true,
-  "plugins": ["prettier-plugin-tailwindcss"]
+  "arrowParens": "always",
+  "overrides": [
+    {
+      "files": [
+        "*.vue"
+      ],
+      "options": {
+        "parser": "vue"
+      }
+    },
+    {
+      "files": [
+        "*.yml"
+      ],
+      "options": {
+        "parser": "yaml"
+      }
+    },
+    {
+      "files": [
+        "*.scss"
+      ],
+      "options": {
+        "parser": "scss"
+      }
+    },
+    {
+      "files": [
+        "*.json"
+      ],
+      "options": {
+        "parser": "json"
+      }
+    },
+    {
+      "files": [
+        "*.md",
+        "*.mdc"
+      ],
+      "options": {
+        "parser": "markdown"
+      }
+    },
+    {
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "options": {
+        "parser": "typescript"
+      }
+    },
+    {
+      "files": [
+        "*.js",
+        "*.jsx"
+      ],
+      "options": {
+        "parser": "babel"
+      }
+    }
+  ],
+  "plugins": [
+    "prettier-plugin-tailwindcss"
+  ]
 }

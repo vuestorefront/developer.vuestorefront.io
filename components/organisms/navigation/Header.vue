@@ -21,7 +21,7 @@
             size="large"
             repository="vuestorefront/vue-storefront"
           />
-          <PopoverButton class="mobile-navigation-button--closed">
+          <PopoverButton class="lg:hidden">
             <span class="sr-only">Open menu</span>
             <Suspense>
               <AtomsIcon
@@ -33,7 +33,7 @@
         </div>
         <PopoverGroup
           as="nav"
-          class="header-content-center hidden space-x-10 md:flex"
+          class="header-content-center hidden space-x-10 lg:flex"
         >
           <ul class="header-content-center--list">
             <li
