@@ -21,6 +21,11 @@ RUN rm -rf node_modules && \
 
 FROM node:lts
 
+ARG ALGOLIA_TOKEN
+ARG ALGOLIA_ID
+ARG GITHUB_TOKEN
+ARG DEV_TO_TOKEN
+
 WORKDIR /app
 
 COPY --from=builder /app  .

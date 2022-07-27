@@ -21,6 +21,12 @@ jobs:
           password: ${{ secrets.CLOUD_PASSWORD }}
           dockerfile: .vuestorefrontcloud/docker/Dockerfile
           buildoptions: --compress
+          buildargs: ALGOLIA_TOKEN,ALGOLIA_ID,GITHUB_TOKEN,DEV_TO_TOKEN
+        env:
+          ALGOLIA_TOKEN: ${{ secrets.ALGOLIA_TOKEN }}
+          ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
+          GITHUB_TOKEN: ${{ secrets.BUILD_GITHUB_TOKEN }}
+          DEV_TO_TOKEN: ${{ secrets.BUILD_DEV_TO_TOKEN }}
 
   deploy_production:
     if: github.ref == 'refs/heads/main'
