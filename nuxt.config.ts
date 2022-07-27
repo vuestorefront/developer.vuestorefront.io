@@ -14,6 +14,13 @@ export default defineNuxtConfig({
   runtimeConfig: {
     githubToken: process.env.GITHUB_TOKEN,
     devToToken: process.env.DEV_TO_TOKEN,
+    public: {
+      gitHub: {
+        repository: 'vuestorefront/developer.vuestorefront.io',
+        contentPath: 'content',
+        branch: 'main',
+      },
+    },
   },
   nitro: {
     node: true,

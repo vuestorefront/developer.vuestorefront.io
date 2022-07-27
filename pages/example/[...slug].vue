@@ -1,17 +1,15 @@
 <template>
-  <AtomsLayoutContent>
-    <AtomsLayoutContainer>
-      <ContentDoc />
-    </AtomsLayoutContainer>
-  </AtomsLayoutContent>
+  <AtomsLayoutContainer>
+    <ContentDoc />
+  </AtomsLayoutContainer>
 </template>
 
 <script setup lang="ts">
-  definePageMeta({
-    layout: 'internal',
-  });
-
   const { path, params } = useRoute();
+
+  definePageMeta({
+    layout: 'content',
+  });
 
   const contentQuery = await queryContent(path).findOne();
 </script>

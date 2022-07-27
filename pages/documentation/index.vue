@@ -50,6 +50,10 @@
   import { useIntegrationsList } from '~/store/documentation/integrationsList';
   import { storeToRefs } from 'pinia';
 
+  definePageMeta({
+    documentDriven: false,
+  });
+
   const { t } = useI18n();
 
   const { appliedFilters } = storeToRefs(useIntegrationsList());
