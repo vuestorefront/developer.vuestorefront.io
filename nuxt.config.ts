@@ -4,6 +4,10 @@ import { defineNuxtConfig } from 'nuxt';
 import { datetimeFormats } from './locales/dateTimeFormat';
 
 export default defineNuxtConfig({
+  server: {
+    host: '0.0.0.0',
+    port: 3000
+  },
   head: {
     link: [
       {
