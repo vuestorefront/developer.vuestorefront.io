@@ -39,11 +39,9 @@ WORKDIR /app
 
 COPY --from=builder /app  .
 
-RUN npm install pm2 -g
-
 RUN env
 
 ENV HOST 0.0.0.0
 EXPOSE 3000
 
-CMD ["pm2-runtime", ".output/server/index.mjs" ]
+CMD ["npm", "run", "start"]
