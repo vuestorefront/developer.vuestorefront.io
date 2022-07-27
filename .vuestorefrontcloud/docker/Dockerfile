@@ -30,6 +30,8 @@ WORKDIR /app
 
 COPY --from=builder /app  .
 
+RUN env
+
 ENV HOST 0.0.0.0
 EXPOSE 3000
 
