@@ -156,4 +156,3 @@ jobs:
           description: Unfortunately, the instance hasn't been updated.
           state: failure
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-g
