@@ -33,6 +33,7 @@ ENV ALGOLIA_TOKEN=$ALGOLIA_TOKEN
 ENV ALGOLIA_ID=$ALGOLIA_ID
 ENV GITHUB_TOKEN=$GITHUB_TOKEN
 ENV DEV_TO_TOKEN=$DEV_TO_TOKEN
+ENV NODE_ENV=production
 
 WORKDIR /app
 
@@ -45,4 +46,4 @@ RUN env
 ENV HOST 0.0.0.0
 EXPOSE 3000
 
-CMD ["NODE_ENV=development", "pm2-runtime", ".output/server/index.mjs" ]
+CMD ["pm2-runtime", ".output/server/index.mjs" ]
