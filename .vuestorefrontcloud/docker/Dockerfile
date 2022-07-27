@@ -9,25 +9,18 @@ ENV ALGOLIA_TOKEN=$ALGOLIA_TOKEN
 ENV ALGOLIA_ID=$ALGOLIA_ID
 ENV GITHUB_TOKEN=$GITHUB_TOKEN
 ENV DEV_TO_TOKEN=$DEV_TO_TOKEN
+ENV CI=true
 
 WORKDIR /app
 
 COPY . .
 
-RUN yarn install \
+RUN NODE_ENV=development npm install \
   --prefer-offline \
   --frozen-lockfile \
-  --non-interactive \
-  --production=false
+  --non-interactive
 
-RUN yarn build
-
-RUN rm -rf node_modules && \
-  NODE_ENV=production yarn install \
-  --prefer-offline \
-  --pure-lockfile \
-  --non-interactive \
-  --production=true
+RUN NODE_ENV=production npm run build
 
 FROM node:lts
 
@@ -45,9 +38,11 @@ WORKDIR /app
 
 COPY --from=builder /app  .
 
+RUN npm install pm2 -g
+
 RUN env
 
 ENV HOST 0.0.0.0
 EXPOSE 3000
 
-CMD [ "yarn", "start" ]
+CMD ["NODE_ENV=development", "pm2-runtime", ".output/server/index.mjs" ]

@@ -10,20 +10,30 @@
   </div>
 </template>
 
-<script setup lang="ts">
-  const props = withDefaults(
-    defineProps<{
-      img: string;
-      width?: string;
-      height?: string;
-    }>(),
-    {
-      width: '2rem',
-      height: '2rem',
-    },
-  );
+<script lang="ts">
+  import { defineComponent } from '#imports';
 
-  const avatarBgUrl = computed(() => `url("${props.img}")`);
+  export default defineComponent({
+    props: {
+      width: {
+        type: String,
+        default: '2rem',
+      },
+      height: {
+        type: String,
+        default: '2rem',
+      },
+      img: {
+        type: String,
+        required: true,
+      },
+    },
+    computed: {
+      avatarBgUrl() {
+        return `url("${this.$props.img}")`;
+      },
+    },
+  });
 </script>
 
 <style lang="scss" scoped>

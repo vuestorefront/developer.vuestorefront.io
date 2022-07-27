@@ -61,7 +61,7 @@
     "@tailwindcss/typography": "^0.5.4",
     "@types/lodash": "^4.14.182",
     "@types/node": "^18.6.1",
-    "@types/prettier": "^2.6.3",
+    "@types/prettier": "^2.6.4",
     "@unlighthouse/nuxt": "^0.3.29",
     "@vue-storefront/eslint-config": "^1.0.17",
     "@vue/test-utils": "^2.0.2",

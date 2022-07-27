@@ -4,10 +4,36 @@ import { defineNuxtConfig } from 'nuxt';
 import { datetimeFormats } from './locales/dateTimeFormat';
 
 export default defineNuxtConfig({
+  builder: 'vite',
+  debug: process.env.NODE_ENV !== 'production',
+  sourcemap: process.env.NODE_ENV !== 'production',
   server: {
     host: '0.0.0.0',
-    port: 3000
+    port: 3000,
   },
+  runtimeConfig: {
+    githubToken: process.env.GITHUB_TOKEN,
+    devToToken: process.env.DEV_TO_TOKEN,
+  },
+  nitro: {
+    node: true,
+  },
+  experimental: {
+    reactivityTransform: true,
+    viteNode: true,
+  },
+  components: true,
+  modules: [
+    '@intlify/nuxt3',
+    '@pinia/nuxt',
+    '@nuxtjs/tailwindcss',
+    '@vueuse/nuxt',
+    // '@nuxtjs/partytown',
+    'nuxt-schema-org',
+    ...(process.env.LIGHTHOUSE ? ['@unlighthouse/nuxt'] : []),
+    '@nuxtjs/algolia',
+  ],
+  buildModules: ['@nuxt/content'],
   head: {
     titleTemplate: '%s | Vue Storefront - Developer Portal',
     link: [
@@ -57,28 +83,6 @@ export default defineNuxtConfig({
   },
   loading: {
     color: '#02bb4d',
-  },
-  debug: process.env.NODE_ENV !== 'production',
-  sourcemap: process.env.NODE_ENV !== 'production',
-  runtimeConfig: {
-    githubToken: process.env.GITHUB_TOKEN,
-    devToToken: process.env.DEV_TO_TOKEN,
-  },
-  components: true,
-  modules: [
-    '@intlify/nuxt3',
-    '@pinia/nuxt',
-    '@nuxtjs/tailwindcss',
-    '@vueuse/nuxt',
-    // '@nuxtjs/partytown',
-    'nuxt-schema-org',
-    ...(process.env.LIGHTHOUSE ? ['@unlighthouse/nuxt'] : []),
-    '@nuxtjs/algolia',
-  ],
-  buildModules: ['@nuxt/content'],
-  experimental: {
-    reactivityTransform: true,
-    viteNode: false,
   },
   schemaOrg: {
     canonicalHost: 'https://vuestorefront.io/developer',
