@@ -115,7 +115,7 @@ jobs:
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 
   deploy_test:
-    if: github.ref == 'refs/heads/test'
+    if: github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -156,3 +156,4 @@ jobs:
           description: Unfortunately, the instance hasn't been updated.
           state: failure
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+g
