@@ -13,17 +13,19 @@
 
     &-container {
       @apply
-      py-10
-      px-6
+      py-12
+      px-4
       container
       mx-auto
       max-w-screen-xl
       space-y-8
       md:space-y-14;
     }
+
     &-sidebar {
       @apply md:pr-12 md:pt-20;
     }
+
     &-content {
       &--sidebar {
         @apply grid lg:grid-cols-[25%_1fr];

@@ -9,7 +9,7 @@
           <Suspense>
             <AtomsIcon name="carbon:arrow-left" class="mr-2 text-lg" />
           </Suspense>
-          {{ $t('components.molecules.pagination.previous') }}
+          {{ t('components.molecules.pagination.previous') }}
         </NuxtLink>
       </slot>
     </div>
@@ -24,7 +24,7 @@
           aria-current="step"
           :to="goToPage(pagination.firstPage.link)"
         >
-          {{ $t('components.molecules.pagination.ellipsis') }}
+          {{ t('components.molecules.pagination.ellipsis') }}
         </NuxtLink>
       </slot>
       <slot name="page" :pagination="pagination">
@@ -45,7 +45,7 @@
           aria-current="step"
           :to="goToPage(pagination.lastPage.link)"
         >
-          {{ $t('components.molecules.pagination.ellipsis') }}
+          {{ t('components.molecules.pagination.ellipsis') }}
         </NuxtLink>
       </slot>
     </div>
@@ -55,7 +55,7 @@
           class="pagination arrow-left item"
           :to="goToPage(pagination.nextPage.link)"
         >
-          {{ $t('components.molecules.pagination.next') }}
+          {{ t('components.molecules.pagination.next') }}
           <Suspense>
             <AtomsIcon name="carbon:arrow-right" class="ml-2 text-lg" />
           </Suspense>
@@ -66,6 +66,8 @@
 </template>
 
 <script setup lang="ts">
+  import { useI18n } from 'vue-i18n';
+
   const props = withDefaults(
     defineProps<{
       total: number;
@@ -80,6 +82,7 @@
     },
   );
 
+  const { t } = useI18n();
   const route = useRoute();
 
   const goToPage = (link: string) => ({

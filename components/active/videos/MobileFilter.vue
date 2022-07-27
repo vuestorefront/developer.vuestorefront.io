@@ -28,14 +28,14 @@
           >
             <div class="flex items-center justify-between px-4">
               <h2 class="text-lg font-medium text-gray-900">
-                {{ $t('global.filter.title', filters.length) }}
+                {{ t('global.filter.title', filters.length) }}
               </h2>
               <button
                 type="button"
                 class="focus:ring-primary-500 -mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-50 focus:outline-none focus:ring-2"
                 @click="$emit('close')"
               >
-                <span class="sr-only">{{ $t('global.interface.close') }}</span>
+                <span class="sr-only">{{ t('global.interface.close') }}</span>
                 <Suspense>
                   <AtomsIcon name="carbon:close" class="text-3xl" />
                 </Suspense>
@@ -108,9 +108,12 @@
     TransitionRoot,
   } from '@headlessui/vue';
   import { useVideosFilter } from '~/composables/filter/useVideosFilter';
+  import { useI18n } from 'vue-i18n';
 
   withDefaults(defineProps<{ open: boolean }>(), { open: false });
   defineEmits(['close']);
+
+  const { t } = useI18n();
 
   const { changeFilter, filters, getCounter } = useVideosFilter();
 </script>

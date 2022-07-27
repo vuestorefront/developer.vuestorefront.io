@@ -1,8 +1,8 @@
 <template>
-  <p class="align-middle text-base leading-8 text-gray-500 dark:text-white">
+  <p class="align-middle text-sm font-normal text-gray-500">
     <slot>{{ t('components.atoms.text.editPage') }}</slot>
     <Suspense>
-      <AtomsIcon name="carbon:edit" class="ml-2 mb-1 text-lg" />
+      <AtomsIcon name="carbon:edit" class="ml-2 mb-1 text-base" />
     </Suspense>
   </p>
 </template>

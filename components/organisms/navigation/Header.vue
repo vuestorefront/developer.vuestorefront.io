@@ -10,14 +10,16 @@
           />
         </NuxtLink>
         <div class="header-content-right">
+          <!--
           <Suspense>
-            <AtomsIcon
-              name="heroicons-outline:search"
-              class="text-3xl text-gray-700"
-            />
-          </Suspense>
+              <AtomsIcon
+                name="heroicons-outline:search"
+                class="text-3xl text-gray-700"
+              />
+            </Suspense>
+          -->
           <AtomsButtonGitHubStars
-            class="hidden md:inline-block"
+            class="hidden md:block md:pt-1"
             size="large"
             repository="vuestorefront/vue-storefront"
           />

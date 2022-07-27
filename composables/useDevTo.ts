@@ -1,5 +1,5 @@
 import { ApiUrl } from '~/enums/apiUrl';
-import { withQuery } from 'ufo';
+import { joinURL, withQuery } from 'ufo';
 import { generateReturnMethods } from '~/utils/fetch';
 import { BlogArticleApiResponse } from '~/types/api/devTo';
 
@@ -52,7 +52,7 @@ export const useDevTo = () => {
 
   const useBlogUser = ({ username, id }: { username?: string; id?: number }) =>
     generateReturnMethods(
-      withQuery(`${ApiUrl.Blog}user`, {
+      withQuery(joinURL(ApiUrl.Blog, 'user'), {
         ...(id && !username ? { id: `${id}` } : {}),
         ...(username ? { username } : {}),
       }),
@@ -75,9 +75,12 @@ export const useDevTo = () => {
   }): ReturnType<typeof generateReturnMethods<BlogArticleApiResponse[]>> =>
     generateReturnMethods(
       withQuery(
-        !organization && username
-          ? `${ApiUrl.Blog}user/articles`
-          : `${ApiUrl.Blog}${organization}/articles`,
+        joinURL(
+          ApiUrl.Blog,
+          ...(!organization && username
+            ? ['user', 'articles']
+            : [organization, 'articles']),
+        ),
         {
           ...(username && !organization ? { username } : {}),
           ...(page ? { page: `${page}` } : {}),

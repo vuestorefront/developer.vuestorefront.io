@@ -6,7 +6,7 @@
     <div class="filter-horizontal-wrapper">
       <section aria-labelledby="filter-heading">
         <h2 id="filter-heading" class="sr-only">
-          {{ $t('global.filter.title', filters.length) }}
+          {{ t('global.filter.title', filters.length) }}
         </h2>
         <div class="filter-horizontal-content">
           <AtomsFilterHorizontalMenuWrapper
@@ -14,7 +14,7 @@
             v-slot="{ open }"
           >
             <AtomsFilterHorizontalMenuButton :open="open">
-              {{ $t('global.filter.sort.title') }}
+              {{ t('global.filter.sort.title') }}
             </AtomsFilterHorizontalMenuButton>
             <AtomsFilterHorizontalMenuList>
               <AtomsFilterHorizontalMenuItemLink
@@ -36,7 +36,7 @@
             type="button"
             @click="mobileMenu = true"
           >
-            {{ $t('global.filter.title', filters.length) }}
+            {{ t('global.filter.title', filters.length) }}
           </AtomsButton>
 
           <AtomsFilterHorizontalPopOverWrapper>
@@ -75,6 +75,9 @@
 
 <script setup lang="ts">
   import { useVideosFilter } from '~/composables/filter/useVideosFilter';
+  import { useI18n } from 'vue-i18n';
+
+  const { t } = useI18n();
 
   const mobileMenu = ref(false);
 

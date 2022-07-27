@@ -4,13 +4,8 @@
     <div class="content">
       <AtomsLayoutContent>
         <slot />
-        <AtomsLayoutContainer>
-          <div class="flex flex-auto flex-row justify-between">
-            <!--            <ActiveAtomsTextEditOnGitHub /> -->
-            <!--            <ActiveMoleculesContributorsList /> -->
-          </div>
-        </AtomsLayoutContainer>
       </AtomsLayoutContent>
+      <ActiveOrganismsContentGitHubFooter />
     </div>
     <OrganismsNavigationFooter />
   </div>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="text-gray font-lg mb-2 dark:text-white">
+    <p class="text-gray mb-2 text-sm dark:text-white">
       {{ t('components.molecules.contributors.list.contributorsPage') }}
     </p>
     <div class="flex flex-row gap-4">

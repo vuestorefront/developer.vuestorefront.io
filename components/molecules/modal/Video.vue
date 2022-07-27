@@ -1,7 +1,7 @@
 <template>
   <AtomsModal :open="open" @close="$emit('close', $event)">
     <template #content>
-      <AtomsVideoPlayer v-bind="$props" />
+      <AtomsVideoPlayer v-if="open" v-bind="$props" />
     </template>
   </AtomsModal>
 </template>

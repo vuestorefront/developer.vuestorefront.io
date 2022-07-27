@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .contributors {
+    &-item {
+      @apply
+      border
+      border-gray-300
+      cursor-pointer
+      flex
+      flex-row
+      hover:bg-gray-300
+      hover:text-gray-900
+      items-center
+      justify-items-start
+      px-2
+      py-1
+      rounded-xl
+      text-gray-500
+      text-sm
+      w-fit;
+    }
+  }
+}

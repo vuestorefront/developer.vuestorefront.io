@@ -34,7 +34,7 @@
             outline
             :counter="appliedFilters"
             icon-left-name="ci:filter"
-            :label="$t('global.filter.title')"
+            :label="t('global.filter.title')"
             class="w-full"
             @click="mobileFiltersOpen = true"
           />

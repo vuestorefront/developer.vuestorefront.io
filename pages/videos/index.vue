@@ -1,7 +1,7 @@
 <template>
   <AtomsLayoutContainer>
     <h1 class="text-center text-6xl font-bold">
-      {{ $t('page.videos.head.title') }}
+      {{ t('page.videos.head.title') }}
     </h1>
     <ActiveVideosHorizontalFilter />
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -32,11 +32,13 @@
 <script setup lang="ts">
   import { useVideosList } from '~/store/videos/videoList';
   import { storeToRefs } from 'pinia';
+  import { useI18n } from 'vue-i18n';
 
   definePageMeta({
-    layout: 'content',
     documentDriven: false,
   });
+
+  const { t } = useI18n();
 
   const { pages, data: videos } = storeToRefs(useVideosList());
 </script>
