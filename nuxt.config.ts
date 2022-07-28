@@ -4,7 +4,6 @@ import { defineNuxtConfig } from 'nuxt';
 import { datetimeFormats } from './locales/dateTimeFormat';
 
 export default defineNuxtConfig({
-  builder: 'vite',
   debug: process.env.NODE_ENV !== 'production',
   sourcemap: process.env.NODE_ENV !== 'production',
   server: {
