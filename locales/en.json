@@ -54,11 +54,19 @@
       }
     },
     "quiz": {
-      "step": "Step {current} of {max}",
-      "progress": "{progress}%",
-      "back": "Back",
-      "next": "Next",
-      "submit": "Submit"
+      "questions": {
+        "header": "Test your {test} knowledge",
+        "step": "Step {current} of {max}",
+        "progress": "{progress}%",
+        "back": "Back",
+        "next": "Next",
+        "submit": "Submit"
+      },
+      "result": {
+        "header": "Result of your {test} knowledge test",
+        "message": "You have {score}% of the questions right.",
+        "share": "Share your result"
+      }
     },
     "videos": {
       "head": {

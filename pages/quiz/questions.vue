@@ -1,7 +1,9 @@
 <template>
   <AtomsLayoutContainer ref="container" class="space-y-2">
     <h1 class="text-4xl font-bold">
-      <AtomsTextFirstColoredWord text="Test your X knowledge" />
+      <AtomsTextFirstColoredWord
+        :text="t('page.quiz.questions.header', { test: 'X' })"
+      />
     </h1>
 
     <div
@@ -10,7 +12,9 @@
       <!-- Quiz header -->
       <div class="flex justify-between pt-4">
         <div class="mb-1 text-sm text-gray-500">
-          {{ t('page.quiz.step', { current: currentStepNumber, max }) }}
+          {{
+            t('page.quiz.questions.step', { current: currentStepNumber, max })
+          }}
         </div>
 
         <div class="flex items-center md:w-64">
@@ -21,7 +25,7 @@
             ></div>
           </div>
           <div class="w-10 text-xs text-gray-500">
-            {{ t('page.quiz.progress', { progress }) }}
+            {{ t('page.quiz.questions.progress', { progress }) }}
           </div>
         </div>
       </div>
@@ -79,7 +83,7 @@
                 name="carbon:arrow-left"
                 class="mr-2 text-lg text-gray-800"
               />
-              {{ t('page.quiz.back') }}
+              {{ t('page.quiz.questions.back') }}
             </AtomsButton>
 
             <AtomsButton
@@ -88,7 +92,7 @@
               color="primary"
               @click="submit"
             >
-              {{ t('page.quiz.submit') }}
+              {{ t('page.quiz.questions.submit') }}
             </AtomsButton>
 
             <AtomsButton
@@ -97,7 +101,7 @@
               color="gray"
               @click="goNext"
             >
-              {{ t('page.quiz.next') }}
+              {{ t('page.quiz.questions.next') }}
               <AtomsIcon
                 name="carbon:arrow-right"
                 class="ml-2 text-lg text-gray-800"
