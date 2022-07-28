@@ -17,9 +17,9 @@
 <script setup lang="ts">
   const { useFileCommits, currentFile, getEditPageLink } = useGitHub();
 
-  const { $apiAsyncData } = useFileCommits({
+  const { $apiFetch } = useFileCommits({
     filePath: currentFile.value,
   });
 
-  const { data } = $apiAsyncData();
+  const { data } = $apiFetch();
 </script>

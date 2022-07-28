@@ -31,7 +31,6 @@
 
 <script setup lang="ts">
   import { useVideosList } from '~/store/videos/videoList';
-  import { storeToRefs } from 'pinia';
   import { useI18n } from 'vue-i18n';
 
   definePageMeta({
@@ -40,5 +39,5 @@
 
   const { t } = useI18n();
 
-  const { pages, data: videos } = storeToRefs(useVideosList());
+  const { pages, videos } = useVideosList();
 </script>

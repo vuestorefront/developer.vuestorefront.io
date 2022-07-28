@@ -1,10 +1,12 @@
-import { defineStore } from 'pinia';
+import { defineStore, storeToRefs } from 'pinia';
 import { Filter } from '~/types/components/filter';
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types';
 import { whereObj } from '~/utils/content';
 import { SortType } from '~/enums/filter';
+import { useI18n } from 'vue-i18n';
+import { useSortOptions } from '~/composables/filter/base';
 
-export const useVideosList = defineStore('videosList', {
+export const videosList = defineStore('videosList', {
   state: () => {
     return {
       filters: [],
@@ -203,3 +205,79 @@ export const useVideosList = defineStore('videosList', {
     },
   },
 });
+
+export const useVideosList = () => {
+  const { sortOptions } = useSortOptions();
+  const route = useRoute();
+  const router = useRouter();
+  const i18n = useI18n();
+  const store = videosList();
+
+  const { data, filters, pages } = storeToRefs(store);
+
+  const routeDebounce = useDebounceFn(
+    () => {
+      const { author, category, playlist, ...query } = route.query;
+      router
+        .push({
+          name: route.name,
+          query: {
+            ...query,
+            ...store.selectedFilters,
+          },
+        })
+        .catch((e) => console.error(e));
+    },
+    750,
+    { maxWait: 3000 },
+  );
+
+  const getCounter = (key: string) => {
+    if (store.selectedFilters[key]) return store.selectedFilters[key].length;
+    return 0;
+  };
+
+  const changeFilter = (index: number, item: string) => {
+    if (store.filters[index].selected.has(item)) {
+      store.filters[index].selected.delete(item);
+    } else {
+      store.filters[index].selected.add(item);
+    }
+
+    routeDebounce();
+  };
+
+  const { refresh: refreshBaseData } = useAsyncData('baseData', async () =>
+    store.getBaseData(i18n),
+  );
+
+  const {
+    pending,
+    refresh: refreshList,
+    error,
+  } = useAsyncData('videosList', async () => store.fetch());
+
+  const refresh = async () => Promise.all([refreshBaseData(), refreshList()]);
+
+  watch(
+    computed(() => route.query),
+    refresh,
+    {
+      deep: true,
+    },
+  );
+
+  return {
+    changeFilter,
+    contentQuery: computed(() => store.contentQuery()),
+    videos: data,
+    error,
+    filters,
+    getCounter,
+    pages,
+    pending,
+    refresh,
+    selectedFilters: computed(() => store.selectedFilters),
+    sortOptions,
+  };
+};

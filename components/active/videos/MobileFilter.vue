@@ -107,13 +107,13 @@
     TransitionChild,
     TransitionRoot,
   } from '@headlessui/vue';
-  import { useVideosFilter } from '~/composables/filter/useVideosFilter';
   import { useI18n } from 'vue-i18n';
+  import { useVideosList } from '~/store/videos/videoList';
 
   withDefaults(defineProps<{ open: boolean }>(), { open: false });
   defineEmits(['close']);
 
   const { t } = useI18n();
 
-  const { changeFilter, filters, getCounter } = useVideosFilter();
+  const { changeFilter, filters, getCounter } = useVideosList();
 </script>

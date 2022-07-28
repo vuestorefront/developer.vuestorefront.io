@@ -74,13 +74,13 @@
 </template>
 
 <script setup lang="ts">
-  import { useVideosFilter } from '~/composables/filter/useVideosFilter';
   import { useI18n } from 'vue-i18n';
+  import { useVideosList } from '~/store/videos/videoList';
 
   const { t } = useI18n();
 
   const mobileMenu = ref(false);
 
   const { changeFilter, filters, videos, sortOptions, getCounter } =
-    useVideosFilter();
+    useVideosList();
 </script>

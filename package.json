@@ -43,7 +43,6 @@
     "pinia": "^2.0.17",
     "regexparam": "^2.0.1",
     "transform-object-keys": "^1.0.7",
-    "ts-debounce": "^4.0.0",
     "ufo": "^0.8.5",
     "vue-github-button": "^3.0.3",
     "vue-i18n": "^9.1.10"
