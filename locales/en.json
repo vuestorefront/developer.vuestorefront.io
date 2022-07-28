@@ -53,6 +53,13 @@
         "license": "License"
       }
     },
+    "quiz": {
+      "step": "Step {current} of {max}",
+      "progress": "{progress}%",
+      "back": "Back",
+      "next": "Next",
+      "submit": "Submit"
+    },
     "videos": {
       "head": {
         "title": "Videos"
