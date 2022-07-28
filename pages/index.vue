@@ -79,32 +79,26 @@
 
   const { t } = useI18n();
 
-  const { data: commerceVendors } = useAsyncData('commerce', () =>
-    $fetch<IntegrationList>(ApiUrl.Integrations, {
-      params: {
-        category: IntegrationCategory.commerce,
-        random: 6,
-      },
-    }),
-  );
+  const { data: commerceVendors } = useFetch(ApiUrl.Integrations, {
+    params: {
+      category: IntegrationCategory.commerce,
+      random: 6,
+    },
+  });
 
-  const { data: cmsVendors } = useAsyncData('cms', () =>
-    $fetch<IntegrationList>(ApiUrl.Integrations, {
-      params: {
-        category: IntegrationCategory.cms,
-        random: 6,
-      },
-    }),
-  );
+  const { data: cmsVendors } = useFetch(ApiUrl.Integrations, {
+    params: {
+      category: IntegrationCategory.cms,
+      random: 6,
+    },
+  });
 
-  const { data: paymentVendors } = useAsyncData('payment', () =>
-    $fetch<IntegrationList>(ApiUrl.Integrations, {
-      params: {
-        category: IntegrationCategory.payment,
-        random: 6,
-      },
-    }),
-  );
+  const { data: paymentVendors } = useFetch(ApiUrl.Integrations, {
+    params: {
+      category: IntegrationCategory.payment,
+      random: 6,
+    },
+  });
 
   const { convertPostsToProps, useBlogArticles } = useDevTo();
 
@@ -113,7 +107,7 @@
     perPage: 3,
   });
 
-  const { data, error, pending } = await $apiAsyncData();
+  const { data } = await $apiAsyncData();
 
   const postsList = convertPostsToProps(data.value);
 </script>

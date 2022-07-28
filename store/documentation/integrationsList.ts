@@ -7,6 +7,7 @@ import {
 } from '~/enums/integrations';
 import { filterBy } from '~/utils/array';
 import { Integration, IntegrationList } from '~/types/integrations';
+import { ApiUrl } from '~/enums/apiUrl';
 
 const isEverythingChecked = (obj: Record<any, any>, key: any) => {
   if (Object.values(obj[key]).filter(Boolean).length === 0) return '';
@@ -170,7 +171,7 @@ export const integrationsListStore = defineStore('integrationsList', {
   },
   actions: {
     async fetch() {
-      this.data = await $fetch('/api/integrations', {
+      this.data = await $fetch(ApiUrl.Integrations, {
         params: this.filterParams,
       });
     },
