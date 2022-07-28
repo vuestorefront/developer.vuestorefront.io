@@ -48,7 +48,6 @@
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n';
   import { useIntegrationsList } from '~/store/documentation/integrationsList';
-  import { storeToRefs } from 'pinia';
 
   definePageMeta({
     documentDriven: false,
@@ -56,7 +55,7 @@
 
   const { t } = useI18n();
 
-  const { appliedFilters } = storeToRefs(useIntegrationsList());
+  const { appliedFilters } = useIntegrationsList();
 
   const mobileFiltersOpen = ref(false);
 </script>

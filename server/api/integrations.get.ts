@@ -6,7 +6,6 @@ export default defineEventHandler((event) => {
   const query = useQuery(event);
 
   const defaultQuery = {
-    category: 'all',
     categories: ['all'],
     compatibility: 'all',
     status: 'all',
@@ -18,12 +17,12 @@ export default defineEventHandler((event) => {
 
   let baseData: IntegrationList = integrationsList;
 
-  if (defaultQuery.category !== 'all') {
-    baseData = filterBy(baseData, { categories: [defaultQuery.category] });
-  }
-
   if (!defaultQuery.categories.includes('all')) {
-    baseData = filterBy(baseData, { categories: defaultQuery.categories });
+    baseData = filterBy(baseData, {
+      categories: Array.isArray(defaultQuery.categories)
+        ? defaultQuery.categories
+        : [defaultQuery.categories],
+    });
   }
 
   if (defaultQuery.status !== 'all') {

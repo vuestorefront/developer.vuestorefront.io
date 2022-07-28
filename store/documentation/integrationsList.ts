@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia';
+import { defineStore, storeToRefs } from 'pinia';
 import {
   CommerceIntegrationsName,
   IntegrationCategory,
@@ -6,7 +6,7 @@ import {
   IntegrationStatus,
 } from '~/enums/integrations';
 import { filterBy } from '~/utils/array';
-import { IntegrationList } from '~/types/integrations';
+import { Integration, IntegrationList } from '~/types/integrations';
 
 const isEverythingChecked = (obj: Record<any, any>, key: any) => {
   if (Object.values(obj[key]).filter(Boolean).length === 0) return '';
@@ -19,7 +19,7 @@ const isEverythingChecked = (obj: Record<any, any>, key: any) => {
       );
 };
 
-export const useIntegrationsList = defineStore('integrationsList', {
+export const integrationsListStore = defineStore('integrationsList', {
   state: () => {
     return {
       filters: {
@@ -74,10 +74,7 @@ export const useIntegrationsList = defineStore('integrationsList', {
     },
     filterParams(state) {
       const baseData = Object.keys(state.filters).reduce((acc, curr) => {
-        if (isEverythingChecked(state.filters, curr)) {
-          return [...acc, [curr, isEverythingChecked(state.filters, curr)]];
-        }
-        return acc;
+        return [...acc, [curr, isEverythingChecked(state.filters, curr)]];
       }, []);
 
       return baseData.length > 0 ? Object.fromEntries(baseData) : {};
@@ -154,7 +151,15 @@ export const useIntegrationsList = defineStore('integrationsList', {
             categories: [IntegrationCategory.search],
           }),
         },
-      ].filter((i) => Array.isArray(i.list) && i.list.length > 0);
+      ]
+        .filter((i) => Array.isArray(i.list) && i.list.length > 0)
+        .map((l) => ({
+          ...l,
+          list: l.list.sort((a: Integration, b: Integration) => {
+            if (a.status === IntegrationStatus.wip) return 1;
+            return a.name < b.name ? -1 : 1;
+          }),
+        }));
     },
     appliedFilters() {
       return Object.values(this.filterParams).reduce(
@@ -178,3 +183,26 @@ export const useIntegrationsList = defineStore('integrationsList', {
     },
   },
 });
+
+export const useIntegrationsList = () => {
+  const store = integrationsListStore();
+  const { data, filters } = storeToRefs(store);
+
+  const { pending, refresh, error } = useAsyncData(
+    'integrationsList',
+    async () => store.fetch(),
+  );
+
+  return {
+    toggleAllStatus: computed(() => store.toggleAllStatus),
+    filterParams: computed(() => store.filterParams),
+    integrations: computed(() => store.integrations),
+    appliedFilters: computed(() => store.appliedFilters),
+    data,
+    filters,
+    pending,
+    refresh,
+    error,
+    toggleAll: store.toggleAll,
+  };
+};

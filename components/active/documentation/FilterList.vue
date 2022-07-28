@@ -74,10 +74,8 @@
   } from '@headlessui/vue';
   import { useI18n } from 'vue-i18n';
   import { useIntegrationsList } from '~/store/documentation/integrationsList';
-  import { storeToRefs } from 'pinia';
 
   const { t } = useI18n();
-  const store = useIntegrationsList();
 
-  const { filters, toggleAllStatus } = storeToRefs(store);
+  const { filters, toggleAllStatus } = useIntegrationsList();
 </script>

@@ -27,13 +27,8 @@
 
 <script setup lang="ts">
   import { useIntegrationsList } from '~/store/documentation/integrationsList';
-  import { storeToRefs } from 'pinia';
 
-  const store = useIntegrationsList();
+  const { integrations, filterParams, refresh } = useIntegrationsList();
 
-  const { integrations, filterParams } = storeToRefs(store);
-
-  onServerPrefetch(async () => store.fetch());
-
-  watch(filterParams, async () => store.fetch(), { deep: true });
+  watch(filterParams, async () => refresh(), { deep: true });
 </script>
