@@ -1,6 +1,6 @@
 <template>
   <AtomsLayoutContainer ref="container" class="space-y-2">
-    <h1 class="text-4xl font-bold">
+    <h1 class="my-12 text-center text-4xl">
       <AtomsTextFirstColoredWord
         :text="t('page.quiz.questions.header', { test: 'X' })"
       />

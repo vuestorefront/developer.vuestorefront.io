@@ -63,9 +63,10 @@
         "submit": "Submit"
       },
       "result": {
-        "header": "Result of your {test} knowledge test",
-        "message": "You have {score}% of the questions right.",
-        "share": "Share your result"
+        "message": "{name} got {score}% of the questions right in the {test} knowledge test",
+        "shareTitle": "Share your result",
+        "loginTitle": "Login to Discord to receive a badge",
+        "loginButton": "Login to Discord"
       }
     },
     "videos": {
