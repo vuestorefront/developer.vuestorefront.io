@@ -6,10 +6,6 @@ const r = (p: string) => resolve(__dirname, p);
 export default defineConfig({
   test: {
     watch: true,
-    coverage: {
-      reporter: ['text', 'json', 'html'],
-    },
-    exclude: ['node_modules'],
   },
   resolve: {
     alias: {
