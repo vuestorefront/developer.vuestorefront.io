@@ -28,6 +28,9 @@ export default defineNuxtConfig({
     reactivityTransform: true,
     viteNode: true,
   },
+  build: {
+    transpile: ['@headlessui/vue'],
+  },
   components: true,
   modules: [
     '@intlify/nuxt3',

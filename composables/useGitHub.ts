@@ -34,7 +34,7 @@ export const useGitHub = (
 
   const useFileCommits = () =>
     generateReturnMethods(
-      withQuery(joinURL(ApiUrl.GitHub, 'commits', 'list'), {
+      withQuery(joinURL(ApiUrl.GitHub, 'contributors'), {
         repository: repository.value,
         file: [content.value, currentFile.value].join('/'),
       }),

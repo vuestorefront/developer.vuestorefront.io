@@ -265,7 +265,7 @@ export const integrationsList: IntegrationList = [
   {
     name: 'Adobe Experience Manager',
     link: '',
-    logo: '/brands/logos/AEM.svg',
+    logo: '/brands/logos/aem.svg',
     status: IntegrationStatus.wip,
     license: IntegrationLicense.enterprise,
     maintainedBy: [
