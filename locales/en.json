@@ -51,6 +51,10 @@
         "compatibility": "Compatibility",
         "status": "Status",
         "license": "License"
+      },
+      "content": {
+        "vsf": "Vue Storefront is a Frontend-as-a-Service that enables lightning-fast page loads to achieve better conversion rates and higher revenue.",
+        "sfui": "It is a Vue.js design system and UI for Headless Commerce. Create stunning online stores with 50+ fully customizable components."
       }
     },
     "videos": {

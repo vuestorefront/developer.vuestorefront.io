@@ -107,7 +107,7 @@
     perPage: 3,
   });
 
-  const { data } = await $apiAsyncData();
+  const { data, pending, error } = await $apiAsyncData();
 
   const postsList = convertPostsToProps(data.value);
 </script>

@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build": "nuxi build",
+    "build:analyze": "NUXT_ANALYZE=true nuxi build",
     "dev": "nuxi dev",
     "lint": "eslint . --ext .js,.ts,.vue --ignore-path .eslintignore --fix",
     "lint:content": "markdownlint ./content && case-police 'content**/*.md'",

@@ -15,13 +15,13 @@
         </p>
         <div class="my-8 grid grid-cols-1 gap-8 md:grid-cols-3">
           <MoleculesCardDocs
-            description="Vivamus ullamcorper integer egestas condimentum sociosqu id risus mi phasellus, habitasse pretium eget fringilla suscipit nunc nascetur."
+            :description="t('page.documentation.content.vsf')"
             documentation="https://docs.vuestorefront.io/v2/"
             img="/brands/icons/vsf.svg"
             name="Vue Storefront"
           />
           <MoleculesCardDocs
-            description="Vivamus ullamcorper integer egestas condimentum sociosqu id risus mi phasellus, habitasse pretium eget fringilla suscipit nunc nascetur."
+            :description="t('page.documentation.content.sfui')"
             documentation="https://docs.storefrontui.io/?path=/story/welcome--page"
             img="/brands/icons/sfui.svg"
             name="Storefront UI"
