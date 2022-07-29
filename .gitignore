@@ -22,4 +22,4 @@ dist/
 dist-ssr/
 node_modules/
 .vscode/
-.coverage/
+coverage/
