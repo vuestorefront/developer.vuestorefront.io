@@ -38,7 +38,7 @@
     "@nuxtjs/algolia": "^1.1.0",
     "@pinia/nuxt": "^0.3.1",
     "@popperjs/core": "^2.11.5",
-    "@vueuse/nuxt": "^9.0.0",
+    "@vueuse/nuxt": "^9.0.2",
     "clipboard": "^2.0.11",
     "nuxt": "^3.0.0-rc.4",
     "ohmyfetch": "^0.4.18",
@@ -47,10 +47,10 @@
     "transform-object-keys": "^1.0.7",
     "ufo": "^0.8.5",
     "vue-github-button": "^3.0.3",
-    "vue-i18n": "^9.1.10"
+    "vue-i18n": "^9.2.0"
   },
   "devDependencies": {
-    "@histoire/plugin-nuxt": "^0.8.4",
+    "@histoire/plugin-nuxt": "^0.9.0",
     "@intlify/eslint-plugin-vue-i18n": "^2.0.0",
     "@intlify/nuxt3": "^0.2.3",
     "@nuxt/content": "^2.0.1",
@@ -61,18 +61,16 @@
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.4",
-    "@types/lodash": "^4.14.182",
-    "@types/node": "^18.6.2",
     "@types/prettier": "^2.6.4",
     "@unlighthouse/nuxt": "^0.3.29",
-    "@vitest/ui": "^0.19.1",
+    "@vitest/ui": "^0.20.2",
     "@vue-storefront/eslint-config": "^1.0.17",
     "@vue/test-utils": "^2.0.2",
     "c8": "^7.12.0",
     "commitizen": "^4.2.5",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.20.0",
-    "histoire": "^0.8.4",
+    "eslint": "^8.21.0",
+    "histoire": "^0.9.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "nuxt-schema-org": "^0.6.5",
@@ -81,9 +79,9 @@
     "sass": "^1.54.0",
     "sass-loader": "^13.0.2",
     "tailwind-scrollbar-hide": "^1.1.7",
-    "tailwindcss": "^3.1.6",
+    "tailwindcss": "^3.1.7",
     "typescript": "^4.7.4",
-    "vitest": "^0.19.1"
+    "vitest": "^0.20.2"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --cache --fix"

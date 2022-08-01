@@ -1,4 +1,6 @@
 const isCi = process.env.CI !== undefined;
 if (!isCi) {
-  require('husky').install();
+  import('husky').then((m) => {
+    m.install();
+  });
 }
