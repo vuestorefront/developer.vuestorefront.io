@@ -9,6 +9,7 @@ import { nuxtConfigSchema } from './config/nuxt/schema';
 import { nuxtConfigTailwind } from './config/nuxt/tailwind';
 import { nuxtConfigRuntimeConfig } from './config/nuxt/runtimeConfig';
 import { nuxtConfigBuild } from './config/nuxt/build';
+import { nuxtGTagConfig } from './config/nuxt/gtag';
 
 export default defineNuxtConfig({
   ...nuxtConfigBuild,
@@ -22,6 +23,7 @@ export default defineNuxtConfig({
     'nuxt-schema-org',
     ...(process.env.LIGHTHOUSE ? ['@unlighthouse/nuxt'] : []),
     '@nuxtjs/algolia',
+    '@vue-storefront/nuxt-gtag',
   ],
   buildModules: ['@nuxt/content'],
   head: nuxtConfigHead,
@@ -33,4 +35,5 @@ export default defineNuxtConfig({
   content: nuxtConfigContent,
   intlify: nuxtConfigI18n,
   algolia: nuxtConfigAlgolia,
+  gTag: nuxtGTagConfig,
 });
