@@ -65,7 +65,7 @@
     "@unlighthouse/nuxt": "^0.3.29",
     "@vitest/ui": "^0.20.3",
     "@vue-storefront/eslint-config": "^1.0.17",
-    "@vue-storefront/nuxt-gtag": "^1.0.1",
+    "@vue-storefront/nuxt-gtag": "^1.0.4",
     "@vue/test-utils": "^2.0.2",
     "c8": "^7.12.0",
     "commitizen": "^4.2.5",

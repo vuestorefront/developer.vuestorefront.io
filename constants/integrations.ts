@@ -271,7 +271,10 @@ export const integrationsList: IntegrationList = [
     maintainedBy: [
       { name: 'Vue Storefront', link: 'https://vuestorefront.io/' },
     ],
-    categories: [IntegrationCategory.cms, IntegrationCategory.analytics],
+    categories: [
+      IntegrationCategory.cms,
+      // IntegrationCategory.analytics
+    ],
   },
 
   {

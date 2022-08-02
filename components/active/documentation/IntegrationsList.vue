@@ -5,9 +5,9 @@
       :id="integration.type"
       :key="integration.title"
     >
-      <h1>{{ integration.title }}</h1>
+      <h1>{{ t(`global.integration.types.${integration.type}.title`) }}</h1>
       <p class="text-gray-500">
-        {{ integration.description }}
+        {{ t(`global.integration.types.${integration.type}.text`) }}
       </p>
       <div class="my-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         <MoleculesCardDocs
@@ -27,7 +27,9 @@
 
 <script setup lang="ts">
   import { useIntegrationsList } from '~/store/documentation/integrationsList';
+  import { useI18n } from 'vue-i18n';
 
+  const { t } = useI18n();
   const { integrations, filterParams, refresh } = useIntegrationsList();
 
   watch(filterParams, async () => refresh(), { deep: true });

@@ -23,24 +23,24 @@
       />
       <MoleculesSectionLogoClouds
         direction="left"
-        :title="t('page.home.integrations.commerce.title')"
-        :message="t('page.home.integrations.commerce.message')"
+        :title="t('global.integration.types.commerce.title')"
+        :message="t('global.integration.types.commerce.text')"
         :brands="commerceVendors"
         :button-link="`documentation/#${IntegrationCategory.commerce}`"
         :button-text="t('page.home.integrations.commerce.buttonText')"
       />
       <MoleculesSectionLogoClouds
         direction="right"
-        :title="t('page.home.integrations.cms.title')"
-        :message="t('page.home.integrations.cms.message')"
+        :title="t('global.integration.types.cms.title')"
+        :message="t('global.integration.types.cms.text')"
         :brands="cmsVendors"
         :button-link="`documentation/#${IntegrationCategory.cms}`"
         :button-text="t('page.home.integrations.cms.buttonText')"
       />
       <MoleculesSectionLogoClouds
         direction="left"
-        :title="t('page.home.integrations.payment.title')"
-        :message="t('page.home.integrations.payment.message')"
+        :title="t('global.integration.types.payment.title')"
+        :message="t('global.integration.types.payment.text')"
         :brands="paymentVendors"
         :button-link="`documentation/#${IntegrationCategory.payment}`"
         :button-text="t('page.home.integrations.payment.buttonText')"

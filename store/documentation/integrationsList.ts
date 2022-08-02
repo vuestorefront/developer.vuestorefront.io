@@ -83,71 +83,47 @@ export const integrationsListStore = defineStore('integrationsList', {
     integrations(state) {
       return [
         {
-          title: 'Commerce Integrations',
           type: IntegrationCategory.commerce,
-          description:
-            'Posuere vel etiam netus nascetur eget finibus nostra porta rutrum donec facilisi est volutpat eros massa, congue curabitur dapibus gravida ut magna sodales natoque ad neque cursus per primis.',
           list: filterBy(state.data, {
             categories: [IntegrationCategory.commerce],
           }),
         },
         {
-          title: 'CMS Integrations',
           type: IntegrationCategory.cms,
-          description:
-            'Posuere vel etiam netus nascetur eget finibus nostra porta rutrum donec facilisi est volutpat eros massa, congue curabitur dapibus gravida ut magna sodales natoque ad neque cursus per primis.',
           list: filterBy(state.data, { categories: [IntegrationCategory.cms] }),
         },
         {
-          title: 'Payments Integrations',
           type: IntegrationCategory.payment,
-          description:
-            'Posuere vel etiam netus nascetur eget finibus nostra porta rutrum donec facilisi est volutpat eros massa, congue curabitur dapibus gravida ut magna sodales natoque ad neque cursus per primis.',
           list: filterBy(state.data, {
             categories: [IntegrationCategory.payment],
           }),
         },
         {
-          title: 'Reviews Integrations',
           type: IntegrationCategory.reviews,
-          description:
-            'Posuere vel etiam netus nascetur eget finibus nostra porta rutrum donec facilisi est volutpat eros massa, congue curabitur dapibus gravida ut magna sodales natoque ad neque cursus per primis.',
           list: filterBy(state.data, {
             categories: [IntegrationCategory.reviews],
           }),
         },
         {
-          title: 'Analytics Integrations',
           type: IntegrationCategory.analytics,
-          description:
-            'Posuere vel etiam netus nascetur eget finibus nostra porta rutrum donec facilisi est volutpat eros massa, congue curabitur dapibus gravida ut magna sodales natoque ad neque cursus per primis.',
           list: filterBy(state.data, {
             categories: [IntegrationCategory.analytics],
           }),
         },
         {
-          title: 'Auth Integrations',
           type: IntegrationCategory.auth,
-          description:
-            'Posuere vel etiam netus nascetur eget finibus nostra porta rutrum donec facilisi est volutpat eros massa, congue curabitur dapibus gravida ut magna sodales natoque ad neque cursus per primis.',
           list: filterBy(state.data, {
             categories: [IntegrationCategory.auth],
           }),
         },
         {
-          title: 'Cache Integrations',
           type: IntegrationCategory.cache,
-          description:
-            'Posuere vel etiam netus nascetur eget finibus nostra porta rutrum donec facilisi est volutpat eros massa, congue curabitur dapibus gravida ut magna sodales natoque ad neque cursus per primis.',
           list: filterBy(state.data, {
             categories: [IntegrationCategory.cache],
           }),
         },
         {
-          title: 'Search Integrations',
           type: IntegrationCategory.search,
-          description:
-            'Posuere vel etiam netus nascetur eget finibus nostra porta rutrum donec facilisi est volutpat eros massa, congue curabitur dapibus gravida ut magna sodales natoque ad neque cursus per primis.',
           list: filterBy(state.data, {
             categories: [IntegrationCategory.search],
           }),

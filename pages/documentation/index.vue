@@ -10,9 +10,21 @@
       </AtomsLayoutSideBar>
       <section id="documentation">
         <h1>{{ t('page.documentation.title') }}</h1>
-        <p class="text-gray-500">
-          {{ t('page.documentation.text') }}
-        </p>
+        <i18n-t
+          keypath="page.documentation.text"
+          tag="p"
+          scope="global"
+          class="text-gray-500"
+        >
+          <template #link>
+            <NuxtLink
+              to="https://docs.vuestorefront.io/v2/general/enterprise.html"
+              target="_blank"
+            >
+              {{ t('page.documentation.link') }}
+            </NuxtLink>
+          </template>
+        </i18n-t>
         <div class="my-8 grid grid-cols-1 gap-8 md:grid-cols-3">
           <MoleculesCardDocs
             :description="t('page.documentation.content.vsf')"
