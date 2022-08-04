@@ -102,87 +102,88 @@ jobs:
           echo ${{ steps.prepare-envs.outputs.deploy-env }}  | sed 's/./& /g'
           exit 0
 
-      # Start deployment status
-      - name: Create GitHub deployment
-        uses: bloodf/github-deploy-action@v1
-        id: deployment
-        with:
-          environment: ${{ needs.dynamic.outputs.deployEnv }}
-          environment-url: ${{ needs.dynamic.outputs.deployUrl }}
-      # Defining the deployment status
-      - name: In-progress Status
-        uses: bloodf/github-deploy-status@v1
-        with:
-          environment-url: ${{ steps.deployment.outputs.environment_url }}
-          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
-          state: 'in_progress'
-      # Sending message to Slack Starting process
-      - name: "Slack Notification - Starting"
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_USERNAME: "VSF-Bot"
-          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182921494-7d6d0fd1-d83a-4b34-9fcc-1285b165c8a0.png
-          SLACK_TITLE: 'Developer Portal - Deployment [Starting]'
-          SLACK_FOOTER: 'Vue Storefront - GitHub Slack Bot'
-          SLACK_MESSAGE: 'Starting the deployment of the Developer Portal: ${{ steps.dynVar.outputs.deployEnv }}'
-          SLACK_COLOR: ${{ job.status }}
-          MSG_MINIMAL: true
-      # Deploying image to VSF Cloud
-      - name: Deploy to VSF Cloud
-        shell: bash
-        env:
-          DEPLOY_URL: ${{ steps.dynVar.outputs.deployUrl }}
-        run: |
-          echo "Deploying to: $DEPLOY_URL"
-          OUTPUT=$(curl -s -H 'X-User-Id: ${{ secrets.CLOUD_USERNAME }}'  -H 'X-Api-Key: ${{ secrets.CLOUD_PASSWORD }}' -H 'Content-Type: application/json' -X PATCH -d '{"front_version":"${{ github.sha }}"}' $DEPLOY_URL)
-          if echo $OUTPUT | grep -q '"code":200,'; then
-            echo "Instance updated"
-          else
-            echo "Something went wrong during the update process... Response: $OUTPUT"
-            exit 1
-          fi
-
-      # If deployment was successful
-      - name: Success Status
-        if: success()
-        uses: bloodf/github-deploy-status@v1
-        with:
-          environment-url: ${{ steps.deployment.outputs.environment_url }}
-          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
-          state: 'success'
-          description: 'Successful deployment to ${{ steps.dynVar.outputs.deployEnv }}'
-      # Sending message to Slack for successful deployment
-      - name: "Slack Notification - Success"
-        if: success()
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_USERNAME: "VSF-Bot"
-          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182921494-7d6d0fd1-d83a-4b34-9fcc-1285b165c8a0.png
-          SLACK_TITLE: 'Developer Portal - Deployment [Success]'
-          SLACK_FOOTER: 'Vue Storefront - GitHub Slack Bot'
-          SLACK_MESSAGE: 'The new version of the portal is live at ${{ steps.dynVar.outputs.deployUrl }}'
-          SLACK_COLOR: ${{ job.status }}
-          MSG_MINIMAL: true
-      # If deployment had any errors
-      - name: Failure Status
-        if: failure()
-        uses: bloodf/github-deploy-status@v1
-        with:
-          environment-url: ${{ steps.deployment.outputs.environment_url }}
-          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
-          state: 'error'
-          description: 'There was an error when deploying to the environment: ${{ steps.dynVar.outputs.deployEnv }}'
-      # Send message to Slack for failed deployment
-      - name: "Slack Notification - Fail"
-        if: failure()
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_USERNAME: "VSF-Bot"
-          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182921494-7d6d0fd1-d83a-4b34-9fcc-1285b165c8a0.png
-          SLACK_TITLE: 'Developer Portal - Deployment [Error]'
-          SLACK_FOOTER: 'Vue Storefront - GitHub Slack Bot'
-          SLACK_MESSAGE: 'There was an error when deploying the developer portal in the environment: ${{ steps.dynVar.outputs.deployEnv }}'
-          SLACK_COLOR: ${{ job.status }}
+#      # Start deployment status
+#      - name: Create GitHub deployment
+#        uses: bloodf/github-deploy-action@v1
+#        id: deployment
+#        with:
+#          environment: ${{ needs.dynamic.outputs.deployEnv }}
+#          environment-url: ${{ needs.dynamic.outputs.deployUrl }}
+#      # Defining the deployment status
+#      - name: In-progress Status
+#        uses: bloodf/github-deploy-status@v1
+#        with:
+#          environment-url: ${{ steps.deployment.outputs.environment_url }}
+#          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+#          state: 'in_progress'
+#      # Sending message to Slack Starting process
+#      - name: "Slack Notification - Starting"
+#        uses: rtCamp/action-slack-notify@v2
+#        env:
+#          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+#          SLACK_USERNAME: "VSF-Bot"
+#          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182921494-7d6d0fd1-d83a-4b34-9fcc-1285b165c8a0.png
+#          SLACK_TITLE: 'Developer Portal - Deployment [Starting]'
+#          SLACK_FOOTER: 'Vue Storefront - GitHub Slack Bot'
+#          SLACK_MESSAGE: 'Starting the deployment of the Developer Portal: ${{ steps.dynVar.outputs.deployEnv }}'
+#          SLACK_COLOR: ${{ job.status }}
+#          MSG_MINIMAL: true
+#      # Deploying image to VSF Cloud
+#      - name: Deploy to VSF Cloud
+#        shell: bash
+#        env:
+#          DEPLOY_URL: ${{ steps.dynVar.outputs.deployUrl }}
+#        run: |
+#          echo "Deploying to: $DEPLOY_URL"
+#          OUTPUT=$(curl -s -H 'X-User-Id: ${{ secrets.CLOUD_USERNAME }}'  -H 'X-Api-Key: ${{ secrets.CLOUD_PASSWORD }}' -H 'Content-Type: application/json' -X PATCH -d '{"front_version":"${{ github.sha }}"}' $DEPLOY_URL)
+#          if echo $OUTPUT | grep -q '"code":200,'; then
+#            echo "Instance updated"
+#          else
+#            echo "Something went wrong during the update process... Response: $OUTPUT"
+#            exit 1
+#          fi
+#
+#      # If deployment was successful
+#      - name: Success Status
+#        if: success()
+#        uses: bloodf/github-deploy-status@v1
+#        with:
+#          environment-url: ${{ steps.deployment.outputs.environment_url }}
+#          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+#          state: 'success'
+#          description: 'Successful deployment to ${{ steps.dynVar.outputs.deployEnv }}'
+#      # Sending message to Slack for successful deployment
+#      - name: "Slack Notification - Success"
+#        if: success()
+#        uses: rtCamp/action-slack-notify@v2
+#        env:
+#          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+#          SLACK_USERNAME: "VSF-Bot"
+#          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182921494-7d6d0fd1-d83a-4b34-9fcc-1285b165c8a0.png
+#          SLACK_TITLE: 'Developer Portal - Deployment [Success]'
+#          SLACK_FOOTER: 'Vue Storefront - GitHub Slack Bot'
+#          SLACK_MESSAGE: 'The new version of the portal is live at ${{ steps.dynVar.outputs.deployUrl }}'
+#          SLACK_COLOR: ${{ job.status }}
+#          MSG_MINIMAL: true
+#      # If deployment had any errors
+#      - name: Failure Status
+#        if: failure()
+#        uses: bloodf/github-deploy-status@v1
+#        with:
+#          environment-url: ${{ steps.deployment.outputs.environment_url }}
+#          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+#          state: 'error'
+#          description: 'There was an error when deploying to the environment: ${{ steps.dynVar.outputs.deployEnv }}'
+#      # Send message to Slack for failed deployment
+#      - name: "Slack Notification - Fail"
+#        if: failure()
+#        uses: rtCamp/action-slack-notify@v2
+#        env:
+#          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+#          SLACK_USERNAME: "VSF-Bot"
+#          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182921494-7d6d0fd1-d83a-4b34-9fcc-1285b165c8a0.png
+#          SLACK_TITLE: 'Developer Portal - Deployment [Error]'
+#          SLACK_FOOTER: 'Vue Storefront - GitHub Slack Bot'
+#          SLACK_MESSAGE: 'There was an error when deploying the developer portal in the environment: ${{ steps.dynVar.outputs.deployEnv }}'
+#          SLACK_COLOR: ${{ job.status }}
+#
