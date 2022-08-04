@@ -16,19 +16,8 @@ jobs:
         uses: chrnorm/deployment-status@v2
         with:
           token: ${{ github.token }}
-          target_url: https://developer-beta.europe-west1.gcp.storefrontcloud.io
-          state: 'in_progress'
+          state: 'queued'
           deployment-id: ${{env.DEPLOY_ID}}
-
-      - name: "Slack Notification - Starting"
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_USERNAME: "Deploy Bot"
-          SLACK_TITLE: "Deployment of Developer Portal"
-          SLACK_FOOTER: ""
-          SLACK_MESSAGE: "Starting the deployment of the Developer Portal"
-          SLACK_COLOR: ${{ job.status }}
 
   build:
     runs-on: ubuntu-latest
@@ -37,6 +26,14 @@ jobs:
       # Checkout the Repository
       - name: Checkout code
         uses: actions/checkout@v3
+
+      # Start deployment status
+      - name: In-progress Status
+        uses: chrnorm/deployment-status@v2
+        with:
+          token: ${{ github.token }}
+          state: 'in_progress'
+          deployment-id: ${{env.DEPLOY_ID}}
 
       # Build the Docker Image
       - name: Build and publish docker image
@@ -56,10 +53,41 @@ jobs:
           DEV_TO_TOKEN: ${{ secrets.BUILD_DEV_TO_TOKEN }}
           GOOGLE_TAG_ID: ${{ secrets.GOOGLE_TAG_ID }}
 
+      # If building had any errors
+      - name: Building Failure Status
+        if: failure()
+        uses: chrnorm/deployment-status@v2
+        with:
+          token: ${{ github.token }}
+          description: 'There was an error building the docker image for the environment: ${{env.ENVIRONMENT}}'
+          state: 'failure'
+          deployment-id: ${{env.DEPLOY_ID}}
+
+      - name: "Slack Notification - Fail"
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: "Deploy Bot"
+          SLACK_TITLE: "Error when building the docker image"
+          SLACK_FOOTER: ""
+          SLACK_MESSAGE: "There was an error in the docker image building process for the Developer Portal: ${{env.ENVIRONMENT}}"
+          SLACK_COLOR: ${{ job.status }}
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: "Slack Notification - Starting"
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: "Deploy Bot"
+          SLACK_TITLE: "Developer Portal - Deployment [Starting]"
+          SLACK_FOOTER: ""
+          SLACK_MESSAGE: "Starting the deployment of the Developer Portal: ${{env.ENVIRONMENT}}"
+          SLACK_COLOR: ${{ job.status }}
+
       # Deploying image to VSF Cloud
       - name: "Deploy ${{env.ENVIRONMENT}}"
         shell: bash
@@ -73,18 +101,17 @@ jobs:
         uses: chrnorm/deployment-status@v2
         with:
           token: ${{ github.token }}
-          target_url: https://developer-beta.europe-west1.gcp.storefrontcloud.io
           description: 'Successful deployment to ${{env.ENVIRONMENT}}'
           state: 'success'
           deployment-id: ${{env.DEPLOY_ID}}
 
-      - name: "Slack Notification - Sucess"
+      - name: "Slack Notification - Success"
         if: success()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_USERNAME: "Deploy Bot"
-          SLACK_TITLE: "Successful deployment"
+          SLACK_TITLE: "Developer Portal - Deployment [Success]"
           SLACK_FOOTER: ""
           SLACK_MESSAGE: "The new version of the portal is live at ${{ secrets.DEPLOY_URL }}"
           SLACK_COLOR: ${{ job.status }}
@@ -96,7 +123,6 @@ jobs:
         uses: chrnorm/deployment-status@v2
         with:
           token: ${{ github.token }}
-          target_url: https://developer-beta.europe-west1.gcp.storefrontcloud.io
           description: 'There was an error when deploying to the environment: ${{env.ENVIRONMENT}}'
           state: 'failure'
           deployment-id: ${{env.DEPLOY_ID}}
@@ -107,7 +133,7 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_USERNAME: "Deploy Bot"
-          SLACK_TITLE: "Error when deploying the developer portal"
+          SLACK_TITLE: "Developer Portal - Deployment [Error]"
           SLACK_FOOTER: ""
           SLACK_MESSAGE: "There was an error when deploying the developer portal in the environment: ${{env.ENVIRONMENT}}"
           SLACK_COLOR: ${{ job.status }}
