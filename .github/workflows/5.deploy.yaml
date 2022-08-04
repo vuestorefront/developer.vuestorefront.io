@@ -2,6 +2,10 @@ name: Deploy to Vue Storefront Cloud
 
 on: [ push ]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
   deployments: write
@@ -55,7 +59,7 @@ jobs:
         uses: chrnorm/deployment-action@v2
         id: deployment
         with:
-          token: '${{ github.token }}'
+          token: ${{ github.token }}
           environment-url: ${{env.DEPLOY_URL}}
           environment: ${{env.ENVIRONMENT}}
 
@@ -63,10 +67,9 @@ jobs:
         uses: chrnorm/deployment-status@v2
         with:
           token: ${{ github.token }}
+          environment-url: ${{ steps.deployment.outputs.environment_url }}
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
           state: 'in_progress'
-          environment: ${{env.ENVIRONMENT}}
-          environment-url: ${{env.DEPLOY_URL}}
-          deployment-id: ${{env.DEPLOY_ID}}
 
       - name: "Slack Notification - Starting"
         uses: rtCamp/action-slack-notify@v2
@@ -92,11 +95,10 @@ jobs:
         uses: chrnorm/deployment-status@v2
         with:
           token: ${{ github.token }}
-          description: 'Successful deployment to ${{env.ENVIRONMENT}}'
+          environment-url: ${{ steps.deployment.outputs.environment_url }}
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
           state: 'success'
-          environment: ${{env.ENVIRONMENT}}
-          environment-url: ${{env.DEPLOY_URL}}
-          deployment-id: ${{env.DEPLOY_ID}}
+          description: 'Successful deployment to ${{env.ENVIRONMENT}}'
 
       - name: "Slack Notification - Success"
         if: success()
@@ -117,11 +119,10 @@ jobs:
         uses: chrnorm/deployment-status@v2
         with:
           token: ${{ github.token }}
+          environment-url: ${{ steps.deployment.outputs.environment_url }}
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+          state: 'error'
           description: 'There was an error when deploying to the environment: ${{env.ENVIRONMENT}}'
-          state: 'failure'
-          environment: ${{env.ENVIRONMENT}}
-          environment-url: ${{env.DEPLOY_URL}}
-          deployment-id: ${{env.DEPLOY_ID}}
 
       - name: "Slack Notification - Fail"
         if: failure()
