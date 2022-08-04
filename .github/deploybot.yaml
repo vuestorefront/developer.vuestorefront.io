@@ -2,5 +2,6 @@ deployments:
   - name: Development
 
   - name: Staging
+    on_push: true
 
   - name: Production
