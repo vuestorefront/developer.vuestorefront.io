@@ -1,26 +1,41 @@
-name: Runs All Unit tests
+name: Runs ESLint & Tests
 
 on:
   pull_request:
     types: [ opened, ready_for_review, edited, synchronize ]
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [ 16.x ]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
+
+      - name: Set node Version
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      #- run: npm run build --if-present
-      - name: Execute Unit tests
-      - run: npm ci
-      - run: npm run test
+          node-version: 16.x
+          cache: npm
+
+      - name: Install Modules
+        run: npm i
+
+      - name: Run ESLint
+        run: npm run lint
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set node Version
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: npm
+
+      - name: Install Modules
+        run: npm i
+
+      - name: Run Vitest
+        run: npm run test
+
