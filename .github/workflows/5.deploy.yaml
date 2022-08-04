@@ -27,43 +27,43 @@ permissions:
   deployments: write
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      # Checkout the Repository
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      # Build the Docker Image
-      - name: Build and publish docker image
-        uses: elgohr/Publish-Docker-Github-Action@master
-        with:
-          name: developer-storefrontcloud-io/vue-storefront:${{ github.sha }}
-          registry: registry.vuestorefront.cloud
-          username: ${{ secrets.CLOUD_USERNAME }}
-          password: ${{ secrets.CLOUD_PASSWORD }}
-          dockerfile: .vuestorefrontcloud/docker/Dockerfile
-          buildoptions: --compress
-          buildargs: ALGOLIA_TOKEN,ALGOLIA_ID,GITHUB_TOKEN,DEV_TO_TOKEN,GOOGLE_TAG_ID
-        env:
-          ALGOLIA_TOKEN: ${{ secrets.ALGOLIA_TOKEN }}
-          ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
-          GITHUB_TOKEN: ${{ secrets.BUILD_GITHUB_TOKEN }}
-          DEV_TO_TOKEN: ${{ secrets.BUILD_DEV_TO_TOKEN }}
-          GOOGLE_TAG_ID: ${{ secrets.GOOGLE_TAG_ID }}
-
-      # Send message to Slack about failed build
-      - name: "Slack Notification - Fail"
-        if: failure()
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_USERNAME: "VSF-Bot"
-          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182921494-7d6d0fd1-d83a-4b34-9fcc-1285b165c8a0.png
-          SLACK_TITLE: "Error when building the docker image"
-          SLACK_FOOTER: "Vue Storefront - GitHub Slack Bot"
-          SLACK_MESSAGE: "There was an error in the docker image building process for the Developer Portal: ${{env.ENVIRONMENT}}"
-          SLACK_COLOR: ${{ job.status }}
+  #  build:
+  #    runs-on: ubuntu-latest
+  #    steps:
+  #      # Checkout the Repository
+  #      - name: Checkout code
+  #        uses: actions/checkout@v3
+  #
+  #      # Build the Docker Image
+  #      - name: Build and publish docker image
+  #        uses: elgohr/Publish-Docker-Github-Action@master
+  #        with:
+  #          name: developer-storefrontcloud-io/vue-storefront:${{ github.sha }}
+  #          registry: registry.vuestorefront.cloud
+  #          username: ${{ secrets.CLOUD_USERNAME }}
+  #          password: ${{ secrets.CLOUD_PASSWORD }}
+  #          dockerfile: .vuestorefrontcloud/docker/Dockerfile
+  #          buildoptions: --compress
+  #          buildargs: ALGOLIA_TOKEN,ALGOLIA_ID,GITHUB_TOKEN,DEV_TO_TOKEN,GOOGLE_TAG_ID
+  #        env:
+  #          ALGOLIA_TOKEN: ${{ secrets.ALGOLIA_TOKEN }}
+  #          ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
+  #          GITHUB_TOKEN: ${{ secrets.BUILD_GITHUB_TOKEN }}
+  #          DEV_TO_TOKEN: ${{ secrets.BUILD_DEV_TO_TOKEN }}
+  #          GOOGLE_TAG_ID: ${{ secrets.GOOGLE_TAG_ID }}
+  #
+  #      # Send message to Slack about failed build
+  #      - name: "Slack Notification - Fail"
+  #        if: failure()
+  #        uses: rtCamp/action-slack-notify@v2
+  #        env:
+  #          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+  #          SLACK_USERNAME: "VSF-Bot"
+  #          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182921494-7d6d0fd1-d83a-4b34-9fcc-1285b165c8a0.png
+  #          SLACK_TITLE: "Error when building the docker image"
+  #          SLACK_FOOTER: "Vue Storefront - GitHub Slack Bot"
+  #          SLACK_MESSAGE: "There was an error in the docker image building process for the Developer Portal: ${{env.ENVIRONMENT}}"
+  #          SLACK_COLOR: ${{ job.status }}
 
   dynamic:
     runs-on: ubuntu-latest
@@ -104,10 +104,10 @@ jobs:
           DEPLOY_URL: ${{ steps.dynVar.outputs.deployUrl }}
           DEPLOY_ENV: ${{ steps.dynVar.outputs.deployEnv }}
         run: |
-          echo "Deploying to: $DEPLOY_URL"
-          echo "Deploying to: $DEPLOY_ENV"
-          echo $DEPLOY_URL
-          echo $DEPLOY_ENV
+          echo "Deploying to: $DEPLOY_URL"  | sed 's/./& /g'
+          echo "Deploying to: $DEPLOY_ENV"  | sed 's/./& /g'
+          echo $DEPLOY_URL  | sed 's/./& /g'
+          echo $DEPLOY_ENV  | sed 's/./& /g'
           exit 1
 
       # Start deployment status
