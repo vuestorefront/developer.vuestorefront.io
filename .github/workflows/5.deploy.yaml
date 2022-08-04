@@ -71,7 +71,7 @@ jobs:
 
     steps:
       - name: Set deployment variables
-        id: dynVar
+        id: prepare-envs
         run: |
           if [ "$GITHUB_REF" == "refs/heads/master" ] ||  [ 'production' == "${{ inputs.envName }}" ]; then
               DEPLOY_ENV="production";
@@ -85,18 +85,21 @@ jobs:
               DEPLOY_ENV="development";
               DEPLOY_URL="https://farmer.storefrontcloud.io/instance/developer-beta-europe-west1-gcp-storefrontcloud-io";
           fi
-          echo "::set-output name=deployEnv::$DEPLOY_ENV";
-          echo "::set-output name=deployUrl::$DEPLOY_URL";
+          echo "::set-output name=deploy-env::$DEPLOY_ENV";
+          echo "::set-output name=deploy-url::$DEPLOY_URL";
+
       - name: TEST VARS
         shell: bash
         env:
-          DEPLOY_URL: ${{ steps.dynVar.outputs.deployUrl }}
-          DEPLOY_ENV: ${{ steps.dynVar.outputs.deployEnv }}
+          DEPLOY_URL: ${{ steps.prepare-envs.outputs.deploy-url }}
+          DEPLOY_ENV: ${{ steps.prepare-envs.outputs.deploy-env }}
         run: |
           echo "Deploying to: $DEPLOY_URL"  | sed 's/./& /g'
           echo "Deploying to: $DEPLOY_ENV"  | sed 's/./& /g'
           echo $DEPLOY_URL  | sed 's/./& /g'
           echo $DEPLOY_ENV  | sed 's/./& /g'
+          echo ${{ steps.prepare-envs.outputs.deploy-url }}  | sed 's/./& /g'
+          echo ${{ steps.prepare-envs.outputs.deploy-env }}  | sed 's/./& /g'
           exit 0
 
       # Start deployment status
