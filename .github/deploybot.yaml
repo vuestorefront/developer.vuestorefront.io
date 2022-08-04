@@ -1,0 +1,6 @@
+deployments:
+  - name: Development
+
+  - name: Staging
+
+  - name: Production
