@@ -53,20 +53,19 @@ jobs:
     needs: build
     permissions:
       deployments: write
+
     steps:
       # Start deployment status
       - name: Create GitHub deployment
-        uses: chrnorm/deployment-action@v2
+        uses: bloodf/github-deploy-action@v1
         id: deployment
         with:
-          token: ${{ github.token }}
           environment-url: ${{env.DEPLOY_URL}}
           environment: ${{env.ENVIRONMENT}}
 
       - name: In-progress Status
-        uses: chrnorm/deployment-status@v2
+        uses: bloodf/github-deploy-status@v1
         with:
-          token: ${{ github.token }}
           environment-url: ${{ steps.deployment.outputs.environment_url }}
           deployment-id: ${{ steps.deployment.outputs.deployment_id }}
           state: 'in_progress'
@@ -92,9 +91,8 @@ jobs:
       # If deployment was successful
       - name: Success Status
         if: success()
-        uses: chrnorm/deployment-status@v2
+        uses: bloodf/github-deploy-status@v1
         with:
-          token: ${{ github.token }}
           environment-url: ${{ steps.deployment.outputs.environment_url }}
           deployment-id: ${{ steps.deployment.outputs.deployment_id }}
           state: 'success'
@@ -116,9 +114,8 @@ jobs:
       # If deployment had any errors
       - name: Failure Status
         if: failure()
-        uses: chrnorm/deployment-status@v2
+        uses: bloodf/github-deploy-status@v1
         with:
-          token: ${{ github.token }}
           environment-url: ${{ steps.deployment.outputs.environment_url }}
           deployment-id: ${{ steps.deployment.outputs.deployment_id }}
           state: 'error'
