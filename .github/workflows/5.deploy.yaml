@@ -38,9 +38,10 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_USERNAME: "Deploy Bot"
+          SLACK_USERNAME: "VSF-Bot"
+          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182920763-3af3d95d-dee5-47af-b6ce-56e113bdb9d9.png
           SLACK_TITLE: "Error when building the docker image"
-          SLACK_FOOTER: ""
+          SLACK_FOOTER: "Vue Storefront - GitHub Slack Bot"
           SLACK_MESSAGE: "There was an error in the docker image building process for the Developer Portal: ${{env.ENVIRONMENT}}"
           SLACK_COLOR: ${{ job.status }}
 
@@ -54,15 +55,18 @@ jobs:
         with:
           token: ${{ github.token }}
           state: 'in_progress'
+          environment: ${{env.ENVIRONMENT}}
+          environment-url: ${{env.DEPLOY_URL}}
           deployment-id: ${{env.DEPLOY_ID}}
 
       - name: "Slack Notification - Starting"
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_USERNAME: "Deploy Bot"
+          SLACK_USERNAME: "VSF-Bot"
+          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182920763-3af3d95d-dee5-47af-b6ce-56e113bdb9d9.png
           SLACK_TITLE: "Developer Portal - Deployment [Starting]"
-          SLACK_FOOTER: ""
+          SLACK_FOOTER: "Vue Storefront - GitHub Slack Bot"
           SLACK_MESSAGE: "Starting the deployment of the Developer Portal: ${{env.ENVIRONMENT}}"
           SLACK_COLOR: ${{ job.status }}
 
@@ -81,6 +85,8 @@ jobs:
           token: ${{ github.token }}
           description: 'Successful deployment to ${{env.ENVIRONMENT}}'
           state: 'success'
+          environment: ${{env.ENVIRONMENT}}
+          environment-url: ${{env.DEPLOY_URL}}
           deployment-id: ${{env.DEPLOY_ID}}
 
       - name: "Slack Notification - Success"
@@ -88,9 +94,10 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_USERNAME: "Deploy Bot"
+          SLACK_USERNAME: "VSF-Bot"
+          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182920763-3af3d95d-dee5-47af-b6ce-56e113bdb9d9.png
           SLACK_TITLE: "Developer Portal - Deployment [Success]"
-          SLACK_FOOTER: ""
+          SLACK_FOOTER: "Vue Storefront - GitHub Slack Bot"
           SLACK_MESSAGE: "The new version of the portal is live at ${{ secrets.DEPLOY_URL }}"
           SLACK_COLOR: ${{ job.status }}
           MSG_MINIMAL: true
@@ -103,6 +110,8 @@ jobs:
           token: ${{ github.token }}
           description: 'There was an error when deploying to the environment: ${{env.ENVIRONMENT}}'
           state: 'failure'
+          environment: ${{env.ENVIRONMENT}}
+          environment-url: ${{env.DEPLOY_URL}}
           deployment-id: ${{env.DEPLOY_ID}}
 
       - name: "Slack Notification - Fail"
@@ -110,8 +119,9 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_USERNAME: "Deploy Bot"
+          SLACK_USERNAME: "VSF-Bot"
+          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182920763-3af3d95d-dee5-47af-b6ce-56e113bdb9d9.png
           SLACK_TITLE: "Developer Portal - Deployment [Error]"
-          SLACK_FOOTER: ""
+          SLACK_FOOTER: "Vue Storefront - GitHub Slack Bot"
           SLACK_MESSAGE: "There was an error when deploying the developer portal in the environment: ${{env.ENVIRONMENT}}"
           SLACK_COLOR: ${{ job.status }}

@@ -6,4 +6,3 @@ deployments:
     on_push: true
 
   - name: production
-    on_push: true
