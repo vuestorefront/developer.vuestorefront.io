@@ -98,6 +98,18 @@ jobs:
     needs: dynamic
 
     steps:
+      - name: TEST VARS
+        shell: bash
+        env:
+          DEPLOY_URL: ${{ steps.dynVar.outputs.deployUrl }}
+          DEPLOY_ENV: ${{ steps.dynVar.outputs.deployEnv }}
+        run: |
+          echo "Deploying to: $DEPLOY_URL"
+          echo "Deploying to: $DEPLOY_ENV"
+          echo $DEPLOY_URL
+          echo $DEPLOY_ENV
+          exit 1
+
       # Start deployment status
       - name: Create GitHub deployment
         uses: bloodf/github-deploy-action@v1
