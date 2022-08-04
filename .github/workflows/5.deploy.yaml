@@ -39,7 +39,7 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_USERNAME: "VSF-Bot"
-          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182920763-3af3d95d-dee5-47af-b6ce-56e113bdb9d9.png
+          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182921494-7d6d0fd1-d83a-4b34-9fcc-1285b165c8a0.png
           SLACK_TITLE: "Error when building the docker image"
           SLACK_FOOTER: "Vue Storefront - GitHub Slack Bot"
           SLACK_MESSAGE: "There was an error in the docker image building process for the Developer Portal: ${{env.ENVIRONMENT}}"
@@ -64,7 +64,7 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_USERNAME: "VSF-Bot"
-          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182920763-3af3d95d-dee5-47af-b6ce-56e113bdb9d9.png
+          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182921494-7d6d0fd1-d83a-4b34-9fcc-1285b165c8a0.png
           SLACK_TITLE: "Developer Portal - Deployment [Starting]"
           SLACK_FOOTER: "Vue Storefront - GitHub Slack Bot"
           SLACK_MESSAGE: "Starting the deployment of the Developer Portal: ${{env.ENVIRONMENT}}"
@@ -95,7 +95,7 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_USERNAME: "VSF-Bot"
-          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182920763-3af3d95d-dee5-47af-b6ce-56e113bdb9d9.png
+          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182921494-7d6d0fd1-d83a-4b34-9fcc-1285b165c8a0.png
           SLACK_TITLE: "Developer Portal - Deployment [Success]"
           SLACK_FOOTER: "Vue Storefront - GitHub Slack Bot"
           SLACK_MESSAGE: "The new version of the portal is live at ${{ secrets.DEPLOY_URL }}"
@@ -120,7 +120,7 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_USERNAME: "VSF-Bot"
-          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182920763-3af3d95d-dee5-47af-b6ce-56e113bdb9d9.png
+          SLACK_ICON: https://user-images.githubusercontent.com/1626923/182921494-7d6d0fd1-d83a-4b34-9fcc-1285b165c8a0.png
           SLACK_TITLE: "Developer Portal - Deployment [Error]"
           SLACK_FOOTER: "Vue Storefront - GitHub Slack Bot"
           SLACK_MESSAGE: "There was an error when deploying the developer portal in the environment: ${{env.ENVIRONMENT}}"
