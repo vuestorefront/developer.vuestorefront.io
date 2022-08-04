@@ -72,22 +72,20 @@ jobs:
       - name: Set deployment variables
         id: dynVar
         run: |
-          DEPLOY_ENV=${{ inputs.envName }};
-          DEPLOY_URL="";
-          if [ $GITHUB_REF == 'refs/heads/master' ] | [$DEPLOY_ENV == 'production']; then
+          if [ "$GITHUB_REF" == "refs/heads/master" ] ||  [ 'production' == "${{ inputs.envName }}" ]; then
               DEPLOY_ENV="production";
               DEPLOY_URL="https://farmer.storefrontcloud.io/instance/developer-europe-west1-gcp-storefrontcloud-io";
           fi
-          if [ $GITHUB_REF == 'refs/heads/staging' ] | [$DEPLOY_ENV == 'staging']; then
+          if [ "$GITHUB_REF" == "refs/heads/staging" ] ||  [ 'staging' == "${{ inputs.envName }}" ]; then
               DEPLOY_ENV="staging";
               DEPLOY_URL="https://farmer.storefrontcloud.io/instance/developer-test-europe-west1-gcp-storefrontcloud-io";
           fi
-          if [ $GITHUB_REF == 'refs/heads/development' ] | [$DEPLOY_ENV == 'development']; then
+          if [ "$GITHUB_REF" == "refs/heads/development" ] ||  [ 'development' == "${{ inputs.envName }}" ]; then
               DEPLOY_ENV="development";
               DEPLOY_URL="https://farmer.storefrontcloud.io/instance/developer-beta-europe-west1-gcp-storefrontcloud-io";
           fi
-          echo "::set-output name=deployEnv::DEPLOY_ENV";
-          echo "::set-output name=deployUrl::DEPLOY_URL";
+          echo "::set-output name=deployEnv::$DEPLOY_ENV";
+          echo "::set-output name=deployUrl::$DEPLOY_URL";
     outputs:
       deployEnv: ${{ steps.dynVar.outputs.deployEnv }}
       deployUrl: ${{ steps.dynVar.outputs.deployUrl }}
