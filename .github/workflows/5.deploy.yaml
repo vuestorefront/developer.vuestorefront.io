@@ -15,14 +15,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Start deployment status
-      - name: In-progress Status
-        uses: chrnorm/deployment-status@v2
-        with:
-          token: ${{ github.token }}
-          state: 'queued'
-          deployment-id: ${{env.DEPLOY_ID}}
-
       # Build the Docker Image
       - name: Build and publish docker image
         uses: elgohr/Publish-Docker-Github-Action@master
@@ -40,16 +32,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BUILD_GITHUB_TOKEN }}
           DEV_TO_TOKEN: ${{ secrets.BUILD_DEV_TO_TOKEN }}
           GOOGLE_TAG_ID: ${{ secrets.GOOGLE_TAG_ID }}
-
-      # If building had any errors
-      - name: Building Failure Status
-        if: failure()
-        uses: chrnorm/deployment-status@v2
-        with:
-          token: ${{ github.token }}
-          description: 'There was an error building the docker image for the environment: ${{env.ENVIRONMENT}}'
-          state: 'failure'
-          deployment-id: ${{env.DEPLOY_ID}}
 
       - name: "Slack Notification - Fail"
         if: failure()
