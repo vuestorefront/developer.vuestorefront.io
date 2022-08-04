@@ -8,20 +8,8 @@ permissions:
   deployments: write
 
 jobs:
-  initial:
-    runs-on: ubuntu-latest
-    steps:
-      # Start deployment status
-      - name: In-progress Status
-        uses: chrnorm/deployment-status@v2
-        with:
-          token: ${{ github.token }}
-          state: 'queued'
-          deployment-id: ${{env.DEPLOY_ID}}
-
   build:
     runs-on: ubuntu-latest
-    needs: initial
     steps:
       # Checkout the Repository
       - name: Checkout code
@@ -32,7 +20,7 @@ jobs:
         uses: chrnorm/deployment-status@v2
         with:
           token: ${{ github.token }}
-          state: 'in_progress'
+          state: 'queued'
           deployment-id: ${{env.DEPLOY_ID}}
 
       # Build the Docker Image
@@ -78,6 +66,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      # Start deployment status
+      - name: In-progress Status
+        uses: chrnorm/deployment-status@v2
+        with:
+          token: ${{ github.token }}
+          state: 'in_progress'
+          deployment-id: ${{env.DEPLOY_ID}}
+
       - name: "Slack Notification - Starting"
         uses: rtCamp/action-slack-notify@v2
         env:
