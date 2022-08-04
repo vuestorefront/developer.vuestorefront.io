@@ -1,7 +1,7 @@
 deployments:
-  - name: Development
+  - name: development
 
-  - name: Staging
+  - name: staging
     on_push: true
 
-  - name: Production
+  - name: production
