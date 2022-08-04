@@ -72,17 +72,17 @@ jobs:
       - name: Set deployment variables
         id: dynVar
         run: |
-          DEPLOY_ENV='';
-          DEPLOY_URL='';
-          if [ $GITHUB_REF == 'refs/heads/master' ] | [${{ inputs.envName }} == 'production']; then
+          DEPLOY_ENV=${{ inputs.envName }};
+          DEPLOY_URL="";
+          if [ $GITHUB_REF == 'refs/heads/master' ] | [$DEPLOY_ENV == 'production']; then
               DEPLOY_ENV="production";
               DEPLOY_URL="https://farmer.storefrontcloud.io/instance/developer-europe-west1-gcp-storefrontcloud-io";
           fi
-          if [ $GITHUB_REF == 'refs/heads/staging' ] | [${{ inputs.envName }} == 'staging']; then
+          if [ $GITHUB_REF == 'refs/heads/staging' ] | [$DEPLOY_ENV == 'staging']; then
               DEPLOY_ENV="staging";
               DEPLOY_URL="https://farmer.storefrontcloud.io/instance/developer-test-europe-west1-gcp-storefrontcloud-io";
           fi
-          if [ $GITHUB_REF == 'refs/heads/development' ] | [${{ inputs.envName }} == 'development']; then
+          if [ $GITHUB_REF == 'refs/heads/development' ] | [$DEPLOY_ENV == 'development']; then
               DEPLOY_ENV="development";
               DEPLOY_URL="https://farmer.storefrontcloud.io/instance/developer-beta-europe-west1-gcp-storefrontcloud-io";
           fi
