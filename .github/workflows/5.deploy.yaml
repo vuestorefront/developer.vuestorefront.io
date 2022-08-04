@@ -1,6 +1,11 @@
 name: Deploy to Vue Storefront Cloud
 
 on:
+  push:
+    branches:
+      - main
+      - beta
+      - develop
   workflow_dispatch:
     inputs:
       envName:
@@ -64,13 +69,28 @@ jobs:
     needs: build
 
     steps:
+      - name: Set deployment variables
+        run: |
+          if [ $GITHUB_REF == 'refs/heads/master' ] | [${{ inputs.envName }} = 'production']; then
+              echo "DEPLOY_ENV=production" >> "$GITHUB_ENV"
+              echo "DEPLOY_URL=https://farmer.storefrontcloud.io/instance/developer-europe-west1-gcp-storefrontcloud-io" >> "$GITHUB_ENV"
+          fi
+          if [ $GITHUB_REF == 'refs/heads/staging' ] | [${{ inputs.envName }} = 'staging']; then
+              echo "DEPLOY_ENV=staging" >> "$GITHUB_ENV"
+              echo "DEPLOY_URL=https://farmer.storefrontcloud.io/instance/developer-test-europe-west1-gcp-storefrontcloud-io" >> "$GITHUB_ENV"
+          fi
+          if [ $GITHUB_REF == 'refs/heads/development' ] | [${{ inputs.envName }} = 'development']; then
+              echo "DEPLOY_ENV=development" >> "$GITHUB_ENV"
+              echo "DEPLOY_URL=https://farmer.storefrontcloud.io/instance/developer-beta-europe-west1-gcp-storefrontcloud-io" >> "$GITHUB_ENV"
+          fi
+
       # Start deployment status
       - name: Create GitHub deployment
         uses: bloodf/github-deploy-action@v1
         id: deployment
         with:
-          environment-url: ${{ secrets.DEPLOY_URL }}
-          environment: ${{ inputs.envName }}
+          environment-url: ${{ env.DEPLOY_URL }}
+          environment: ${{ env.DEPLOY_ENV }}
 
       - name: In-progress Status
         uses: bloodf/github-deploy-status@v1
@@ -85,9 +105,9 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_USERNAME: "VSF-Bot"
           SLACK_ICON: https://user-images.githubusercontent.com/1626923/182921494-7d6d0fd1-d83a-4b34-9fcc-1285b165c8a0.png
-          SLACK_TITLE: "Developer Portal - Deployment [Starting]"
-          SLACK_FOOTER: "Vue Storefront - GitHub Slack Bot"
-          SLACK_MESSAGE: "Starting the deployment of the Developer Portal: ${{env.ENVIRONMENT}}"
+          SLACK_TITLE: 'Developer Portal - Deployment [Starting]'
+          SLACK_FOOTER: 'Vue Storefront - GitHub Slack Bot'
+          SLACK_MESSAGE: 'Starting the deployment of the Developer Portal: ${{ env.DEPLOY_ENV }}'
           SLACK_COLOR: ${{ job.status }}
           MSG_MINIMAL: true
 
@@ -95,8 +115,8 @@ jobs:
       - name: Deploy to VSF Cloud
         shell: bash
         run: |
-          echo "Deploying to: '${{ steps.deployment.outputs.environment_url }}'"
-          OUTPUT=$(curl -s -H 'X-User-Id: ${{ secrets.CLOUD_USERNAME }}'  -H 'X-Api-Key: ${{ secrets.CLOUD_PASSWORD }}' -H 'Content-Type: application/json' -X PATCH -d '{"front_version":"${{ github.sha }}"}' '${{ steps.deployment.outputs.environment_url }}')
+          echo "Deploying to: $DEPLOY_URL"
+          OUTPUT=$(curl -s -H 'X-User-Id: ${{ secrets.CLOUD_USERNAME }}'  -H 'X-Api-Key: ${{ secrets.CLOUD_PASSWORD }}' -H 'Content-Type: application/json' -X PATCH -d '{"front_version":"${{ github.sha }}"}' $DEPLOY_URL)
           if echo $OUTPUT | grep -q '"code":200,'; then
             echo "Instance updated"
           else
@@ -112,7 +132,7 @@ jobs:
           environment-url: ${{ steps.deployment.outputs.environment_url }}
           deployment-id: ${{ steps.deployment.outputs.deployment_id }}
           state: 'success'
-          description: 'Successful deployment to ${{env.ENVIRONMENT}}'
+          description: 'Successful deployment to ${{ env.DEPLOY_ENV }}'
 
       - name: "Slack Notification - Success"
         if: success()
@@ -121,9 +141,9 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_USERNAME: "VSF-Bot"
           SLACK_ICON: https://user-images.githubusercontent.com/1626923/182921494-7d6d0fd1-d83a-4b34-9fcc-1285b165c8a0.png
-          SLACK_TITLE: "Developer Portal - Deployment [Success]"
-          SLACK_FOOTER: "Vue Storefront - GitHub Slack Bot"
-          SLACK_MESSAGE: "The new version of the portal is live at ${{ secrets.DEPLOY_URL }}"
+          SLACK_TITLE: 'Developer Portal - Deployment [Success]'
+          SLACK_FOOTER: 'Vue Storefront - GitHub Slack Bot'
+          SLACK_MESSAGE: 'The new version of the portal is live at ${{ env.DEPLOY_URL }}'
           SLACK_COLOR: ${{ job.status }}
           MSG_MINIMAL: true
 
@@ -135,7 +155,7 @@ jobs:
           environment-url: ${{ steps.deployment.outputs.environment_url }}
           deployment-id: ${{ steps.deployment.outputs.deployment_id }}
           state: 'error'
-          description: 'There was an error when deploying to the environment: ${{env.ENVIRONMENT}}'
+          description: 'There was an error when deploying to the environment: ${{ env.DEPLOY_ENV }}'
 
       - name: "Slack Notification - Fail"
         if: failure()
@@ -144,7 +164,7 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_USERNAME: "VSF-Bot"
           SLACK_ICON: https://user-images.githubusercontent.com/1626923/182921494-7d6d0fd1-d83a-4b34-9fcc-1285b165c8a0.png
-          SLACK_TITLE: "Developer Portal - Deployment [Error]"
-          SLACK_FOOTER: "Vue Storefront - GitHub Slack Bot"
-          SLACK_MESSAGE: "There was an error when deploying the developer portal in the environment: ${{env.ENVIRONMENT}}"
+          SLACK_TITLE: 'Developer Portal - Deployment [Error]'
+          SLACK_FOOTER: 'Vue Storefront - GitHub Slack Bot'
+          SLACK_MESSAGE: 'There was an error when deploying the developer portal in the environment: ${{ env.DEPLOY_ENV }}'
           SLACK_COLOR: ${{ job.status }}
