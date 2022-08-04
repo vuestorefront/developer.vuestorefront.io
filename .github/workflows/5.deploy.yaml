@@ -1,7 +1,6 @@
 name: Deploy to Vue Storefront Cloud
 
-on:
-  deployment
+on: [ push ]
 
 permissions:
   contents: read
@@ -48,8 +47,18 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      deployments: write
     steps:
       # Start deployment status
+      - name: Create GitHub deployment
+        uses: chrnorm/deployment-action@v2
+        id: deployment
+        with:
+          token: '${{ github.token }}'
+          environment-url: ${{env.DEPLOY_URL}}
+          environment: ${{env.ENVIRONMENT}}
+
       - name: In-progress Status
         uses: chrnorm/deployment-status@v2
         with:
