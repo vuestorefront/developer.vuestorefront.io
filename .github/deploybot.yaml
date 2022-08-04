@@ -1,10 +1,9 @@
 deployments:
   - name: development
-    # auto-deploy development from main branch, when tests pass
     on_push: true
 
   - name: staging
     on_push: true
 
   - name: production
-    # require manual deploy
+    on_push: true
