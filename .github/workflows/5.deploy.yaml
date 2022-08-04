@@ -65,8 +65,9 @@ jobs:
   #          SLACK_MESSAGE: "There was an error in the docker image building process for the Developer Portal: ${{env.ENVIRONMENT}}"
   #          SLACK_COLOR: ${{ job.status }}
 
-  dynamic:
+  deploy:
     runs-on: ubuntu-latest
+    #needs: build
 
     steps:
       - name: Set deployment variables
@@ -86,15 +87,6 @@ jobs:
           fi
           echo "::set-output name=deployEnv::$DEPLOY_ENV";
           echo "::set-output name=deployUrl::$DEPLOY_URL";
-    outputs:
-      deployEnv: ${{ steps.dynVar.outputs.deployEnv }}
-      deployUrl: ${{ steps.dynVar.outputs.deployUrl }}
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: dynamic
-
-    steps:
       - name: TEST VARS
         shell: bash
         env:
@@ -105,7 +97,7 @@ jobs:
           echo "Deploying to: $DEPLOY_ENV"  | sed 's/./& /g'
           echo $DEPLOY_URL  | sed 's/./& /g'
           echo $DEPLOY_ENV  | sed 's/./& /g'
-          exit 1
+          exit 0
 
       # Start deployment status
       - name: Create GitHub deployment
