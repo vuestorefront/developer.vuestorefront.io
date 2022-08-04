@@ -97,7 +97,7 @@ In this project we are using two components structures:
 #### What is Atomic Design?
 
 > Atomic design is atoms, molecules, organisms, templates, and pages concurrently working together to create effective
-interface design systems
+> interface design systems
 > [Atomic Design by Brad Frost][atomicdesign]
 
 #### What is Active Components?
@@ -145,8 +145,6 @@ the [Vue i18n][vue-i18n] plugin to handle the translations.
 
 The Vue Storefront developer portal is currently being deployed to the Vue Storefront Cloud Platform.
 
-We are using [deploybot][deploybot] to manage and run deployments.
-
 ## Contributing
 
 If you like the ideas behind Vue Storefront and want to become a contributor - join our [Discord server][discord], check
@@ -175,8 +173,6 @@ Vue Storefront source code is completely free and released under the [MIT Licens
 [atomicdesign]: https://atomicdesign.bradfrost.com/
 
 [create-issue]: https://github.com/vuestorefront/developer.vuestorefront.io/issues/new/choose
-
-[deploybot]: https://deploybot.app/
 
 [devto]: https://dev.to/
 

@@ -1,7 +1,11 @@
 name: Deploy to Vue Storefront Cloud
 
 on:
-  deployment
+  push:
+    branches:
+      - main
+      - staging
+      - development
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
@@ -59,11 +63,19 @@ jobs:
       DEPLOY_URL: ${{ secrets.DEPLOY_URL}}
 
     steps:
+      # Start deployment status
+      - name: Create GitHub deployment
+        uses: bloodf/github-deploy-action@v1
+        id: deployment
+        with:
+          environment-url: ${{env.DEPLOY_URL}}
+          environment: ${{env.ENVIRONMENT}}
+
       - name: In-progress Status
         uses: bloodf/github-deploy-status@v1
         with:
-          environment-url: ${{env.DEPLOY_URL }}
-          deployment-id: ${{env.DEPLOY_ID }}
+          environment-url: ${{ steps.deployment.outputs.environment_url }}
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
           state: 'in_progress'
 
       - name: "Slack Notification - Starting"
@@ -76,6 +88,7 @@ jobs:
           SLACK_FOOTER: "Vue Storefront - GitHub Slack Bot"
           SLACK_MESSAGE: "Starting the deployment of the Developer Portal: ${{env.ENVIRONMENT}}"
           SLACK_COLOR: ${{ job.status }}
+          MSG_MINIMAL: true
 
       # Deploying image to VSF Cloud
       - name: "Deploy ${{env.ENVIRONMENT}}"
@@ -95,8 +108,8 @@ jobs:
         if: success()
         uses: bloodf/github-deploy-status@v1
         with:
-          environment-url: ${{env.DEPLOY_URL }}
-          deployment-id: ${{env.DEPLOY_ID }}
+          environment-url: ${{ steps.deployment.outputs.environment_url }}
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
           state: 'success'
           description: 'Successful deployment to ${{env.ENVIRONMENT}}'
 
@@ -118,8 +131,8 @@ jobs:
         if: failure()
         uses: bloodf/github-deploy-status@v1
         with:
-          environment-url: ${{env.DEPLOY_URL }}
-          deployment-id: ${{env.DEPLOY_ID }}
+          environment-url: ${{ steps.deployment.outputs.environment_url }}
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
           state: 'error'
           description: 'There was an error when deploying to the environment: ${{env.ENVIRONMENT}}'
 
