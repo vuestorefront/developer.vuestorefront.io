@@ -2,7 +2,7 @@
   "page": {
     "home": {
       "head": {
-        "title": ""
+        "title": "Home"
       },
       "videoBanner": {
         "title": "What is Vue Storefront",

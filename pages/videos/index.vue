@@ -34,7 +34,7 @@
   import { useI18n } from 'vue-i18n';
 
   definePageMeta({
-    documentDriven: false,
+    title: 'i18n:page.videos.head.title',
   });
 
   const { t } = useI18n();

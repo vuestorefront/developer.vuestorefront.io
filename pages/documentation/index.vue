@@ -61,11 +61,11 @@
   import { useI18n } from 'vue-i18n';
   import { useIntegrationsList } from '~/store/documentation/integrationsList';
 
-  definePageMeta({
-    documentDriven: false,
-  });
-
   const { t } = useI18n();
+
+  definePageMeta({
+    title: 'i18n:page.documentation.head.title',
+  });
 
   const { appliedFilters } = useIntegrationsList();
 

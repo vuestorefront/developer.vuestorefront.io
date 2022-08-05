@@ -26,7 +26,9 @@ export default defineNuxtConfig({
     '@vue-storefront/nuxt-gtag',
   ],
   buildModules: ['@nuxt/content'],
-  head: nuxtConfigHead,
+  app: {
+    head: nuxtConfigHead,
+  },
   loading: {
     color: '#02bb4d',
   },

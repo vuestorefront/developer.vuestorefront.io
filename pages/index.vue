@@ -71,13 +71,12 @@
   import { IntegrationCategory } from '~/enums/integrations';
   import { ApiUrl } from '~/enums/apiUrl';
   import { useI18n } from 'vue-i18n';
-  import { IntegrationList } from '~/types/integrations';
-
-  definePageMeta({
-    documentDriven: false,
-  });
 
   const { t } = useI18n();
+
+  definePageMeta({
+    title: 'i18n:page.home.head.title',
+  });
 
   const { data: commerceVendors } = useFetch(ApiUrl.Integrations, {
     params: {
