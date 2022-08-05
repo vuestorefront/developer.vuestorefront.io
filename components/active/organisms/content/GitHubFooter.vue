@@ -5,10 +5,10 @@
       <NuxtLink target="_blank" :to="getEditPageLink(currentFile)">
         <AtomsTextEditPage />
       </NuxtLink>
-      <AtomsTextUpdatedAt :date="data.lastUpdate" />
+      <AtomsTextUpdatedAt v-if="data?.lastUpdate" :date="data.lastUpdate" />
     </div>
     <MoleculesContributorsList
-      v-if="data.contributors && data.contributors.length > 0"
+      v-if="data?.contributors && data.contributors.length > 0"
       :contributors="data.contributors"
     />
   </AtomsLayoutContainer>
