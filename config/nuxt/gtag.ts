@@ -1,8 +1,7 @@
 import { NuxtConfig } from 'nuxt/dist';
 
 export const nuxtGTagConfig = {
-  enabled: process.env.NODE_ENV !== 'production',
-  debug: process.env.NODE_ENV !== 'production',
+  enabled: process.env.NODE_ENV === 'production',
   bootstrap: true,
   pageViewTracker: true,
   config: {
