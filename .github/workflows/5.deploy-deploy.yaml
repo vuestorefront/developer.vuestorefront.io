@@ -1,6 +1,10 @@
-name: Auto Deployment
-'on':
-  deployment:
+name: Deploy - Production
+
+on:
+  push:
+    branches:
+      - main
+
 permissions:
   contents: read
   deployments: write
@@ -9,14 +13,14 @@ concurrency:
   cancel-in-progress: true
 jobs:
   deploy:
-    uses: vuestorefront/developer.vuestorefront.io/.github/workflows/deploy-template.yaml@main
+    if: github.ref == 'refs/heads/main'
+    uses: vuestorefront/developer.vuestorefront.io/.github/workflows/templates/deploy-template.yaml@main
     with:
-      ENVIRONMENT: '${{ github.event.deployment.environment }}'
-      DEPLOY_ID: '${{ github.event.deployment.id}}'
-      SHA: '${{ github.event.deployment.sha }}'
+      ENVIRONMENT: 'production'
+      SHA: '${{ github.sha }}'
     secrets:
-      CLOUD_URL: '${{secrets.CLOUD_URL}}'
-      CLOUD_INSTANCE: '${{secrets.CLOUD_INSTANCE}}'
+      CLOUD_URL: 'https://developer.europe-west1.gcp.storefrontcloud.io'
+      CLOUD_INSTANCE: 'https://farmer.storefrontcloud.io/instance/developer-europe-west1-gcp-storefrontcloud-io'
       CLOUD_USERNAME: '${{secrets.CLOUD_USERNAME}}'
       CLOUD_PASSWORD: '${{secrets.CLOUD_PASSWORD}}'
       ALGOLIA_ID: '${{secrets.ALGOLIA_ID}}'
