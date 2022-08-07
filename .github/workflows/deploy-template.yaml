@@ -54,6 +54,9 @@ jobs:
   start:
     name: Starting Deployment
     runs-on: ubuntu-latest
+    env:
+      DEPLOY_ID: ${{ inputs.DEPLOY_ID }}
+      ENVIRONMENT: ${{ inputs.ENVIRONMENT }}
     outputs:
       deployment_id: ${{ steps.deployment.outputs.deployment_id }}
       environment_url: ${{ steps.deployment.outputs.environment_url }}
@@ -61,9 +64,9 @@ jobs:
       # Create the deployment
       - name: Create GitHub deployment
         uses: bloodf/github-deploy-action@v1
-        id: ${{ inputs.DEPLOY_ID }}
+        id: ${{ env.DEPLOY_ID }}
         with:
-          environment: ${{ inputs.ENVIRONMENT }}
+          environment: ${{ env.ENVIRONMENT }}
           environment-url: ${{ secrets.CLOUD_URL }}
 
       # Defining the deployment status
@@ -77,7 +80,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - run: |
-          echo 'printing envs'
+          echo '${{ inputs }}';
+          echo 'printing envs';
           env
 
   build:
