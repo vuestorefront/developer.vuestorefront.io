@@ -145,6 +145,8 @@ the [Vue i18n][vue-i18n] plugin to handle the translations.
 
 The Vue Storefront developer portal is currently being deployed to the Vue Storefront Cloud Platform.
 
+We are using [Deploybot](https://deploybot.app/) to manage the deployment automatically.
+
 ## Contributing
 
 If you like the ideas behind Vue Storefront and want to become a contributor - join our [Discord server][discord], check
