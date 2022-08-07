@@ -1,8 +1,8 @@
 import { NuxtConfig } from 'nuxt';
 
 export const nuxtConfigRuntimeConfig = {
-  githubToken: process.env.GITHUB_TOKEN,
-  devToToken: process.env.DEV_TO_TOKEN,
+  githubToken: process.env.GITHUB_API_TOKEN,
+  devToToken: process.env.DEVTO_API_TOKEN,
   public: {
     gitHub: {
       repository: 'vuestorefront/developer.vuestorefront.io',

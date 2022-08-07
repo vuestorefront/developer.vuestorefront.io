@@ -12,6 +12,7 @@ on:
       SHA:
         required: true
         type: string
+
     secrets:
       CLOUD_URL:
         required: true
@@ -26,9 +27,9 @@ on:
         required: true
       ALGOLIA_TOKEN:
         required: true
-      DEV_TO_TOKEN:
+      DEVTO_API_TOKEN:
         required: true
-      GITHUB_TOKEN:
+      GITHUB_API_TOKEN:
         required: true
       GOOGLE_TAG_ID:
         required: true
@@ -98,8 +99,8 @@ jobs:
         env:
           ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
           ALGOLIA_TOKEN: ${{ secrets.ALGOLIA_TOKEN }}
-          DEV_TO_TOKEN: ${{ secrets.BUILD_DEV_TO_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.BUILD_GITHUB_TOKEN }}
+          DEVTO_API_TOKEN: ${{ secrets.BUILD_DEVTO_API_TOKEN }}
+          GITHUB_API_TOKEN: ${{ secrets.BUILD_GITHUB_API_TOKEN }}
           GOOGLE_TAG_ID: ${{ secrets.GOOGLE_TAG_ID }}
         with:
           name: developer-storefrontcloud-io/vue-storefront:${{ inputs.SHA }
@@ -108,7 +109,7 @@ jobs:
           password: ${{ secrets.CLOUD_PASSWORD }}
           dockerfile: .vuestorefrontcloud/docker/Dockerfile
           buildoptions: --compress
-          buildargs: ALGOLIA_TOKEN,ALGOLIA_ID,GITHUB_TOKEN,DEV_TO_TOKEN,GOOGLE_TAG_ID
+          buildargs: ALGOLIA_TOKEN,ALGOLIA_ID,GITHUB_API_TOKEN,DEVTO_API_TOKEN,GOOGLE_TAG_ID
 
       # Send message to Slack about failed build
       - name: "Slack Notification - Fail"
