@@ -53,7 +53,6 @@ jobs:
       deployments: write
     outputs:
       deployment_id: '${{ steps.deployment.outputs.deployment_id }}'
-      environment_url: '${{ steps.deployment.outputs.environment_url }}'
     steps:
       - name: Create GitHub deployment
         uses: bloodf/github-deploy-action@v1
@@ -152,7 +151,7 @@ jobs:
         uses: bloodf/github-deploy-status@v1
         with:
           environment-url: '${{ needs.start.steps.deployment.outputs.deployment_id }}'
-          deployment-id: '${{ needs.start.steps.deployment.outputs.environment_url }}'
+          deployment-id: '${{ secrets.CLOUD_URL }}'
           state: success
           description: 'Successful deployment to ${{ inputs.ENVIRONMENT }}'
       - name: Slack Notification - Success
@@ -170,7 +169,7 @@ jobs:
         uses: bloodf/github-deploy-status@v1
         with:
           environment-url: '${{ needs.start.steps.deployment.outputs.deployment_id }}'
-          deployment-id: '${{ needs.start.steps.deployment.outputs.environment_url }}'
+          deployment-id: '${{ secrets.CLOUD_URL }}'
           state: error
           description: >-
             There was an error when deploying to the environment ${{
