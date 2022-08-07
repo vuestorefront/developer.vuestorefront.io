@@ -48,6 +48,9 @@ jobs:
     environment: '${{ inputs.ENVIRONMENT }}'
     env:
       ENVIRONMENT: '${{ inputs.ENVIRONMENT }}'
+    permissions:
+      contents: read
+      deployments: write
     outputs:
       deployment_id: '${{ steps.deployment.outputs.deployment_id }}'
       environment_url: '${{ steps.deployment.outputs.environment_url }}'
@@ -57,8 +60,6 @@ jobs:
         with:
           environment: '${{ env.ENVIRONMENT }}'
           environment-url: '${{ secrets.CLOUD_URL }}'
-          owner: 'vuestorefront'
-          repo: 'developer.vuestorefront.io'
       - name: In-progress Status
         uses: bloodf/github-deploy-status@v1
         with:
