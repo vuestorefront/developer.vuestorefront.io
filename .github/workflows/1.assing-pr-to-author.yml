@@ -1,12 +1,14 @@
 name: PR to Author
-on:
+'on':
   pull_request:
-    types: [opened, ready_for_review, edited, synchronize]
-
+    types:
+      - opened
+      - ready_for_review
+      - edited
+      - synchronize
 concurrency:
-  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  group: '${{ github.workflow }}-${{ github.head_ref || github.run_id }}'
   cancel-in-progress: true
-
 jobs:
   assignAuthor:
     name: Assing

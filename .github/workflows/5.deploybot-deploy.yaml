@@ -1,40 +1,33 @@
 name: Auto Deployment
-
-on:
+'on':
   push:
     branches:
       - main
-
-  workflow_dispatch:
-
+  workflow_dispatch: null
 permissions:
   contents: read
   deployments: write
-
 concurrency:
-  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  group: '${{ github.workflow }}-${{ github.head_ref || github.run_id }}'
   cancel-in-progress: true
-
 jobs:
   deploy:
     uses: vuestorefront/developer.vuestorefront.io/.github/workflows/deploy-template.yaml@main
     with:
-      ENVIRONMENT: ${{ github.event.deployment.environment }}
-      DEPLOY_ID: ${{ github.event.deployment.id}}
-      SHA: ${{ github.event.deployment.sha }}
+      ENVIRONMENT: '${{ github.event.deployment.environment }}'
+      DEPLOY_ID: '${{ github.event.deployment.id}}'
+      SHA: '${{ github.event.deployment.sha }}'
     secrets:
-      CLOUD_URL: ${{secrets.CLOUD_URL}}
-      CLOUD_INSTANCE: ${{secrets.CLOUD_INSTANCE}}
-      CLOUD_USERNAME: ${{secrets.CLOUD_USERNAME}}
-      CLOUD_PASSWORD: ${{secrets.CLOUD_PASSWORD}}
-
-      ALGOLIA_ID: ${{secrets.ALGOLIA_ID}}
-      ALGOLIA_TOKEN: ${{secrets.ALGOLIA_TOKEN}}
-      DEVTO_API_TOKEN: ${{secrets.DEVTO_API_TOKEN}}
-      GITHUB_API_TOKEN: ${{secrets.GITHUB_API_TOKEN}}
-      GOOGLE_TAG_ID: ${{secrets.GOOGLE_TAG_ID}}
-
-      SLACK_FOOTER: ${{secrets.SLACK_FOOTER}}
-      SLACK_ICON: ${{secrets.SLACK_ICON}}
-      SLACK_USERNAME: ${{secrets.SLACK_USERNAME}}
-      SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
+      CLOUD_URL: '${{secrets.CLOUD_URL}}'
+      CLOUD_INSTANCE: '${{secrets.CLOUD_INSTANCE}}'
+      CLOUD_USERNAME: '${{secrets.CLOUD_USERNAME}}'
+      CLOUD_PASSWORD: '${{secrets.CLOUD_PASSWORD}}'
+      ALGOLIA_ID: '${{secrets.ALGOLIA_ID}}'
+      ALGOLIA_TOKEN: '${{secrets.ALGOLIA_TOKEN}}'
+      DEVTO_API_TOKEN: '${{secrets.DEVTO_API_TOKEN}}'
+      GITHUB_API_TOKEN: '${{secrets.GITHUB_API_TOKEN}}'
+      GOOGLE_TAG_ID: '${{secrets.GOOGLE_TAG_ID}}'
+      SLACK_FOOTER: '${{secrets.SLACK_FOOTER}}'
+      SLACK_ICON: '${{secrets.SLACK_ICON}}'
+      SLACK_USERNAME: '${{secrets.SLACK_USERNAME}}'
+      SLACK_WEBHOOK: '${{secrets.SLACK_WEBHOOK}}'
