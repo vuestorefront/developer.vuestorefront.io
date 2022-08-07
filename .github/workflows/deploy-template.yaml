@@ -6,9 +6,9 @@ on:
       ENVIRONMENT:
         required: true
         type: string
-      DEPLOY_ID:
-        required: true
-        type: string
+     # DEPLOY_ID:
+     #   required: true
+     #   type: string
       SHA:
         required: true
         type: string
@@ -55,7 +55,6 @@ jobs:
     name: Starting Deployment
     runs-on: ubuntu-latest
     env:
-      DEPLOY_ID: ${{ inputs.DEPLOY_ID }}
       ENVIRONMENT: ${{ inputs.ENVIRONMENT }}
     outputs:
       deployment_id: ${{ steps.deployment.outputs.deployment_id }}
@@ -64,7 +63,6 @@ jobs:
       # Create the deployment
       - name: Create GitHub deployment
         uses: bloodf/github-deploy-action@v1
-        id: ${{ env.DEPLOY_ID }}
         with:
           environment: ${{ env.ENVIRONMENT }}
           environment-url: ${{ secrets.CLOUD_URL }}
