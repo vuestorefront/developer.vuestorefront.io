@@ -1,7 +1,7 @@
 deployments:
   - name: development
     on_push: true
-    on_push_branch: staging
+    on_push_branch: development
 
   - name: staging
     on_push: true
@@ -9,4 +9,4 @@ deployments:
 
   - name: production
     on_push: true
-    on_push_branch: staging
+    on_push_branch: main
