@@ -1,9 +1,9 @@
-name: Deploy - Staging
+name: Deploy - Production
 
 on:
   push:
     branches:
-      - staging
+      - main
 
 permissions:
   contents: read
@@ -13,9 +13,9 @@ concurrency:
   cancel-in-progress: true
 jobs:
   deploy:
-    if: github.ref == 'refs/heads/staging'
+    if: github.ref == 'refs/heads/main'
     uses: ./.github/workflows/base-deploy.yaml
     with:
-      ENVIRONMENT: 'staging'
+      ENVIRONMENT: 'production'
       SHA: '${{ github.sha }}'
     secrets: inherit
