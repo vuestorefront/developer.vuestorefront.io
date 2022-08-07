@@ -1,7 +1,17 @@
 name: Deploybot - Auto Deployment
 
 on:
-  deployment
+  deployment:
+    secrets:
+      CLOUD_URL:
+        required: true
+      CLOUD_USERNAME:
+        required: true
+      CLOUD_PASSWORD:
+        required: true
+      CLOUD_INSTANCE:
+        required: true
+
 permissions:
   contents: read
   deployments: write
@@ -14,6 +24,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      DEPLOY_ID: ${{ github.event.deployment.id}}
       ENVIRONMENT: ${{ github.event.deployment.environment }}
       SHA: ${{ github.event.deployment.sha }}
 
@@ -27,9 +38,10 @@ jobs:
       - name: In-progress Status
         uses: bloodf/github-deploy-status@v1
         with:
-          environment-url: ${{ github.event.deployment.environment }}_${{ secrets.CLOUD_URL }}
-          deployment-id: ${{ github.event.deployment.id}}
+          environment-url: ${{ env.CLOUD_URL }}
+          deployment-id: ${{ env.DEPLOY_ID }}
           state: 'in_progress'
+
       # Checkout the Repository
       - name: Checkout code
         uses: actions/checkout@v3
@@ -52,6 +64,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BUILD_GITHUB_TOKEN }}
           GOOGLE_TAG_ID: ${{ secrets.GOOGLE_TAG_ID }}
 
+      # If deployment had any errors
+      - name: Failure Status
+        if: failure()
+        uses: bloodf/github-deploy-status@v1
+        with:
+          environment-url: ${{ env.CLOUD_URL }}
+          deployment-id: ${{ env.DEPLOY_ID }}
+          state: 'error'
+          description: There was an error when building the image for ${{ env.ENVIRONMENT }}
+
       # Send message to Slack about failed build
       - name: "Slack Notification - Fail"
         if: failure()
@@ -70,10 +92,10 @@ jobs:
       SHA: ${{ github.event.deployment.sha }}
 
       #Vue Storefront Cloud
-      CLOUD_URL: ${{ github.event.deployment.environment }}_${{ secrets.CLOUD_URL }}
+      CLOUD_URL: ${{ secrets.CLOUD_URL }}
       CLOUD_USERNAME: ${{ secrets.CLOUD_USERNAME }}
       CLOUD_PASSWORD: ${{ secrets.CLOUD_PASSWORD }}
-      CLOUD_INSTANCE: ${{ github.event.deployment.environment }}_${{ secrets.CLOUD_INSTANCE }}
+      CLOUD_INSTANCE: ${{ secrets.CLOUD_INSTANCE }}
 
       #Slack Notification
       SLACK_FOOTER: ${{ secrets.SLACK_FOOTER }}
