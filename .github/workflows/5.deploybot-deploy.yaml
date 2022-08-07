@@ -1,9 +1,6 @@
 name: Auto Deployment
 'on':
-  push:
-    branches:
-      - main
-  workflow_dispatch: null
+  deployment:
 permissions:
   contents: read
   deployments: write

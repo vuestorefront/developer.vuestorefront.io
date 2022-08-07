@@ -8,6 +8,9 @@ name: Deployment - Template
       SHA:
         required: true
         type: string
+      DEPLOY_ID:
+        required: true
+        type: string
     secrets:
       CLOUD_URL:
         required: true
@@ -48,27 +51,14 @@ jobs:
     env:
       ENVIRONMENT: '${{ inputs.ENVIRONMENT }}'
     outputs:
-      deployment_id: '${{ steps.deployment.outputs.deployment_id }}'
-      environment_url: '${{ steps.deployment.outputs.environment_url }}'
+      deployment_id: '${{ inputs.DEPLOY_ID }}'
+      environment_url: '${{ secrets.CLOUD_URL }}'
     steps:
-      - uses: actions/checkout@v2
-      - run: |
-          echo '${{ inputs.ENVIRONMENT }}' | sed 's/./& /g';
-          echo '${{ inputs.SHA }}' | sed 's/./& /g';
-          echo ${{ secrets.CLOUD_URL }}  | sed 's/./& /g';
-          echo ${{ secrets.CLOUD_INSTANCE }}  | sed 's/./& /g';
-          echo 'printing envs';
-          env
-      - name: Create GitHub deployment
-        uses: bloodf/github-deploy-action@v1
-        with:
-          environment: '${{ env.ENVIRONMENT }}'
-          environment-url: '${{ secrets.CLOUD_URL }}'
       - name: In-progress Status
         uses: bloodf/github-deploy-status@v1
         with:
-          environment-url: '${{ steps.deployment.outputs.deployment_id }}'
-          deployment-id: '${{ steps.deployment.outputs.environment_url }}'
+          environment-url: '${{ inputs.DEPLOY_ID }}'
+          deployment-id: '${{ secrets.CLOUD_URL }}'
           state: in_progress
   build:
     name: Docker Image Building
