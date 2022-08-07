@@ -45,6 +45,7 @@ jobs:
   start:
     name: Starting Deployment
     runs-on: ubuntu-latest
+    environment: '${{ inputs.ENVIRONMENT }}'
     env:
       ENVIRONMENT: '${{ inputs.ENVIRONMENT }}'
     outputs:
@@ -56,6 +57,8 @@ jobs:
         with:
           environment: '${{ env.ENVIRONMENT }}'
           environment-url: '${{ secrets.CLOUD_URL }}'
+          owner: 'vuestorefront'
+          repo: 'developer.vuestorefront.io'
       - name: In-progress Status
         uses: bloodf/github-deploy-status@v1
         with:
@@ -66,6 +69,7 @@ jobs:
     name: Docker Image Building
     needs: start
     runs-on: ubuntu-latest
+    environment: '${{ inputs.ENVIRONMENT }}'
     env:
       SLACK_FOOTER: '${{ secrets.SLACK_FOOTER }}'
       SLACK_ICON: '${{ secrets.SLACK_ICON }}'
@@ -103,6 +107,7 @@ jobs:
   deploy:
     name: Deploying to Cloud
     runs-on: ubuntu-latest
+    environment: '${{ inputs.ENVIRONMENT }}'
     needs:
       - start
       - build
