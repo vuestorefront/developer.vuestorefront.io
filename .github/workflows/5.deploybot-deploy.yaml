@@ -27,7 +27,7 @@ jobs:
       - name: In-progress Status
         uses: bloodf/github-deploy-status@v1
         with:
-          environment-url: ${{ secrets.CLOUD_URL }}
+          environment-url: ${{ github.event.deployment.environment }}_${{ secrets.CLOUD_URL }}
           deployment-id: ${{ github.event.deployment.id}}
           state: 'in_progress'
       # Checkout the Repository
@@ -70,7 +70,10 @@ jobs:
       SHA: ${{ github.event.deployment.sha }}
 
       #Vue Storefront Cloud
-      CLOUD_URL: ${{ secrets.CLOUD_URL }}
+      CLOUD_URL: ${{ github.event.deployment.environment }}_${{ secrets.CLOUD_URL }}
+      CLOUD_USERNAME: ${{ secrets.CLOUD_USERNAME }}
+      CLOUD_PASSWORD: ${{ secrets.CLOUD_PASSWORD }}
+      CLOUD_INSTANCE: ${{ github.event.deployment.environment }}_${{ secrets.CLOUD_INSTANCE }}
 
       #Slack Notification
       SLACK_FOOTER: ${{ secrets.SLACK_FOOTER }}
@@ -89,11 +92,6 @@ jobs:
       # Deploying image to VSF Cloud
       - name: Deploy to VSF Cloud
         shell: bash
-        env:
-          #Vue Storefront Cloud
-          CLOUD_INSTANCE: ${{ secrets.CLOUD_INSTANCE }}
-          CLOUD_USERNAME: ${{ secrets.CLOUD_USERNAME }}
-          CLOUD_PASSWORD: ${{ secrets.CLOUD_PASSWORD }}
         run: |
           OUTPUT=$(curl \
           -s \
