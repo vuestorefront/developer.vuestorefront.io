@@ -90,7 +90,7 @@ jobs:
       - name: Deploy to VSF Cloud
         shell: bash
         run: |
-          OUTPUT=$(curl -s -H 'X-User-Id: ${{ secrets.CLOUD_USERNAME }}'  -H 'X-Api-Key:  ${{ secrets.CLOUD_PASSWORD }}' -H 'Content-Type: application/json' -X PATCH -d '{"front_version":"$SHA"}' '${{ secrets.CLOUD_INSTANCE }}')
+          OUTPUT=$(curl -s -H 'X-User-Id: ${{ secrets.CLOUD_USERNAME }}'  -H 'X-Api-Key:  ${{ secrets.CLOUD_PASSWORD }}' -H 'Content-Type: application/json' -X PATCH -d '{"front_version":"$SHA"}' ${{ secrets.CLOUD_INSTANCE }})
           if echo $OUTPUT | grep -q '"code":200,'; then
             echo "Instance updated"
           else
