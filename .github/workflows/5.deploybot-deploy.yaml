@@ -1,0 +1,136 @@
+name: Deploybot - Auto Deployment
+
+on:
+  deployment
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      ENVIRONMENT: ${{ github.event.deployment.environment }}
+      SHA: ${{ github.event.deployment.sha }}
+
+      #Slack Notification
+      SLACK_FOOTER: ${{ secrets.SLACK_FOOTER }}
+      SLACK_ICON: ${{ secrets.SLACK_ICON }}
+      SLACK_USERNAME: ${{ secrets.SLACK_USERNAME }}
+      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+    steps:
+      # Defining the deployment status
+      - name: In-progress Status
+        uses: bloodf/github-deploy-status@v1
+        with:
+          environment-url: ${{ secrets.CLOUD_URL }}
+          deployment-id: ${{ github.event.deployment.id}}
+          state: 'in_progress'
+      # Checkout the Repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Build the Docker Image
+      - name: Build and publish docker image
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: developer-storefrontcloud-io/vue-storefront:${{ env.SHA }}
+          registry: registry.vuestorefront.cloud
+          username: ${{ secrets.CLOUD_USERNAME }}
+          password: ${{ secrets.CLOUD_PASSWORD }}
+          dockerfile: .vuestorefrontcloud/docker/Dockerfile
+          buildoptions: --compress
+          buildargs: ALGOLIA_TOKEN,ALGOLIA_ID,GITHUB_TOKEN,DEV_TO_TOKEN,GOOGLE_TAG_ID
+        env:
+          ALGOLIA_ID: ${{ secrets.ALGOLIA_ID }}
+          ALGOLIA_TOKEN: ${{ secrets.ALGOLIA_TOKEN }}
+          DEV_TO_TOKEN: ${{ secrets.BUILD_DEV_TO_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BUILD_GITHUB_TOKEN }}
+          GOOGLE_TAG_ID: ${{ secrets.GOOGLE_TAG_ID }}
+
+      # Send message to Slack about failed build
+      - name: "Slack Notification - Fail"
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_TITLE: 'Developer Portal - ${{ env.ENVIRONMENT }}: Building [Error]'
+          SLACK_MESSAGE: There was an error when building the docker image to the developer portal, please check the GitHub Actions log.
+          SLACK_COLOR: ${{ job.status }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    env:
+      DEPLOY_ID: ${{ github.event.deployment.id}}
+      ENVIRONMENT: ${{ github.event.deployment.environment }}
+      SHA: ${{ github.event.deployment.sha }}
+
+      #Vue Storefront Cloud
+      CLOUD_URL: ${{ secrets.CLOUD_URL }}
+
+      #Slack Notification
+      SLACK_FOOTER: ${{ secrets.SLACK_FOOTER }}
+      SLACK_ICON: ${{ secrets.SLACK_ICON }}
+      SLACK_USERNAME: ${{ secrets.SLACK_USERNAME }}
+      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+    steps:
+      # Sending message to Slack Starting process
+      - name: "Slack Notification - Starting"
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_TITLE: 'Developer Portal - ${{ env.ENVIRONMENT }}: Deployment [Starting]'
+          SLACK_MESSAGE: Starting the deployment of the Developer Portal
+          SLACK_COLOR: '#0377fc'
+          MSG_MINIMAL: true
+      # Deploying image to VSF Cloud
+      - name: Deploy to VSF Cloud
+        shell: bash
+        run: |
+          OUTPUT=$(curl -s -H 'X-User-Id: ${{ secrets.CLOUD_USERNAME }}'  -H 'X-Api-Key:  ${{ secrets.CLOUD_PASSWORD }}' -H 'Content-Type: application/json' -X PATCH -d '{"front_version":"$SHA"}' '${{ secrets.CLOUD_INSTANCE }}')
+          if echo $OUTPUT | grep -q '"code":200,'; then
+            echo "Instance updated"
+          else
+            echo "Something went wrong during the update process... Response: $OUTPUT"
+            exit 1
+          fi
+
+      # If deployment was successful
+      - name: Success Status
+        if: success()
+        uses: bloodf/github-deploy-status@v1
+        with:
+          environment-url: ${{ env.CLOUD_URL }}
+          deployment-id: ${{ env.DEPLOY_ID }}
+          state: 'success'
+          description: Successful deployment to ${{ env.ENVIRONMENT }}
+      # Sending message to Slack for successful deployment
+      - name: "Slack Notification - Success"
+        if: success()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_TITLE: 'Developer Portal - ${{ env.ENVIRONMENT }}: Deployment [Successful]'
+          SLACK_MESSAGE: The new version of the portal is live at ${{ env.CLOUD_URL }}
+          SLACK_COLOR: ${{ job.status }}
+          MSG_MINIMAL: true
+      # If deployment had any errors
+      - name: Failure Status
+        if: failure()
+        uses: bloodf/github-deploy-status@v1
+        with:
+          environment-url: ${{ env.CLOUD_URL }}
+          deployment-id: ${{ env.DEPLOY_ID }}
+          state: 'error'
+          description: There was an error when deploying to the environment ${{ env.ENVIRONMENT }}
+      # Send message to Slack for failed deployment
+      - name: "Slack Notification - Fail"
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_TITLE: 'Developer Portal - ${{ env.ENVIRONMENT }}: Deployment [Error]'
+          SLACK_MESSAGE: There was an error when deploying the developer portal, please check the GitHub Actions log.
+          SLACK_COLOR: ${{ job.status }}
+
