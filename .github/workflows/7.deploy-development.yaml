@@ -18,4 +18,17 @@ jobs:
     with:
       ENVIRONMENT: 'development'
       SHA: '${{ github.sha }}'
-    secrets: inherit
+    secrets:
+      CLOUD_URL: 'https://developer-beta.europe-west1.gcp.storefrontcloud.io'
+      CLOUD_INSTANCE: 'https://farmer.storefrontcloud.io/instance/developer-beta-europe-west1-gcp-storefrontcloud-io'
+      CLOUD_USERNAME: '${{secrets.CLOUD_USERNAME}}'
+      CLOUD_PASSWORD: '${{secrets.CLOUD_PASSWORD}}'
+      ALGOLIA_ID: '${{secrets.ALGOLIA_ID}}'
+      ALGOLIA_TOKEN: '${{secrets.ALGOLIA_TOKEN}}'
+      DEVTO_API_TOKEN: '${{secrets.DEVTO_API_TOKEN}}'
+      GITHUB_API_TOKEN: '${{secrets.GITHUB_API_TOKEN}}'
+      GOOGLE_TAG_ID: '${{secrets.GOOGLE_TAG_ID}}'
+      SLACK_FOOTER: '${{secrets.SLACK_FOOTER}}'
+      SLACK_ICON: '${{secrets.SLACK_ICON}}'
+      SLACK_USERNAME: '${{secrets.SLACK_USERNAME}}'
+      SLACK_WEBHOOK: '${{secrets.SLACK_WEBHOOK}}'
