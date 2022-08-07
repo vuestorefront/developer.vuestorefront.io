@@ -57,6 +57,7 @@ jobs:
     steps:
       - name: Create GitHub deployment
         uses: bloodf/github-deploy-action@v1
+        id: deployment
         with:
           environment: '${{ env.ENVIRONMENT }}'
           environment-url: '${{ secrets.CLOUD_URL }}'
