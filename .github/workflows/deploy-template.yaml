@@ -51,6 +51,11 @@ jobs:
       deployment_id: '${{ steps.deployment.outputs.deployment_id }}'
       environment_url: '${{ steps.deployment.outputs.environment_url }}'
     steps:
+      - uses: actions/checkout@v2
+      - run: |
+          echo '${{ inputs }}';
+          echo 'printing envs';
+          env
       - name: Create GitHub deployment
         uses: bloodf/github-deploy-action@v1
         with:
@@ -62,11 +67,6 @@ jobs:
           environment-url: '${{ steps.deployment.outputs.deployment_id }}'
           deployment-id: '${{ steps.deployment.outputs.environment_url }}'
           state: in_progress
-      - uses: actions/checkout@v2
-      - run: |
-          echo '${{ inputs }}';
-          echo 'printing envs';
-          env
   build:
     name: Docker Image Building
     needs: start
