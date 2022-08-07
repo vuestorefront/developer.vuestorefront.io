@@ -12,7 +12,7 @@ jobs:
     uses: vuestorefront/developer.vuestorefront.io/.github/workflows/deploy-template.yaml@main
     with:
       ENVIRONMENT: '${{ github.event.deployment.environment }}'
-      #DEPLOY_ID: '${{ github.event.deployment.id}}'
+      DEPLOY_ID: '${{ github.event.deployment.id}}'
       SHA: '${{ github.event.deployment.sha }}'
     secrets:
       CLOUD_URL: '${{secrets.CLOUD_URL}}'
