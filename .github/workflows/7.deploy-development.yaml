@@ -14,7 +14,7 @@ concurrency:
 jobs:
   deploy:
     if: github.ref == 'refs/heads/development'
-    uses: .github/workflows/base-deploy.yaml
+    uses: ./.github/workflows/base-deploy.yaml
     with:
       ENVIRONMENT: 'staging'
       SHA: '${{ github.sha }}'

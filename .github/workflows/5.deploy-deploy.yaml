@@ -14,7 +14,7 @@ concurrency:
 jobs:
   deploy:
     if: github.ref == 'refs/heads/main'
-    uses: .github/workflows/base-deploy.yaml
+    uses: ./.github/workflows/base-deploy.yaml
     with:
       ENVIRONMENT: 'production'
       SHA: '${{ github.sha }}'
