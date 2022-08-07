@@ -14,7 +14,7 @@ concurrency:
 jobs:
   deploy:
     if: github.ref == 'refs/heads/development'
-    uses: vuestorefront/developer.vuestorefront.io/.github/workflows/templates/deploy-template.yaml@main
+    uses: vuestorefront/developer.vuestorefront.io/.github/workflows/base-deploy.yaml@main
     with:
       ENVIRONMENT: 'staging'
       SHA: '${{ github.sha }}'
