@@ -12,7 +12,6 @@ on:
       SHA:
         required: true
         type: string
-
     secrets:
       CLOUD_URL:
         required: true
@@ -55,6 +54,9 @@ jobs:
   start:
     name: Starting Deployment
     runs-on: ubuntu-latest
+    outputs:
+      deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+      environment_url: ${{ steps.deployment.outputs.environment_url }}
     steps:
       # Create the deployment
       - name: Create GitHub deployment
@@ -68,8 +70,8 @@ jobs:
       - name: In-progress Status
         uses: bloodf/github-deploy-status@v1
         with:
-          environment-url: ${{ jobs.start.steps.deployment.outputs.deployment_id }}
-          deployment-id: ${{ jobs.start.steps.deployment.outputs.environment_url }}
+          environment-url: ${{ steps.deployment.outputs.deployment_id }}
+          deployment-id: ${{ steps.deployment.outputs.environment_url }}
           state: 'in_progress'
 
       - uses: actions/checkout@v2
@@ -123,7 +125,7 @@ jobs:
   deploy:
     name: Deploying to Cloud
     runs-on: ubuntu-latest
-    needs: build
+    needs: [ start, build ]
     env:
       #Slack Notification
       SLACK_FOOTER: ${{ secrets.SLACK_FOOTER }}
@@ -169,8 +171,8 @@ jobs:
         if: success()
         uses: bloodf/github-deploy-status@v1
         with:
-          environment-url: ${{ jobs.start.steps.deployment.outputs.deployment_id }}
-          deployment-id: ${{ jobs.start.steps.deployment.outputs.environment_url }}
+          environment-url: ${{ needs.start.steps.deployment.outputs.deployment_id }}
+          deployment-id: ${{ needs.start.steps.deployment.outputs.environment_url }}
           state: 'success'
           description: Successful deployment to ${{ inputs.ENVIRONMENT }}
 
@@ -189,8 +191,8 @@ jobs:
         if: failure()
         uses: bloodf/github-deploy-status@v1
         with:
-          environment-url: ${{ jobs.start.steps.deployment.outputs.deployment_id }}
-          deployment-id: ${{ jobs.start.steps.deployment.outputs.environment_url }}
+          environment-url: ${{ needs.start.steps.deployment.outputs.deployment_id }}
+          deployment-id: ${{ needs.start.steps.deployment.outputs.environment_url }}
           state: 'error'
           description: There was an error when deploying to the environment ${{ inputs.ENVIRONMENT }}
 
