@@ -89,10 +89,25 @@ jobs:
       # Deploying image to VSF Cloud
       - name: Deploy to VSF Cloud
         shell: bash
+        env:
+          #Vue Storefront Cloud
+          CLOUD_INSTANCE: ${{ secrets.CLOUD_INSTANCE }}
+          CLOUD_USERNAME: ${{ secrets.CLOUD_USERNAME }}
+          CLOUD_PASSWORD: ${{ secrets.CLOUD_PASSWORD }}
         run: |
-          OUTPUT=$(curl -s -H 'X-User-Id: ${{ secrets.CLOUD_USERNAME }}'  -H 'X-Api-Key:  ${{ secrets.CLOUD_PASSWORD }}' -H 'Content-Type: application/json' -X PATCH -d '{"front_version":"$SHA"}' ${{ secrets.CLOUD_INSTANCE }})
+          OUTPUT=$(curl \
+          -s \
+          -H \
+          'X-User-Id: $CLOUD_USERNAME' \
+          -H \
+          'X-Api-Key: $CLOUD_PASSWORD' \
+          -H 'Content-Type: application/json' \
+          -X PATCH \
+          -d '{"front_version":"$SHA"}' \
+          $CLOUD_INSTANCE);
+
           if echo $OUTPUT | grep -q '"code":200,'; then
-            echo "Instance updated"
+            echo "Instance $CLOUD_INSTANCE updated"
           else
             echo "Something went wrong during the update process... Response: $OUTPUT"
             exit 1
