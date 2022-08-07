@@ -7,7 +7,7 @@ name: PR to Author
       - edited
       - synchronize
 concurrency:
-  group: '${{ github.workflow }}-${{ github.head_ref || github.run_id }}'
+  group: 'author-${{ github.workflow }}-${{ github.head_ref || github.run_id }}-${{ github.ref }}'
   cancel-in-progress: true
 jobs:
   assignAuthor:

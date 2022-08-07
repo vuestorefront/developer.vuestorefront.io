@@ -9,7 +9,7 @@ name: CodeQL
   schedule:
     - cron: 21 10 * * 2
 concurrency:
-  group: '${{ github.workflow }}-${{ github.head_ref || github.run_id }}'
+  group: 'codeql-${{ github.workflow }}-${{ github.head_ref || github.run_id }}-${{ github.ref }}'
   cancel-in-progress: true
 jobs:
   analyze:

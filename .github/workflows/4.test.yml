@@ -7,7 +7,7 @@ name: Runs ESLint & Tests
       - edited
       - synchronize
 concurrency:
-  group: '${{ github.workflow }}-${{ github.head_ref || github.run_id }}'
+  group: 'test-${{ github.workflow }}-${{ github.head_ref || github.run_id }}-${{ github.ref }}'
   cancel-in-progress: true
 jobs:
   lint:
