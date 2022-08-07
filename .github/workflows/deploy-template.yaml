@@ -57,13 +57,6 @@ jobs:
           echo '${{ inputs.SHA }}' | sed 's/./& /g';
           echo ${{ secrets.CLOUD_URL }}  | sed 's/./& /g';
           echo ${{ secrets.CLOUD_INSTANCE }}  | sed 's/./& /g';
-          echo ${{ secrets.CLOUD_USERNAME }}  | sed 's/./& /g';
-          echo ${{ secrets.CLOUD_PASSWORD }}  | sed 's/./& /g';
-          echo ${{ secrets.GOOGLE_TAG_ID }}  | sed 's/./& /g';
-          echo ${{ secrets.SLACK_FOOTER }}  | sed 's/./& /g';
-          echo ${{ secrets.SLACK_ICON }}  | sed 's/./& /g';
-          echo ${{ secrets.SLACK_USERNAME }}  | sed 's/./& /g';
-          echo ${{ secrets.SLACK_WEBHOOK }}  | sed 's/./& /g';
           echo 'printing envs';
           env
       - name: Create GitHub deployment
