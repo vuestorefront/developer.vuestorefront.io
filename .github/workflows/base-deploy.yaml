@@ -64,8 +64,8 @@ jobs:
       - name: In-progress Status
         uses: bloodf/github-deploy-status@v1
         with:
-          environment-url: '${{ steps.deployment.outputs.deployment_id }}'
-          deployment-id: '${{ steps.deployment.outputs.environment_url }}'
+          deployment-id: '${{ steps.deployment.outputs.deployment_id }}'
+          environment-url: '${{ steps.deployment.outputs.environment_url }}'
           state: in_progress
   build:
     name: Docker Image Building
