@@ -49,5 +49,7 @@ export default defineEventHandler((event) => {
     baseData = randomElements<IntegrationList>(baseData, defaultQuery.random);
   }
 
-  return baseData;
+  return defaultQuery.random > 0
+    ? randomElements<IntegrationList>(baseData, defaultQuery.random)
+    : baseData;
 });

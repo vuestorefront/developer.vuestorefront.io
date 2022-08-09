@@ -80,21 +80,21 @@
 
   const { data: commerceVendors } = useFetch(ApiUrl.Integrations, {
     params: {
-      category: IntegrationCategory.commerce,
+      categories: [IntegrationCategory.commerce],
       random: 6,
     },
   });
 
   const { data: cmsVendors } = useFetch(ApiUrl.Integrations, {
     params: {
-      category: IntegrationCategory.cms,
+      categories: [IntegrationCategory.cms],
       random: 6,
     },
   });
 
   const { data: paymentVendors } = useFetch(ApiUrl.Integrations, {
     params: {
-      category: IntegrationCategory.payment,
+      categories: [IntegrationCategory.payment],
       random: 6,
     },
   });
