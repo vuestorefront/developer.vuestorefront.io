@@ -1,5 +1,5 @@
 name: Deployment - Template
-'on':
+on:
   workflow_call:
     inputs:
       ENVIRONMENT:
@@ -38,12 +38,14 @@ name: Deployment - Template
 permissions:
   contents: read
   deployments: write
+
 concurrency:
-  group: '${{ github.workflow }}-${{ github.head_ref || github.run_id }}'
+  group: '${{ github.workflow }}-${{ github.head_ref || github.run_id }}-${{ inputs.ENVIRONMENT }}'
   cancel-in-progress: true
+
 jobs:
-  start:
-    name: Starting Deployment
+  create:
+    name: Creating Deployment
     runs-on: ubuntu-latest
     environment: '${{ inputs.ENVIRONMENT }}'
     env:
@@ -60,15 +62,29 @@ jobs:
         with:
           environment: '${{ env.ENVIRONMENT }}'
           environment-url: '${{ secrets.CLOUD_URL }}'
+
+  start:
+    name: Starting Deployment
+    needs:
+      - create
+    runs-on: ubuntu-latest
+    environment: '${{ inputs.ENVIRONMENT }}'
+    permissions:
+      contents: read
+      deployments: write
+    steps:
       - name: In-progress Status
         uses: bloodf/github-deploy-status@v1
         with:
-          deployment-id: '${{ steps.deployment.outputs.deployment_id }}'
-          environment-url: '${{ steps.deployment.outputs.environment_url }}'
+          deployment-id: '${{ needs.create.outputs.deployment_id }}'
+          environment-url: '${{ needs.create.outputs.environment_url }}'
           state: in_progress
+
   build:
     name: Docker Image Building
-    needs: start
+    needs:
+      - create
+      - start
     runs-on: ubuntu-latest
     environment: '${{ inputs.ENVIRONMENT }}'
     env:
@@ -79,6 +95,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
       - name: Build and publish docker image
         uses: elgohr/Publish-Docker-Github-Action@master
         env:
@@ -94,22 +111,31 @@ jobs:
           password: '${{ secrets.CLOUD_PASSWORD }}'
           dockerfile: .vuestorefrontcloud/docker/Dockerfile
           buildoptions: '--compress'
-          buildargs: >-
-            ALGOLIA_TOKEN,ALGOLIA_ID,GITHUB_API_TOKEN,DEVTO_API_TOKEN,GOOGLE_TAG_ID
+          buildargs: ALGOLIA_TOKEN,ALGOLIA_ID,GITHUB_API_TOKEN,DEVTO_API_TOKEN,GOOGLE_TAG_ID
+
+      - name: Failure Status
+        if: failure()
+        uses: bloodf/github-deploy-status@v1
+        with:
+          deployment-id: '${{ needs.create.outputs.deployment_id }}'
+          environment-url: '${{ needs.create.outputs.environment_url }}'
+          state: error
+          description: 'There was an error when building the docker image to the environment ${{ inputs.ENVIRONMENT }}'
+
       - name: Slack Notification - Fail
         if: failure()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_TITLE: 'Developer Portal - ${{ inputs.ENVIRONMENT }}: Building [Error]'
-          SLACK_MESSAGE: >-
-            There was an error when building the docker image to the developer
-            portal, please check the GitHub Actions log.
+          SLACK_MESSAGE: There was an error when building the docker image to the developer portal, please check the GitHub Actions log.
           SLACK_COLOR: '${{ job.status }}'
+
   deploy:
     name: Deploying to Cloud
     runs-on: ubuntu-latest
     environment: '${{ inputs.ENVIRONMENT }}'
     needs:
+      - create
       - start
       - build
     env:
@@ -125,6 +151,7 @@ jobs:
           SLACK_MESSAGE: Starting the deployment of the Developer Portal
           SLACK_COLOR: '#0377fc'
           MSG_MINIMAL: true
+
       - name: Deploy to VSF Cloud
         shell: bash
         run: |
@@ -146,40 +173,38 @@ jobs:
             echo "$OUTPUT"
             exit 1
           fi
+
       - name: Success Status
         if: success()
         uses: bloodf/github-deploy-status@v1
         with:
-          environment-url: '${{ needs.start.steps.deployment.outputs.deployment_id }}'
-          deployment-id: '${{ secrets.CLOUD_URL }}'
+          deployment-id: '${{ needs.create.outputs.deployment_id }}'
+          environment-url: '${{ needs.create.outputs.environment_url }}'
           state: success
           description: 'Successful deployment to ${{ inputs.ENVIRONMENT }}'
+
       - name: Slack Notification - Success
         if: success()
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_TITLE: >-
-            Developer Portal - ${{ inputs.ENVIRONMENT }}: Deployment
-            [Successful]
+          SLACK_TITLE: 'Developer Portal - ${{ inputs.ENVIRONMENT }}: Deployment [Successful]'
           SLACK_MESSAGE: 'The new version of the portal is live at ${{ secrets.CLOUD_URL }}'
           SLACK_COLOR: '${{ job.status }}'
           MSG_MINIMAL: true
+
       - name: Failure Status
         if: failure()
         uses: bloodf/github-deploy-status@v1
         with:
-          environment-url: '${{ needs.start.steps.deployment.outputs.deployment_id }}'
-          deployment-id: '${{ secrets.CLOUD_URL }}'
+          deployment-id: '${{ needs.create.outputs.deployment_id }}'
+          environment-url: '${{ needs.create.outputs.environment_url }}'
           state: error
-          description: >-
-            There was an error when deploying to the environment ${{
-            inputs.ENVIRONMENT }}
+          description: 'There was an error when deploying to the environment ${{inputs.ENVIRONMENT }}'
+
       - name: Slack Notification - Fail
         if: failure()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_TITLE: 'Developer Portal - ${{ inputs.ENVIRONMENT }}: Deployment [Error]'
-          SLACK_MESSAGE: >-
-            There was an error when deploying the developer portal, please check
-            the GitHub Actions log.
+          SLACK_MESSAGE: There was an error when deploying the developer portal, please check the GitHub Actions log.
           SLACK_COLOR: '${{ job.status }}'
