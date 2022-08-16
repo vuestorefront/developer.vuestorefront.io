@@ -9,3 +9,4 @@ components.d.ts
 .eslintrc.js
 .nuxt
 env.d.ts
+coverage/

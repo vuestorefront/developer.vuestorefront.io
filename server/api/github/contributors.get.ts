@@ -59,6 +59,5 @@ export default defineEventHandler(async (event) => {
   return {
     lastUpdate: data[0].commit.author.date,
     contributors,
-    commits: data.map((c) => c.commit),
   };
 });

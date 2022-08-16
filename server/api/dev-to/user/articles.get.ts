@@ -1,10 +1,10 @@
-import returnSingleParams from '~/server/utils/queryParams/returnSingleParameters';
 import transformObjectKeys from 'transform-object-keys';
 import { BlogArticleApiResponse } from '~/types/api/devTo';
+import { returnSingleParameters } from '~/server/utils/queryParams';
 
 export default defineEventHandler(async (event) => {
   const query = useQuery(event);
-  const username = returnSingleParams(query?.user);
+  const username = returnSingleParameters(query?.user);
 
   return transformObjectKeys(
     await $fetch<BlogArticleApiResponse>('https://dev.to/api/articles', {

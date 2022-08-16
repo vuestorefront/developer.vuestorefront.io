@@ -1,12 +1,14 @@
 name: Commitlint PR Title
-on:
+'on':
   pull_request:
-    types: ['opened', 'edited', 'reopened', 'synchronize']
-
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
 concurrency:
-  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  group: 'prname-${{ github.workflow }}-${{ github.head_ref || github.run_id }}-${{ github.ref }}'
   cancel-in-progress: true
-
 jobs:
   lint:
     name: Validate PR Title (conventional-commit)

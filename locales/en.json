@@ -2,7 +2,7 @@
   "page": {
     "home": {
       "head": {
-        "title": ""
+        "title": "Home"
       },
       "videoBanner": {
         "title": "What is Vue Storefront",
@@ -17,18 +17,12 @@
       },
       "integrations": {
         "commerce": {
-          "title": "Commerce Integrations",
-          "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit.",
           "buttonText": "View Commerce Integrations"
         },
         "cms": {
-          "title": "CMS Integrations",
-          "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit.",
           "buttonText": "View CMS Integrations"
         },
         "payment": {
-          "title": "Payment Integrations",
-          "message": "Ac magnis ultrices vulputate ante etiam mus id diam quam, integer accumsan praesent semper taciti turpis nam vehicula. Ornare vel feugiat volutpat consequat semper bibendum ullamcorper gravida lorem mollis dictumst justo elit.",
           "buttonText": "View Payment Integrations"
         }
       },
@@ -42,7 +36,8 @@
         "title": "Documentation"
       },
       "title": "Documentation",
-      "text": "Consequat potenti purus interdum pharetra consectetur sollicitudin at dis torquent, proin eu ullamcorper etiam morbi maecenas phasellus suspendisse. Varius quam cubilia urna ridiculus neque sapien etiam maximus, accumsan consectetur mollis finibus dui suscipit posuere natoque, rutrum lorem nascetur nostra parturient eu integer. Auctor per suspendisse semper natoque taciti porta pulvinar magna dictum vestibulum mollis nisi litora, vulputate pharetra erat sapien malesuada quam lacus arcu urna justo nullam.",
+      "text": "This page lists all existing and planned Vue Storefront integrations. Integrations with the Enterprise label are part of the {link} offering.",
+      "link": "Vue Storefront Enterprise",
       "filter": {
         "title": "Filter by:",
         "checkAll": "Check All",
@@ -51,6 +46,10 @@
         "compatibility": "Compatibility",
         "status": "Status",
         "license": "License"
+      },
+      "content": {
+        "vsf": "A Frontend as a Service that delivers custom storefronts at the fraction of cost and time, and with lightning-fast page loads to achieve better conversion rates and higher revenue.",
+        "sfui": "A Vue.js design system and UI for Composable Commerce. Create stunning, mobile-first online stores with 50+ fully customizable components."
       }
     },
     "quiz": {
@@ -160,6 +159,40 @@
         "payment": "Payment",
         "reviews": "Reviews",
         "search": "Search"
+      },
+      "types": {
+        "commerce": {
+          "text": "Vue Storefront provides a frontend for your headless eCommerce platform. Connect easily with a wide range of solutions, and accelerate frontend development.",
+          "title": "Commerce Integrations"
+        },
+        "cms": {
+          "text": "CMSs are platforms where content creators’ and developers’ paths cross, so they require a great integration to make sure tasks can be handed over smoothly. Integrating Vue Storefront with a CMS gets you no code content creation capabilities.",
+          "title": "CMS Integrations"
+        },
+        "payment": {
+          "text": "A smooth payment experience is a must for a good conversion rate. On the other hand, such integrations require specific knowledge, a lot of attention to detail, and managing edge cases. Accelerate your frontend development with our payment integrations.",
+          "title": "Payments Integrations"
+        },
+        "reviews": {
+          "text": "All development efforts should lead to a better customer experience. The best way to get to know what your customers think about your site is through Review Solutions, that's why we provide such integration.",
+          "title": "Reviews Integrations"
+        },
+        "auth": {
+          "text": "Security is the cornerstone of all enterprise eCommerce projects. With our out-of-the-box integration, so you can easily set up authentication and authorization processes.",
+          "title": "Auth Integrations"
+        },
+        "cache": {
+          "text": "Cache allows you to greatly improve the second load of a certain page and as such improves the User Experience.",
+          "title": "Cache Integrations"
+        },
+        "search": {
+          "text": "Visitors who get a great search experience are 70% more likely to buy your products. Integrate with one of our Search providers to cut time on development and increase conversion rates.",
+          "title": "Search Integrations"
+        },
+        "analytics": {
+          "text": "",
+          "title": "Analytics Integrations"
+        }
       }
     },
     "filter": {

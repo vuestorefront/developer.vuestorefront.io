@@ -10,18 +10,30 @@
       </AtomsLayoutSideBar>
       <section id="documentation">
         <h1>{{ t('page.documentation.title') }}</h1>
-        <p class="text-gray-500">
-          {{ t('page.documentation.text') }}
-        </p>
+        <i18n-t
+          keypath="page.documentation.text"
+          tag="p"
+          scope="global"
+          class="text-gray-500"
+        >
+          <template #link>
+            <NuxtLink
+              to="https://docs.vuestorefront.io/v2/general/enterprise.html"
+              target="_blank"
+            >
+              {{ t('page.documentation.link') }}
+            </NuxtLink>
+          </template>
+        </i18n-t>
         <div class="my-8 grid grid-cols-1 gap-8 md:grid-cols-3">
           <MoleculesCardDocs
-            description="Vivamus ullamcorper integer egestas condimentum sociosqu id risus mi phasellus, habitasse pretium eget fringilla suscipit nunc nascetur."
+            :description="t('page.documentation.content.vsf')"
             documentation="https://docs.vuestorefront.io/v2/"
             img="/brands/icons/vsf.svg"
             name="Vue Storefront"
           />
           <MoleculesCardDocs
-            description="Vivamus ullamcorper integer egestas condimentum sociosqu id risus mi phasellus, habitasse pretium eget fringilla suscipit nunc nascetur."
+            :description="t('page.documentation.content.sfui')"
             documentation="https://docs.storefrontui.io/?path=/story/welcome--page"
             img="/brands/icons/sfui.svg"
             name="Storefront UI"
@@ -49,11 +61,11 @@
   import { useI18n } from 'vue-i18n';
   import { useIntegrationsList } from '~/store/documentation/integrationsList';
 
-  definePageMeta({
-    documentDriven: false,
-  });
-
   const { t } = useI18n();
+
+  definePageMeta({
+    title: 'i18n:page.documentation.head.title',
+  });
 
   const { appliedFilters } = useIntegrationsList();
 
