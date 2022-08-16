@@ -3,7 +3,7 @@
     <img
       :src="src"
       alt="Video Thumb"
-      class="w-full object-cover object-center"
+      class="max-h-56 w-full object-cover object-center"
     />
     <div
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform"
