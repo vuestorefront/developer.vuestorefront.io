@@ -1,5 +1,6 @@
 import { useI18n } from 'vue-i18n';
 import En from '~/locales/en.json';
+import { PAGE_TITLE } from '~/constants/text';
 
 export const usePageHead = () => {
   const { t } = useI18n();
@@ -16,7 +17,7 @@ export const usePageHead = () => {
 
   const setHead = () => {
     useHead({
-      title: pageTitle.value,
+      title: `${pageTitle.value} | ${PAGE_TITLE}`,
     });
   };
 

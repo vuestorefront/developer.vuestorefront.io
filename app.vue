@@ -5,11 +5,10 @@
 </template>
 
 <script setup lang="ts">
-  const PAGE_TITLE = 'Vue Storefront - Developer Portal';
+  import { PAGE_TITLE } from '~/constants/text';
 
   useHead({
-    titleTemplate: (title: string) =>
-      `${title ? `${title} | ${PAGE_TITLE}` : PAGE_TITLE}`,
+    title: PAGE_TITLE,
     meta: [
       {
         hid: 'og:site_name',

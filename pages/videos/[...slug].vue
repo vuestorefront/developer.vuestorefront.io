@@ -58,6 +58,7 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n';
+  import { PAGE_TITLE } from '~/constants/text';
 
   definePageMeta({
     layout: 'content',
@@ -80,7 +81,7 @@
     computed(() => contentQuery),
     () => {
       useHead({
-        title: contentQuery.title,
+        title: `${contentQuery.title} ${PAGE_TITLE}`,
       });
     },
     { immediate: true, flush: 'sync', deep: true },
