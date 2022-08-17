@@ -35,22 +35,23 @@
         <div class="flex flex-col flex-wrap">
           <!-- Form -->
           <p class="py-6 text-2xl font-medium leading-tight text-gray-700">
-            {{ currentStep.question }}
+            {{ currentQuestion.title }}
           </p>
 
           <label
-            v-for="answer in currentStep.answers"
-            :key="answer"
-            :for="'answer' + answer"
+            v-for="answer in currentQuestion.answers"
+            :key="answer.id"
+            :for="'answer' + answer.id"
             :class="{
-              'border-green-300 bg-green-100 text-green-800':
-                isSelected(answer),
+              'border-green-300 bg-green-100 text-green-800': isSelected(
+                answer.id,
+              ),
             }"
             class="mt-2 flex cursor-pointer items-center justify-center rounded border border-gray-200 pl-4 text-gray-800 transition-all duration-200 ease-in-out"
           >
             <div class="flex h-10 w-10 items-center justify-center">
               <AtomsIcon
-                v-if="isSelected(answer)"
+                v-if="isSelected(answer.id)"
                 name="carbon:radio-button-checked"
                 class="text-green-600"
               />
@@ -63,22 +64,25 @@
             </div>
 
             <input
-              :id="'answer' + answer"
-              :value="answer"
-              :name="currentStep.question"
-              :checked="isSelected(answer)"
+              :id="'answer' + answer.id"
+              :value="answer.id"
+              :name="currentQuestion.id"
+              :checked="isSelected(answer.id)"
               type="radio"
               class="hidden"
-              @input="() => select(answer)"
+              @input="() => select(answer.id)"
             />
             <span class="text-bold w-full py-4 text-sm">
-              {{ answer }}
+              {{ answer.text }}
             </span>
           </label>
 
           <!-- Buttons -->
-          <div class="mt-6 flex w-full flex-wrap items-center justify-between">
-            <AtomsButton color="gray" @click="goBack">
+          <div
+            :class="isFirstStep ? 'justify-end' : 'justify-between'"
+            class="mt-6 flex w-full flex-wrap items-center"
+          >
+            <AtomsButton v-if="!isFirstStep" color="gray" @click="goBack">
               <AtomsIcon
                 name="carbon:arrow-left"
                 class="mr-2 text-lg text-gray-800"
@@ -116,50 +120,53 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n';
+  import { ApiUrl } from '~/enums/apiUrl';
+  import type { SelectedAnswers } from '~/types/api/quiz';
 
   definePageMeta({
     documentDriven: false,
   });
 
   const { t } = useI18n();
+  const route = useRoute();
+  const router = useRouter();
 
   // Refs
-  const selectedAnswers = reactive<Record<number, string>>({});
+  const selectedAnswers = reactive<SelectedAnswers>({});
   const currentStepNumber = ref(1);
-  const steps = ref([
-    {
-      title: 'UI library',
-      question:
-        "What's the name of the UI library preinstalled in Vue Storefront projects?",
-      answers: ['Vuetify', 'CommerceUI', 'StorefrontUI', 'HeadlessUI'],
+
+  const { data: quiz } = useFetch(ApiUrl.QuizQuestions, {
+    params: {
+      name: route.params.name,
     },
-    {
-      title: 'Framework',
-      question: 'Whcih framework powers Vue Storefront?',
-      answers: ['Nuxt.js', 'Next.js', 'SvelteKit', 'Remix'],
-    },
-    {
-      title: 'Server Middleware',
-      question: 'Which file configures Server Middleware?',
-      answers: [
-        'nuxt.config.js',
-        'middleware.config.js',
-        'server.config.js',
-        'vue.config.js',
-      ],
-    },
-  ]);
+  });
 
   // Computed
-  const max = computed(() => steps.value.length);
-  const progress = computed(() =>
-    Math.round((currentStepNumber.value / max.value) * 100),
-  );
-  const currentStep = computed(() => steps.value[currentStepNumber.value - 1]);
-  const currentAnswer = computed(
-    () => selectedAnswers[currentStepNumber.value],
-  );
-  const isLastStep = computed(() => currentStepNumber.value === max.value);
+  const max = computed<number>(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return quiz.value.questions.length;
+  });
+
+  const progress = computed(() => {
+    return Math.round((currentStepNumber.value / max.value) * 100);
+  });
+
+  const currentQuestion = computed(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return quiz.value.questions[currentStepNumber.value - 1];
+  });
+
+  const currentAnswer = computed(() => {
+    return selectedAnswers[currentQuestion.value.id];
+  });
+
+  const isFirstStep = computed(() => {
+    return currentStepNumber.value === 1;
+  });
+
+  const isLastStep = computed(() => {
+    return currentStepNumber.value === max.value;
+  });
 
   // Methods
   function goBack() {
@@ -181,11 +188,19 @@
   }
 
   function select(answer: string) {
-    selectedAnswers[currentStepNumber.value] = answer;
+    selectedAnswers[currentQuestion.value.id] = answer;
   }
 
-  function submit() {
-    console.log(selectedAnswers);
+  async function submit() {
+    const data = await $fetch(ApiUrl.QuizSubmit, {
+      method: 'POST',
+      body: {
+        quizName: quiz.value.name,
+        selectedAnswers,
+      },
+    });
+
+    // await router.push(`/quiz/results${data.id}`);
   }
 
   function isSelected(answer: string) {
