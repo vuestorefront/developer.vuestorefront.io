@@ -17,7 +17,8 @@
           <slot name="button" :button="{ text: buttonText, link: buttonLink }">
             <AtomsButton
               v-if="buttonText && buttonLink"
-              :to="{ to: buttonLink, target: '_blank' }"
+              :href="buttonLink"
+              target="_blank"
               :color="buttonColor"
               :label="buttonText"
               icon-right-name="akar-icons:link-out"
