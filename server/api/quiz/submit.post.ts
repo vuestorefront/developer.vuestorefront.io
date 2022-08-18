@@ -1,24 +1,43 @@
 import { randomUUID } from 'node:crypto';
+import Joi from 'joi';
 import { createClient } from '@supabase/supabase-js';
 import type {
   Quiz,
   Response,
   SelectedAnswers,
+  UserDetails,
   ApiQuizSubmit,
 } from '~/types/api/quiz';
 
 interface Body {
   name: string;
   selectedAnswers: SelectedAnswers;
+  userDetails: UserDetails;
 }
 
-export default defineEventHandler(async (event) => {
-  const { name, selectedAnswers } = await useBody<Body>(event);
-  const { supabaseUrl, supabaseKey } = useRuntimeConfig();
+const schema = Joi.object({
+  name: Joi.string().required().alphanum().lowercase(),
+  selectedAnswers: Joi.object().pattern(
+    Joi.string().required().lowercase(),
+    Joi.string().required().lowercase(),
+  ),
+  userDetails: Joi.object({
+    name: Joi.string().required().trim(),
+    surname: Joi.string().required().trim(),
+    email: Joi.string().required().email().trim(),
+  }),
+});
 
-  if (!selectedAnswers) {
-    return createError('API body missing or wrong: selectedAnswers');
+export default defineEventHandler(async (event) => {
+  const body = await useBody<Body>(event);
+  const { error, value } = schema.validate(body, { presence: 'required' });
+
+  if (error) {
+    return createError('API body missing or wrong');
   }
+
+  const { name, selectedAnswers, userDetails } = value as Body;
+  const { supabaseUrl, supabaseKey } = useRuntimeConfig();
 
   const supabase = createClient(supabaseUrl, supabaseKey);
 
@@ -50,6 +69,7 @@ export default defineEventHandler(async (event) => {
     .insert({
       quiz_name: name,
       answers: selectedAnswers,
+      user_details: userDetails,
       score,
       submitter_cookie: submitterCookie,
     })

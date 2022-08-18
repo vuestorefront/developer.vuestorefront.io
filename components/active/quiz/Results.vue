@@ -7,7 +7,7 @@
             ? 'page.quiz.result.submitter_message'
             : 'page.quiz.result.message',
           {
-            name: 'X',
+            name: response.username,
             score: response.score,
             test: response.quiz.title,
           },

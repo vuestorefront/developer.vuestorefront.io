@@ -1,9 +1,4 @@
 <template>
-  <h1 class="my-12 text-center text-4xl">
-    <AtomsTextFirstColoredWord
-      :text="t('page.quiz.questions.header', { test: quiz.title })"
-    />
-  </h1>
   <div
     class="container mx-auto flex flex-col flex-wrap px-5 py-4 text-gray-600 lg:w-2/3"
   >
@@ -86,21 +81,7 @@
             {{ t('page.quiz.questions.back') }}
           </AtomsButton>
 
-          <AtomsButton
-            v-if="isLastStep"
-            :disabled="!currentAnswer"
-            color="primary"
-            @click="emit('submit', selectedAnswers)"
-          >
-            {{ t('page.quiz.questions.submit') }}
-          </AtomsButton>
-
-          <AtomsButton
-            v-else
-            :disabled="!currentAnswer"
-            color="gray"
-            @click="goNext"
-          >
+          <AtomsButton :disabled="!currentAnswer" color="gray" @click="goNext">
             {{ t('page.quiz.questions.next') }}
             <AtomsIcon
               name="carbon:arrow-right"
@@ -172,7 +153,8 @@
       return;
     }
 
-    if (currentStepNumber.value >= max.value) {
+    if (isLastStep.value) {
+      emit('submit', selectedAnswers);
       return;
     }
 

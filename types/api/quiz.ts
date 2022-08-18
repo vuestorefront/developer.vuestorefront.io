@@ -26,11 +26,18 @@ export interface SelectedAnswers {
   [key: string]: string;
 }
 
+export interface UserDetails {
+  name: string;
+  surname: string;
+  email: string;
+}
+
 export interface Response {
   id: number;
   discord_user_id: string;
   quiz_name: string;
   answers: SelectedAnswers;
+  user_details: UserDetails;
   score: number;
   submitter_cookie: string;
   created_at: string;
@@ -38,7 +45,10 @@ export interface Response {
 
 export type ApiQuizQuestions = Pick<Quiz, 'name' | 'title' | 'questions'>;
 
-export type ApiQuizResponse = Pick<Response, 'id' | 'score'> & {
+export type ApiQuizResponse = {
+  id: Response['id'];
+  score: Response['score'];
+  username: string;
   isSubmitter: boolean;
   quiz: Pick<Quiz, 'name' | 'title'>;
 };

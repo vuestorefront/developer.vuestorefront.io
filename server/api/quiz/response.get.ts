@@ -19,6 +19,8 @@ export default defineEventHandler(async (event) => {
       id,
       score,
       submitter_cookie,
+      first_name:user_details->name,
+      last_name:user_details->surname,
       quizzes (
         name,
         title
@@ -37,6 +39,7 @@ export default defineEventHandler(async (event) => {
   return {
     id: data.id,
     score: data.score,
+    username: `${data.first_name} ${data.last_name}`,
     isSubmitter: data.submitter_cookie === cookie,
     quiz: data.quizzes,
   } as ApiQuizResponse;
