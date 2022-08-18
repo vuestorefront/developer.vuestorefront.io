@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import type { Quiz } from '~/types/api/quiz';
+import type { ApiQuizQuestions } from '~/types/api/quiz';
 
 export default defineEventHandler(async (event) => {
   const { name } = useQuery(event);
@@ -14,8 +14,12 @@ export default defineEventHandler(async (event) => {
   // TODO: Persist client and refresh token https://supabase.com/docs/reference/javascript/initializing#with-additional-parameters
 
   const { data, error } = await supabase
-    .from<Quiz>('quizzes')
-    .select()
+    .from<ApiQuizQuestions>('quizzes')
+    .select(`
+      name,
+      title,
+      questions
+    `)
     .eq('name', name as string)
     .limit(1)
     .single();
@@ -24,9 +28,5 @@ export default defineEventHandler(async (event) => {
     return createError('Failed to load quiz from database');
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  delete data.correct_answers;
-
-  return data as Omit<Quiz, 'correct_answers'>;
+  return data;
 });

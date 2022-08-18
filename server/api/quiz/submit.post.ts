@@ -1,14 +1,19 @@
 import { randomUUID } from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
-import type { Quiz, Response, SelectedAnswers } from '~/types/api/quiz';
+import type {
+  Quiz,
+  Response,
+  SelectedAnswers,
+  ApiQuizSubmit,
+} from '~/types/api/quiz';
 
 interface Body {
-  quizName: string;
+  name: string;
   selectedAnswers: SelectedAnswers;
 }
 
 export default defineEventHandler(async (event) => {
-  const { quizName, selectedAnswers } = await useBody<Body>(event);
+  const { name, selectedAnswers } = await useBody<Body>(event);
   const { supabaseUrl, supabaseKey } = useRuntimeConfig();
 
   if (!selectedAnswers) {
@@ -22,7 +27,7 @@ export default defineEventHandler(async (event) => {
   const { data: quiz, error: quizError } = await supabase
     .from<Quiz>('quizzes')
     .select()
-    .eq('name', quizName)
+    .eq('name', name)
     .limit(1)
     .single();
 
@@ -38,20 +43,17 @@ export default defineEventHandler(async (event) => {
     (correctAnswers.length / quiz.correct_answers.length) * 100,
   );
 
-  console.log({
-    correctAnswers,
-    score,
-  });
-
   const submitterCookie = randomUUID();
 
   const { data: response, error: responseError } = await supabase
     .from<Response>('responses')
     .insert({
+      quiz_name: name,
       answers: selectedAnswers,
       score,
       submitter_cookie: submitterCookie,
-    });
+    })
+    .single();
 
   if (responseError) {
     return createError('Failed to save quiz response to the database');
@@ -59,5 +61,7 @@ export default defineEventHandler(async (event) => {
 
   setCookie(event, `quiz-${quiz.name}`, submitterCookie);
 
-  return response;
+  return {
+    id: response.id,
+  } as ApiQuizSubmit;
 });
