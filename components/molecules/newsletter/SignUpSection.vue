@@ -23,6 +23,7 @@
   import scriptLoader from '~/utils/scriptLoader';
 
   const newsletter = ref(null);
+  const rendered = ref(false);
   const targetIsVisible = useElementVisibility(newsletter);
 
   watch(
@@ -30,13 +31,14 @@
     async () => {
       await scriptLoader('//js.hsforms.net/forms/v2.js', 'hub-spot');
 
-      if (hbspt) {
+      if (hbspt && !rendered.value) {
         hbspt.forms.create({
           target: '#newsletter-form',
           region: 'na1',
           portalId: '8443671',
           formId: '1355cce5-1417-4409-bb75-8a9f5081230d',
         });
+        rendered.value = true;
       }
     },
   );
