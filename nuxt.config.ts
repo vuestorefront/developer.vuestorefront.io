@@ -1,7 +1,6 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable unicorn/relative-url-style */
 import { defineNuxtConfig } from 'nuxt';
-import { nuxtConfigPartyTown } from './config/nuxt/partytown';
 import { nuxtConfigHead } from './config/nuxt/head';
 import { nuxtConfigContent } from './config/nuxt/content';
 import { nuxtConfigI18n } from './config/nuxt/i18n';
@@ -22,9 +21,6 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
     'nuxt-schema-org',
-    ...(process.env.LIGHTHOUSE ? ['@unlighthouse/nuxt'] : []),
-    '@nuxtjs/algolia',
-    '@nuxtjs/partytown',
     '@vue-storefront/nuxt-gtag',
   ],
   buildModules: ['@nuxt/content'],
@@ -38,7 +34,5 @@ export default defineNuxtConfig({
   tailwindcss: nuxtConfigTailwind,
   content: nuxtConfigContent,
   intlify: nuxtConfigI18n,
-  algolia: nuxtConfigAlgolia,
   gTag: nuxtGTagConfig,
-  partytown: nuxtConfigPartyTown,
 });
