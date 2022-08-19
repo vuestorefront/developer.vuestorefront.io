@@ -79,7 +79,11 @@ export default defineEventHandler(async (event) => {
     return createError('Failed to save quiz response to the database');
   }
 
-  setCookie(event, `quiz-${quiz.name}`, submitterCookie);
+  setCookie(event, `quiz-${quiz.name}`, submitterCookie, {
+    // Year from now
+    expires: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
+    httpOnly: true,
+  });
 
   return {
     id: response.id,

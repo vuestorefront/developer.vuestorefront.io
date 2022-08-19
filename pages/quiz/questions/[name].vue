@@ -27,6 +27,7 @@
     SelectedAnswers,
     UserDetails,
     ApiQuizQuestions,
+    ApiQuizSubmit,
   } from '~/types/api/quiz';
 
   definePageMeta({

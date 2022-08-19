@@ -15,7 +15,8 @@ export default defineEventHandler(async (event) => {
 
   const { data, error } = await supabase
     .from('responses')
-    .select(`
+    .select(
+      `
       id,
       score,
       submitter_cookie,
@@ -25,7 +26,8 @@ export default defineEventHandler(async (event) => {
         name,
         title
       )
-    `)
+    `,
+    )
     .eq('id', id as string)
     .limit(1)
     .single();
@@ -34,7 +36,7 @@ export default defineEventHandler(async (event) => {
     return createError('Failed to load quiz result from database');
   }
 
-  const cookie = useCookie(event, `quiz-${data.quiz_name}`);
+  const cookie = getCookie(event, `quiz-${data.quizzes.name}`);
 
   return {
     id: data.id,

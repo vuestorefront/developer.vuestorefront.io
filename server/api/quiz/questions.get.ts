@@ -15,11 +15,13 @@ export default defineEventHandler(async (event) => {
 
   const { data, error } = await supabase
     .from<ApiQuizQuestions>('quizzes')
-    .select(`
+    .select(
+      `
       name,
       title,
       questions
-    `)
+    `,
+    )
     .eq('name', name as string)
     .limit(1)
     .single();
