@@ -3,13 +3,18 @@ import type { ApiQuizResponse } from '~/types/api/quiz';
 
 export default defineEventHandler(async (event) => {
   const { id } = useQuery(event);
-  const { supabaseUrl, supabaseKey } = useRuntimeConfig();
 
   if (!id) {
     return createError('API query parameters missing or wrong: id');
   }
 
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  const {
+    supabaseServiceRoleKey,
+    public: {
+      supabase: { url },
+    },
+  } = useRuntimeConfig();
+  const supabase = createClient(url, supabaseServiceRoleKey);
 
   // TODO: Persist client and refresh token https://supabase.com/docs/reference/javascript/initializing#with-additional-parameters
 

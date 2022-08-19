@@ -37,9 +37,13 @@ export default defineEventHandler(async (event) => {
   }
 
   const { name, selectedAnswers, userDetails } = value as Body;
-  const { supabaseUrl, supabaseKey } = useRuntimeConfig();
-
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  const {
+    supabaseServiceRoleKey,
+    public: {
+      supabase: { url },
+    },
+  } = useRuntimeConfig();
+  const supabase = createClient(url, supabaseServiceRoleKey);
 
   // TODO: Persist client and refresh token https://supabase.com/docs/reference/javascript/initializing#with-additional-parameters
 

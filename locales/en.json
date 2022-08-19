@@ -66,6 +66,7 @@
         "submitter_message": "You got {score}% of the questions right in the {test} knowledge test",
         "shareTitle": "Share your result",
         "loginTitle": "Login to Discord to receive a badge",
+        "claimBadge": "Claim Discord badge",
         "loginButton": "Login to Discord",
         "copied": "Copied"
       }

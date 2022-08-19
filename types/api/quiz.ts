@@ -20,6 +20,7 @@ export interface Quiz {
   title: string;
   questions: Question[];
   correct_answers: CorrectAnswer[];
+  discord_badge_id: string;
 }
 
 export interface SelectedAnswers {
@@ -41,6 +42,7 @@ export interface Response {
   score: number;
   submitter_cookie: string;
   created_at: string;
+  quizzes: Quiz;
 }
 
 export type ApiQuizQuestions = Pick<Quiz, 'name' | 'title' | 'questions'>;

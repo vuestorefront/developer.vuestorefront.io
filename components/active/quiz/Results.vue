@@ -31,7 +31,9 @@
           class="block flex h-10 w-14 items-center justify-center rounded-r-lg border border-gray-300 bg-gray-50 hover:bg-gray-100"
           @click="copyShareurl"
         >
-          <span v-if="copiedIndicator" class="text-xs">{{ t('page.quiz.result.copied') }}</span>
+          <span v-if="copiedIndicator" class="text-xs">{{
+            t('page.quiz.result.copied')
+          }}</span>
           <AtomsIcon v-else name="carbon:copy" class="text-gray-800" />
         </button>
       </div>
@@ -70,7 +72,29 @@
       <p class="mb-4 text-gray-600">{{ t('page.quiz.result.loginTitle') }}</p>
 
       <div>
-        <AtomsButton color="gray" class="bg-[#5865F2] py-2 px-6 text-white">
+        <AtomsButton
+          v-if="userSession"
+          color="gray"
+          class="bg-[#5865F2] py-2 px-6 text-white"
+          @click="claimBadge"
+        >
+          <span class="pr-2 normal-case">
+            {{ t('page.quiz.result.claimBadge') }}
+          </span>
+
+          <AtomsIcon
+            name="carbon:logo-discord"
+            class="text-white"
+            width="2rem"
+            height="2rem"
+          />
+        </AtomsButton>
+        <AtomsButton
+          v-else
+          color="gray"
+          class="bg-[#5865F2] py-2 px-6 text-white"
+          @click="loginWithDiscord"
+        >
           <span class="pr-2 normal-case">
             {{ t('page.quiz.result.loginButton') }}
           </span>
@@ -88,17 +112,28 @@
 </template>
 
 <script setup lang="ts">
+  import { ApiUrl } from '~/enums/apiUrl';
+  import { createClient } from '@supabase/supabase-js';
   import { useI18n } from 'vue-i18n';
   import type { ApiQuizResponse } from '~/types/api/quiz';
+  import type { SupabaseClient, Session } from '@supabase/supabase-js';
 
-  defineProps<{
+  const props = defineProps<{
     response: ApiQuizResponse;
   }>();
 
+  let supabase: SupabaseClient | null = null;
   const { t } = useI18n();
 
   const shareUrl = ref('http://www.example.com');
   const copiedIndicator = ref(false);
+  const userSession = ref<Session | null>(null);
+
+  onMounted(() => {
+    const { url, publicKey } = useRuntimeConfig().public.supabase;
+    supabase = createClient(url, publicKey);
+    userSession.value = supabase.auth.session();
+  });
 
   async function copyShareurl() {
     await navigator.clipboard.writeText(shareUrl.value);
@@ -107,5 +142,33 @@
     setTimeout(() => {
       copiedIndicator.value = false;
     }, 2000);
+  }
+
+  async function loginWithDiscord() {
+    if (!supabase || userSession.value) {
+      return;
+    }
+
+    const { session } = await supabase.auth.signIn(
+      {
+        provider: 'discord',
+      },
+      {
+        redirectTo: window.location.href,
+        scopes: 'identify email',
+      },
+    );
+
+    userSession.value = session;
+  }
+
+  async function claimBadge() {
+    const response = await $fetch<ApiQuizResponse>(ApiUrl.QuizClaimBadge, {
+      method: 'POST',
+      body: {
+        accessToken: userSession.value?.access_token,
+        resultId: props.response.id,
+      },
+    });
   }
 </script>
