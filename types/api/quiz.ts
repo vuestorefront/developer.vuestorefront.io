@@ -52,6 +52,7 @@ export type ApiQuizResponse = {
   score: Response['score'];
   username: string;
   isSubmitter: boolean;
+  isBadgeClaimed: boolean;
   quiz: Pick<Quiz, 'name' | 'title'>;
 };
 

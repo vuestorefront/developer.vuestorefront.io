@@ -8,8 +8,13 @@ export default defineEventHandler(async (event) => {
     return createError('API query parameters missing or wrong: name');
   }
 
-  const { url, publicKey } = useRuntimeConfig().public.supabase;
-  const supabase = createClient(url, publicKey);
+  const {
+    supabaseServiceRoleKey,
+    public: {
+      supabase: { url },
+    },
+  } = useRuntimeConfig();
+  const supabase = createClient(url, supabaseServiceRoleKey);
 
   // TODO: Persist client and refresh token https://supabase.com/docs/reference/javascript/initializing#with-additional-parameters
 

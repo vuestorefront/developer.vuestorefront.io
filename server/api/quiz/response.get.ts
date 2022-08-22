@@ -23,6 +23,7 @@ export default defineEventHandler(async (event) => {
     .select(
       `
       id,
+      discord_user_id,
       score,
       submitter_cookie,
       first_name:user_details->name,
@@ -48,6 +49,7 @@ export default defineEventHandler(async (event) => {
     score: data.score,
     username: `${data.first_name} ${data.last_name}`,
     isSubmitter: data.submitter_cookie === cookie,
+    isBadgeClaimed: Boolean(data.discord_user_id),
     quiz: data.quizzes,
   } as ApiQuizResponse;
 });
