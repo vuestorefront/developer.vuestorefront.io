@@ -30,7 +30,9 @@ export default defineEventHandler(async (event) => {
       last_name:user_details->surname,
       quizzes (
         name,
-        title
+        title,
+        badge_minimum_score,
+        badge_image_path
       )
     `,
     )

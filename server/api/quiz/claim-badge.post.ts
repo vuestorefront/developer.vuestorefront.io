@@ -37,10 +37,12 @@ export default defineEventHandler(async (event) => {
     .select(
       `
       id,
+      score,
       discord_user_id,
       submitter_cookie,
       quizzes (
-        discord_badge_id
+        discord_role_id,
+        badge_minimum_score
       )
     `,
     )
@@ -56,6 +58,10 @@ export default defineEventHandler(async (event) => {
     return createError('Badge already claimed');
   }
 
+  if (response.score < response.quizzes.badge_minimum_score) {
+    return createError('Minimum score requirement not met');
+  }
+
   const { user, error: userError } = await supabase.auth.api.getUser(
     accessToken,
   );
@@ -65,7 +71,7 @@ export default defineEventHandler(async (event) => {
   }
 
   await $fetch(
-    `https://discord.com/api/v10/guilds/${guildId}/members/${user.user_metadata.provider_id}/roles/${response.quizzes.discord_badge_id}`,
+    `https://discord.com/api/v10/guilds/${guildId}/members/${user.user_metadata.provider_id}/roles/${response.quizzes.discord_role_id}`,
     {
       headers: {
         'Content-Type': 'application/json',

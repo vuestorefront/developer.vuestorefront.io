@@ -20,7 +20,9 @@ export interface Quiz {
   title: string;
   questions: Question[];
   correct_answers: CorrectAnswer[];
-  discord_badge_id: string;
+  discord_role_id: string;
+  badge_minimum_score: number;
+  badge_image_path: string;
 }
 
 export interface SelectedAnswers {
@@ -53,7 +55,7 @@ export type ApiQuizResponse = {
   username: string;
   isSubmitter: boolean;
   isBadgeClaimed: boolean;
-  quiz: Pick<Quiz, 'name' | 'title'>;
+  quiz: Pick<Quiz, 'name' | 'title' | 'badge_minimum_score' | 'badge_image_path'>;
 };
 
 export type ApiQuizSubmit = Pick<Response, 'id'>;

@@ -1,114 +1,121 @@
 <template>
   <h1 class="my-12 text-center text-4xl">
     <AtomsTextFirstColoredWord
-      :text="
-        t(
-          response.isSubmitter
-            ? 'page.quiz.result.submitter_message'
-            : 'page.quiz.result.message',
-          {
-            name: response.username,
-            score: response.score,
-            test: response.quiz.title,
-          },
-        )
-      "
+      :text="t('page.quiz.result.header', { test: response.quiz.title })"
     />
   </h1>
 
-  <div class="container mx-auto flex justify-center pt-16">
-    <div class="flex w-full flex-col items-center md:w-1/2">
-      <p class="mb-4 text-gray-600">{{ t('page.quiz.result.shareTitle') }}</p>
-
-      <div class="flex">
-        <input
-          type="text"
-          :value="shareUrl"
-          class="h-10 w-80 rounded-l-lg border border-r-0 border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
-          disabled
-        />
-        <button
-          class="block flex h-10 w-14 items-center justify-center rounded-r-lg border border-gray-300 bg-gray-50 hover:bg-gray-100"
-          @click="copyShareurl"
-        >
-          <span v-if="copiedIndicator" class="text-xs">{{
-            t('page.quiz.result.copied')
-          }}</span>
-          <AtomsIcon v-else name="carbon:copy" class="text-gray-800" />
-        </button>
-      </div>
-
-      <div class="mt-4 flex">
-        <AtomsButton color="gray" class="p-0">
-          <AtomsIcon
-            name="carbon:logo-twitter"
-            class="text-[#1DA1F2]"
-            width="3rem"
-            height="3rem"
-          />
-        </AtomsButton>
-
-        <AtomsButton color="gray" class="p-0">
-          <AtomsIcon
-            name="carbon:logo-linkedin"
-            class="text-[#0072B1]"
-            width="3rem"
-            height="3rem"
-          />
-        </AtomsButton>
-
-        <AtomsButton color="gray" class="p-0">
-          <AtomsIcon
-            name="carbon:logo-facebook"
-            class="text-[#4267B2]"
-            width="3rem"
-            height="3rem"
-          />
-        </AtomsButton>
-      </div>
+  <div class="container mx-auto flex flex-col items-center justify-center">
+    <h2>
+      {{
+        t('page.quiz.result.message', {
+          name: response.username,
+          score: response.score,
+        })
+      }}
+    </h2>
+    <div v-if="metScoreRequirements" class="flex w-full justify-center">
+      <img :src="response.quiz.badge_image_path" class="w-96" />
     </div>
 
     <client-only>
-      <div
-        v-if="response.isSubmitter && !response.isBadgeClaimed"
-        class="flex w-full flex-col items-center md:w-1/2"
-      >
-        <p class="mb-4 text-gray-600">{{ t('page.quiz.result.loginTitle') }}</p>
+      <div class="flex w-full justify-center pt-16">
+        <div class="flex w-full flex-col items-center md:w-1/2">
+          <p class="mb-4 text-gray-600">
+            {{ t('page.quiz.result.shareTitle') }}
+          </p>
 
-        <AtomsButton
-          v-if="userSession"
-          color="gray"
-          class="bg-[#5865F2] py-2 px-6 text-white"
-          @click="$emit('claimBadge')"
+          <div class="flex">
+            <input
+              type="text"
+              :value="shareUrl"
+              class="h-10 w-80 rounded-l-lg border border-r-0 border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+              disabled
+            />
+            <button
+              class="block flex h-10 w-14 items-center justify-center rounded-r-lg border border-gray-300 bg-gray-50 hover:bg-gray-100"
+              @click="copyShareurl"
+            >
+              <span v-if="copiedIndicator" class="text-xs">{{
+                t('page.quiz.result.copied')
+              }}</span>
+              <AtomsIcon v-else name="carbon:copy" class="text-gray-800" />
+            </button>
+          </div>
+
+          <div class="mt-4 flex">
+            <AtomsButton color="gray" class="p-0">
+              <AtomsIcon
+                name="carbon:logo-twitter"
+                class="text-[#1DA1F2]"
+                width="3rem"
+                height="3rem"
+              />
+            </AtomsButton>
+
+            <AtomsButton color="gray" class="p-0">
+              <AtomsIcon
+                name="carbon:logo-linkedin"
+                class="text-[#0072B1]"
+                width="3rem"
+                height="3rem"
+              />
+            </AtomsButton>
+
+            <AtomsButton color="gray" class="p-0">
+              <AtomsIcon
+                name="carbon:logo-facebook"
+                class="text-[#4267B2]"
+                width="3rem"
+                height="3rem"
+              />
+            </AtomsButton>
+          </div>
+        </div>
+
+        <div
+          v-if="canClaimBadge"
+          class="flex w-full flex-col items-center md:w-1/2"
         >
-          <span class="pr-2 normal-case">
-            {{ t('page.quiz.result.claimBadge') }}
-          </span>
+          <p class="mb-4 text-gray-600">
+            {{ t('page.quiz.result.loginTitle') }}
+          </p>
 
-          <AtomsIcon
-            name="carbon:logo-discord"
-            class="text-white"
-            width="2rem"
-            height="2rem"
-          />
-        </AtomsButton>
-        <AtomsButton
-          v-else
-          color="gray"
-          class="bg-[#5865F2] py-2 px-6 text-white"
-          @click="$emit('loginWithDiscord')"
-        >
-          <span class="pr-2 normal-case">
-            {{ t('page.quiz.result.loginButton') }}
-          </span>
+          <AtomsButton
+            v-if="userSession"
+            color="gray"
+            class="bg-[#5865F2] py-2 px-6 text-white"
+            @click="$emit('claimBadge')"
+          >
+            <span class="pr-2 normal-case">
+              {{ t('page.quiz.result.claimBadge') }}
+            </span>
 
-          <AtomsIcon
-            name="carbon:logo-discord"
-            class="text-white"
-            width="2rem"
-            height="2rem"
-          />
-        </AtomsButton>
+            <AtomsIcon
+              name="carbon:logo-discord"
+              class="text-white"
+              width="2rem"
+              height="2rem"
+            />
+          </AtomsButton>
+          <AtomsButton
+            v-else
+            color="gray"
+            class="bg-[#5865F2] py-2 px-6 text-white"
+            @click="$emit('loginWithDiscord')"
+          >
+            <span class="pr-2 normal-case">
+              {{ t('page.quiz.result.loginButton') }}
+            </span>
+
+            <AtomsIcon
+              name="carbon:logo-discord"
+              class="text-white"
+              width="2rem"
+              height="2rem"
+            />
+          </AtomsButton>
+        </div>
       </div>
     </client-only>
   </div>
@@ -119,7 +126,7 @@
   import type { ApiQuizResponse } from '~/types/api/quiz';
   import type { Session } from '@supabase/supabase-js';
 
-  defineProps<{
+  const props = defineProps<{
     response: ApiQuizResponse;
     userSession: Session | null;
   }>();
@@ -131,8 +138,24 @@
 
   const { t } = useI18n();
 
-  const shareUrl = ref('http://www.example.com');
+  const shareUrl = ref('');
   const copiedIndicator = ref(false);
+
+  onMounted(() => {
+    shareUrl.value = window.location.href;
+  });
+
+  const metScoreRequirements = computed(
+    () => props.response.score >= props.response.quiz.badge_minimum_score,
+  );
+
+  const canClaimBadge = computed(() => {
+    return (
+      props.response.isSubmitter &&
+      !props.response.isBadgeClaimed &&
+      metScoreRequirements.value
+    );
+  });
 
   async function copyShareurl() {
     await navigator.clipboard.writeText(shareUrl.value);

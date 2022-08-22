@@ -62,8 +62,8 @@
         "submit": "Submit"
       },
       "result": {
-        "message": "{name} got {score}% of the questions right in the {test} knowledge test",
-        "submitter_message": "You got {score}% of the questions right in the {test} knowledge test",
+        "header": "Result of the {test} knowledge test",
+        "message": "{name} got {score}% of the questions right",
         "shareTitle": "Share the result",
         "loginTitle": "Login to Discord to receive a badge",
         "claimBadge": "Claim Discord badge",
