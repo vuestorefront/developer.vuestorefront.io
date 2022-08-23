@@ -25,7 +25,9 @@ function validateQuery(event: CompatibilityEvent): Query {
 
   return value;
 }
-
+/**
+ * Fetches and returns quiz response from the database or throws an error
+ */
 async function fetchQuizResponse(
   client: SupabaseClient,
   id: string,
@@ -58,6 +60,9 @@ async function fetchQuizResponse(
   return data;
 }
 
+/**
+ * Fetches and returns quiz response from the database
+ */
 export default defineEventHandler(async (event) => {
   const { id } = validateQuery(event);
   const supabase = createSupabaseClient();
