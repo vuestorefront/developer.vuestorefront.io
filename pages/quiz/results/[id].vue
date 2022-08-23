@@ -27,6 +27,10 @@
     const { url, publicKey } = useRuntimeConfig().public.supabase;
     supabase = createClient(url, publicKey);
     userSession.value = supabase.auth.session();
+
+    supabase.auth.onAuthStateChange((event, session) => {
+      userSession.value = session;
+    });
   });
 
   const { data: response } = await useFetch(ApiUrl.QuizResponse, {

@@ -1,24 +1,39 @@
-import { createClient } from '@supabase/supabase-js';
+import Joi from 'joi';
+import { createSupabaseClient } from '~/server/utils/supabase';
+import type { CompatibilityEvent } from 'h3';
+import type { SupabaseClient } from '@supabase/supabase-js';
 import type { ApiQuizQuestions } from '~/types/api/quiz';
 
-export default defineEventHandler(async (event) => {
-  const { name } = useQuery(event);
+interface Query {
+  name: string;
+}
 
-  if (!name) {
-    return createError('API query parameters missing or wrong: name');
+/**
+ * Validates and returns query from the request or throws an error
+ */
+function validateQuery(event: CompatibilityEvent): Query {
+  const schema = Joi.object<Query>({
+    name: Joi.string().required(),
+  });
+
+  const query = useQuery(event);
+  const { error, value } = schema.validate(query, { presence: 'required' });
+
+  if (error) {
+    return createError('API query parameters missing or wrong');
   }
 
-  const {
-    supabaseServiceRoleKey,
-    public: {
-      supabase: { url },
-    },
-  } = useRuntimeConfig();
-  const supabase = createClient(url, supabaseServiceRoleKey);
+  return value;
+}
 
-  // TODO: Persist client and refresh token https://supabase.com/docs/reference/javascript/initializing#with-additional-parameters
-
-  const { data, error } = await supabase
+/**
+ * Fetches and returns quiz from the database or throws an error
+ */
+async function fetchQuiz(
+  client: SupabaseClient,
+  name: string,
+): Promise<ApiQuizQuestions> {
+  const { data, error } = await client
     .from<ApiQuizQuestions>('quizzes')
     .select(
       `
@@ -27,13 +42,23 @@ export default defineEventHandler(async (event) => {
       questions
     `,
     )
-    .eq('name', name as string)
+    .eq('name', name)
     .limit(1)
     .single();
 
   if (error) {
-    return createError('Failed to load quiz from database');
+    throw new Error('Failed to load quiz from database');
   }
 
   return data;
+}
+
+/**
+ * Fetches and returns quiz from the database
+ */
+export default defineEventHandler(async (event) => {
+  const { name } = validateQuery(event);
+  const supabase = createSupabaseClient();
+
+  return fetchQuiz(supabase, name);
 });
