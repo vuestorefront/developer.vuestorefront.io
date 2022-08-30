@@ -44,32 +44,32 @@
           </div>
 
           <div class="mt-4 flex">
-            <AtomsButton color="gray" class="p-0">
+            <a :href="twitterShareLink">
               <AtomsIcon
                 name="carbon:logo-twitter"
                 class="text-[#1DA1F2]"
                 width="3rem"
                 height="3rem"
               />
-            </AtomsButton>
+            </a>
 
-            <AtomsButton color="gray" class="p-0">
+            <a :href="linkedinShareLink">
               <AtomsIcon
                 name="carbon:logo-linkedin"
                 class="text-[#0072B1]"
                 width="3rem"
                 height="3rem"
               />
-            </AtomsButton>
+            </a>
 
-            <AtomsButton color="gray" class="p-0">
+            <a :href="facebookShareLink">
               <AtomsIcon
                 name="carbon:logo-facebook"
                 class="text-[#4267B2]"
                 width="3rem"
                 height="3rem"
               />
-            </AtomsButton>
+            </a>
           </div>
         </div>
 
@@ -155,6 +155,19 @@
       !props.response.isBadgeClaimed &&
       metScoreRequirements.value
     );
+  });
+
+  const twitterShareLink = computed(() => {
+    return `https://twitter.com/intent/tweet?url=${shareUrl.value}`;
+  });
+
+  const linkedinShareLink = computed(() => {
+    // Works only on publicly available URLs (not on localhost)
+    return `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl.value}`;
+  });
+
+  const facebookShareLink = computed(() => {
+    return `https://www.facebook.com/sharer.php?u=${shareUrl.value}`;
   });
 
   async function copyShareurl() {
