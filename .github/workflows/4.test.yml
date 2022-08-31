@@ -20,7 +20,7 @@ jobs:
           node-version: 16.x
           cache: npm
       - name: Install Modules
-        run: npm i
+        run: npm ci
       - name: Run ESLint
         run: npm run lint
   test:
@@ -33,6 +33,6 @@ jobs:
           node-version: 16.x
           cache: npm
       - name: Install Modules
-        run: npm i
+        run: npm ci
       - name: Run Vitest
         run: npm run test

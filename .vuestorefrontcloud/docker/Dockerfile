@@ -17,10 +17,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN NODE_ENV=development npm install \
-  --prefer-offline \
-  --frozen-lockfile \
-  --non-interactive
+RUN NODE_ENV=development npm ci
 
 RUN NODE_ENV=production npm run build
 

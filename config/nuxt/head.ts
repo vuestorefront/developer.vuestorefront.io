@@ -8,4 +8,13 @@ export const nuxtConfigHead = {
     },
     { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
   ],
+  script: [
+    // { src: '//js.hsforms.net/forms/v2.js', type: 'text/partytown' },
+    {
+      src: `https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_TAG_ID}&l=dataLayer`,
+      preconnectOrigin: 'https://www.googletagmanager.com',
+      defer: false,
+      type: 'text/partytown',
+    },
+  ],
 } as NuxtConfig['head'];
