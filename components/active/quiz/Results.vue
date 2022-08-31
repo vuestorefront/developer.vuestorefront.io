@@ -18,7 +18,7 @@
       <img :src="response.quiz.badge_image_path" class="w-96" />
     </div>
 
-    <client-only>
+    <client-only v-if="props.response.isSubmitter">
       <div class="flex w-full justify-center pt-16">
         <div class="flex w-full flex-col items-center md:w-1/2">
           <p class="mb-4 text-gray-600">
@@ -74,7 +74,7 @@
         </div>
 
         <div
-          v-if="canClaimBadge"
+          v-if="showBadgeButtons"
           class="flex w-full flex-col items-center md:w-1/2"
         >
           <p class="mb-4 text-gray-600">
@@ -82,7 +82,23 @@
           </p>
 
           <AtomsButton
-            v-if="userSession"
+            v-if="props.response.isBadgeClaimed"
+            color="info"
+            class="py-2 px-6"
+          >
+            <span class="pr-2 normal-case">
+              {{ t('page.quiz.result.badgeClaimed') }}
+            </span>
+
+            <AtomsIcon
+              name="carbon:checkmark"
+              class="text-white"
+              width="2rem"
+              height="2rem"
+            />
+          </AtomsButton>
+          <AtomsButton
+            v-else-if="userSession"
             color="gray"
             class="bg-[#5865F2] py-2 px-6 text-white"
             @click="$emit('claimBadge')"
@@ -149,13 +165,9 @@
     () => props.response.score >= props.response.quiz.badge_minimum_score,
   );
 
-  const canClaimBadge = computed(() => {
-    return (
-      props.response.isSubmitter &&
-      !props.response.isBadgeClaimed &&
-      metScoreRequirements.value
-    );
-  });
+  const showBadgeButtons = computed(
+    () => props.response.isSubmitter && metScoreRequirements.value,
+  );
 
   const twitterShareLink = computed(() => {
     return `https://twitter.com/intent/tweet?url=${shareUrl.value}`;

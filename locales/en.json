@@ -67,6 +67,7 @@
         "shareTitle": "Share the result",
         "loginTitle": "Login to Discord to receive a badge",
         "claimBadge": "Claim Discord badge",
+        "badgeClaimed": "Discord badge claimed",
         "loginButton": "Login to Discord",
         "copied": "Copied"
       }
