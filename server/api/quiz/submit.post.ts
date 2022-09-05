@@ -89,14 +89,15 @@ async function sendEmail(response: Response) {
   const sendGrid = createSendGridClient();
   const { quiz_name, score, user_details } = response;
 
-  const message = {
+  return sendGrid.send({
     to: user_details.email,
-    from: 'cokolwiek@platform.vuestorefront.io', // TODO: This will be changed, when we make adjustments to our DNS zones
+    from: {
+      name: 'Vue Storefront Developer',
+      email: 'cokolwiek@platform.vuestorefront.io', // TODO: This will be changed, when we make adjustments to our DNS zones
+    },
     subject: `Your ${quiz_name} quiz results`,
     text: `Hi ${user_details.name} ${user_details.surname}! Your quiz score is ${score}`,
-  };
-
-  return sendGrid.send(message);
+  });
 }
 
 export default defineEventHandler(async (event) => {
