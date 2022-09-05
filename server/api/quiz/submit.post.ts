@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import Joi from 'joi';
+import { createSendGridClient } from '~/server/utils/sendGrid';
 import { createSupabaseClient } from '~/server/utils/supabase';
 import type { CompatibilityEvent } from 'h3';
 import type { SupabaseClient } from '@supabase/supabase-js';
@@ -81,6 +82,23 @@ async function submitResponse(
   return data;
 }
 
+/**
+ * Sends e-mail with quiz results to the user
+ */
+async function sendEmail(response: Response) {
+  const sendGrid = createSendGridClient();
+  const { quiz_name, score, user_details } = response;
+
+  const message = {
+    to: user_details.email,
+    from: 'cokolwiek@platform.vuestorefront.io', // TODO: This will be changed, when we make adjustments to our DNS zones
+    subject: `Your ${quiz_name} quiz results`,
+    text: `Hi ${user_details.name} ${user_details.surname}! Your quiz score is ${score}`,
+  };
+
+  return sendGrid.send(message);
+}
+
 export default defineEventHandler(async (event) => {
   const { name, selectedAnswers, userDetails } = await validateBody(event);
   const supabase = createSupabaseClient();
@@ -101,6 +119,8 @@ export default defineEventHandler(async (event) => {
     score,
     submitter_cookie: submitterCookie,
   });
+
+  await sendEmail(response);
 
   setCookie(event, `quiz-${quiz.name}`, submitterCookie, {
     // Year from now

@@ -8,6 +8,7 @@ export const nuxtConfigRuntimeConfig = {
     guildId: process.env.DISCORD_GUILD_ID,
   },
   supabaseServiceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY,
+  sendGridApiKey: process.env.SENDGRID_API_KEY,
   public: {
     gitHub: {
       repository: 'vuestorefront/developer.vuestorefront.io',
