@@ -32,6 +32,7 @@
 
   definePageMeta({
     documentDriven: false,
+    title: 'i18n:page.quiz.questions.head.title',
   });
 
   const { t } = useI18n();

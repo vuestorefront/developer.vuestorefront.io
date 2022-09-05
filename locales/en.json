@@ -54,6 +54,9 @@
     },
     "quiz": {
       "questions": {
+        "head": {
+          "title": "Knowledge quiz"
+        },
         "header": "Test your {test} knowledge",
         "step": "Step {current} of {max}",
         "progress": "{progress}%",
@@ -62,6 +65,9 @@
         "submit": "Submit"
       },
       "result": {
+        "head": {
+          "title": "Quiz results"
+        },
         "header": "Result of the {test} knowledge test",
         "message": "{name} got {score}% of the questions right",
         "shareTitle": "Share the result",

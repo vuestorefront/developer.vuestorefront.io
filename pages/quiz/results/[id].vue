@@ -17,6 +17,7 @@
 
   definePageMeta({
     documentDriven: false,
+    title: 'i18n:page.quiz.result.head.title',
   });
 
   let supabase: SupabaseClient | null = null;
