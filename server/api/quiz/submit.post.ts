@@ -1,4 +1,5 @@
 import { randomUUID } from 'node:crypto';
+import ejs from 'ejs';
 import Joi from 'joi';
 import { createSendGridClient } from '~/server/utils/sendGrid';
 import { createSupabaseClient } from '~/server/utils/supabase';
@@ -11,6 +12,7 @@ import type {
   UserDetails,
   ApiQuizSubmit,
 } from '~/types/api/quiz';
+import emailTemplate from '~~/server/utils/templates/quizResponseEmail';
 
 interface Body {
   name: string;
@@ -43,6 +45,25 @@ async function validateBody(event: CompatibilityEvent): Promise<Body> {
   }
 
   return value;
+}
+
+/**
+ * Validates existing or generates new cookie and returns it or throws an error
+ */
+function validateCookie(event: CompatibilityEvent, cookieName: string): string {
+  const cookie = getCookie(event, cookieName) || randomUUID();
+
+  const schema = Joi.string().guid({
+    version: ['uuidv4'],
+  });
+
+  const { error, value } = schema.validate(cookie, { presence: 'required' });
+
+  if (error) {
+    throw new Error('Cookie missing or wrong');
+  }
+
+  return value as string;
 }
 
 /**
@@ -85,18 +106,27 @@ async function submitResponse(
 /**
  * Sends e-mail with quiz results to the user
  */
-async function sendEmail(response: Response) {
+async function sendEmail(quiz: Quiz, response: Response) {
   const sendGrid = createSendGridClient();
-  const { quiz_name, score, user_details } = response;
+
+  const html = ejs.render(emailTemplate, {
+    name: response.user_details.name,
+    surname: response.user_details.surname,
+    score: response.score,
+    passed: response.passed,
+    quiz_name: response.quiz_name,
+    badge_minimum_score: quiz.badge_minimum_score,
+    link: '',
+  });
 
   return sendGrid.send({
-    to: user_details.email,
+    to: response.user_details.email,
     from: {
       name: 'Vue Storefront Developer',
       email: 'cokolwiek@platform.vuestorefront.io', // TODO: This will be changed, when we make adjustments to our DNS zones
     },
-    subject: `Your ${quiz_name} quiz results`,
-    text: `Hi ${user_details.name} ${user_details.surname}! Your quiz score is ${score}`,
+    subject: `Your ${response.quiz_name} quiz results`,
+    html,
   });
 }
 
@@ -104,8 +134,9 @@ export default defineEventHandler(async (event) => {
   const { name, selectedAnswers, userDetails } = await validateBody(event);
   const supabase = createSupabaseClient();
   const quiz = await fetchQuiz(supabase, name);
+  const cookieName = `quiz-${quiz.name}`;
+  const submitterCookie = validateCookie(event, cookieName);
 
-  const submitterCookie = randomUUID();
   const correctAnswers = quiz.correct_answers.filter(
     ({ id, answer }) => selectedAnswers[id] === answer,
   );
@@ -118,12 +149,13 @@ export default defineEventHandler(async (event) => {
     answers: selectedAnswers,
     user_details: userDetails,
     score,
+    passed: score >= quiz.badge_minimum_score,
     submitter_cookie: submitterCookie,
   });
 
-  await sendEmail(response);
+  await sendEmail(quiz, response);
 
-  setCookie(event, `quiz-${quiz.name}`, submitterCookie, {
+  setCookie(event, cookieName, submitterCookie, {
     // Year from now
     expires: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
     httpOnly: true,

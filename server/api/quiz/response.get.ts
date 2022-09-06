@@ -39,12 +39,12 @@ async function fetchQuizResponse(
       id,
       discord_user_id,
       score,
+      passed,
       submitter_cookie,
       user_details,
       quizzes (
         name,
         title,
-        badge_minimum_score,
         badge_image_path
       )
     `,
@@ -72,6 +72,7 @@ export default defineEventHandler(async (event) => {
   return {
     id: data.id,
     score: data.score,
+    passed: data.passed,
     username: `${data.user_details.name} ${data.user_details.surname}`,
     isSubmitter: data.submitter_cookie === cookie,
     isBadgeClaimed: Boolean(data.discord_user_id),

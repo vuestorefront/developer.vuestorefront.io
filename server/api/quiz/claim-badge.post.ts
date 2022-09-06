@@ -41,12 +41,12 @@ async function fetchQuizResponse(
       `
       id,
       score,
+      passed,
       discord_user_id,
       submitter_cookie,
       quizzes (
         name,
-        discord_role_id,
-        badge_minimum_score
+        discord_role_id
       )
     `,
     )
@@ -135,7 +135,7 @@ export default defineEventHandler(async (event) => {
     throw new Error('Badge already claimed');
   }
 
-  if (data.score < data.quizzes.badge_minimum_score) {
+  if (!data.passed) {
     throw new Error('Minimum score requirement not met');
   }
 

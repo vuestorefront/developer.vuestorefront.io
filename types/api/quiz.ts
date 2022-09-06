@@ -42,6 +42,7 @@ export interface Response {
   answers: SelectedAnswers;
   user_details: UserDetails;
   score: number;
+  passed: boolean;
   submitter_cookie: string;
   created_at: string;
   quizzes: Quiz;
@@ -52,10 +53,11 @@ export type ApiQuizQuestions = Pick<Quiz, 'name' | 'title' | 'questions'>;
 export type ApiQuizResponse = {
   id: Response['id'];
   score: Response['score'];
+  passed: Response['passed'];
   username: string;
   isSubmitter: boolean;
   isBadgeClaimed: boolean;
-  quiz: Pick<Quiz, 'name' | 'title' | 'badge_minimum_score' | 'badge_image_path'>;
+  quiz: Pick<Quiz, 'name' | 'title' | 'badge_image_path'>;
 };
 
 export type ApiQuizSubmit = Pick<Response, 'id'>;

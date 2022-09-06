@@ -14,7 +14,7 @@
         })
       }}
     </h2>
-    <div v-if="metScoreRequirements" class="flex w-full justify-center">
+    <div v-if="props.response.passed" class="flex w-full justify-center">
       <img :src="response.quiz.badge_image_path" class="w-96" />
     </div>
 
@@ -161,12 +161,8 @@
     shareUrl.value = window.location.href;
   });
 
-  const metScoreRequirements = computed(
-    () => props.response.score >= props.response.quiz.badge_minimum_score,
-  );
-
   const showBadgeButtons = computed(
-    () => props.response.isSubmitter && metScoreRequirements.value,
+    () => props.response.isSubmitter && props.response.passed,
   );
 
   const twitterShareLink = computed(() => {
