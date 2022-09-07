@@ -92,7 +92,7 @@ async function submitResponse(
   response: Partial<Response>,
 ): Promise<Response> {
   const { data, error } = await client
-    .from<Response>('responses')
+    .from<Response>('quiz_responses')
     .insert(response)
     .single();
 

@@ -33,7 +33,7 @@ async function fetchQuizResponse(
   id: string,
 ): Promise<Response> {
   const { data, error } = await client
-    .from<Response>('responses')
+    .from<Response>('quiz_responses')
     .select(
       `
       id,

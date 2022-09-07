@@ -36,7 +36,7 @@ async function fetchQuizResponse(
   resultId: string,
 ): Promise<Response> {
   const { data, error } = await client
-    .from<Response>('responses')
+    .from<Response>('quiz_responses')
     .select(
       `
       id,
@@ -111,7 +111,7 @@ async function updateDiscordUserIdInResponse(
   userId: string,
 ): Promise<void> {
   const { error } = await client
-    .from<Response>('responses')
+    .from<Response>('quiz_responses')
     .update({ discord_user_id: userId })
     .match({ id: resultId });
 
