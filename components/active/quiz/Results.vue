@@ -5,21 +5,15 @@
     />
   </h1>
 
-  <div class="container mx-auto flex flex-col items-center justify-center">
-    <h2>
-      {{
-        t('page.quiz.result.message', {
-          name: response.username,
-          score: response.score,
-        })
-      }}
-    </h2>
-    <div v-if="props.response.passed" class="flex w-full justify-center">
-      <img :src="response.quiz.badge_image_path" class="w-96" />
+  <div class="mb-4 flex w-full justify-start overflow-y-auto md:justify-center">
+    <div class="w-full min-w-[768px] md:w-3/4">
+      <ActiveQuizDiploma :response="response" />
     </div>
+  </div>
 
-    <client-only v-if="props.response.isSubmitter">
-      <div class="flex w-full justify-center pt-16">
+  <div class="container mx-auto flex flex-col items-center justify-center">
+    <client-only v-if="response.isSubmitter">
+      <div class="mt-16 flex w-full flex-col justify-center md:flex-row">
         <div class="flex w-full flex-col items-center md:w-1/2">
           <p class="mb-4 text-gray-600">
             {{ t('page.quiz.result.shareTitle') }}
@@ -75,14 +69,14 @@
 
         <div
           v-if="showBadgeButtons"
-          class="flex w-full flex-col items-center md:w-1/2"
+          class="mt-8 flex w-full flex-col items-center md:mt-0 md:w-1/2"
         >
           <p class="mb-4 text-gray-600">
             {{ t('page.quiz.result.loginTitle') }}
           </p>
 
           <AtomsButton
-            v-if="props.response.isBadgeClaimed"
+            v-if="response.isBadgeClaimed"
             color="info"
             class="py-2 px-6"
           >

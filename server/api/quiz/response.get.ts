@@ -42,6 +42,7 @@ async function fetchQuizResponse(
       passed,
       submitter_cookie,
       user_details,
+      created_at,
       quizzes (
         name,
         title,
@@ -76,6 +77,7 @@ export default defineEventHandler(async (event) => {
     username: `${data.user_details.name} ${data.user_details.surname}`,
     isSubmitter: data.submitter_cookie === cookie,
     isBadgeClaimed: Boolean(data.discord_user_id),
+    createdAt: data.created_at,
     quiz: data.quizzes,
   } as ApiQuizResponse;
 });

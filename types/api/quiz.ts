@@ -57,6 +57,7 @@ export type ApiQuizResponse = {
   username: string;
   isSubmitter: boolean;
   isBadgeClaimed: boolean;
+  createdAt: Response['created_at'];
   quiz: Pick<Quiz, 'name' | 'title' | 'badge_image_path'>;
 };
 

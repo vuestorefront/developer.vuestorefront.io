@@ -68,8 +68,11 @@
         "head": {
           "title": "Quiz results"
         },
+        "diploma": {
+          "line_2": "completed the",
+          "line_3": "{test} knowledge quiz with the score of {score}%"
+        },
         "header": "Result of the {test} knowledge test",
-        "message": "{name} got {score}% of the questions right",
         "shareTitle": "Share the result",
         "loginTitle": "Login to Discord to receive a badge",
         "claimBadge": "Claim Discord badge",
