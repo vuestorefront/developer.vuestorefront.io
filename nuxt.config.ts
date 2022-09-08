@@ -21,10 +21,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
-    'nuxt-schema-org',
     ...(process.env.LIGHTHOUSE ? ['@unlighthouse/nuxt'] : []),
-    '@nuxtjs/algolia',
-    '@nuxtjs/partytown',
     '@vue-storefront/nuxt-gtag',
   ],
   buildModules: ['@nuxt/content'],
@@ -40,5 +37,4 @@ export default defineNuxtConfig({
   intlify: nuxtConfigI18n,
   algolia: nuxtConfigAlgolia,
   gTag: nuxtGTagConfig,
-  partytown: nuxtConfigPartyTown,
 });

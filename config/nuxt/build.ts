@@ -13,7 +13,6 @@ export const nuxtConfigBuild = {
   },
   experimental: {
     reactivityTransform: true,
-    viteNode: true,
   },
   build: {
     splitChunks: {
