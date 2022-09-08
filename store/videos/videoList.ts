@@ -39,13 +39,18 @@ export const videosList = defineStore('videosList', {
         };
       }, {});
     },
-    contentQuery(state) {
-      return () => {
+  },
+  actions: {
+    async fetch() {
+      const nuxtApp = useNuxtApp();
+      const { query } = nuxtApp._activeRoute;
+
+      const contentQuery = async () => {
         const nuxtApp = useNuxtApp();
         const { query } = nuxtApp._activeRoute;
 
         if (query.page) {
-          state.pages.current = Number(query.page.toString());
+          this.pages.current = Number(query.page.toString());
         }
         const sort: { publishedAt?: number; title?: number } = {};
         switch (query.sort) {
@@ -68,12 +73,6 @@ export const videosList = defineStore('videosList', {
 
         return queryContent('videos').sort({ $sensitivity: 'base', ...sort });
       };
-    },
-  },
-  actions: {
-    async fetch() {
-      const nuxtApp = useNuxtApp();
-      const { query } = nuxtApp._activeRoute;
 
       const whereCategory = whereObj(query, 'category', true);
       const whereAuthor = whereObj(query, 'author');
@@ -107,7 +106,7 @@ export const videosList = defineStore('videosList', {
         ...(andQuery.length > 0 ? { $and: andQuery } : {}),
       };
 
-      this.data = await this.contentQuery()
+      this.data = await contentQuery()
         .where(whereQuery)
         .skip(
           this.pages.current === 1 || !this.pages.current
@@ -117,7 +116,7 @@ export const videosList = defineStore('videosList', {
         .limit(this.pages.limit)
         .find();
 
-      const filteredVideosRaw = await this.contentQuery()
+      const filteredVideosRaw = await contentQuery()
         .where(whereQuery)
         .only(['title'])
         .find();
@@ -129,7 +128,7 @@ export const videosList = defineStore('videosList', {
       const nuxtApp = useNuxtApp();
       const { query } = nuxtApp._activeRoute;
 
-      const allVideosRaw = await this.contentQuery()
+      const allVideosRaw = await contentQuery()
         .only(['category', 'author', 'playlist'])
         .find();
 

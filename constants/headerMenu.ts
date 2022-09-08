@@ -23,7 +23,7 @@ export const headerMenuItems: HeaderMenu[] = [
     label: 'Videos',
     link: {
       name: 'videos',
-      params: {
+      query: {
         page: 1,
       },
     },

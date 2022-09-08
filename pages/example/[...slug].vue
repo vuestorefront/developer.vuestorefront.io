@@ -1,15 +1,17 @@
 <template>
-  <AtomsLayoutContainer>
-    <ContentDoc />
-  </AtomsLayoutContainer>
+  <NuxtLayout>
+    <AtomsLayoutContainer>
+      <ContentDoc/>
+    </AtomsLayoutContainer>
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
-  const { path, params } = useRoute();
+const {path, params} = useRoute();
 
-  definePageMeta({
-    layout: 'content',
-  });
+definePageMeta({
+  layout: 'content',
+});
 
-  const contentQuery = await queryContent(path).findOne();
+const contentQuery = await queryContent(path).findOne();
 </script>

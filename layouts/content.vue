@@ -1,13 +1,13 @@
 <template>
   <div class="layout layout-background">
-    <OrganismsNavigationHeader />
+    <OrganismsNavigationHeader/>
     <div class="content">
       <AtomsLayoutContent>
-        <slot />
+        <slot/>
       </AtomsLayoutContent>
-      <ActiveOrganismsContentGitHubFooter />
+      <ActiveOrganismsContentGitHubFooter/>
     </div>
-    <OrganismsNavigationFooter />
+    <OrganismsNavigationFooter/>
   </div>
 </template>
 

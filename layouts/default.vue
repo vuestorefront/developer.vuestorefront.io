@@ -1,13 +1,13 @@
 <template>
   <div class="layout layout-background">
-    <OrganismsNavigationHeader />
+    <OrganismsNavigationHeader/>
     <main class="content">
-      <slot />
+      <slot/>
     </main>
-    <OrganismsNavigationFooter />
+    <OrganismsNavigationFooter/>
   </div>
 </template>
 
 <script setup lang="ts">
-  usePageHead();
+usePageHead();
 </script>
