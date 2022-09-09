@@ -64,6 +64,12 @@
         "next": "Next",
         "submit": "Submit"
       },
+      "userDetails": {
+        "firstName": "First name",
+        "lastName": "Last name",
+        "email": "E-mail",
+        "emailMessage": "We won't use your e-mail for any marketing purposes or sell it to anyone"
+      },
       "result": {
         "head": {
           "title": "Quiz results"

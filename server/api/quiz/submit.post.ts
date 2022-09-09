@@ -116,14 +116,14 @@ async function sendEmail(quiz: Quiz, response: Response) {
     passed: response.passed,
     quiz_name: response.quiz_name,
     badge_minimum_score: quiz.badge_minimum_score,
-    link: '',
+    link: '', // TODO: Get website URL from environment variable
   });
 
   return sendGrid.send({
     to: response.user_details.email,
     from: {
       name: 'Vue Storefront Developer',
-      email: 'cokolwiek@platform.vuestorefront.io', // TODO: This will be changed, when we make adjustments to our DNS zones
+      email: 'noreply@platform.vuestorefront.io', // TODO: This will be changed, when we make adjustments to our DNS zones
     },
     subject: `Your ${response.quiz_name} quiz results`,
     html,

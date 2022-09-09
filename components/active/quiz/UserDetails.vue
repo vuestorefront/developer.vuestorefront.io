@@ -2,28 +2,57 @@
   <div
     class="container mx-auto flex flex-col flex-wrap px-5 py-4 text-gray-600 lg:w-2/3"
   >
-    <form @submit.stop.prevent="submit">
-      <div>
-        <input type="text" name="name" placeholder="First name" required />
-        <input type="text" name="surname" placeholder="Last name" required />
-        <input
-          type="email"
-          name="email"
-          placeholder="E-mail address"
-          required
-        />
+    <form class="flex flex-col items-center" @submit.stop.prevent="submit">
+      <div class="flex flex-col space-y-4 md:w-2/3">
+        <!-- First name -->
+        <div class="flex flex-col">
+          <label for="first_name">
+            {{ t('page.quiz.userDetails.firstName') }}
+          </label>
+          <input
+            id="first_name"
+            type="text"
+            name="name"
+            required
+            class="rounded-md border border-slate-300 bg-slate-50 px-4 py-2 focus:border-blue-300 focus:ring focus:ring-blue-200"
+          />
+        </div>
+
+        <!-- Last name -->
+        <div class="flex flex-col">
+          <label for="last_name">
+            {{ t('page.quiz.userDetails.lastName') }}
+          </label>
+          <input
+            id="last_name"
+            type="text"
+            name="surname"
+            required
+            class="rounded-md border border-slate-300 bg-slate-50 px-4 py-2 focus:border-blue-300 focus:ring focus:ring-blue-200"
+          />
+        </div>
+
+        <!-- Email name -->
+        <div class="flex flex-col">
+          <label for="email">
+            {{ t('page.quiz.userDetails.email') }}
+          </label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            required
+            class="rounded-md border border-slate-300 bg-slate-50 px-4 py-2 focus:border-blue-300 focus:ring focus:ring-blue-200"
+          />
+
+          <p class="mt-2 text-center text-sm text-gray-500">
+            {{ t('page.quiz.userDetails.emailMessage') }}
+          </p>
+        </div>
       </div>
 
-      <AtomsButton color="gray">
-        <AtomsIcon
-          name="carbon:arrow-left"
-          class="mr-2 text-lg text-gray-800"
-          @click="emit('goBack')"
-        />
-        {{ t('page.quiz.questions.back') }}
-      </AtomsButton>
-
-      <AtomsButton color="primary">
+      <!-- Submit button -->
+      <AtomsButton type="submit" color="primary" class="mt-6">
         {{ t('page.quiz.questions.submit') }}
       </AtomsButton>
     </form>
@@ -35,7 +64,6 @@
   import type { UserDetails } from '~/types/api/quiz';
 
   const emit = defineEmits<{
-    (e: 'goBack'): void;
     (e: 'submit', form: UserDetails): void;
   }>();
 

@@ -15,7 +15,6 @@
     <ActiveQuizUserDetails
       v-if="step === Steps.UserDetails"
       @submit="submitUserDetails"
-      @go-back="goBackToSurvey"
     />
   </AtomsLayoutContainer>
 </template>
@@ -65,10 +64,6 @@
   function submitSurvey(selectedAnswers: SelectedAnswers) {
     form.selectedAnswers = selectedAnswers;
     step.value = Steps.UserDetails;
-  }
-
-  function goBackToSurvey() {
-    step.value = Steps.Survey;
   }
 
   // Methods
