@@ -2,7 +2,7 @@
   <NuxtLayout>
     <AtomsLayoutContainer ref="container" class="space-y-2">
       <h1 class="text-4xl font-bold">
-        <AtomsTextFirstColoredWord :text="contentQuery.title"/>
+        <AtomsTextFirstColoredWord :text="contentQuery.title" />
       </h1>
       <div class="flex w-full items-center justify-center">
         <AtomsVideoPlayer
@@ -12,17 +12,17 @@
         />
       </div>
       <ContentDoc>
-        <template #empty/>
+        <template #empty />
       </ContentDoc>
       <div class="flex flex-col pt-2 pb-2">
         <div class="flex flex-row space-x-4">
-        <span
-          v-for="tag in contentQuery.tags"
-          :key="tag"
-          class="text-primary-700"
-        >
-          #{{ tag }}
-        </span>
+          <span
+            v-for="tag in contentQuery.tags"
+            :key="tag"
+            class="text-primary-700"
+          >
+            #{{ tag }}
+          </span>
         </div>
         <div class="text-sm text-gray-500">
           <time>
@@ -34,9 +34,9 @@
       <p>{{ contentQuery.description }}</p>
       <NuxtLink
         :to="{
-        name: 'videos',
-        query: { author: contentQuery.author },
-      }"
+          name: 'videos',
+          query: { author: contentQuery.author },
+        }"
         class="cursor-pointer"
       >
         <div class="mt-6 flex items-center">
@@ -59,33 +59,33 @@
 </template>
 
 <script setup lang="ts">
-import {useI18n} from 'vue-i18n';
-import {PAGE_TITLE} from '~/constants/text';
+  import { useI18n } from 'vue-i18n';
+  import { PAGE_TITLE } from '~/constants/text';
 
-definePageMeta({
-  layout: 'content',
-});
+  definePageMeta({
+    layout: 'content',
+  });
 
-const {d} = useI18n();
-const {path} = useRoute();
+  const { d } = useI18n();
+  const { path } = useRoute();
 
-const container = ref(null);
-const {width, height} = useElementSize(container);
+  const container = ref(null);
+  const { width, height } = useElementSize(container);
 
-const playerSizes = computed(() => ({
-  height: Math.ceil((width.value * 9) / 16),
-  width: width.value,
-}));
+  const playerSizes = computed(() => ({
+    height: Math.ceil((width.value * 9) / 16),
+    width: width.value,
+  }));
 
-const contentQuery = await queryContent(path).findOne();
+  const contentQuery = await queryContent(path).findOne();
 
-watch(
-  computed(() => contentQuery),
-  () => {
-    useHead({
-      title: `${contentQuery.title} ${PAGE_TITLE}`,
-    });
-  },
-  {immediate: true, flush: 'sync', deep: true},
-);
+  watch(
+    computed(() => contentQuery),
+    () => {
+      useHead({
+        title: `${contentQuery.title} ${PAGE_TITLE}`,
+      });
+    },
+    { immediate: true, flush: 'sync', deep: true },
+  );
 </script>

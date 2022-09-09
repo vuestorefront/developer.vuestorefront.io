@@ -11,13 +11,11 @@
       {{ counter }}
     </span>
     <slot name="icon">
-      <Suspense>
-        <AtomsIcon
-          name="ph:caret-down-bold"
-          class="filter-horizontal-pop-over-button--icon"
-          :class="open ? 'rotate-180' : 'rotate-0'"
-        />
-      </Suspense>
+      <Icon
+        name="ph:caret-down-bold"
+        class="filter-horizontal-pop-over-button--icon"
+        :class="open ? 'rotate-180' : 'rotate-0'"
+      />
     </slot>
   </PopoverButton>
 </template>

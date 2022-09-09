@@ -8,7 +8,7 @@
         <li v-for="(item, index) in subMenu" :key="index" class="">
           <NuxtLink :to="item.link" :target="item.target || ''" class="group">
             {{ item.title }}
-            <AtomsIcon
+            <Icon
               v-if="item.iconName"
               :name="item.iconName"
               class="group-hover:text-primary text-gray-400"

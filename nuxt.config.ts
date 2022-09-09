@@ -33,6 +33,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@vue-storefront/nuxt-gtag',
     '@nuxt/content',
+    'nuxt-icon',
   ],
   app: {
     head: {

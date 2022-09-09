@@ -5,13 +5,11 @@
     :tag-props="buttonTagProps"
   >
     <template #right>
-      <Suspense>
-        <AtomsIcon
-          :name="iconName"
-          class="button-text transform transition-transform duration-200 ease-in-out"
-          :class="isVisible ? 'rotate-180' : 'rotate-0'"
-        />
-      </Suspense>
+      <Icon
+        :name="iconName"
+        class="button-text transform transition-transform duration-200 ease-in-out"
+        :class="isVisible ? 'rotate-180' : 'rotate-0'"
+      />
     </template>
     {{ selected.label }}
   </AtomsButton>

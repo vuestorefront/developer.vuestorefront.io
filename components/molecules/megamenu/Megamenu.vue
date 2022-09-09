@@ -7,7 +7,7 @@
     v-bind="subMenu?.length > 0 ? { dataDropdownToggle: UUID() } : {}"
   >
     {{ label }}
-    <AtomsIcon
+    <Icon
       v-if="!(subMenu?.length > 0) && iconName"
       :name="iconName"
       class="group-hover:text-primary"

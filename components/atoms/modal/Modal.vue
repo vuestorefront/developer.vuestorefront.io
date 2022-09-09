@@ -19,9 +19,7 @@
               @click="$emit('close', $event)"
             >
               <span class="sr-only">Close</span>
-              <Suspense>
-                <AtomsIcon name="carbon:close" class="text-3xl" />
-              </Suspense>
+              <Icon name="carbon:close" class="text-3xl" />
             </button>
           </div>
           <slot name="content" />
@@ -31,9 +29,7 @@
                 v-if="icon"
                 class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center sm:mx-0 sm:h-10 sm:w-10"
               >
-                <Suspense>
-                  <AtomsIcon :name="icon" class="text-3xl" />
-                </Suspense>
+                <Icon :name="icon" class="text-3xl" />
               </div>
             </slot>
             <div class="text-center sm:text-left">

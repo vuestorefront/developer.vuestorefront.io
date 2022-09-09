@@ -6,9 +6,7 @@
           class="pagination arrow-right item"
           :to="goToPage(pagination.previousPage.link)"
         >
-          <Suspense>
-            <AtomsIcon name="carbon:arrow-left" class="mr-2 text-lg" />
-          </Suspense>
+          <Icon name="carbon:arrow-left" class="mr-2 text-lg" />
           {{ t('components.molecules.pagination.previous') }}
         </NuxtLink>
       </slot>
@@ -56,9 +54,7 @@
           :to="goToPage(pagination.nextPage.link)"
         >
           {{ t('components.molecules.pagination.next') }}
-          <Suspense>
-            <AtomsIcon name="carbon:arrow-right" class="ml-2 text-lg" />
-          </Suspense>
+          <Icon name="carbon:arrow-right" class="ml-2 text-lg" />
         </NuxtLink>
       </slot>
     </div>

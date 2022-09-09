@@ -36,9 +36,7 @@
                 @click="$emit('close')"
               >
                 <span class="sr-only">{{ t('global.interface.close') }}</span>
-                <Suspense>
-                  <AtomsIcon name="carbon:close" class="text-3xl" />
-                </Suspense>
+                <Icon name="carbon:close" class="text-3xl" />
               </button>
             </div>
 
@@ -60,13 +58,11 @@
                     </AtomsBadgeTag>
                   </span>
                   <span class="ml-6 flex items-center">
-                    <Suspense>
-                      <AtomsIcon
-                        name="ph:caret-down-bold"
-                        class="group-hover:text-primary transform transition-transform duration-200 ease-in-out"
-                        :class="open ? 'rotate-180' : 'rotate-0'"
-                      />
-                    </Suspense>
+                    <Icon
+                      name="ph:caret-down-bold"
+                      class="group-hover:text-primary transform transition-transform duration-200 ease-in-out"
+                      :class="open ? 'rotate-180' : 'rotate-0'"
+                    />
                   </span>
                 </DisclosureButton>
               </h3>

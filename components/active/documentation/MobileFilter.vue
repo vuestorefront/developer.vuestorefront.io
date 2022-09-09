@@ -36,9 +36,7 @@
                 @click="$emit('close')"
               >
                 <span class="sr-only">{{ t('global.interface.close') }}</span>
-                <Suspense>
-                  <AtomsIcon name="carbon:close" class="text-3xl" />
-                </Suspense>
+                <Icon name="carbon:close" class="text-3xl" />
               </button>
             </div>
             <form class="mt-4">

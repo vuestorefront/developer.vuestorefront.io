@@ -4,9 +4,7 @@
       {{ t('components.atoms.text.updatedAt') }}
       <time>{{ d(new Date(props.date || ''), 'medium') }}</time>
     </slot>
-    <Suspense>
-      <AtomsIcon name="carbon:calendar" class="ml-2 mb-1 text-base" />
-    </Suspense>
+    <Icon name="carbon:calendar" class="ml-2 mb-1 text-base" />
   </p>
 </template>
 

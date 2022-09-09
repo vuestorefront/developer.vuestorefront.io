@@ -29,7 +29,7 @@
             v-bind="banner"
           />
         </Suspense>
-        <MoleculesSectionLogoClouds/>
+        <MoleculesSectionLogoClouds />
       </AtomsLayoutContainer>
       <AtomsLayoutFullWidthSection>
         <AtomsLayoutFullWidthContainer>
@@ -47,93 +47,93 @@
             />
           </Suspense>
           <Suspense>
-            <LazyMoleculesTextFollowSocials/>
+            <LazyMoleculesTextFollowSocials />
           </Suspense>
         </AtomsLayoutFullWidthContainer>
       </AtomsLayoutFullWidthSection>
       <AtomsLayoutContainer>
-        <LazyMoleculesNewsletterSignUpSection/>
+        <LazyMoleculesNewsletterSignUpSection />
       </AtomsLayoutContainer>
     </AtomsLayoutContent>
   </NuxtLayout>
 </template>
 
 <script setup lang="ts">
-import {useDevTo} from '~/composables/useDevTo';
-import {IntegrationCategory} from '~/enums/integrations';
-import {ApiUrl} from '~/enums/apiUrl';
-import {useI18n} from 'vue-i18n';
+  import { useDevTo } from '~/composables/useDevTo';
+  import { IntegrationCategory } from '~/enums/integrations';
+  import { ApiUrl } from '~/enums/apiUrl';
+  import { useI18n } from 'vue-i18n';
 
-const {t} = useI18n();
+  const { t } = useI18n();
 
-definePageMeta({
-  title: 'i18n:page.home.head.title',
-});
+  definePageMeta({
+    title: 'i18n:page.home.head.title',
+  });
 
-const {data: commerceVendors} = useAsyncData('commerce', async () =>
-  $fetch(ApiUrl.Integrations, {
-    params: {
-      categories: [IntegrationCategory.commerce],
-      random: 6,
-    },
-  }),
-);
+  const { data: commerceVendors } = useAsyncData('commerce', async () =>
+    $fetch(ApiUrl.Integrations, {
+      params: {
+        categories: [IntegrationCategory.commerce],
+        random: 6,
+      },
+    }),
+  );
 
-const {data: cmsVendors} = useAsyncData('cms', async () =>
-  $fetch(ApiUrl.Integrations, {
-    params: {
-      categories: [IntegrationCategory.cms],
-      random: 6,
-    },
-  }),
-);
+  const { data: cmsVendors } = useAsyncData('cms', async () =>
+    $fetch(ApiUrl.Integrations, {
+      params: {
+        categories: [IntegrationCategory.cms],
+        random: 6,
+      },
+    }),
+  );
 
-const {data: paymentVendors} = useAsyncData('payment', async () =>
-  $fetch(ApiUrl.Integrations, {
-    params: {
-      categories: [IntegrationCategory.payment],
-      random: 6,
-    },
-  }),
-);
+  const { data: paymentVendors } = useAsyncData('payment', async () =>
+    $fetch(ApiUrl.Integrations, {
+      params: {
+        categories: [IntegrationCategory.payment],
+        random: 6,
+      },
+    }),
+  );
 
-const homeIntegrationBanners = computed(() => {
-  return [
-    {
-      direction: 'left',
-      title: t('global.integration.types.commerce.title'),
-      message: t('global.integration.types.commerce.text'),
-      brands: commerceVendors.value,
-      buttonLink: `documentation/#${IntegrationCategory.commerce}`,
-      buttonText: t('page.home.integrations.commerce.buttonText'),
-    },
-    {
-      direction: 'right',
-      title: t('global.integration.types.cms.title'),
-      message: t('global.integration.types.cms.text'),
-      brands: cmsVendors.value,
-      buttonLink: `documentation/#${IntegrationCategory.cms}`,
-      buttonText: t('page.home.integrations.cms.buttonText'),
-    },
-    {
-      direction: 'left',
-      title: t('global.integration.types.payment.title'),
-      message: t('global.integration.types.payment.text'),
-      brands: paymentVendors.value,
-      buttonLink: `documentation/#${IntegrationCategory.payment}`,
-      buttonText: t('page.home.integrations.payment.buttonText'),
-    },
-  ];
-});
+  const homeIntegrationBanners = computed(() => {
+    return [
+      {
+        direction: 'left',
+        title: t('global.integration.types.commerce.title'),
+        message: t('global.integration.types.commerce.text'),
+        brands: commerceVendors.value,
+        buttonLink: `documentation/#${IntegrationCategory.commerce}`,
+        buttonText: t('page.home.integrations.commerce.buttonText'),
+      },
+      {
+        direction: 'right',
+        title: t('global.integration.types.cms.title'),
+        message: t('global.integration.types.cms.text'),
+        brands: cmsVendors.value,
+        buttonLink: `documentation/#${IntegrationCategory.cms}`,
+        buttonText: t('page.home.integrations.cms.buttonText'),
+      },
+      {
+        direction: 'left',
+        title: t('global.integration.types.payment.title'),
+        message: t('global.integration.types.payment.text'),
+        brands: paymentVendors.value,
+        buttonLink: `documentation/#${IntegrationCategory.payment}`,
+        buttonText: t('page.home.integrations.payment.buttonText'),
+      },
+    ];
+  });
 
-const {convertPostsToProps, useBlogArticles} = useDevTo();
+  const { convertPostsToProps, useBlogArticles } = useDevTo();
 
-const {$apiAsyncData} = useBlogArticles({
-  organization: 'vue-storefront',
-  perPage: 3,
-});
+  const { $apiAsyncData } = useBlogArticles({
+    organization: 'vue-storefront',
+    perPage: 3,
+  });
 
-const {data, pending, error} = await $apiAsyncData();
+  const { data, pending, error } = await $apiAsyncData();
 
-const postsList = convertPostsToProps(data.value);
+  const postsList = convertPostsToProps(data.value);
 </script>

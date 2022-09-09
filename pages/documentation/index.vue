@@ -3,7 +3,7 @@
     <AtomsLayoutContainer>
       <AtomsLayoutContent class="layout-content--sidebar">
         <AtomsLayoutSideBar class="space-y-4 pr-6">
-          <ActiveDocumentationDesktopFilter/>
+          <ActiveDocumentationDesktopFilter />
           <ActiveDocumentationMobileFilter
             :open="mobileFiltersOpen"
             @close="mobileFiltersOpen = false"
@@ -52,7 +52,7 @@
               @click="mobileFiltersOpen = true"
             />
           </div>
-          <ActiveDocumentationIntegrationsList/>
+          <ActiveDocumentationIntegrationsList />
         </section>
       </AtomsLayoutContent>
     </AtomsLayoutContainer>
@@ -60,16 +60,16 @@
 </template>
 
 <script setup lang="ts">
-import {useI18n} from 'vue-i18n';
-import {useIntegrationsList} from '~/store/documentation/integrationsList';
+  import { useI18n } from 'vue-i18n';
+  import { useIntegrationsList } from '~/store/documentation/integrationsList';
 
-const {t} = useI18n();
+  const { t } = useI18n();
 
-definePageMeta({
-  title: 'i18n:page.documentation.head.title',
-});
+  definePageMeta({
+    title: 'i18n:page.documentation.head.title',
+  });
 
-const {appliedFilters} = useIntegrationsList();
+  const { appliedFilters } = useIntegrationsList();
 
-const mobileFiltersOpen = ref(false);
+  const mobileFiltersOpen = ref(false);
 </script>

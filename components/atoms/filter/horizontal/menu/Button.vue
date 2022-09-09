@@ -5,12 +5,10 @@
     :class="open ? 'filter-horizontal-menu-button--active' : ''"
   >
     <slot />
-    <Suspense>
-      <AtomsIcon
-        name="ph:caret-down-bold"
-        class="filter-horizontal-menu-button--icon"
-      />
-    </Suspense>
+    <Icon
+      name="ph:caret-down-bold"
+      class="filter-horizontal-menu-button--icon"
+    />
   </MenuButton>
 </template>
 
