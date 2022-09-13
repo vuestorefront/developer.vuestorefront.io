@@ -22,7 +22,7 @@ export type Response = {
   id: number;
   user_id: string | null;
   quiz_id: string;
-  discord_user_id: string;
+  discord_user_id: string | null;
   score: number;
   passed: boolean;
   answers: string[];
