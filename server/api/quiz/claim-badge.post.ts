@@ -1,6 +1,6 @@
 import Joi from 'joi';
 import { createSupabaseClient } from '~/server/utils/supabase';
-import type { Response } from '~/types/api/quiz';
+import type { Quiz, Response } from '~/types/api/quiz';
 import type { CompatibilityEvent } from 'h3';
 import type { SupabaseClient, User } from '@supabase/supabase-js';
 
@@ -8,6 +8,13 @@ interface Body {
   accessToken: string;
   resultId: string;
 }
+
+type QuizResponse = Pick<
+  Response,
+  'id' | 'score' | 'passed' | 'discord_user_id' | 'submitter_cookie'
+> & {
+  quizzes: Pick<Quiz, 'id' | 'discord_role_id'>;
+};
 
 /**
  * Validates and returns body of the request or throws an error
@@ -34,9 +41,9 @@ async function validateBody(event: CompatibilityEvent): Promise<Body> {
 async function fetchQuizResponse(
   client: SupabaseClient,
   resultId: string,
-): Promise<Response> {
+): Promise<QuizResponse> {
   const { data, error } = await client
-    .from<Response>('quiz_responses')
+    .from<QuizResponse>('quiz_responses')
     .select(
       `
       id,
@@ -45,7 +52,7 @@ async function fetchQuizResponse(
       discord_user_id,
       submitter_cookie,
       quizzes (
-        name,
+        id,
         discord_role_id
       )
     `,
@@ -112,7 +119,7 @@ async function updateDiscordUserIdInResponse(
 ): Promise<void> {
   const { error } = await client
     .from<Response>('quiz_responses')
-    .update({ discord_user_id: userId })
+    .update({ discord_user_id: userId }) // TODO: Update `user_id`
     .match({ id: resultId });
 
   if (error) {
@@ -129,7 +136,7 @@ export default defineEventHandler(async (event) => {
   const supabase = createSupabaseClient();
 
   const data = await fetchQuizResponse(supabase, resultId);
-  const cookie = getCookie(event, `quiz-${data.quizzes.name}`);
+  const cookie = getCookie(event, `quiz-${data.quizzes.id}`);
 
   if (data.discord_user_id) {
     throw new Error('Badge already claimed');

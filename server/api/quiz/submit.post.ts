@@ -8,7 +8,6 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 import type {
   Quiz,
   Response,
-  SelectedAnswers,
   UserDetails,
   ApiQuizSubmit,
 } from '~/types/api/quiz';
@@ -16,7 +15,7 @@ import emailTemplate from '~~/server/utils/templates/quizResponseEmail';
 
 interface Body {
   name: string;
-  selectedAnswers: SelectedAnswers;
+  selectedAnswers: string[];
   userDetails: UserDetails;
 }
 
@@ -26,10 +25,7 @@ interface Body {
 async function validateBody(event: CompatibilityEvent): Promise<Body> {
   const schema = Joi.object<Body>({
     name: Joi.string().required().alphanum().lowercase(),
-    selectedAnswers: Joi.object().pattern(
-      Joi.string().required().lowercase(),
-      Joi.string().required().lowercase(),
-    ),
+    selectedAnswers: Joi.array().items(Joi.string()),
     userDetails: Joi.object({
       name: Joi.string().required().trim(),
       surname: Joi.string().required().trim(),
@@ -73,7 +69,7 @@ async function fetchQuiz(client: SupabaseClient, name: string): Promise<Quiz> {
   const { data, error } = await client
     .from<Quiz>('quizzes')
     .select()
-    .eq('name', name)
+    .eq('id', name)
     .limit(1)
     .single();
 
@@ -114,8 +110,8 @@ async function sendEmail(quiz: Quiz, response: Response) {
     surname: response.user_details.surname,
     score: response.score,
     passed: response.passed,
-    quiz_name: response.quiz_name,
-    badge_minimum_score: quiz.badge_minimum_score,
+    quiz_name: quiz.title,
+    passing_score: quiz.passing_score,
     link: '', // TODO: Get website URL from environment variable
   });
 
@@ -125,7 +121,7 @@ async function sendEmail(quiz: Quiz, response: Response) {
       name: 'Vue Storefront Developer',
       email: 'noreply@platform.vuestorefront.io', // TODO: This will be changed, when we make adjustments to our DNS zones
     },
-    subject: `Your ${response.quiz_name} quiz results`,
+    subject: `Your ${quiz.title} quiz results`,
     html,
   });
 }
@@ -134,22 +130,22 @@ export default defineEventHandler(async (event) => {
   const { name, selectedAnswers, userDetails } = await validateBody(event);
   const supabase = createSupabaseClient();
   const quiz = await fetchQuiz(supabase, name);
-  const cookieName = `quiz-${quiz.name}`;
+  const cookieName = `quiz-${quiz.id}`;
   const submitterCookie = validateCookie(event, cookieName);
 
   const correctAnswers = quiz.correct_answers.filter(
-    ({ id, answer }) => selectedAnswers[id] === answer,
+    (answer, index) => selectedAnswers[index] === answer,
   );
   const score = Math.round(
     (correctAnswers.length / quiz.correct_answers.length) * 100,
   );
 
   const response = await submitResponse(supabase, {
-    quiz_name: name,
+    quiz_id: quiz.id,
+    score,
+    passed: score >= quiz.passing_score,
     answers: selectedAnswers,
     user_details: userDetails,
-    score,
-    passed: score >= quiz.badge_minimum_score,
     submitter_cookie: submitterCookie,
   });
 

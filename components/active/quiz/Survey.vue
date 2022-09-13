@@ -31,18 +31,16 @@
 
         <label
           v-for="answer in currentQuestion.answers"
-          :key="answer.id"
-          :for="'answer' + answer.id"
+          :key="answer"
+          :for="'answer' + answer"
           :class="{
-            'border-green-300 bg-green-100 text-green-800': isSelected(
-              answer.id,
-            ),
+            'border-green-300 bg-green-100 text-green-800': isSelected(answer),
           }"
           class="mt-2 flex cursor-pointer items-center justify-center rounded border border-gray-200 pl-4 text-gray-800 transition-all duration-200 ease-in-out"
         >
           <div class="flex h-10 w-10 items-center justify-center">
             <AtomsIcon
-              v-if="isSelected(answer.id)"
+              v-if="isSelected(answer)"
               name="carbon:radio-button-checked"
               class="text-green-600"
             />
@@ -55,16 +53,16 @@
           </div>
 
           <input
-            :id="'answer' + answer.id"
-            :value="answer.id"
-            :name="currentQuestion.id"
-            :checked="isSelected(answer.id)"
+            :id="'answer' + answer"
+            :value="answer"
+            :name="currentQuestion"
+            :checked="isSelected(answer)"
             type="radio"
             class="hidden"
-            @input="() => select(answer.id)"
+            @input="() => select(answer)"
           />
           <span class="text-bold w-full py-4 text-sm">
-            {{ answer.text }}
+            {{ answer }}
           </span>
         </label>
 
@@ -96,14 +94,14 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n';
-  import type { ApiQuizQuestions, SelectedAnswers } from '~/types/api/quiz';
+  import type { ApiQuizQuestions } from '~/types/api/quiz';
 
   const props = defineProps<{
     quiz: ApiQuizQuestions;
   }>();
 
   const emit = defineEmits<{
-    (e: 'submit', answers: SelectedAnswers): void;
+    (e: 'submit', answers: string[]): void;
   }>();
 
   definePageMeta({
@@ -113,8 +111,8 @@
   const { t } = useI18n();
 
   // Refs
-  const selectedAnswers = reactive<SelectedAnswers>({});
-  const currentStepNumber = ref(1);
+  const selectedAnswers = ref<string[]>([]);
+  const currentStepNumber = ref<number>(1);
 
   // Computed
   const max = computed<number>(() => {
@@ -125,12 +123,16 @@
     return Math.round((currentStepNumber.value / max.value) * 100);
   });
 
+  const currentArrayIndex = computed(() => {
+    return currentStepNumber.value - 1;
+  });
+
   const currentQuestion = computed(() => {
-    return props.quiz.questions?.[currentStepNumber.value - 1];
+    return props.quiz.questions?.[currentArrayIndex.value];
   });
 
   const currentAnswer = computed(() => {
-    return selectedAnswers[currentQuestion.value.id];
+    return selectedAnswers.value[currentArrayIndex.value];
   });
 
   const isFirstStep = computed(() => {
@@ -154,7 +156,7 @@
     }
 
     if (isLastStep.value) {
-      emit('submit', selectedAnswers);
+      emit('submit', selectedAnswers.value);
       return;
     }
 
@@ -162,7 +164,7 @@
   }
 
   function select(answer: string) {
-    selectedAnswers[currentQuestion.value.id] = answer;
+    selectedAnswers.value[currentArrayIndex.value] = answer;
   }
 
   function isSelected(answer: string) {

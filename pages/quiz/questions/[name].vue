@@ -23,7 +23,6 @@
   import { useI18n } from 'vue-i18n';
   import { ApiUrl } from '~/enums/apiUrl';
   import type {
-    SelectedAnswers,
     UserDetails,
     ApiQuizQuestions,
     ApiQuizSubmit,
@@ -46,7 +45,7 @@
 
   const step = ref(Steps.Survey);
   const form = reactive({
-    selectedAnswers: {},
+    selectedAnswers: [] as string[],
     userDetails: {},
   });
 
@@ -61,7 +60,7 @@
     },
   );
 
-  function submitSurvey(selectedAnswers: SelectedAnswers) {
+  function submitSurvey(selectedAnswers: string[]) {
     form.selectedAnswers = selectedAnswers;
     step.value = Steps.UserDetails;
   }
@@ -73,7 +72,7 @@
     const data = await $fetch<ApiQuizSubmit>(ApiUrl.QuizSubmit, {
       method: 'POST',
       body: {
-        name: quiz.value.name,
+        name: quiz.value.id,
         ...form,
       },
     });

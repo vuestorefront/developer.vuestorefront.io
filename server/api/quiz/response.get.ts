@@ -2,11 +2,24 @@ import Joi from 'joi';
 import { createSupabaseClient } from '~/server/utils/supabase';
 import type { CompatibilityEvent } from 'h3';
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type { ApiQuizResponse, Response } from '~/types/api/quiz';
+import type { ApiQuizResponse, Response, Quiz } from '~/types/api/quiz';
 
 interface Query {
   id: string;
 }
+
+type QuizResponse = Pick<
+  Response,
+  | 'id'
+  | 'discord_user_id'
+  | 'score'
+  | 'passed'
+  | 'submitter_cookie'
+  | 'user_details'
+  | 'created_at'
+> & {
+  quizzes: Pick<Quiz, 'id' | 'title'>;
+};
 
 /**
  * Validates and returns query from the request or throws an error
@@ -31,22 +44,21 @@ function validateQuery(event: CompatibilityEvent): Query {
 async function fetchQuizResponse(
   client: SupabaseClient,
   id: string,
-): Promise<Response> {
+): Promise<QuizResponse> {
   const { data, error } = await client
-    .from<Response>('quiz_responses')
+    .from<QuizResponse>('quiz_responses')
     .select(
       `
       id,
       discord_user_id,
       score,
       passed,
-      submitter_cookie,
       user_details,
+      submitter_cookie,
       created_at,
       quizzes (
-        name,
-        title,
-        badge_image_path
+        id,
+        title
       )
     `,
     )
@@ -68,7 +80,7 @@ export default defineEventHandler(async (event) => {
   const { id } = validateQuery(event);
   const supabase = createSupabaseClient();
   const data = await fetchQuizResponse(supabase, id);
-  const cookie = getCookie(event, `quiz-${data.quizzes.name}`);
+  const cookie = getCookie(event, `quiz-${data.quizzes.id}`);
 
   return {
     id: data.id,

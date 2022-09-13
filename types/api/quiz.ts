@@ -1,33 +1,16 @@
-export interface CorrectAnswer {
-  id: string;
-  answer: string;
-}
-
-export interface Answer {
-  id: string;
-  text: string;
-}
-
 export interface Question {
-  id: string;
   title: string;
-  answers: Answer[];
+  answers: string[];
 }
 
-export interface Quiz {
-  id: number;
-  name: string;
+export type Quiz = {
+  id: string;
   title: string;
   questions: Question[];
-  correct_answers: CorrectAnswer[];
+  correct_answers: string[];
   discord_role_id: string;
-  badge_minimum_score: number;
-  badge_image_path: string;
-}
-
-export interface SelectedAnswers {
-  [key: string]: string;
-}
+  passing_score: number;
+};
 
 export interface UserDetails {
   name: string;
@@ -35,20 +18,20 @@ export interface UserDetails {
   email: string;
 }
 
-export interface Response {
+export type Response = {
   id: number;
+  user_id: string | null;
+  quiz_id: string;
   discord_user_id: string;
-  quiz_name: string;
-  answers: SelectedAnswers;
-  user_details: UserDetails;
   score: number;
   passed: boolean;
+  answers: string[];
+  user_details: UserDetails;
   submitter_cookie: string;
   created_at: string;
-  quizzes: Quiz;
-}
+};
 
-export type ApiQuizQuestions = Pick<Quiz, 'name' | 'title' | 'questions'>;
+export type ApiQuizQuestions = Pick<Quiz, 'id' | 'title' | 'questions'>;
 
 export type ApiQuizResponse = {
   id: Response['id'];
@@ -58,7 +41,7 @@ export type ApiQuizResponse = {
   isSubmitter: boolean;
   isBadgeClaimed: boolean;
   createdAt: Response['created_at'];
-  quiz: Pick<Quiz, 'name' | 'title' | 'badge_image_path'>;
+  quiz: Pick<Quiz, 'title'>;
 };
 
 export type ApiQuizSubmit = Pick<Response, 'id'>;

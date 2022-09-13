@@ -37,12 +37,12 @@ async function fetchQuiz(
     .from<ApiQuizQuestions>('quizzes')
     .select(
       `
-      name,
+      id,
       title,
       questions
     `,
     )
-    .eq('name', name)
+    .eq('id', name)
     .limit(1)
     .single();
 
