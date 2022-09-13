@@ -32,7 +32,7 @@
           />
         </div>
 
-        <!-- Email name -->
+        <!-- Email address -->
         <div class="flex flex-col">
           <label for="email">
             {{ t('page.quiz.userDetails.email') }}
