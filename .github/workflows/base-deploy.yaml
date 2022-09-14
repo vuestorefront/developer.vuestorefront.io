@@ -35,6 +35,18 @@ on:
         required: true
       SLACK_WEBHOOK:
         required: true
+      SUPABASE_URL:
+        required: true
+      SUPABASE_PUBLIC_KEY:
+        required: true
+      SUPABASE_SERVICE_ROLE_KEY:
+        required: true
+      DISCORD_TOKEN:
+        required: true
+      DISCORD_GUILD_ID:
+        required: true
+      SENDGRID_API_KEY:
+        required: true
 permissions:
   contents: read
   deployments: write
@@ -104,6 +116,12 @@ jobs:
           DEVTO_API_TOKEN: '${{ secrets.BUILD_DEVTO_API_TOKEN }}'
           GITHUB_API_TOKEN: '${{ secrets.BUILD_GITHUB_API_TOKEN }}'
           GOOGLE_TAG_ID: '${{ secrets.GOOGLE_TAG_ID }}'
+          SUPABASE_URL: '${{secrets.SUPABASE_URL}}'
+          SUPABASE_PUBLIC_KEY: '${{secrets.SUPABASE_PUBLIC_KEY}}'
+          SUPABASE_SERVICE_ROLE_KEY: '${{secrets.SUPABASE_SERVICE_ROLE_KEY}}'
+          DISCORD_TOKEN: '${{secrets.DISCORD_TOKEN}}'
+          DISCORD_GUILD_ID: '${{secrets.DISCORD_GUILD_ID}}'
+          SENDGRID_API_KEY: '${{secrets.SENDGRID_API_KEY}}'
         with:
           name: 'developer-storefrontcloud-io/vue-storefront:${{ inputs.SHA }}'
           registry: registry.vuestorefront.cloud
@@ -111,7 +129,7 @@ jobs:
           password: '${{ secrets.CLOUD_PASSWORD }}'
           dockerfile: .vuestorefrontcloud/docker/Dockerfile
           buildoptions: '--compress'
-          buildargs: ALGOLIA_TOKEN,ALGOLIA_ID,GITHUB_API_TOKEN,DEVTO_API_TOKEN,GOOGLE_TAG_ID
+          buildargs: ALGOLIA_TOKEN,ALGOLIA_ID,GITHUB_API_TOKEN,DEVTO_API_TOKEN,GOOGLE_TAG_ID,SUPABASE_URL,SUPABASE_PUBLIC_KEY,SUPABASE_SERVICE_ROLE_KEY,DISCORD_TOKEN,DISCORD_GUILD_ID,SENDGRID_API_KEY
 
       - name: Failure Status
         if: failure()
