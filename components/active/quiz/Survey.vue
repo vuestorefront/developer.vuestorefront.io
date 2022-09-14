@@ -55,7 +55,6 @@
           <input
             :id="'answer' + answer"
             :value="answer"
-            :name="currentQuestion"
             :checked="isSelected(answer)"
             type="radio"
             class="hidden"
