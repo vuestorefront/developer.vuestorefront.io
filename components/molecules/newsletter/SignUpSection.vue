@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="newsletter"
     class="mx-auto grid max-w-7xl grid-cols-1 py-12 px-4 sm:px-6 md:grid-cols-2 lg:py-16 lg:px-8"
   >
     <div class="">
@@ -21,16 +22,24 @@
 <script setup lang="ts">
   import scriptLoader from '~/utils/scriptLoader';
 
-  onMounted(async () => {
-    await scriptLoader('//js.hsforms.net/forms/v2.js', 'hub-spot');
+  const newsletter = ref(null);
+  const rendered = ref(false);
+  const targetIsVisible = useElementVisibility(newsletter);
 
-    if (hbspt) {
-      hbspt.forms.create({
-        target: '#newsletter-form',
-        region: 'na1',
-        portalId: '8443671',
-        formId: '1355cce5-1417-4409-bb75-8a9f5081230d',
-      });
-    }
-  });
+  watch(
+    computed(() => targetIsVisible.value),
+    async () => {
+      await scriptLoader('//js.hsforms.net/forms/v2.js', 'hub-spot');
+
+      if (hbspt && !rendered.value) {
+        hbspt.forms.create({
+          target: '#newsletter-form',
+          region: 'na1',
+          portalId: '8443671',
+          formId: '1355cce5-1417-4409-bb75-8a9f5081230d',
+        });
+        rendered.value = true;
+      }
+    },
+  );
 </script>

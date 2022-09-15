@@ -7,3 +7,7 @@
     <OrganismsNavigationFooter />
   </div>
 </template>
+
+<script setup lang="ts">
+  usePageHead();
+</script>

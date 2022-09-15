@@ -58,12 +58,15 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n';
+  import { PAGE_TITLE } from '~/constants/text';
 
   definePageMeta({
     layout: 'content',
   });
 
+  const { d } = useI18n();
   const { path, params } = useRoute();
+
   const container = ref(null);
   const { width, height } = useElementSize(container);
 
@@ -74,5 +77,13 @@
 
   const contentQuery = await queryContent(path).findOne();
 
-  const { d } = useI18n();
+  watch(
+    computed(() => contentQuery),
+    () => {
+      useHead({
+        title: `${contentQuery.title} ${PAGE_TITLE}`,
+      });
+    },
+    { immediate: true, flush: 'sync', deep: true },
+  );
 </script>

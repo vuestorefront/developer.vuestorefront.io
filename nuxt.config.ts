@@ -21,12 +21,12 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
     'nuxt-schema-org',
-    ...(process.env.LIGHTHOUSE ? ['@unlighthouse/nuxt'] : []),
-    '@nuxtjs/algolia',
     '@vue-storefront/nuxt-gtag',
   ],
   buildModules: ['@nuxt/content'],
-  head: nuxtConfigHead,
+  app: {
+    head: nuxtConfigHead,
+  },
   loading: {
     color: '#02bb4d',
   },
@@ -34,6 +34,5 @@ export default defineNuxtConfig({
   tailwindcss: nuxtConfigTailwind,
   content: nuxtConfigContent,
   intlify: nuxtConfigI18n,
-  algolia: nuxtConfigAlgolia,
   gTag: nuxtGTagConfig,
 });

@@ -21,47 +21,37 @@
         :button-text="t('page.home.discordCTA.button')"
         button-text-color="secondary"
       />
-      <MoleculesSectionLogoClouds
-        direction="left"
-        :title="t('global.integration.types.commerce.title')"
-        :message="t('global.integration.types.commerce.text')"
-        :brands="commerceVendors"
-        :button-link="`documentation/#${IntegrationCategory.commerce}`"
-        :button-text="t('page.home.integrations.commerce.buttonText')"
-      />
-      <MoleculesSectionLogoClouds
-        direction="right"
-        :title="t('global.integration.types.cms.title')"
-        :message="t('global.integration.types.cms.text')"
-        :brands="cmsVendors"
-        :button-link="`documentation/#${IntegrationCategory.cms}`"
-        :button-text="t('page.home.integrations.cms.buttonText')"
-      />
-      <MoleculesSectionLogoClouds
-        direction="left"
-        :title="t('global.integration.types.payment.title')"
-        :message="t('global.integration.types.payment.text')"
-        :brands="paymentVendors"
-        :button-link="`documentation/#${IntegrationCategory.payment}`"
-        :button-text="t('page.home.integrations.payment.buttonText')"
-      />
+      <Suspense>
+        <LazyMoleculesSectionLogoClouds
+          v-for="(banner, index) in homeIntegrationBanners"
+          :key="index"
+          v-bind="banner"
+        />
+      </Suspense>
+      <MoleculesSectionLogoClouds />
     </AtomsLayoutContainer>
     <AtomsLayoutFullWidthSection>
       <AtomsLayoutFullWidthContainer>
-        <AtomsTextHeadingCenter
-          :title="t('page.home.blog.title')"
-          :message="t('page.home.blog.message')"
-        />
-        <OrganismsSectionBlogPosts
-          :posts="postsList"
-          :loading="pending"
-          :error="error"
-        />
-        <MoleculesTextFollowSocials />
+        <Suspense>
+          <LazyAtomsTextHeadingCenter
+            :title="t('page.home.blog.title')"
+            :message="t('page.home.blog.message')"
+          />
+        </Suspense>
+        <Suspense>
+          <LazyOrganismsSectionBlogPosts
+            :posts="postsList"
+            :loading="pending"
+            :error="error"
+          />
+        </Suspense>
+        <Suspense>
+          <LazyMoleculesTextFollowSocials />
+        </Suspense>
       </AtomsLayoutFullWidthContainer>
     </AtomsLayoutFullWidthSection>
     <AtomsLayoutContainer>
-      <MoleculesNewsletterSignUpSection />
+      <LazyMoleculesNewsletterSignUpSection />
     </AtomsLayoutContainer>
   </AtomsLayoutContent>
 </template>
@@ -71,33 +61,67 @@
   import { IntegrationCategory } from '~/enums/integrations';
   import { ApiUrl } from '~/enums/apiUrl';
   import { useI18n } from 'vue-i18n';
-  import { IntegrationList } from '~/types/integrations';
-
-  definePageMeta({
-    documentDriven: false,
-  });
 
   const { t } = useI18n();
 
-  const { data: commerceVendors } = useFetch(ApiUrl.Integrations, {
-    params: {
-      category: IntegrationCategory.commerce,
-      random: 6,
-    },
+  definePageMeta({
+    title: 'i18n:page.home.head.title',
   });
 
-  const { data: cmsVendors } = useFetch(ApiUrl.Integrations, {
-    params: {
-      category: IntegrationCategory.cms,
-      random: 6,
-    },
-  });
+  const { data: commerceVendors } = useAsyncData('commerce', async () =>
+    $fetch(ApiUrl.Integrations, {
+      params: {
+        categories: [IntegrationCategory.commerce],
+        random: 6,
+      },
+    }),
+  );
 
-  const { data: paymentVendors } = useFetch(ApiUrl.Integrations, {
-    params: {
-      category: IntegrationCategory.payment,
-      random: 6,
-    },
+  const { data: cmsVendors } = useAsyncData('cms', async () =>
+    $fetch(ApiUrl.Integrations, {
+      params: {
+        categories: [IntegrationCategory.cms],
+        random: 6,
+      },
+    }),
+  );
+
+  const { data: paymentVendors } = useAsyncData('payment', async () =>
+    $fetch(ApiUrl.Integrations, {
+      params: {
+        categories: [IntegrationCategory.payment],
+        random: 6,
+      },
+    }),
+  );
+
+  const homeIntegrationBanners = computed(() => {
+    return [
+      {
+        direction: 'left',
+        title: t('global.integration.types.commerce.title'),
+        message: t('global.integration.types.commerce.text'),
+        brands: commerceVendors.value,
+        buttonLink: `documentation/#${IntegrationCategory.commerce}`,
+        buttonText: t('page.home.integrations.commerce.buttonText'),
+      },
+      {
+        direction: 'right',
+        title: t('global.integration.types.cms.title'),
+        message: t('global.integration.types.cms.text'),
+        brands: cmsVendors.value,
+        buttonLink: `documentation/#${IntegrationCategory.cms}`,
+        buttonText: t('page.home.integrations.cms.buttonText'),
+      },
+      {
+        direction: 'left',
+        title: t('global.integration.types.payment.title'),
+        message: t('global.integration.types.payment.text'),
+        brands: paymentVendors.value,
+        buttonLink: `documentation/#${IntegrationCategory.payment}`,
+        buttonText: t('page.home.integrations.payment.buttonText'),
+      },
+    ];
   });
 
   const { convertPostsToProps, useBlogArticles } = useDevTo();

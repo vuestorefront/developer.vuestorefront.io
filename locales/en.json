@@ -2,7 +2,7 @@
   "page": {
     "home": {
       "head": {
-        "title": ""
+        "title": "Home"
       },
       "videoBanner": {
         "title": "What is Vue Storefront",
@@ -50,6 +50,41 @@
       "content": {
         "vsf": "A Frontend as a Service that delivers custom storefronts at the fraction of cost and time, and with lightning-fast page loads to achieve better conversion rates and higher revenue.",
         "sfui": "A Vue.js design system and UI for Composable Commerce. Create stunning, mobile-first online stores with 50+ fully customizable components."
+      }
+    },
+    "quiz": {
+      "questions": {
+        "head": {
+          "title": "Knowledge quiz"
+        },
+        "header": "Test your {test} knowledge",
+        "step": "Step {current} of {max}",
+        "progress": "{progress}%",
+        "back": "Back",
+        "next": "Next",
+        "submit": "Submit"
+      },
+      "userDetails": {
+        "firstName": "First name",
+        "lastName": "Last name",
+        "email": "E-mail",
+        "emailMessage": "We won't use your e-mail for any marketing purposes or sell it to anyone"
+      },
+      "result": {
+        "head": {
+          "title": "Quiz results"
+        },
+        "diploma": {
+          "line_2": "completed the",
+          "line_3": "{test} knowledge quiz with the score of {score}%"
+        },
+        "header": "Result of the {test} knowledge test",
+        "shareTitle": "Share the result",
+        "loginTitle": "Login to Discord to receive a badge",
+        "claimBadge": "Claim Discord badge",
+        "badgeClaimed": "Discord badge claimed",
+        "loginButton": "Login to Discord",
+        "copied": "Copied"
       }
     },
     "videos": {
@@ -155,7 +190,7 @@
         },
         "payment": {
           "text": "A smooth payment experience is a must for a good conversion rate. On the other hand, such integrations require specific knowledge, a lot of attention to detail, and managing edge cases. Accelerate your frontend development with our payment integrations.",
-          "title": "Payments Integrations"
+          "title": "Payment Integrations"
         },
         "reviews": {
           "text": "All development efforts should lead to a better customer experience. The best way to get to know what your customers think about your site is through Review Solutions, that's why we provide such integration.",
