@@ -9,6 +9,8 @@ on:
         required: true
         type: string
     secrets:
+      PAGE_URL:
+        required: true
       CLOUD_URL:
         required: true
       CLOUD_INSTANCE:
@@ -111,17 +113,18 @@ jobs:
       - name: Build and publish docker image
         uses: elgohr/Publish-Docker-Github-Action@master
         env:
+          PAGE_URL: '${{ secrets.PAGE_URL }}'
           ALGOLIA_ID: '${{ secrets.ALGOLIA_ID }}'
           ALGOLIA_TOKEN: '${{ secrets.ALGOLIA_TOKEN }}'
           DEVTO_API_TOKEN: '${{ secrets.BUILD_DEVTO_API_TOKEN }}'
           GITHUB_API_TOKEN: '${{ secrets.BUILD_GITHUB_API_TOKEN }}'
           GOOGLE_TAG_ID: '${{ secrets.GOOGLE_TAG_ID }}'
-          SUPABASE_URL: '${{secrets.SUPABASE_URL}}'
-          SUPABASE_PUBLIC_KEY: '${{secrets.SUPABASE_PUBLIC_KEY}}'
-          SUPABASE_SERVICE_ROLE_KEY: '${{secrets.SUPABASE_SERVICE_ROLE_KEY}}'
-          DISCORD_TOKEN: '${{secrets.DISCORD_TOKEN}}'
-          DISCORD_GUILD_ID: '${{secrets.DISCORD_GUILD_ID}}'
-          SENDGRID_API_KEY: '${{secrets.SENDGRID_API_KEY}}'
+          SUPABASE_URL: '${{ secrets.SUPABASE_URL }}'
+          SUPABASE_PUBLIC_KEY: '${{ secrets.SUPABASE_PUBLIC_KEY }}'
+          SUPABASE_SERVICE_ROLE_KEY: '${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}'
+          DISCORD_TOKEN: '${{ secrets.DISCORD_TOKEN }}'
+          DISCORD_GUILD_ID: '${{ secrets.DISCORD_GUILD_ID }}'
+          SENDGRID_API_KEY: '${{ secrets.SENDGRID_API_KEY }}'
         with:
           name: 'developer-storefrontcloud-io/vue-storefront:${{ inputs.SHA }}'
           registry: registry.vuestorefront.cloud
@@ -129,7 +132,7 @@ jobs:
           password: '${{ secrets.CLOUD_PASSWORD }}'
           dockerfile: .vuestorefrontcloud/docker/Dockerfile
           buildoptions: '--compress'
-          buildargs: ALGOLIA_TOKEN,ALGOLIA_ID,GITHUB_API_TOKEN,DEVTO_API_TOKEN,GOOGLE_TAG_ID,SUPABASE_URL,SUPABASE_PUBLIC_KEY,SUPABASE_SERVICE_ROLE_KEY,DISCORD_TOKEN,DISCORD_GUILD_ID,SENDGRID_API_KEY
+          buildargs: PAGE_URL,ALGOLIA_TOKEN,ALGOLIA_ID,GITHUB_API_TOKEN,DEVTO_API_TOKEN,GOOGLE_TAG_ID,SUPABASE_URL,SUPABASE_PUBLIC_KEY,SUPABASE_SERVICE_ROLE_KEY,DISCORD_TOKEN,DISCORD_GUILD_ID,SENDGRID_API_KEY
 
       - name: Failure Status
         if: failure()

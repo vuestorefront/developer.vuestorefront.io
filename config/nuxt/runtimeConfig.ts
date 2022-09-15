@@ -10,6 +10,7 @@ export const nuxtConfigRuntimeConfig = {
   supabaseServiceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY,
   sendGridApiKey: process.env.SENDGRID_API_KEY,
   public: {
+    pageUrl: process.env.PAGE_URL,
     gitHub: {
       repository: 'vuestorefront/developer.vuestorefront.io',
       contentPath: 'content',

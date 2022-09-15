@@ -104,6 +104,10 @@ async function submitResponse(
  */
 async function sendEmail(quiz: Quiz, response: Response) {
   const sendGrid = createSendGridClient();
+  const { href } = new URL(
+    `/quiz/results/${response.id}`,
+    useRuntimeConfig().public.pageUrl,
+  );
 
   const html = ejs.render(emailTemplate, {
     name: response.user_details.name,
@@ -112,17 +116,22 @@ async function sendEmail(quiz: Quiz, response: Response) {
     passed: response.passed,
     quiz_name: quiz.title,
     passing_score: quiz.passing_score,
-    link: '', // TODO: Get website URL from environment variable
+    href,
   });
 
   return sendGrid.send({
     to: response.user_details.email,
     from: {
       name: 'Vue Storefront Developer',
-      email: 'noreply@platform.vuestorefront.io', // TODO: This will be changed, when we make adjustments to our DNS zones
+      email: 'noreply@developer.vuestorefront.io',
     },
     subject: `Your ${quiz.title} quiz results`,
     html,
+    trackingSettings: {
+      clickTracking: {
+        enable: false,
+      },
+    },
   });
 }
 

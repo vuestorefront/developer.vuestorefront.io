@@ -109,7 +109,7 @@ export default `
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;">
                           <tr>
                             <td align="center" bgcolor="#02C652" role="presentation" style="border:none;border-radius:8px;cursor:auto;mso-padding-alt:12px 32px;background:#02C652;" valign="middle">
-                              <a href="<%= link %>" style="display:inline-block;background:#02C652;color:white;font-family:Lato, Arial;font-size:15px;font-weight:bold;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:12px 32px;mso-padding-alt:0px;border-radius:8px;" target="_blank"> See my result </a>
+                              <a href="<%= href %>" style="display:inline-block;background:#02C652;color:white;font-family:Lato, Arial;font-size:15px;font-weight:bold;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:12px 32px;mso-padding-alt:0px;border-radius:8px;" target="_blank"> See my result </a>
                             </td>
                           </tr>
                         </table>
