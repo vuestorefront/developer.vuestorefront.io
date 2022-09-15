@@ -19,7 +19,7 @@ jobs:
       ENVIRONMENT: 'production'
       SHA: '${{ github.sha }}'
     secrets:
-      PAGE_URL: '${{secrets.PAGE_URL}}'
+      PAGE_URL: 'http://developer.vuestorefront.io/'
       CLOUD_URL: 'https://developer.europe-west1.gcp.storefrontcloud.io'
       CLOUD_INSTANCE: 'https://farmer.storefrontcloud.io/instance/developer-europe-west1-gcp-storefrontcloud-io'
       CLOUD_USERNAME: '${{secrets.CLOUD_USERNAME}}'

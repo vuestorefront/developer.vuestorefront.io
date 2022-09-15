@@ -19,7 +19,7 @@ jobs:
       ENVIRONMENT: 'development'
       SHA: '${{ github.sha }}'
     secrets:
-      PAGE_URL: '${{secrets.PAGE_URL}}'
+      PAGE_URL: 'https://developer-beta.europe-west1.gcp.storefrontcloud.io'
       CLOUD_URL: 'https://developer-beta.europe-west1.gcp.storefrontcloud.io'
       CLOUD_INSTANCE: 'https://farmer.storefrontcloud.io/instance/developer-beta-europe-west1-gcp-storefrontcloud-io'
       CLOUD_USERNAME: '${{secrets.CLOUD_USERNAME}}'

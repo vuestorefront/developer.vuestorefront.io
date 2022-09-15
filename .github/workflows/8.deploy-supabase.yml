@@ -1,13 +1,6 @@
 name: Deploy Supabase to Production
 
 on:
-  push:
-    branches:
-      - main
-  workflow_run:
-    workflows: ["Deploy - Production"]
-    types:
-      - completed
   workflow_dispatch:
 
 jobs:
