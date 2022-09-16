@@ -1,7 +1,7 @@
 <template>
   <div class="filter-horizontal">
     <!-- Mobile filter dialog -->
-    <ActiveVideosMobileFilter :open="mobileMenu" @close="mobileMenu = false" />
+    <ActiveVideosMobileFilter :open="mobileMenu" @close="mobileMenu = false"/>
 
     <div class="filter-horizontal-wrapper">
       <section aria-labelledby="filter-heading">
@@ -74,13 +74,21 @@
 </template>
 
 <script setup lang="ts">
-  import { useI18n } from 'vue-i18n';
-  import { useVideosList } from '~/store/videos/videoList';
+import {useI18n} from 'vue-i18n';
+import {useVideosList} from '~/composables/store/useVideosList';
+import {useSortOptions} from '~/composables/filter/base';
 
-  const { t } = useI18n();
+const {t} = useI18n();
 
-  const mobileMenu = ref(false);
+const mobileMenu = ref(false);
 
-  const { changeFilter, filters, videos, sortOptions, getCounter } =
-    useVideosList();
+const {sortOptions} = useSortOptions();
+
+const {
+  data: videos,
+  filters,
+  pages,
+  changeFilter,
+  getCounter,
+} = useVideosList();
 </script>

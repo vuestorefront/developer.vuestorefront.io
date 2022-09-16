@@ -20,7 +20,7 @@ export const usePagination = ({
   pagesToDisplay = 6,
   currentPage = 1,
   pageLinkRule = (pageNumber) => {
-    return `page=${pageNumber}`;
+    return `${pageNumber}`;
   },
 }: {
   total: number;
