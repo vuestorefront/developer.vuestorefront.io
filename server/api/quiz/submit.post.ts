@@ -3,6 +3,11 @@ import ejs from 'ejs';
 import Joi from 'joi';
 import { createSendGridClient } from '~/server/utils/sendGrid';
 import { createSupabaseClient } from '~/server/utils/supabase';
+import emailTemplate from '~/server/utils/templates/quizResponseEmail';
+import {
+  getDiplomaSVG,
+  getPdfBufferFromSvg,
+} from '~~/server/utils/getDiplomaPdfBuffer';
 import type { CompatibilityEvent } from 'h3';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type {
@@ -11,7 +16,6 @@ import type {
   UserDetails,
   ApiQuizSubmit,
 } from '~/types/api/quiz';
-import emailTemplate from '~~/server/utils/templates/quizResponseEmail';
 
 interface Body {
   name: string;
@@ -99,6 +103,28 @@ async function submitResponse(
   return data;
 }
 
+async function generateAndSaveDiplomas(
+  client: SupabaseClient,
+  response: Response,
+  quiz: Quiz,
+): Promise<void> {
+  const diplomaSvg = getDiplomaSVG(response, quiz);
+  const diplomaPdf = getPdfBufferFromSvg(diplomaSvg);
+  const storage = client.storage.from('quiz-diplomas');
+
+  const pdf = storage.upload(`${response.id}.pdf`, diplomaPdf, {
+    cacheControl: '86400', // 1 day
+    contentType: 'application/pdf',
+  });
+
+  const svg = storage.upload(`${response.id}.svg`, diplomaSvg, {
+    cacheControl: '86400', // 1 day
+    contentType: 'image/svg+xml',
+  });
+
+  await Promise.all([pdf, svg]);
+}
+
 /**
  * Sends e-mail with quiz results to the user
  */
@@ -157,6 +183,8 @@ export default defineEventHandler(async (event) => {
     user_details: userDetails,
     submitter_cookie: submitterCookie,
   });
+
+  await generateAndSaveDiplomas(supabase, response, quiz);
 
   await sendEmail(quiz, response);
 

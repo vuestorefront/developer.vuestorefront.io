@@ -8,16 +8,17 @@
   <!-- Diploma -->
   <div class="mb-4 flex w-full justify-start overflow-y-auto md:justify-center">
     <div class="w-full min-w-[768px] md:w-3/4">
-      <ActiveQuizDiploma :response="response" />
+      <!-- Use "object" instead of "img" to properly load fonts -->
+      <object type="image/svg+xml" :data="diplomaSvg" />
     </div>
   </div>
 
   <!-- Share and badge buttons -->
   <div class="container mx-auto flex flex-col items-center justify-center">
     <client-only v-if="response.isSubmitter">
-      <div class="mt-16 flex w-full flex-col justify-center md:flex-row">
+      <div class="mt-16 flex w-full flex-col justify-center lg:flex-row">
         <!-- Share buttons -->
-        <div class="flex w-full flex-col items-center md:w-1/2">
+        <div class="flex w-full flex-col items-center lg:w-1/3">
           <p class="mb-4 text-gray-600">
             {{ t('page.quiz.result.shareTitle') }}
           </p>
@@ -70,10 +71,26 @@
           </div>
         </div>
 
+        <!-- Download button -->
+        <div class="mt-8 flex w-full flex-col items-center lg:mt-0 lg:w-1/3">
+          <p class="mb-4 text-gray-600">
+            {{ t('page.quiz.result.downloadTitle') }}
+          </p>
+
+          <AtomsButton
+            download
+            :href="diplomaPdf"
+            target="_blank"
+            color="primary"
+          >
+            {{ t('page.quiz.result.download') }}
+          </AtomsButton>
+        </div>
+
         <!-- Badge buttons -->
         <div
           v-if="showBadgeButtons"
-          class="mt-8 flex w-full flex-col items-center md:mt-0 md:w-1/2"
+          class="mt-8 flex w-full flex-col items-center lg:mt-0 lg:w-1/3"
         >
           <p class="mb-4 text-gray-600">
             {{ t('page.quiz.result.loginTitle') }}
@@ -155,6 +172,8 @@
   const shareUrl = ref('');
   const copiedIndicator = ref(false);
 
+  const config = useRuntimeConfig();
+
   onMounted(() => {
     shareUrl.value = window.location.href;
   });
@@ -162,6 +181,24 @@
   const showBadgeButtons = computed(
     () => props.response.isSubmitter && props.response.passed,
   );
+
+  const diplomaSvg = computed(() => {
+    const url = new URL(
+      `/storage/v1/object/public/quiz-diplomas/${props.response.id}.svg`,
+      config.public.supabase.url,
+    );
+
+    return url.href;
+  });
+
+  const diplomaPdf = computed(() => {
+    const url = new URL(
+      `/storage/v1/object/public/quiz-diplomas/${props.response.id}.pdf`,
+      config.public.supabase.url,
+    );
+
+    return url.href;
+  });
 
   const twitterShareLink = computed(() => {
     return `https://twitter.com/intent/tweet?url=${shareUrl.value}`;
