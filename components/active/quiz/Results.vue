@@ -1,5 +1,5 @@
 <template>
-  <h1 class="my-12 text-center text-4xl">
+  <h1 class="my-4 text-center text-4xl">
     <AtomsTextFirstColoredWord
       :text="t('page.quiz.result.header', { test: response.quiz.title })"
     />
@@ -16,7 +16,7 @@
   <!-- Share and badge buttons -->
   <div class="container mx-auto flex flex-col items-center justify-center">
     <client-only v-if="response.isSubmitter">
-      <div class="mt-16 flex w-full flex-col justify-center lg:flex-row">
+      <div class="mt-4 flex w-full flex-col justify-center lg:flex-row">
         <!-- Share buttons -->
         <div class="flex w-full flex-col items-center lg:w-1/3">
           <p class="mb-4 text-gray-600">
