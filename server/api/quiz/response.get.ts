@@ -38,6 +38,7 @@ function validateQuery(event: CompatibilityEvent): Query {
 
   return value;
 }
+
 /**
  * Fetches and returns quiz response from the database or throws an error
  */

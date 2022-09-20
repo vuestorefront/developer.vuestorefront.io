@@ -10,6 +10,7 @@
 </template>
 
 <script setup lang="ts">
+  import { useI18n } from 'vue-i18n';
   import { ApiUrl } from '~/enums/apiUrl';
   import { createClient } from '@supabase/supabase-js';
   import type { ApiQuizResponse } from '~/types/api/quiz';
@@ -21,8 +22,34 @@
   });
 
   let supabase: SupabaseClient | null = null;
+  const { t } = useI18n();
   const route = useRoute();
   const userSession = ref<Session | null>(null);
+
+  useHead({
+    meta: [
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: t('page.quiz.result.head.ogtitle'),
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: '/og_images/quiz_results.jpg',
+      },
+      {
+        hid: 'og:image:secure_url',
+        property: 'og:image:secure_url',
+        content: '/og_images/quiz_results.jpg',
+      },
+      {
+        hid: 'twitter:image',
+        name: 'twitter:image',
+        content: '/og_images/quiz_results.jpg',
+      },
+    ],
+  });
 
   onMounted(() => {
     const { url, publicKey } = useRuntimeConfig().public.supabase;

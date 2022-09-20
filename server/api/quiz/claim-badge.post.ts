@@ -85,6 +85,29 @@ async function fetchUser(
 }
 
 /**
+ * Checks if user is in the Discord server
+ */
+async function checkIfUserIsInServer(
+  guildId: string,
+  userId: string,
+  token: string,
+): Promise<void> {
+  try {
+    await $fetch(
+      `https://discord.com/api/v10/guilds/${guildId}/members/${userId}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bot ${token}`,
+        },
+      },
+    );
+  } catch {
+    throw new Error('User is not in the Discord server');
+  }
+}
+
+/**
  * Adds role to the Discord user or throws an error
  */
 async function addDiscordRole(
@@ -151,6 +174,12 @@ export default defineEventHandler(async (event) => {
   }
 
   const user = await fetchUser(supabase, accessToken);
+
+  await checkIfUserIsInServer(
+    guildId,
+    user.user_metadata.provider_id as string,
+    token,
+  );
 
   await addDiscordRole(
     guildId,
