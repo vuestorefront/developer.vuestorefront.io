@@ -42,7 +42,7 @@
           </div>
 
           <div class="mt-4 flex">
-            <a :href="twitterShareLink">
+            <a :href="twitterShareLink" target="_blank">
               <AtomsIcon
                 name="carbon:logo-twitter"
                 class="text-[#1DA1F2]"
@@ -51,7 +51,7 @@
               />
             </a>
 
-            <a :href="linkedinShareLink">
+            <a :href="linkedinShareLink" target="_blank">
               <AtomsIcon
                 name="carbon:logo-linkedin"
                 class="text-[#0072B1]"
@@ -60,7 +60,7 @@
               />
             </a>
 
-            <a :href="facebookShareLink">
+            <a :href="facebookShareLink" target="_blank">
               <AtomsIcon
                 name="carbon:logo-facebook"
                 class="text-[#4267B2]"
@@ -201,16 +201,26 @@
   });
 
   const twitterShareLink = computed(() => {
-    return `https://twitter.com/intent/tweet?url=${shareUrl.value}`;
+    const url = new URL('/intent/tweet', 'https://twitter.com/');
+    url.searchParams.set('text', t('page.quiz.result.head.ogtitle'));
+    url.searchParams.set('url', shareUrl.value);
+    return url.href;
   });
 
   const linkedinShareLink = computed(() => {
     // Works only on publicly available URLs (not on localhost)
-    return `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl.value}`;
+
+    const url = new URL('/shareArticle', 'https://www.linkedin.com/');
+    url.searchParams.set('mini', 'true');
+    url.searchParams.set('title', t('page.quiz.result.head.ogtitle'));
+    url.searchParams.set('url', shareUrl.value);
+    return url.href;
   });
 
   const facebookShareLink = computed(() => {
-    return `https://www.facebook.com/sharer.php?u=${shareUrl.value}`;
+    const url = new URL('/sharer.php', 'https://www.facebook.com/');
+    url.searchParams.set('u', shareUrl.value);
+    return url.href;
   });
 
   async function copyShareurl() {

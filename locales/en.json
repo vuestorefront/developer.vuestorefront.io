@@ -55,7 +55,9 @@
     "quiz": {
       "questions": {
         "head": {
-          "title": "Knowledge quiz"
+          "title": "Knowledge quiz",
+          "ogtitle": "Test your knowledge of Vue Storefront",
+          "ogdescription": "Test your Vue Storefront knowledge for free. If you pass the test, you will be issued a diploma and a special badge on our Discord server."
         },
         "header": "Test your {test} knowledge",
         "step": "Step {current} of {max}",
@@ -72,7 +74,8 @@
       },
       "result": {
         "head": {
-          "title": "Quiz results"
+          "title": "Quiz results",
+          "ogtitle": "See my Vue Storefront knowledge test results"
         },
         "diploma": {
           "line_2": "completed the",

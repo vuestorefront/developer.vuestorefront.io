@@ -7,7 +7,7 @@ import emailTemplate from '~/server/utils/templates/quizResponseEmail';
 import {
   getDiplomaSVG,
   getPdfBufferFromSvg,
-} from '~~/server/utils/getDiplomaPdfBuffer';
+} from '~/server/utils/getDiplomaPdfBuffer';
 import type { CompatibilityEvent } from 'h3';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type {

@@ -34,9 +34,38 @@
   });
 
   const { t } = useI18n();
-
   const route = useRoute();
   const router = useRouter();
+
+  useHead({
+    meta: [
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: t('page.quiz.questions.head.ogtitle'),
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: t('page.quiz.questions.head.ogdescription'),
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: '/og_images/quiz_questions.jpg',
+      },
+      {
+        hid: 'og:image:secure_url',
+        property: 'og:image:secure_url',
+        content: '/og_images/quiz_questions.jpg',
+      },
+      {
+        hid: 'twitter:image',
+        name: 'twitter:image',
+        content: '/og_images/quiz_questions.jpg',
+      },
+    ],
+  });
 
   const enum Steps {
     Survey = 1,
