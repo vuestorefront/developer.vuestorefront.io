@@ -9,7 +9,11 @@
   <div class="mb-4 flex w-full justify-start overflow-y-auto md:justify-center">
     <div class="w-full min-w-[768px] md:w-3/4">
       <!-- Use "object" instead of "img" to properly load fonts -->
-      <object type="image/svg+xml" :data="diplomaSvg" />
+      <object
+        type="image/svg+xml"
+        :data="diplomaSvg"
+        class="A4-aspect-ratio my-4 w-full shadow"
+      />
     </div>
   </div>
 
@@ -149,6 +153,16 @@
         </div>
       </div>
     </client-only>
+
+    <div v-else class="mt-4 flex flex-col items-center">
+      <p class="mb-4 text-lg text-gray-600">
+        {{ t('page.quiz.result.cta', { test: response.quiz.title }) }}
+      </p>
+
+      <AtomsButton download :href="diplomaPdf" target="_blank" color="primary">
+        {{ t('page.quiz.result.takeTest') }}
+      </AtomsButton>
+    </div>
   </div>
 </template>
 
@@ -202,7 +216,10 @@
 
   const twitterShareLink = computed(() => {
     const url = new URL('/intent/tweet', 'https://twitter.com/');
-    url.searchParams.set('text', t('page.quiz.result.head.ogtitle'));
+    url.searchParams.set(
+      'text',
+      `${t('page.quiz.result.head.ogtitle')} @VSFdevelopers`,
+    );
     url.searchParams.set('url', shareUrl.value);
     return url.href;
   });
@@ -210,9 +227,7 @@
   const linkedinShareLink = computed(() => {
     // Works only on publicly available URLs (not on localhost)
 
-    const url = new URL('/shareArticle', 'https://www.linkedin.com/');
-    url.searchParams.set('mini', 'true');
-    url.searchParams.set('title', t('page.quiz.result.head.ogtitle'));
+    const url = new URL('/sharing/share-offsite/', 'https://www.linkedin.com/');
     url.searchParams.set('url', shareUrl.value);
     return url.href;
   });
@@ -232,3 +247,9 @@
     }, 2000);
   }
 </script>
+
+<style scoped>
+  .A4-aspect-ratio {
+    aspect-ratio: 1.4142/1;
+  }
+</style>

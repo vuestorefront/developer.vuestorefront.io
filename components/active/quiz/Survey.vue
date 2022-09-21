@@ -1,4 +1,10 @@
 <template>
+  <h1 class="my-4 text-center text-4xl">
+    <AtomsTextFirstColoredWord
+      :text="t('page.quiz.questions.header', { test: quiz.title })"
+    />
+  </h1>
+
   <div
     class="container mx-auto flex flex-col flex-wrap px-5 py-4 text-gray-600 lg:w-2/3"
   >

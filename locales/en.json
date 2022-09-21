@@ -67,10 +67,11 @@
         "submit": "Submit"
       },
       "userDetails": {
+        "subheading": "Enter your information to get a personalised diploma",
         "firstName": "First name",
         "lastName": "Last name",
         "email": "E-mail",
-        "emailMessage": "We won't use your e-mail for any marketing purposes or sell it to anyone"
+        "emailMessage": "We will not use your email for marketing purposes, or sell it to anyone."
       },
       "result": {
         "head": {
@@ -82,6 +83,8 @@
           "line_3": "{test} knowledge quiz with the score of {score}%"
         },
         "header": "Result of the {test} knowledge test",
+        "cta": " Check your {test} knowledge too",
+        "takeTest": "Take a test",
         "shareTitle": "Share the result",
         "downloadTitle": "Download the PDF version",
         "loginTitle": "Login to Discord to receive a badge",

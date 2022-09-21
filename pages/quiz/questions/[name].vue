@@ -1,11 +1,5 @@
 <template>
   <AtomsLayoutContainer ref="container" class="space-y-2">
-    <h1 class="my-4 text-center text-4xl">
-      <AtomsTextFirstColoredWord
-        :text="t('page.quiz.questions.header', { test: quiz.title })"
-      />
-    </h1>
-
     <ActiveQuizSurvey
       v-if="step === Steps.Survey"
       :quiz="quiz"
