@@ -52,6 +52,57 @@
         "sfui": "A Vue.js design system and UI for Composable Commerce. Create stunning, mobile-first online stores with 50+ fully customizable components."
       }
     },
+    "quiz": {
+      "questions": {
+        "head": {
+          "title": "Knowledge quiz",
+          "ogtitle": "Test your knowledge of Vue Storefront",
+          "ogdescription": "Test your Vue Storefront knowledge for free. If you pass the test, you will be issued a diploma and a special badge on our Discord server."
+        },
+        "header": "Test your {test} knowledge",
+        "step": "Step {current} of {max}",
+        "progress": "{progress}%",
+        "back": "Back",
+        "next": "Next",
+        "submit": "Submit"
+      },
+      "userDetails": {
+        "subheading": "Enter your information to get a personalised diploma",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "email": "E-mail",
+        "emailMessage": "We will not use your email for marketing purposes, or sell it to anyone."
+      },
+      "tryAgain": {
+        "head": {
+          "title": "Try again"
+        },
+        "header": "Try again",
+        "description": "Unfortunately, you did not pass the test with the score of {score}%. You need at least {passing_score}% to pass, but you can try again as many times as you want. If you pass the test, you will be issued a diploma and a special badge on our Discord server.",
+        "cta": "Try again"
+      },
+      "result": {
+        "head": {
+          "title": "Quiz results",
+          "ogtitle": "See my Vue Storefront knowledge test results"
+        },
+        "diploma": {
+          "line_2": "completed the",
+          "line_3": "{test} knowledge quiz with the score of {score}%"
+        },
+        "header": "Result of the {test} knowledge test",
+        "cta": " Check your {test} knowledge too",
+        "takeTest": "Take a test",
+        "shareTitle": "Share the result",
+        "downloadTitle": "Download the PDF version",
+        "loginTitle": "Login to Discord to receive a badge",
+        "download": "Download PDF",
+        "claimBadge": "Claim Discord badge",
+        "badgeClaimed": "Discord badge claimed",
+        "loginButton": "Login to Discord",
+        "copied": "Copied"
+      }
+    },
     "videos": {
       "head": {
         "title": "Videos"
@@ -120,6 +171,9 @@
       "home": "Home",
       "filters": "Filters",
       "close": "Close"
+    },
+    "error": {
+      "generic": "Something went wrong"
     },
     "integration": {
       "title": "{name} Integration",

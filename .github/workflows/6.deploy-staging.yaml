@@ -19,6 +19,7 @@ jobs:
       ENVIRONMENT: 'staging'
       SHA: '${{ github.sha }}'
     secrets:
+      PAGE_URL: 'https://developer-test.europe-west1.gcp.storefrontcloud.io'
       CLOUD_URL: 'https://developer-test.europe-west1.gcp.storefrontcloud.io'
       CLOUD_INSTANCE: 'https://farmer.storefrontcloud.io/instance/developer-test-europe-west1-gcp-storefrontcloud-io'
       CLOUD_USERNAME: '${{secrets.CLOUD_USERNAME}}'
@@ -32,3 +33,9 @@ jobs:
       SLACK_ICON: '${{secrets.SLACK_ICON}}'
       SLACK_USERNAME: '${{secrets.SLACK_USERNAME}}'
       SLACK_WEBHOOK: '${{secrets.SLACK_WEBHOOK}}'
+      SUPABASE_URL: '${{secrets.SUPABASE_URL}}'
+      SUPABASE_PUBLIC_KEY: '${{secrets.SUPABASE_PUBLIC_KEY}}'
+      SUPABASE_SERVICE_ROLE_KEY: '${{secrets.SUPABASE_SERVICE_ROLE_KEY}}'
+      DISCORD_TOKEN: '${{secrets.DISCORD_TOKEN}}'
+      DISCORD_GUILD_ID: '${{secrets.DISCORD_GUILD_ID}}'
+      SENDGRID_API_KEY: '${{secrets.SENDGRID_API_KEY}}'

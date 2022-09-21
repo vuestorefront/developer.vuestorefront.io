@@ -1,5 +1,9 @@
 <template>
-  <NuxtPage />
+  <NuxtLayout>
+    <NuxtPage />
+
+    <notifications position="bottom right" />
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">
