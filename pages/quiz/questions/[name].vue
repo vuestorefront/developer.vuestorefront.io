@@ -1,11 +1,5 @@
 <template>
   <AtomsLayoutContainer ref="container" class="space-y-2">
-    <h1 class="my-4 text-center text-4xl">
-      <AtomsTextFirstColoredWord
-        :text="t('page.quiz.questions.header', { test: quiz.title })"
-      />
-    </h1>
-
     <ActiveQuizSurvey
       v-if="step === Steps.Survey"
       :quiz="quiz"
@@ -21,6 +15,7 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n';
+  import { notify } from '@kyvg/vue3-notification';
   import { ApiUrl } from '~/enums/apiUrl';
   import type {
     UserDetails,
@@ -98,14 +93,19 @@
   async function submitUserDetails(userDetails: UserDetails) {
     form.userDetails = userDetails;
 
-    const data = await $fetch<ApiQuizSubmit>(ApiUrl.QuizSubmit, {
+    await $fetch<ApiQuizSubmit>(ApiUrl.QuizSubmit, {
       method: 'POST',
       body: {
         name: quiz.value.id,
         ...form,
       },
-    });
-
-    await router.push(`/quiz/results/${data.id}`);
+    })
+      .then((data) => router.push(`/quiz/results/${data.id}`))
+      .catch((error) =>
+        notify({
+          text: error.data.message || t('global.error.generic'),
+          type: 'error',
+        }),
+      );
   }
 </script>

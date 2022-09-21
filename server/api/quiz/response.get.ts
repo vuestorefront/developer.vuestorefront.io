@@ -33,7 +33,7 @@ function validateQuery(event: CompatibilityEvent): Query {
   const { error, value } = schema.validate(query, { presence: 'required' });
 
   if (error) {
-    throw new Error('API query parameters missing or wrong');
+    throw new Error(error.toString());
   }
 
   return value;
@@ -77,7 +77,7 @@ async function fetchQuizResponse(
 /**
  * Fetches and returns quiz response from the database
  */
-export default defineEventHandler(async (event) => {
+export default defineEventHandler<ApiQuizResponse>(async (event) => {
   const { id } = validateQuery(event);
   const supabase = createSupabaseClient();
   const data = await fetchQuizResponse(supabase, id);
@@ -92,5 +92,5 @@ export default defineEventHandler(async (event) => {
     isBadgeClaimed: Boolean(data.discord_user_id),
     createdAt: data.created_at,
     quiz: data.quizzes,
-  } as ApiQuizResponse;
+  };
 });

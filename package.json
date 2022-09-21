@@ -35,6 +35,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.6.7",
     "@iconify/vue": "^3.2.1",
+    "@kyvg/vue3-notification": "^2.4.1",
     "@nuxtjs/algolia": "^1.1.0",
     "@pinia/nuxt": "^0.4.1",
     "@popperjs/core": "^2.11.5",
