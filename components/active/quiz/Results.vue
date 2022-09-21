@@ -159,7 +159,7 @@
         {{ t('page.quiz.result.cta', { test: response.quiz.title }) }}
       </p>
 
-      <AtomsButton download :href="diplomaPdf" target="_blank" color="primary">
+      <AtomsButton :href="quizUrl" color="primary">
         {{ t('page.quiz.result.takeTest') }}
       </AtomsButton>
     </div>
@@ -190,6 +190,10 @@
 
   onMounted(() => {
     shareUrl.value = window.location.href;
+  });
+
+  const quizUrl = computed(() => {
+    return `/quiz/questions/${props.response.quiz.id}`;
   });
 
   const diplomaSvg = computed(() => {
