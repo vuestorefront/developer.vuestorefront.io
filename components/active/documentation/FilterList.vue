@@ -26,7 +26,7 @@
     <DisclosurePanel class="pt-3">
       <button
         class="text-primary hover:text-primary-700 mb-4 text-sm hover:underline"
-        @click="store.toggleAll(key)"
+        @click="toggleAll(key)"
       >
         {{
           toggleAllStatus[key]
@@ -71,9 +71,9 @@
     DisclosurePanel,
   } from '@headlessui/vue';
   import { useI18n } from 'vue-i18n';
-  import { useIntegrationsList } from '~/store/documentation/integrationsList';
+  import { useIntegrationsList } from '~/composables/store/useIntegrationList';
 
   const { t } = useI18n();
 
-  const { filters, toggleAllStatus } = useIntegrationsList();
+  const { filters, toggleAllStatus, toggleAll } = useIntegrationsList();
 </script>

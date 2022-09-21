@@ -160,26 +160,3 @@ export const integrationsListStore = defineStore('integrationsList', {
     },
   },
 });
-
-export const useIntegrationsList = () => {
-  const store = integrationsListStore();
-  const { data, filters } = storeToRefs(store);
-
-  const { pending, refresh, error } = useAsyncData(
-    'integrationsList',
-    async () => store.fetch(),
-  );
-
-  return {
-    toggleAllStatus: computed(() => store.toggleAllStatus),
-    filterParams: computed(() => store.filterParams),
-    integrations: computed(() => store.integrations),
-    appliedFilters: computed(() => store.appliedFilters),
-    data,
-    filters,
-    pending,
-    refresh,
-    error,
-    toggleAll: store.toggleAll,
-  };
-};
