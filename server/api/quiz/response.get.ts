@@ -59,7 +59,8 @@ async function fetchQuizResponse(
       created_at,
       quizzes (
         id,
-        title
+        title,
+        passing_score
       )
     `,
     )

@@ -5,7 +5,12 @@
 
   <div class="flex flex-col items-center space-y-8 pt-8">
     <p class="text-center text-lg text-gray-600 lg:w-1/2">
-      {{ t('page.quiz.tryAgain.description', { score: response.score }) }}
+      {{
+        t('page.quiz.tryAgain.description', {
+          score: response.score,
+          passing_score: response.quiz.passing_score,
+        })
+      }}
     </p>
 
     <AtomsButton :href="quizUrl" color="primary">

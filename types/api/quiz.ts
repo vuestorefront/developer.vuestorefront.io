@@ -41,7 +41,7 @@ export type ApiQuizResponse = {
   isSubmitter: boolean;
   isBadgeClaimed: boolean;
   createdAt: Response['created_at'];
-  quiz: Pick<Quiz, 'id' | 'title'>;
+  quiz: Pick<Quiz, 'id' | 'title' | 'passing_score'>;
 };
 
 export type ApiQuizSubmit = {

@@ -78,7 +78,7 @@
           "title": "Try again"
         },
         "header": "Try again",
-        "description": "Unfortunately, you did not pass the test with the score of {score}%. You can try again as many times as you want. If you pass the test, you will be issued a diploma and a special badge on our Discord server.",
+        "description": "Unfortunately, you did not pass the test with the score of {score}%. You need at least {passing_score}% to pass, but you can try again as many times as you want. If you pass the test, you will be issued a diploma and a special badge on our Discord server.",
         "cta": "Try again"
       },
       "result": {
