@@ -15,6 +15,7 @@ export default defineNuxtConfig({
   ...nuxtConfigBuild,
   runtimeConfig: nuxtConfigRuntimeConfig,
   components: true,
+  plugins: ['~/plugins/notifications'],
   modules: [
     '@intlify/nuxt3',
     '@pinia/nuxt',
