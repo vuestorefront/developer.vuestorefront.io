@@ -161,7 +161,7 @@ async function sendEmail(quiz: Quiz, response: Response) {
   });
 }
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler<ApiQuizSubmit>(async (event) => {
   const { name, selectedAnswers, userDetails } = await validateBody(event);
   const supabase = createSupabaseClient();
   const quiz = await fetchQuiz(supabase, name);
@@ -174,19 +174,21 @@ export default defineEventHandler(async (event) => {
   const score = Math.round(
     (correctAnswers.length / quiz.correct_answers.length) * 100,
   );
+  const passed = score >= quiz.passing_score;
 
   const response = await submitResponse(supabase, {
     quiz_id: quiz.id,
     score,
-    passed: score >= quiz.passing_score,
+    passed,
     answers: selectedAnswers,
     user_details: userDetails,
     submitter_cookie: submitterCookie,
   });
 
-  await generateAndSaveDiplomas(supabase, response, quiz);
-
-  await sendEmail(quiz, response);
+  if (passed) {
+    await generateAndSaveDiplomas(supabase, response, quiz);
+    await sendEmail(quiz, response);
+  }
 
   setCookie(event, cookieName, submitterCookie, {
     // Year from now
@@ -196,5 +198,5 @@ export default defineEventHandler(async (event) => {
 
   return {
     id: response.id,
-  } as ApiQuizSubmit;
+  };
 });

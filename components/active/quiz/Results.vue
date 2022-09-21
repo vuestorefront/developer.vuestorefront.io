@@ -93,7 +93,7 @@
 
         <!-- Badge buttons -->
         <div
-          v-if="showBadgeButtons"
+          v-if="response.isSubmitter"
           class="mt-8 flex w-full flex-col items-center lg:mt-0 lg:w-1/3"
         >
           <p class="mb-4 text-gray-600">
@@ -191,10 +191,6 @@
   onMounted(() => {
     shareUrl.value = window.location.href;
   });
-
-  const showBadgeButtons = computed(
-    () => props.response.isSubmitter && props.response.passed,
-  );
 
   const diplomaSvg = computed(() => {
     const url = new URL(

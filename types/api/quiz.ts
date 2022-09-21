@@ -41,8 +41,10 @@ export type ApiQuizResponse = {
   isSubmitter: boolean;
   isBadgeClaimed: boolean;
   createdAt: Response['created_at'];
-  quiz: Pick<Quiz, 'title'>;
+  quiz: Pick<Quiz, 'id' | 'title'>;
 };
 
-export type ApiQuizSubmit = Pick<Response, 'id'>;
+export type ApiQuizSubmit = {
+  id: Response['id'];
+};
 

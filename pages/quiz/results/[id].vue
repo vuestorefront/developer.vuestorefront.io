@@ -1,11 +1,14 @@
 <template>
   <AtomsLayoutContainer ref="container" class="space-y-2">
     <ActiveQuizResults
+      v-if="response.passed"
       :response="response"
       :user-session="userSession"
       @claim-badge="claimBadge"
       @login-with-discord="loginWithDiscord"
     />
+
+    <ActiveQuizTryAgain v-else :response="response" />
   </AtomsLayoutContainer>
 </template>
 
