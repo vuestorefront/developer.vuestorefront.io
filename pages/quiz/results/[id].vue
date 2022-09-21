@@ -14,6 +14,7 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n';
+  import { notify } from '@kyvg/vue3-notification';
   import { ApiUrl } from '~/enums/apiUrl';
   import { createClient } from '@supabase/supabase-js';
   import type { ApiQuizResponse } from '~/types/api/quiz';
@@ -103,8 +104,16 @@
         accessToken: userSession.value?.access_token,
         resultId: response.value.id,
       },
-    });
-
-    response.value.isBadgeClaimed = true;
+    })
+      // eslint-disable-next-line promise/always-return
+      .then(() => {
+        response.value.isBadgeClaimed = true;
+      })
+      .catch((error) =>
+        notify({
+          text: error.data.message || t('global.error.generic'),
+          type: 'error',
+        }),
+      );
   }
 </script>

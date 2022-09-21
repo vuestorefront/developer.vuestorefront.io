@@ -33,7 +33,7 @@ function validateQuery(event: CompatibilityEvent): Query {
   const { error, value } = schema.validate(query, { presence: 'required' });
 
   if (error) {
-    throw new Error('API query parameters missing or wrong');
+    throw new Error(error.toString());
   }
 
   return value;

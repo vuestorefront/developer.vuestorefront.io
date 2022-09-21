@@ -172,6 +172,9 @@
       "filters": "Filters",
       "close": "Close"
     },
+    "error": {
+      "generic": "Something went wrong"
+    },
     "integration": {
       "title": "{name} Integration",
       "status": {

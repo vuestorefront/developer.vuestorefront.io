@@ -29,7 +29,7 @@ async function validateBody(event: CompatibilityEvent): Promise<Body> {
   const { error, value } = schema.validate(body, { presence: 'required' });
 
   if (error) {
-    throw new Error('API body missing or wrong');
+    throw new Error(error.toString());
   }
 
   return value;
