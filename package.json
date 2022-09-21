@@ -23,9 +23,6 @@
     "prepare": "node ./scripts/prepare.js",
     "prepublishOnly": "npm run build",
     "start": "node .output/server/index.mjs",
-    "story:build": "histoire build",
-    "story:dev": "histoire dev",
-    "story:preview": "histoire preview",
     "test": "vitest",
     "test:coverage": "vitest run --coverage"
   },
@@ -37,8 +34,7 @@
     "@popperjs/core": "^2.11.6",
     "@vueuse/nuxt": "^9.2.0",
     "clipboard": "^2.0.11",
-    "nuxt": "^3.0.0-rc.9",
-    "ohmyfetch": "^0.4.18",
+    "ohmyfetch": "^0.4.19",
     "pinia": "^2.0.22",
     "regexparam": "^2.0.1",
     "transform-object-keys": "^1.0.7",
@@ -47,11 +43,10 @@
     "vue-i18n": "^9.2.2"
   },
   "devDependencies": {
-    "@histoire/plugin-nuxt": "^0.10.7",
     "@intlify/eslint-plugin-vue-i18n": "^2.0.0",
     "@intlify/nuxt3": "^0.2.4",
     "@nuxt/content": "^2.1.1",
-    "@nuxt/test-utils": "3.0.0-rc.10",
+    "@nuxt/test-utils": "3.0.0-rc.11",
     "@nuxtjs/tailwindcss": "^5.3.3",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.3",
@@ -62,19 +57,18 @@
     "@vue-storefront/nuxt-gtag": "1.0.6",
     "commitizen": "^4.2.5",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "8.22.0",
-    "histoire": "^0.10.7",
+    "eslint": "8.23.1",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "nuxt": "^3.0.0-rc.9",
-    "nuxt-icon": "^0.1.5",
+    "nuxt": "^3.0.0-rc.11",
+    "nuxt-icon": "^0.1.6",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "sass": "^1.54.9",
     "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss": "^3.1.8",
     "typescript": "^4.8.3",
-    "vitest": "^0.23.2"
+    "vitest": "^0.23.4"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --cache --fix"
