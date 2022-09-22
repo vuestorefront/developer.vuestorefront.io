@@ -28,9 +28,39 @@
     title: 'i18n:page.quiz.questions.head.title',
   });
 
+  const enum Steps {
+    Survey = 1,
+    UserDetails = 2,
+  }
+
   const { t } = useI18n();
   const route = useRoute();
   const router = useRouter();
+  const config = useRuntimeConfig();
+  const step = ref(Steps.Survey);
+  const form = reactive({
+    selectedAnswers: [] as string[],
+    userDetails: {},
+  });
+
+  const { data: quiz } = await useFetch<ApiQuizQuestions>(
+    ApiUrl.QuizQuestions,
+    {
+      key: `quiz-${route.params.name}`,
+      params: {
+        name: route.params.name,
+      },
+    },
+  );
+
+  const ogImage = computed(() => {
+    const { href } = new URL(
+      '/og_images/quiz_questions.jpg',
+      config.public.pageUrl,
+    );
+
+    return href;
+  });
 
   useHead({
     meta: [
@@ -47,49 +77,27 @@
       {
         hid: 'og:image',
         property: 'og:image',
-        content: '/og_images/quiz_questions.jpg',
+        content: ogImage,
       },
       {
         hid: 'og:image:secure_url',
         property: 'og:image:secure_url',
-        content: '/og_images/quiz_questions.jpg',
+        content: ogImage,
       },
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: '/og_images/quiz_questions.jpg',
+        content: ogImage,
       },
     ],
   });
 
-  const enum Steps {
-    Survey = 1,
-    UserDetails = 2,
-  }
-
-  const step = ref(Steps.Survey);
-  const form = reactive({
-    selectedAnswers: [] as string[],
-    userDetails: {},
-  });
-
-  // Refs
-  const { data: quiz } = await useFetch<ApiQuizQuestions>(
-    ApiUrl.QuizQuestions,
-    {
-      key: `quiz-${route.params.name}`,
-      params: {
-        name: route.params.name,
-      },
-    },
-  );
-
+  // Methods
   function submitSurvey(selectedAnswers: string[]) {
     form.selectedAnswers = selectedAnswers;
     step.value = Steps.UserDetails;
   }
 
-  // Methods
   async function submitUserDetails(userDetails: UserDetails) {
     form.userDetails = userDetails;
 

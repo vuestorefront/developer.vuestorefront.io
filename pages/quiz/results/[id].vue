@@ -28,7 +28,17 @@
   let supabase: SupabaseClient | null = null;
   const { t } = useI18n();
   const route = useRoute();
+  const config = useRuntimeConfig();
   const userSession = ref<Session | null>(null);
+
+  const ogImage = computed(() => {
+    const { href } = new URL(
+      '/og_images/quiz_results.jpg',
+      config.public.pageUrl,
+    );
+
+    return href;
+  });
 
   useHead({
     meta: [
@@ -40,17 +50,17 @@
       {
         hid: 'og:image',
         property: 'og:image',
-        content: '/og_images/quiz_results.jpg',
+        content: ogImage,
       },
       {
         hid: 'og:image:secure_url',
         property: 'og:image:secure_url',
-        content: '/og_images/quiz_results.jpg',
+        content: ogImage,
       },
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: '/og_images/quiz_results.jpg',
+        content: ogImage,
       },
     ],
   });
