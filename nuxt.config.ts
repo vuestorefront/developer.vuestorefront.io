@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from 'nuxt';
+import { defineNuxtConfig } from 'nuxt/config';
 import { datetimeFormats } from './locales/dateTimeFormat';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
@@ -8,11 +8,22 @@ export default defineNuxtConfig({
   runtimeConfig: {
     githubToken: process.env.GITHUB_API_TOKEN,
     devToToken: process.env.DEVTO_API_TOKEN,
+    discord: {
+      token: process.env.DISCORD_TOKEN,
+      guildId: process.env.DISCORD_GUILD_ID,
+    },
+    supabaseServiceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY,
+    sendGridApiKey: process.env.SENDGRID_API_KEY,
     public: {
+      pageUrl: process.env.PAGE_URL,
       gitHub: {
         repository: 'vuestorefront/developer.vuestorefront.io',
         contentPath: 'content',
         branch: 'main',
+      },
+      supabase: {
+        url: process.env.SUPABASE_URL,
+        publicKey: process.env.SUPABASE_PUBLIC_KEY,
       },
     },
   },
