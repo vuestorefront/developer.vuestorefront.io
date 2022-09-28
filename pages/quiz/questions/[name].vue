@@ -8,6 +8,7 @@
 
     <ActiveQuizUserDetails
       v-if="step === Steps.UserDetails"
+      :loading="loading"
       @submit="submitUserDetails"
     />
   </AtomsLayoutContainer>
@@ -37,6 +38,7 @@
   const route = useRoute();
   const router = useRouter();
   const config = useRuntimeConfig();
+  const loading = ref(false);
   const step = ref(Steps.Survey);
   const form = reactive({
     selectedAnswers: [] as string[],
@@ -100,6 +102,7 @@
 
   async function submitUserDetails(userDetails: UserDetails) {
     form.userDetails = userDetails;
+    loading.value = true;
 
     await $fetch<ApiQuizSubmit>(ApiUrl.QuizSubmit, {
       method: 'POST',
@@ -109,11 +112,12 @@
       },
     })
       .then((data) => router.push(`/quiz/results/${data.id}`))
-      .catch((error) =>
+      .catch((error) => {
+        loading.value = false;
         notify({
           text: error.data.message || t('global.error.generic'),
           type: 'error',
-        }),
-      );
+        });
+      });
   }
 </script>

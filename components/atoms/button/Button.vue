@@ -114,6 +114,7 @@
       replace,
       ariaCurrentValue,
       external,
+      disabled,
       custom,
       ...bindProps
     } = props;
@@ -134,7 +135,7 @@
               external,
               custom,
             }
-          : {}),
+          : { disabled }),
         ...tagProps,
         ...attrs,
         class: [cssClass.value, attrs?.class || ''],
