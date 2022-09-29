@@ -56,8 +56,17 @@
       </div>
 
       <!-- Submit button -->
-      <AtomsButton type="submit" color="primary" class="mt-6">
-        {{ t('page.quiz.questions.submit') }}
+      <AtomsButton
+        type="submit"
+        color="primary"
+        class="mt-6"
+        :disabled="loading"
+      >
+        <AtomsLoading v-if="loading" />
+
+        <template v-else>
+          {{ t('page.quiz.questions.submit') }}
+        </template>
       </AtomsButton>
     </form>
   </div>
@@ -66,6 +75,10 @@
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n';
   import type { UserDetails } from '~/types/api/quiz';
+
+  defineProps<{
+    loading: boolean;
+  }>();
 
   const emit = defineEmits<{
     (e: 'submit', form: UserDetails): void;
