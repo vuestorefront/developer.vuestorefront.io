@@ -1,6 +1,12 @@
 export default `
 <svg viewBox="0 0 3509 2480" fill="none" xmlns="http://www.w3.org/2000/svg">
 <defs>
+<style>
+@font-face {
+    font-family: "Red Hat Display";
+    src: url("data:application/font-woff;charset=utf-8;base64,<%= base64Font %>");
+}
+</style>
 <clipPath id="clip0_12760_29483">
 <rect width="3508" height="2480" fill="white" transform="translate(0.802368)"/>
 </clipPath>
@@ -25,12 +31,12 @@ export default `
 <path d="M3176.44 1090.92C3169.91 1056.87 3177.17 1021.62 3196.63 992.931C3216.08 964.237 3246.14 944.449 3280.19 937.918" stroke="#875DF1" stroke-width="52.6227"/>
 <path d="M2775.1 692.805C2780.1 658.498 2798.51 627.578 2826.3 606.849C2854.09 586.12 2888.98 577.28 2923.29 582.273" stroke="#875DF1" stroke-width="52.6227"/>
 <path d="M2488.24 895.855C2521.23 885.182 2557.1 888.049 2587.97 903.825C2618.84 919.602 2642.18 946.996 2652.86 979.982" stroke="#875DF1" stroke-width="52.6227"/>
-<text fill="#19181B" xml:space="preserve" style="white-space: pre" font-family="Helvetica" font-size="47.8069" font-weight="500" letter-spacing="0px"><tspan x="215.552" y="2055.58">In&#xea;s Barros</tspan></text>
-<text fill="#787581" xml:space="preserve" style="white-space: pre" font-family="Helvetica" font-size="47.8069" font-weight="500" letter-spacing="0px"><tspan x="215.552" y="2135.26">Community Director</tspan></text>
-<text fill="#19181B" xml:space="preserve" style="white-space: pre" font-family="Helvetica" font-size="159.356" font-weight="bold" letter-spacing="0px"><tspan x="214.355" y="1100.86"><%= response.user_details.name %> <%= response.user_details.surname %></tspan></text>
-<text fill="#19181B" xml:space="preserve" style="white-space: pre" font-family="Helvetica" font-size="71.7103" letter-spacing="0px"><tspan x="214.355" y="1253.5">completed the</tspan></text>
-<text fill="#19181B" xml:space="preserve" style="white-space: pre" font-family="Helvetica" font-size="95.6138" font-weight="bold" letter-spacing="0px"><tspan x="214.355" y="1437.19"><%= quiz.title %> quiz</tspan><tspan x="214.355" y="1542.36">with the score of <%= response.score %>%</tspan></text>
-<text fill="#19181B" xml:space="preserve" style="white-space: pre" font-family="Helvetica" font-size="47.8069" font-weight="500" letter-spacing="0px"><tspan x="214.355" y="938.34"><%= date %></tspan></text>
+<text fill="#19181B" xml:space="preserve" style="white-space: pre" font-family="Red Hat Display" font-size="47.8069" font-weight="500" letter-spacing="0px"><tspan x="215.552" y="2055.58">In&#xea;s Barros</tspan></text>
+<text fill="#787581" xml:space="preserve" style="white-space: pre" font-family="Red Hat Display" font-size="47.8069" font-weight="500" letter-spacing="0px"><tspan x="215.552" y="2135.26">Community Director</tspan></text>
+<text fill="#19181B" xml:space="preserve" style="white-space: pre" font-family="Red Hat Display" font-size="159.356" font-weight="bold" letter-spacing="0px"><tspan x="214.355" y="1100.86"><%= response.user_details.name %> <%= response.user_details.surname %></tspan></text>
+<text fill="#19181B" xml:space="preserve" style="white-space: pre" font-family="Red Hat Display" font-size="71.7103" letter-spacing="0px"><tspan x="214.355" y="1253.5">completed the</tspan></text>
+<text fill="#19181B" xml:space="preserve" style="white-space: pre" font-family="Red Hat Display" font-size="95.6138" font-weight="bold" letter-spacing="0px"><tspan x="214.355" y="1437.19"><%= quiz.title %> quiz</tspan><tspan x="214.355" y="1542.36">with the score of <%= response.score %>%</tspan></text>
+<text fill="#19181B" xml:space="preserve" style="white-space: pre" font-family="Red Hat Display" font-size="47.8069" font-weight="500" letter-spacing="0px"><tspan x="214.355" y="938.34"><%= date %></tspan></text>
 <path d="M1173.77 285.109H1156.87V304.728H1173.77V361.987H1197.37V304.728H1217.62V285.109H1197.37V280.895C1197.37 277.99 1198.29 275.834 1200.14 274.428C1201.98 273.023 1204.7 272.32 1208.3 272.32C1209.78 272.316 1211.26 272.389 1212.74 272.538C1214.38 272.722 1216.01 272.989 1217.62 273.338V253.864C1215.67 253.408 1213.7 253.069 1211.72 252.847C1209.52 252.568 1207.31 252.422 1205.09 252.411C1194.99 252.412 1187.24 254.834 1181.85 259.677C1176.46 264.521 1173.77 271.448 1173.77 280.459V285.109Z" fill="#02BB4D"/>
 <path d="M763.057 346.437L777.043 328.271C782.239 332.643 788.027 336.263 794.236 339.025C799.54 341.247 805.237 342.383 810.989 342.367C816.72 342.367 821.212 341.495 824.467 339.751C827.719 338.008 829.346 335.586 829.347 332.486C829.399 331.208 829.126 329.938 828.553 328.794C827.98 327.651 827.125 326.671 826.069 325.946C823.883 324.397 820.265 323.186 815.215 322.313L792.779 318.389C784.521 316.935 778.159 313.787 773.693 308.943C769.223 304.099 766.989 297.946 766.991 290.486C766.991 280.702 770.706 272.975 778.136 267.306C785.566 261.639 795.789 258.805 808.804 258.805C816.617 258.845 824.37 260.171 831.751 262.729C838.956 265.068 845.689 268.66 851.639 273.338L838.38 291.794C833.645 287.982 828.366 284.896 822.718 282.638C817.72 280.721 812.411 279.736 807.057 279.733C802.005 279.733 797.998 280.532 795.036 282.13C792.072 283.728 790.591 285.884 790.592 288.598C790.543 289.736 790.776 290.869 791.272 291.896C791.768 292.923 792.51 293.811 793.434 294.483C795.328 295.889 798.412 296.93 802.685 297.608L823.81 301.095C833.62 302.647 841.075 305.892 846.175 310.832C851.274 315.773 853.824 322.167 853.824 330.015C853.824 340.286 849.817 348.424 841.804 354.43C833.791 360.438 822.889 363.442 809.096 363.44C800.756 363.408 792.491 361.882 784.692 358.935C776.804 356.062 769.481 351.832 763.057 346.437Z" fill="#02BB4D"/>
 <path d="M496.733 361.987L455.502 260.259H482.602L511.594 335.973L541.17 260.259H567.248L525.435 361.987H496.733Z" fill="#02BB4D"/>

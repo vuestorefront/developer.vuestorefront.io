@@ -8,12 +8,7 @@
   <!-- Diploma -->
   <div class="mb-4 flex w-full justify-start overflow-y-auto md:justify-center">
     <div class="w-full min-w-[768px] md:w-3/4">
-      <!-- Use "object" instead of "img" to properly load fonts -->
-      <object
-        type="image/svg+xml"
-        :data="diplomaSvg"
-        class="A4-aspect-ratio my-4 w-full shadow"
-      />
+      <img :src="diplomaSvg" class="A4-aspect-ratio my-4 w-full shadow" />
     </div>
   </div>
 
