@@ -27,7 +27,7 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.2",
+    "@headlessui/vue": "^1.7.3",
     "@iconify/vue": "^4.0.0",
     "@kyvg/vue3-notification": "^2.4.1",
     "@pinia/nuxt": "^0.4.2",
@@ -37,7 +37,8 @@
     "@vueuse/nuxt": "^9.3.0",
     "clipboard": "^2.0.11",
     "ejs": "^3.1.8",
-    "joi": "^17.6.1",
+    "joi": "^17.6.2",
+    "nuxt-icon": "^0.1.6",
     "ohmyfetch": "^0.4.19",
     "pinia": "^2.0.22",
     "regexparam": "^2.0.1",
@@ -61,9 +62,10 @@
     "@types/pdfkit": "^0.12.6",
     "@types/prettier": "^2.7.1",
     "@vitest/ui": "^0.23.4",
-    "@vue-storefront/eslint-config": "^1.1.1",
+    "@vue-storefront/eslint-config": "^1.1.2",
+    "@vue-storefront/eslint-config-typescript": "^1.1.2",
     "@vue-storefront/nuxt-gtag": "^1.0.6",
-    "@vue/test-utils": "^2.0.2",
+    "@vue/test-utils": "^2.1.0",
     "commitizen": "^4.2.5",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.24.0",
@@ -76,7 +78,7 @@
     "sass-loader": "^13.0.2",
     "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss": "^3.1.8",
-    "typescript": "^4.8.3",
+    "typescript": "^4.8.4",
     "vitest": "^0.23.4"
   },
   "lint-staged": {
