@@ -1,5 +1,7 @@
 import transformObjectKeys from 'transform-object-keys';
 import { BlogArticleApiResponse } from '~/types/api/devTo';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { defineEventHandler, getQuery } from 'h3';
 
 export default defineEventHandler(async (event) => {
   const { organization } = event.context.params;
@@ -13,7 +15,7 @@ export default defineEventHandler(async (event) => {
           {
             page: 1,
             per_page: 10,
-            ...useQuery(event),
+            ...getQuery(event),
           },
           { snakeCase: true },
         ),

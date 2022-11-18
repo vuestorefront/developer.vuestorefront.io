@@ -1,9 +1,10 @@
 import transformObjectKeys from 'transform-object-keys';
 import { BlogArticleApiResponse } from '~/types/api/devTo';
 import { returnSingleParameters } from '~/server/utils/queryParams';
+import { defineEventHandler, getQuery } from 'h3';
 
 export default defineEventHandler(async (event) => {
-  const query = useQuery(event);
+  const query = getQuery(event);
   const username = returnSingleParameters(query?.user);
 
   return transformObjectKeys(

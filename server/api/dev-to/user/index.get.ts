@@ -1,9 +1,11 @@
 import transformObjectKeys from 'transform-object-keys';
 import { BlogUserApiResponse } from '~/types/api/devTo';
 import { returnSingleParameters } from '~/server/utils/queryParams';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { defineEventHandler, getQuery } from 'h3';
 
 export default defineEventHandler(async (event) => {
-  const query = useQuery(event);
+  const query = getQuery(event);
 
   const id = returnSingleParameters(query?.id);
   const username = returnSingleParameters(query?.username);

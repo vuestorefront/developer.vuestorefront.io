@@ -1,61 +1,59 @@
 <template>
-  <NuxtLayout>
-    <AtomsLayoutContent>
-      <AtomsLayoutContainer>
-        <MoleculesBannersVideoBanner
-          :title="t('page.home.videoBanner.title')"
-          :message="t('page.home.videoBanner.message')"
-          :button-text="t('page.home.videoBanner.button')"
-          button-link="https://docs.vuestorefront.io/v2/getting-started/installation.html"
-          video-thumb="https://img.youtube.com/vi/MCN1rRwuIGs/maxresdefault.jpg"
-          :thumb-button-text="t('page.home.videoBanner.link')"
-          thumb-button-link="/videos"
-          video="https://www.youtube.com/watch?v=MCN1rRwuIGs"
+  <AtomsLayoutContent>
+    <AtomsLayoutContainer>
+      <MoleculesBannersVideoBanner
+        :title="t('page.home.videoBanner.title')"
+        :message="t('page.home.videoBanner.message')"
+        :button-text="t('page.home.videoBanner.button')"
+        button-link="https://docs.vuestorefront.io/v2/getting-started/installation.html"
+        video-thumb="https://img.youtube.com/vi/MCN1rRwuIGs/maxresdefault.jpg"
+        :thumb-button-text="t('page.home.videoBanner.link')"
+        thumb-button-link="/videos"
+        video="https://www.youtube.com/watch?v=MCN1rRwuIGs"
+      />
+      <MoleculesBannersCallToAction
+        :title="t('page.home.discordCTA.title')"
+        img="/brands/logos/discord.svg"
+        :message="t('page.home.discordCTA.message')"
+        color="secondary"
+        button-color="white"
+        button-link="https://discord.gg/vuestorefront"
+        :button-text="t('page.home.discordCTA.button')"
+        button-text-color="secondary"
+      />
+      <Suspense>
+        <LazyMoleculesSectionLogoClouds
+          v-for="(banner, index) in homeIntegrationBanners"
+          :key="index"
+          v-bind="banner"
         />
-        <MoleculesBannersCallToAction
-          :title="t('page.home.discordCTA.title')"
-          img="/brands/logos/discord.svg"
-          :message="t('page.home.discordCTA.message')"
-          color="secondary"
-          button-color="white"
-          button-link="https://discord.gg/vuestorefront"
-          :button-text="t('page.home.discordCTA.button')"
-          button-text-color="secondary"
-        />
+      </Suspense>
+      <MoleculesSectionLogoClouds />
+    </AtomsLayoutContainer>
+    <AtomsLayoutFullWidthSection>
+      <AtomsLayoutFullWidthContainer>
         <Suspense>
-          <LazyMoleculesSectionLogoClouds
-            v-for="(banner, index) in homeIntegrationBanners"
-            :key="index"
-            v-bind="banner"
+          <LazyAtomsTextHeadingCenter
+            :title="t('page.home.blog.title')"
+            :message="t('page.home.blog.message')"
           />
         </Suspense>
-        <MoleculesSectionLogoClouds />
-      </AtomsLayoutContainer>
-      <AtomsLayoutFullWidthSection>
-        <AtomsLayoutFullWidthContainer>
-          <Suspense>
-            <LazyAtomsTextHeadingCenter
-              :title="t('page.home.blog.title')"
-              :message="t('page.home.blog.message')"
-            />
-          </Suspense>
-          <Suspense>
-            <LazyOrganismsSectionBlogPosts
-              :posts="postsList"
-              :loading="pending"
-              :error="error"
-            />
-          </Suspense>
-          <Suspense>
-            <LazyMoleculesTextFollowSocials />
-          </Suspense>
-        </AtomsLayoutFullWidthContainer>
-      </AtomsLayoutFullWidthSection>
-      <AtomsLayoutContainer>
-        <LazyMoleculesNewsletterSignUpSection />
-      </AtomsLayoutContainer>
-    </AtomsLayoutContent>
-  </NuxtLayout>
+        <Suspense>
+          <LazyOrganismsSectionBlogPosts
+            :posts="postsList"
+            :loading="pending"
+            :error="error"
+          />
+        </Suspense>
+        <Suspense>
+          <LazyMoleculesTextFollowSocials />
+        </Suspense>
+      </AtomsLayoutFullWidthContainer>
+    </AtomsLayoutFullWidthSection>
+    <AtomsLayoutContainer>
+      <LazyMoleculesNewsletterSignUpSection />
+    </AtomsLayoutContainer>
+  </AtomsLayoutContent>
 </template>
 
 <script setup lang="ts">

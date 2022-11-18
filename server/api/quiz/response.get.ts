@@ -1,8 +1,9 @@
 import Joi from 'joi';
 import { createSupabaseClient } from '~/server/utils/supabase';
-import type { CompatibilityEvent } from 'h3';
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type { ApiQuizResponse, Response, Quiz } from '~/types/api/quiz';
+import type { Response, Quiz } from '~/types/api/quiz';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { defineEventHandler, getCookie, getQuery, H3Event } from 'h3';
 
 interface Query {
   id: string;
@@ -24,12 +25,12 @@ type QuizResponse = Pick<
 /**
  * Validates and returns query from the request or throws an error
  */
-function validateQuery(event: CompatibilityEvent): Query {
+function validateQuery(event: H3Event): Query {
   const schema = Joi.object<Query>({
     id: Joi.string().required(),
   });
 
-  const query = useQuery(event);
+  const query = getQuery(event);
   const { error, value } = schema.validate(query, { presence: 'required' });
 
   if (error) {
@@ -78,7 +79,7 @@ async function fetchQuizResponse(
 /**
  * Fetches and returns quiz response from the database
  */
-export default defineEventHandler<ApiQuizResponse>(async (event) => {
+export default defineEventHandler(async (event) => {
   const { id } = validateQuery(event);
   const supabase = createSupabaseClient();
   const data = await fetchQuizResponse(supabase, id);

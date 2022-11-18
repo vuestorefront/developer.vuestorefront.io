@@ -1,13 +1,15 @@
 import { useRuntimeConfig } from '#imports';
 import { $fetch } from 'ohmyfetch';
-import { joinURL, withQuery } from 'ufo';
+import { joinURL } from 'ufo';
 import {
   GitHubCommitsRestResponse,
   GitHubUsersRestResponse,
 } from '~/types/api/gitHub';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { defineEventHandler, getQuery } from 'h3';
 
 export default defineEventHandler(async (event) => {
-  const { repository, file } = useQuery(event);
+  const { repository, file } = getQuery(event);
   const token = useRuntimeConfig().githubToken;
 
   if (
