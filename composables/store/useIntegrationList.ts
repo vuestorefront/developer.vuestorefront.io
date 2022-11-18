@@ -12,6 +12,7 @@ export const useIntegrationsList = () => {
     toggleAll,
     fetch,
   } = store;
+
   const { pending, refresh, error } = useAsyncData(
     'integrationsList',
     async () => fetch(),

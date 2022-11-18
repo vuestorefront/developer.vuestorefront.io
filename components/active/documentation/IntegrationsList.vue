@@ -32,5 +32,7 @@
   const { t } = useI18n();
   const { integrations, filterParams, refresh } = useIntegrationsList();
 
+  await refresh();
+
   watch(filterParams, async () => refresh(), { deep: true });
 </script>
