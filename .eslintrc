@@ -1,8 +1,7 @@
 {
   "root": true,
   "extends": [
-    "@vue-storefront/eslint-config",
-    "plugin:@intlify/vue-i18n/recommended"
+    "@vue-storefront/eslint-config"
   ],
   "rules": {
     "@typescript-eslint/no-unsafe-assignment": 0,
@@ -16,22 +15,6 @@
         "peerDependencies": false,
         "bundledDependencies": true
       }
-    ],
-    "@intlify/vue-i18n/no-dynamic-keys": 0,
-    "@intlify/vue-i18n/no-unused-keys": [
-      "error",
-      {
-        "extensions": [
-          ".js",
-          ".vue"
-        ]
-      }
     ]
-  },
-  "settings": {
-    "vue-i18n": {
-      "localeDir": "./locales/*.{json,json5,yaml,yml}",
-      "messageSyntaxVersion": "^9.0.0"
-    }
   }
 }

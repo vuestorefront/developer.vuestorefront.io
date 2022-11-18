@@ -59,7 +59,8 @@
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n';
-  import { useIntegrationsList } from '~/store/documentation/integrationsList';
+  import { useIntegrationsList } from '~/composables/store/useIntegrationList';
+  import { definePageMeta } from '#imports';
 
   const { t } = useI18n();
 

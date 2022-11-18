@@ -1,9 +1,11 @@
 import { integrationsList } from '~/constants/integrations';
 import { IntegrationList } from '~/types/integrations';
 import { randomElements, filterBy } from '~/utils/array';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { defineEventHandler, getQuery } from 'h3';
 
 export default defineEventHandler((event) => {
-  const query = useQuery(event);
+  const query = getQuery(event);
 
   const defaultQuery = {
     categories: ['all'],
@@ -18,11 +20,14 @@ export default defineEventHandler((event) => {
   let baseData: IntegrationList = integrationsList;
 
   if (!defaultQuery.categories.includes('all')) {
-    baseData = filterBy(baseData, {
-      categories: Array.isArray(defaultQuery.categories)
-        ? defaultQuery.categories
-        : [defaultQuery.categories],
-    });
+    baseData = filterBy<IntegrationList, { categories: string | string[] }>(
+      baseData,
+      {
+        categories: Array.isArray(defaultQuery.categories)
+          ? defaultQuery.categories
+          : [defaultQuery.categories],
+      },
+    );
   }
 
   if (defaultQuery.status !== 'all') {

@@ -31,9 +31,9 @@ WORKDIR /app
 
 COPY . .
 
-RUN NODE_ENV=development npm ci
+RUN NODE_ENV=development yarn install --frozen-lockfile
 
-RUN NODE_ENV=production npm run build
+RUN NODE_ENV=production yarn build
 
 FROM node:lts
 
@@ -73,4 +73,4 @@ RUN env
 ENV HOST 0.0.0.0
 EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+CMD ["yarn", "start"]

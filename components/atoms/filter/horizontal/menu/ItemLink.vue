@@ -13,12 +13,11 @@
         },
       }"
     >
-      <Suspense v-if="icon">
-        <AtomsIcon
-          :name="icon"
-          class="filter-horizontal-menu-list-item--icon"
-        />
-      </Suspense>
+      <Icon
+        v-if="icon"
+        :name="icon"
+        class="filter-horizontal-menu-list-item--icon"
+      />
       <slot v-bind="slotProps" />
     </NuxtLink>
   </MenuItem>

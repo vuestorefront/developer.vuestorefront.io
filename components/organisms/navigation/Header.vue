@@ -25,12 +25,10 @@
           />
           <PopoverButton class="lg:hidden">
             <span class="sr-only">Open menu</span>
-            <Suspense>
-              <AtomsIcon
-                name="heroicons-outline:menu"
-                class="text-3xl text-gray-700"
-              />
-            </Suspense>
+            <Icon
+              name="heroicons-outline:menu"
+              class="text-3xl text-gray-700"
+            />
           </PopoverButton>
         </div>
         <PopoverGroup
@@ -73,12 +71,7 @@
               <div class="-mr-2">
                 <PopoverButton class="header-mobile-navigation--close">
                   <span class="sr-only">Close menu</span>
-                  <Suspense>
-                    <AtomsIcon
-                      name="carbon:close"
-                      class="text-3xl text-gray-700"
-                    />
-                  </Suspense>
+                  <Icon name="carbon:close" class="text-3xl text-gray-700" />
                 </PopoverButton>
               </div>
             </div>
@@ -95,7 +88,7 @@
                   <span class="ml-3 text-base font-medium text-gray-900">
                     {{ item.label }}
                   </span>
-                  <AtomsIcon
+                  <Icon
                     v-if="item.iconName"
                     :name="item.iconName"
                     class="group-hover:text-primary text-gray-400"

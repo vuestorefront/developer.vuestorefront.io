@@ -4,7 +4,10 @@
       {{ t('page.videos.head.title') }}
     </h1>
     <ActiveVideosHorizontalFilter />
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div
+      v-if="videos.length > 0"
+      class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
+    >
       <MoleculesCardVideo
         v-for="video in videos"
         :key="video._path"
@@ -22,6 +25,7 @@
       />
     </div>
     <MoleculesPagination
+      v-if="pages?.total > 1"
       :total="pages.total"
       :number-of-elements="8"
       :current-page="pages.current"
@@ -30,8 +34,8 @@
 </template>
 
 <script setup lang="ts">
-  import { useVideosList } from '~/store/videos/videoList';
   import { useI18n } from 'vue-i18n';
+  import { useVideosList } from '~/composables/store/useVideosList';
 
   definePageMeta({
     title: 'i18n:page.videos.head.title',
@@ -39,5 +43,5 @@
 
   const { t } = useI18n();
 
-  const { pages, videos } = useVideosList();
+  const { data: videos, filters, pages } = useVideosList();
 </script>

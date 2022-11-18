@@ -1,8 +1,8 @@
 import Joi from 'joi';
 import { createSupabaseClient } from '~/server/utils/supabase';
 import type { Quiz, Response } from '~/types/api/quiz';
-import type { CompatibilityEvent } from 'h3';
 import type { SupabaseClient, User } from '@supabase/supabase-js';
+import { defineEventHandler, getCookie, H3Event, readBody } from 'h3';
 
 interface Body {
   accessToken: string;
@@ -19,13 +19,13 @@ type QuizResponse = Pick<
 /**
  * Validates and returns body of the request or throws an error
  */
-async function validateBody(event: CompatibilityEvent): Promise<Body> {
+async function validateBody(event: H3Event): Promise<Body> {
   const schema = Joi.object<Body>({
     accessToken: Joi.string().required(),
     resultId: Joi.string().required(),
   });
 
-  const body = await useBody(event);
+  const body = await readBody(event);
   const { error, value } = schema.validate(body, { presence: 'required' });
 
   if (error) {

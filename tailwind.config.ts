@@ -84,15 +84,14 @@ const colorBase = {
 export default {
   darkMode: 'class',
   plugins: [
-    // eslint-disable-next-line import/no-extraneous-dependencies
     require('@tailwindcss/typography'),
-    // eslint-disable-next-line import/no-extraneous-dependencies
+
     require('@tailwindcss/forms'),
-    // eslint-disable-next-line import/no-extraneous-dependencies
+
     require('@tailwindcss/line-clamp'),
-    // eslint-disable-next-line import/no-extraneous-dependencies
+
     require('@tailwindcss/aspect-ratio'),
-    // eslint-disable-next-line import/no-extraneous-dependencies
+
     require('tailwind-scrollbar-hide'),
   ],
   content: [
@@ -145,6 +144,7 @@ export default {
       boxShadow: {
         sm: ' 0px 0px 2px rgba(0, 0, 0, 0.2)',
         base: '0px 0px 2px rgba(0, 0, 0, 0.2), 0px 2px 4px rgba(0, 0, 0, 0.1)',
+        down: '0px 0px 2px rgba(0, 0, 0, 0.2), 0px 0px 4px rgba(0, 0, 0, 0.1)',
         md: '0px 0px 2px rgba(0, 0, 0, 0.2), 0px 4px 8px rgba(0, 0, 0, 0.15)',
         lg: '0px 0px 2px rgba(0, 0, 0, 0.2), 0px 8px 16px rgba(0, 0, 0, 0.15)',
         xl: '0px 0px 2px rgba(0, 0, 0, 0.2), 0px 12px 24px rgba(0, 0, 0, 0.15)',

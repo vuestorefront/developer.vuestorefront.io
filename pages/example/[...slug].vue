@@ -1,7 +1,9 @@
 <template>
-  <AtomsLayoutContainer>
-    <ContentDoc />
-  </AtomsLayoutContainer>
+  <NuxtLayout>
+    <AtomsLayoutContainer>
+      <ContentDoc />
+    </AtomsLayoutContainer>
+  </NuxtLayout>
 </template>
 
 <script setup lang="ts">

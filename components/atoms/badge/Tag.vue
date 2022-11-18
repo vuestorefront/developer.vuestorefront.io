@@ -6,14 +6,12 @@
     }`"
   >
     <slot v-if="enableIcon" name="icon">
-      <Suspense>
-        <AtomsIcon
-          aria-hidden="true"
-          class="text-sm"
-          :class="`${iconColors} ${iconOnly ? '' : 'mr-2'}`"
-          :name="icon || iconName"
-        />
-      </Suspense>
+      <Icon
+        aria-hidden="true"
+        class="text-sm"
+        :class="`${iconColors} ${iconOnly ? '' : 'mr-2'}`"
+        :name="icon || iconName"
+      />
     </slot>
     <span v-if="!iconOnly">
       <slot />

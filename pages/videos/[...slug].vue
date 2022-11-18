@@ -65,7 +65,7 @@
   });
 
   const { d } = useI18n();
-  const { path, params } = useRoute();
+  const { path } = useRoute();
 
   const container = ref(null);
   const { width, height } = useElementSize(container);

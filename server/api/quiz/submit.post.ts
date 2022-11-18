@@ -8,7 +8,6 @@ import {
   getDiplomaSVG,
   getPdfBufferFromSvg,
 } from '~/server/utils/getDiplomaPdfBuffer';
-import type { CompatibilityEvent } from 'h3';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type {
   Quiz,
@@ -16,6 +15,13 @@ import type {
   UserDetails,
   ApiQuizSubmit,
 } from '~/types/api/quiz';
+import {
+  defineEventHandler,
+  getCookie,
+  H3Event,
+  readBody,
+  setCookie,
+} from 'h3';
 
 interface Body {
   name: string;
@@ -26,7 +32,7 @@ interface Body {
 /**
  * Validates and returns body of the request or throws an error
  */
-async function validateBody(event: CompatibilityEvent): Promise<Body> {
+async function validateBody(event: H3Event): Promise<Body> {
   const schema = Joi.object<Body>({
     name: Joi.string().required().alphanum().lowercase(),
     selectedAnswers: Joi.array().items(Joi.string()),
@@ -37,7 +43,7 @@ async function validateBody(event: CompatibilityEvent): Promise<Body> {
     }),
   });
 
-  const body = await useBody<Body>(event);
+  const body = await readBody<Body>(event);
   const { error, value } = schema.validate(body, { presence: 'required' });
 
   if (error) {
@@ -50,7 +56,7 @@ async function validateBody(event: CompatibilityEvent): Promise<Body> {
 /**
  * Validates existing or generates new cookie and returns it or throws an error
  */
-function validateCookie(event: CompatibilityEvent, cookieName: string): string {
+function validateCookie(event: H3Event, cookieName: string): string {
   const cookie = getCookie(event, cookieName) || randomUUID();
 
   const schema = Joi.string().guid({
@@ -63,7 +69,7 @@ function validateCookie(event: CompatibilityEvent, cookieName: string): string {
     throw new Error('Cookie missing or wrong');
   }
 
-  return value as string;
+  return value;
 }
 
 /**
@@ -161,7 +167,7 @@ async function sendEmail(quiz: Quiz, response: Response) {
   });
 }
 
-export default defineEventHandler<ApiQuizSubmit>(async (event) => {
+export default defineEventHandler(async (event) => {
   const { name, selectedAnswers, userDetails } = await validateBody(event);
   const supabase = createSupabaseClient();
   const quiz = await fetchQuiz(supabase, name);

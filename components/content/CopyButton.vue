@@ -3,13 +3,11 @@
     ref="copy"
     class="copy rounded-2xl px-1 py-0.5 text-xl hover:bg-gray-200"
   >
-    <Suspense>
-      <AtomsIcon
-        class="copy-hover:text-gray-900 text-gray-500"
-        :class="state === 'copied' ? 'text-primary' : ''"
-        :name="state === 'init' ? 'carbon:copy-file' : 'carbon:checkmark'"
-      />
-    </Suspense>
+    <Icon
+      class="copy-hover:text-gray-900 text-gray-500"
+      :class="state === 'copied' ? 'text-primary' : ''"
+      :name="state === 'init' ? 'carbon:copy-file' : 'carbon:checkmark'"
+    />
   </button>
 </template>
 

@@ -1,8 +1,9 @@
 import Joi from 'joi';
 import { createSupabaseClient } from '~/server/utils/supabase';
-import type { CompatibilityEvent } from 'h3';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type { ApiQuizQuestions } from '~/types/api/quiz';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { createError, defineEventHandler, getQuery, H3Event } from 'h3';
 
 interface Query {
   name: string;
@@ -11,12 +12,12 @@ interface Query {
 /**
  * Validates and returns query from the request or throws an error
  */
-function validateQuery(event: CompatibilityEvent): Query {
+function validateQuery(event: H3Event): Query {
   const schema = Joi.object<Query>({
     name: Joi.string().required(),
   });
 
-  const query = useQuery(event);
+  const query = getQuery(event);
   const { error, value } = schema.validate(query, { presence: 'required' });
 
   if (error) {

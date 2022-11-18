@@ -15,20 +15,18 @@
           {{ t(`page.documentation.filter.${key}`) }}
         </span>
         <span class="ml-6 flex items-center">
-          <Suspense>
-            <AtomsIcon
-              name="ph:caret-down-bold"
-              class="group-hover:text-primary transform transition-transform duration-200 ease-in-out"
-              :class="open ? 'rotate-180' : 'rotate-0'"
-            />
-          </Suspense>
+          <Icon
+            name="ph:caret-down-bold"
+            class="group-hover:text-primary transform transition-transform duration-200 ease-in-out"
+            :class="open ? 'rotate-180' : 'rotate-0'"
+          />
         </span>
       </DisclosureButton>
     </h3>
     <DisclosurePanel class="pt-3">
       <button
         class="text-primary hover:text-primary-700 mb-4 text-sm hover:underline"
-        @click="store.toggleAll(key)"
+        @click="toggleAll(key)"
       >
         {{
           toggleAllStatus[key]
@@ -73,9 +71,9 @@
     DisclosurePanel,
   } from '@headlessui/vue';
   import { useI18n } from 'vue-i18n';
-  import { useIntegrationsList } from '~/store/documentation/integrationsList';
+  import { useIntegrationsList } from '~/composables/store/useIntegrationList';
 
   const { t } = useI18n();
 
-  const { filters, toggleAllStatus } = useIntegrationsList();
+  const { filters, toggleAllStatus, toggleAll } = useIntegrationsList();
 </script>

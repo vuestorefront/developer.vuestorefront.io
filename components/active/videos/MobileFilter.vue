@@ -10,7 +10,7 @@
         leave-from="opacity-100"
         leave-to="opacity-0"
       >
-        <div class="fixed inset-0 bg-black bg-opacity-25" />
+        <div class="fixed inset-0 bg-black bg-opacity-25"/>
       </TransitionChild>
 
       <div class="fixed inset-0 z-40 flex">
@@ -36,9 +36,7 @@
                 @click="$emit('close')"
               >
                 <span class="sr-only">{{ t('global.interface.close') }}</span>
-                <Suspense>
-                  <AtomsIcon name="carbon:close" class="text-3xl" />
-                </Suspense>
+                <Icon name="carbon:close" class="text-3xl"/>
               </button>
             </div>
 
@@ -60,13 +58,11 @@
                     </AtomsBadgeTag>
                   </span>
                   <span class="ml-6 flex items-center">
-                    <Suspense>
-                      <AtomsIcon
-                        name="ph:caret-down-bold"
-                        class="group-hover:text-primary transform transition-transform duration-200 ease-in-out"
-                        :class="open ? 'rotate-180' : 'rotate-0'"
-                      />
-                    </Suspense>
+                    <Icon
+                      name="ph:caret-down-bold"
+                      class="group-hover:text-primary transform transition-transform duration-200 ease-in-out"
+                      :class="open ? 'rotate-180' : 'rotate-0'"
+                    />
                   </span>
                 </DisclosureButton>
               </h3>
@@ -98,22 +94,28 @@
 </template>
 
 <script setup lang="ts">
-  import {
-    Dialog,
-    DialogPanel,
-    Disclosure,
-    DisclosureButton,
-    DisclosurePanel,
-    TransitionChild,
-    TransitionRoot,
-  } from '@headlessui/vue';
-  import { useI18n } from 'vue-i18n';
-  import { useVideosList } from '~/store/videos/videoList';
+import {
+  Dialog,
+  DialogPanel,
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+  TransitionChild,
+  TransitionRoot,
+} from '@headlessui/vue';
+import {useI18n} from 'vue-i18n';
+import {useVideosList} from '~/composables/store/useVideosList';
 
-  withDefaults(defineProps<{ open: boolean }>(), { open: false });
-  defineEmits(['close']);
+withDefaults(defineProps<{ open: boolean }>(), {open: false});
 
-  const { t } = useI18n();
+defineEmits(['close']);
 
-  const { changeFilter, filters, getCounter } = useVideosList();
+const {t} = useI18n();
+
+const {
+  filters,
+  changeFilter,
+  getCounter,
+} = useVideosList();
+
 </script>

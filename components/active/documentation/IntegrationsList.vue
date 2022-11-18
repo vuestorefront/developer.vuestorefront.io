@@ -26,11 +26,13 @@
 </template>
 
 <script setup lang="ts">
-  import { useIntegrationsList } from '~/store/documentation/integrationsList';
   import { useI18n } from 'vue-i18n';
+  import { useIntegrationsList } from '~/composables/store/useIntegrationList';
 
   const { t } = useI18n();
   const { integrations, filterParams, refresh } = useIntegrationsList();
+
+  await refresh();
 
   watch(filterParams, async () => refresh(), { deep: true });
 </script>
