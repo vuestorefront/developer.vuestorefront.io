@@ -64,7 +64,7 @@
     "@vitest/ui": "^0.25.2",
     "@vue-storefront/eslint-config": "^1.1.2",
     "@vue-storefront/eslint-config-typescript": "^1.1.2",
-    "@vue-storefront/nuxt-gtag": "^1.0.6",
+    "@vue-storefront/nuxt-gtag": "^1.0.7",
     "@vue/test-utils": "^2.2.3",
     "commitizen": "^4.2.5",
     "cz-conventional-changelog": "^3.3.0",
