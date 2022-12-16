@@ -1,6 +1,7 @@
 name: Deploy - Development
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - development
