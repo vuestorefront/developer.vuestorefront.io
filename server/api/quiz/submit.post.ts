@@ -100,6 +100,7 @@ async function submitResponse(
   const { data, error } = await client
     .from<Response>('quiz_responses')
     .insert(response)
+    .select()
     .single();
 
   if (error) {
