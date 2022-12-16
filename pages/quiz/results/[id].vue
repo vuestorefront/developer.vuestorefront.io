@@ -65,10 +65,13 @@
     ],
   });
 
-  onMounted(() => {
+  onMounted(async () => {
     const { url, publicKey } = useRuntimeConfig().public.supabase;
     supabase = createClient(url, publicKey);
-    userSession.value = supabase.auth.session();
+
+    const session = await supabase.auth.getSession();
+
+    userSession.value = session.data.session;
 
     supabase.auth.onAuthStateChange((event, session) => {
       userSession.value = session;
@@ -90,17 +93,15 @@
       return;
     }
 
-    const { session } = await supabase.auth.signIn(
-      {
-        provider: 'discord',
-      },
-      {
+    const { data } = await supabase.auth.signInWithOAuth({
+      provider: 'discord',
+      options: {
         redirectTo: window.location.href,
         scopes: 'identify email',
       },
-    );
+    });
 
-    userSession.value = session;
+    userSession.value = data.session;
   }
 
   async function claimBadge() {
@@ -111,7 +112,7 @@
     await $fetch<ApiQuizResponse>(ApiUrl.QuizClaimBadge, {
       method: 'POST',
       body: {
-        accessToken: userSession.value?.access_token,
+        accessToken: userSession.value?.provider_token,
         resultId: response.value.id,
       },
     })
