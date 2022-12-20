@@ -85,67 +85,6 @@
             {{ t('page.quiz.result.download') }}
           </AtomsButton>
         </div>
-
-        <!-- Badge buttons -->
-        <div
-          v-if="response.isSubmitter"
-          class="mt-8 flex w-full flex-col items-center lg:mt-0 lg:w-1/3"
-        >
-          <p class="mb-4 text-gray-600">
-            {{ t('page.quiz.result.loginTitle') }}
-          </p>
-
-          <AtomsButton
-            v-if="response.isBadgeClaimed"
-            color="info"
-            class="py-2 px-6"
-          >
-            <span class="pr-2 normal-case">
-              {{ t('page.quiz.result.badgeClaimed') }}
-            </span>
-
-            <AtomsIcon
-              name="carbon:checkmark"
-              class="text-white"
-              width="2rem"
-              height="2rem"
-            />
-          </AtomsButton>
-          <AtomsButton
-            v-else-if="userSession"
-            color="gray"
-            class="bg-[#5865F2] py-2 px-6 text-white"
-            @click="$emit('claimBadge')"
-          >
-            <span class="pr-2 normal-case">
-              {{ t('page.quiz.result.claimBadge') }}
-            </span>
-
-            <AtomsIcon
-              name="carbon:logo-discord"
-              class="text-white"
-              width="2rem"
-              height="2rem"
-            />
-          </AtomsButton>
-          <AtomsButton
-            v-else
-            color="gray"
-            class="bg-[#5865F2] py-2 px-6 text-white"
-            @click="$emit('loginWithDiscord')"
-          >
-            <span class="pr-2 normal-case">
-              {{ t('page.quiz.result.loginButton') }}
-            </span>
-
-            <AtomsIcon
-              name="carbon:logo-discord"
-              class="text-white"
-              width="2rem"
-              height="2rem"
-            />
-          </AtomsButton>
-        </div>
       </div>
     </client-only>
 
