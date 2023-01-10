@@ -14,12 +14,6 @@ export const headerMenuItems: HeaderMenu[] = [
     },
   },
   {
-    label: 'Community',
-    link: 'https://discord.gg/vuestorefront',
-    iconName: 'akar-icons:link-out',
-    target: '_blank',
-  },
-  {
     label: 'Videos',
     link: {
       name: 'videos',
@@ -27,5 +21,17 @@ export const headerMenuItems: HeaderMenu[] = [
         page: 1,
       },
     },
+  },
+  {
+    label: 'Certification Program',
+    link: {
+      name: 'certification',
+    },
+  },
+  {
+    label: 'Community',
+    link: 'https://discord.gg/vuestorefront',
+    iconName: 'akar-icons:link-out',
+    target: '_blank',
   },
 ];

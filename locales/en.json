@@ -29,6 +29,10 @@
       "blog": {
         "title": "Engage with us",
         "message": "Read our incredible content in our developer focus blog."
+      },
+      "certification": {
+        "title": "Certification Program",
+        "message": "Become certified Vue Storefront professional",
       }
     },
     "documentation": {
@@ -101,6 +105,18 @@
         "badgeClaimed": "Discord badge claimed",
         "loginButton": "Login to Discord",
         "copied": "Copied"
+      }
+    },
+    "certification": {
+      "head": {
+        "title": "Vue Storefront Certification Program"
+      },
+      "banner": {
+        "title": "Certification Program"
+      },
+      "spread": {
+        "title": "Get certified",
+        "message": "Available certifications"
       }
     },
     "videos": {

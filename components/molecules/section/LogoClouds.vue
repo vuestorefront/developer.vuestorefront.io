@@ -52,6 +52,8 @@
 import {IntegrationList} from '~/types/integrations';
 import {addKey} from '~/utils/array';
 
+console.log(props.brands)
+
 const props = withDefaults(
   defineProps<{
     direction?: 'left' | 'right';
