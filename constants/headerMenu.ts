@@ -23,7 +23,7 @@ export const headerMenuItems: HeaderMenu[] = [
     },
   },
   {
-    label: 'Certification Program',
+    label: 'Certification',
     link: {
       name: 'certification',
     },

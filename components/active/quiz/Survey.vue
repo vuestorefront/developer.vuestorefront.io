@@ -84,12 +84,28 @@
             {{ t('page.quiz.questions.back') }}
           </AtomsButton>
 
-          <AtomsButton :disabled="!currentAnswer" color="gray" @click="goNext">
+          <AtomsButton :disabled="!currentAnswer" v-if="!isLastStep" color="gray" @click="goNext">
             {{ t('page.quiz.questions.next') }}
             <AtomsIcon
               name="carbon:arrow-right"
               class="ml-2 text-lg text-gray-800"
             />
+          </AtomsButton>
+
+          <AtomsButton
+            v-else
+            :disabled="!currentAnswer"
+            color="primary"
+            @click="emitSbumit"
+          >
+            <AtomsLoading v-if="surveyLoading" />
+            <div v-else>
+              {{ t('page.quiz.questions.complete') }}
+              <AtomsIcon
+                name="carbon:checkmark"
+                class="ml-2 text-lg text-white"
+              />
+            </div>
           </AtomsButton>
         </div>
       </div>
@@ -103,6 +119,7 @@
 
   const props = defineProps<{
     quiz: ApiQuizQuestions;
+    surveyLoading: boolean;
   }>();
 
   const emit = defineEmits<{
@@ -160,12 +177,11 @@
       return;
     }
 
-    if (isLastStep.value) {
-      emit('submit', selectedAnswers.value);
-      return;
-    }
-
     currentStepNumber.value += 1;
+  }
+
+  function emitSbumit() {
+    emit('submit', selectedAnswers.value);
   }
 
   function select(answer: string) {

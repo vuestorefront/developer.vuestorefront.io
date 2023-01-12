@@ -68,14 +68,16 @@
         "progress": "{progress}%",
         "back": "Back",
         "next": "Next",
+        "complete": "Complete",
         "submit": "Submit"
       },
       "userDetails": {
-        "subheading": "Enter your information to get a personalised diploma",
+        "subheading": "Want to get your dimploma by email? Enter your details below",
         "firstName": "First name",
         "lastName": "Last name",
         "email": "E-mail",
-        "emailMessage": "We will not use your email for marketing purposes, or sell it to anyone."
+        "emailMessage": "We will not share your email with anyone else or use it for marketing purposes",
+        "submit": "Send me my diploma"
       },
       "tryAgain": {
         "head": {
@@ -165,7 +167,7 @@
       "pagination": {
         "next": "Next",
         "previous": "Previous",
-        "ellipsis": "…"
+        "ellipsis": "…",
       }
     },
     "organisms": {

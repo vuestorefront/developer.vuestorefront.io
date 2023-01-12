@@ -100,7 +100,22 @@ export default `
                       <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                         <div style="font-family:Lato, Arial;font-size:15px;line-height:1;text-align:left;color:#000000;">
                           <p>Hi <%= name %> <%= surname %>,</p>
-                          <p>You scored <b><%= score %>%</b> in <%= quiz_name %> knowledge test. See the results page to share your achievement with others.</p> <% if (passed) { %> <p>Because you scored above <%= passing_score %>%, you can also <b>claim your free Discord badge by going into the link below.</b></p> <% } %>
+                          <p>You scored <b><%= score %>%</b> in <%= quiz_name %> knowledge test.</p>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Lato, Arial;font-size:15px;line-height:1;text-align:left;color:#000000;">
+                          <p>Here is your <%= quiz_name %> Diploma!</p>
+                          <p><img src="<%= diploma %>" alt="Diploma" width="100%"></p>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                        <div style="font-family:Lato, Arial;font-size:15px;line-height:1;text-align:left;color:#000000;">
+                          <p>See the results page to share your achievement with others.</p>
                         </div>
                       </td>
                     </tr>

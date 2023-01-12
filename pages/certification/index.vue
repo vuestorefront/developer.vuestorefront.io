@@ -1,5 +1,5 @@
 <template>
-  <AtomsLayoutContainer class="flex">
+  <AtomsLayoutContainer class="flex items-center">
     <AtomsLayoutContent class="video-banner-content">
       <div>
         <h1 class="text-5xl font-bold">
@@ -8,24 +8,24 @@
           />
         </h1>
         <p class="video-banner-content--text">
-          Our purpose with it is to help foster an ecosystem of skilled Vue
-          Storefront professionals, able to deliver high-quality e-commerce
-          shops to both our customers and partners.
+          Our certification program aims at helping to foster an ecosystem of
+          skilled Vue Storefront professionals, able to deliver high-quality
+          e-commerce shops to both our customers and partners. By certifying
+          yourself as a Vue Storefront professional you are letting the market
+          know that you have unique skills that would allow you to be better
+          positioned when taking a job which requires a Vue Storefront
+          implementation.
         </p>
         <p class="video-banner-content--text">
-          Our exams consist of a set of 10 questions: the first 5 questions are
-          about Vue Storefront and its architecture; the last 5 are dedicated to
-          testing your knowledge about the integration of your choice. Becoming
-          a certified Vue Storefront developer allows you to broaden your career
-          opportunities in the e-commerce space, either by helping you to stand
-          out inside your current organisation, or, in case you’re a freelancer,
-          giving you the power to contribute to different projects.
+          Our ecosystem of partners and customers is constantly hiring for Vue
+          Storefront positions: we want to help you test you knowledge, improve
+          your expertise and show the market your worth.
         </p>
       </div>
     </AtomsLayoutContent>
-    <AtomsLayoutContent>
-      hahah
-    </AtomsLayoutContent>
+    <div class="hidden md:flex md:content-center md:justify-center" style="margin-top: 0;">
+      <img src="/draw/certification.svg" alt="certification" class="w-4/5" />
+    </div>
   </AtomsLayoutContainer>
   <AtomsLayoutFullWidthSection class="bg-white">
       <AtomsLayoutFullWidthContainer>
@@ -35,7 +35,7 @@
           />
         </Suspense>
         <Suspense>
-          <div class="mt-8 grid content-center items-center justify-center gap-4 lg:mt-0 grid-cols-2 md:grid-cols-3 order-last">
+          <div class="mt-8 grid content-center items-center justify-center gap-4 lg:mt-0 grid-cols-0 sm:grid-cols-2 md:grid-cols-3 order-last">
             <AtomsBrandsBox
             v-for="brand in elements"
             :key="brand.key"
@@ -67,7 +67,7 @@
     {
       name: 'VSF Basic',
       link: 'https://developer.vuestorefront.io/quiz/questions/basics',
-      logo: '/brands/logos/vsf-basic.svg',
+      logo: '/brands/logos/Vue Storefront Basics.svg',
       status: 'prod',
       license: 'vsf',
     },

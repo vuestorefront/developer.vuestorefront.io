@@ -8,34 +8,6 @@
   >
     <form class="flex flex-col items-center" @submit.stop.prevent="submit">
       <div class="flex flex-col space-y-4 md:w-2/3">
-        <!-- First name -->
-        <div class="flex flex-col">
-          <label for="first_name">
-            {{ t('page.quiz.userDetails.firstName') }}
-          </label>
-          <input
-            id="first_name"
-            type="text"
-            name="name"
-            required
-            class="rounded-md border border-slate-300 bg-slate-50 px-4 py-2 focus:border-blue-300 focus:ring focus:ring-blue-200"
-          />
-        </div>
-
-        <!-- Last name -->
-        <div class="flex flex-col">
-          <label for="last_name">
-            {{ t('page.quiz.userDetails.lastName') }}
-          </label>
-          <input
-            id="last_name"
-            type="text"
-            name="surname"
-            required
-            class="rounded-md border border-slate-300 bg-slate-50 px-4 py-2 focus:border-blue-300 focus:ring focus:ring-blue-200"
-          />
-        </div>
-
         <!-- Email address -->
         <div class="flex flex-col">
           <label for="email">
@@ -76,8 +48,10 @@
   import { useI18n } from 'vue-i18n';
   import type { UserDetails } from '~/types/api/quiz';
 
-  defineProps<{
+  const props = defineProps<{
     loading: boolean;
+    firstName: string;
+    lastName: string;
   }>();
 
   const emit = defineEmits<{
@@ -88,7 +62,14 @@
 
   function submit(event: Event) {
     const form = new FormData(event.target as HTMLFormElement);
-    const userDetails = Object.fromEntries(form) as unknown as UserDetails;
+
+    const userDetails = {
+      email: form.get('email') as string,
+      name: props.firstName,
+      surname: props.lastName,
+    };
+
+    console.log(userDetails);
 
     emit('submit', userDetails);
   }
