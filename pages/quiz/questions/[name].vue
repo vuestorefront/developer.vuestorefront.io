@@ -1,6 +1,6 @@
 <template>
   <AtomsLayoutContainer ref="container" class="space-y-2">
-    <div v-if="step === Steps.Intro" tabindex="2">
+    <div v-if="step === Steps.Intro">
       <div class="flex gap-20">
         <div class="w-11/12">
           <h1>
@@ -87,17 +87,6 @@
       :survey-loading="surveyLoading"
       @submit="submitUserDetails"
     />
-
-    <div v-if="step === Steps.Results">
-      hello
-    </div>
-
-    <!-- <ActiveQuizUserDetails
-      v-if="step === Steps.UserDetails"
-      :loading="loading"
-      :firstName="firstName"
-      @submit="submitUserDetails"
-    /> -->
   </AtomsLayoutContainer>
 </template>
 
@@ -120,7 +109,6 @@
     Intro = 1,
     Survey = 2,
     Results = 3,
-    UserDetails = 4,
   }
 
   const { t } = useI18n();

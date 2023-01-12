@@ -29,7 +29,7 @@
 
     <!-- Quiz questions -->
     <div class="flex w-full flex-col py-2">
-      <div class="flex flex-col flex-wrap">
+      <div class="flex flex-col flex-wrap" ref="radio">
         <!-- Form -->
         <p class="py-6 text-2xl font-medium leading-tight text-gray-700">
           {{ currentQuestion.title }}
@@ -44,7 +44,7 @@
           }"
           class="mt-2 flex cursor-pointer items-center justify-center rounded border border-gray-200 pl-4 text-gray-800 transition-all duration-200 ease-in-out"
         >
-          <div class="flex h-10 w-10 items-center justify-center">
+          <!-- <div class="flex h-10 w-10 items-center justify-center">
             <AtomsIcon
               v-if="isSelected(answer)"
               name="carbon:radio-button-checked"
@@ -56,14 +56,13 @@
               name="carbon:radio-button"
               class="text-gray-400"
             />
-          </div>
+          </div> -->
 
           <input
             :id="'answer' + answer"
             :value="answer"
             :checked="isSelected(answer)"
             type="radio"
-            class="hidden"
             @input="() => select(answer)"
           />
           <span class="text-bold w-full py-4 text-sm">
@@ -130,6 +129,8 @@
     documentDriven: false,
   });
 
+  const radio = ref<HTMLInputElement | null>(null);
+
   const { t } = useI18n();
 
   // Refs
@@ -176,7 +177,7 @@
     if (!currentAnswer.value) {
       return;
     }
-
+    radio.value?.focus();
     currentStepNumber.value += 1;
   }
 
