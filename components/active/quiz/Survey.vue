@@ -36,34 +36,21 @@
         </p>
 
         <label
-          v-for="answer in currentQuestion.answers"
+          v-for="answer in shuffledAnswers"
           :key="answer"
           :for="'answer' + answer"
           :class="{
             'border-green-300 bg-green-100 text-green-800': isSelected(answer),
           }"
-          class="mt-2 flex cursor-pointer items-center justify-center rounded border border-gray-200 pl-4 text-gray-800 transition-all duration-200 ease-in-out"
+          class="mt-2 flex cursor-pointer gap-2 items-center justify-center rounded border border-gray-200 pl-4 text-gray-800 transition-all duration-200 ease-in-out"
         >
-          <!-- <div class="flex h-10 w-10 items-center justify-center">
-            <AtomsIcon
-              v-if="isSelected(answer)"
-              name="carbon:radio-button-checked"
-              class="text-green-600"
-            />
-
-            <AtomsIcon
-              v-else
-              name="carbon:radio-button"
-              class="text-gray-400"
-            />
-          </div> -->
-
           <input
             :id="'answer' + answer"
             :value="answer"
             :checked="isSelected(answer)"
             type="radio"
             @input="() => select(answer)"
+            class="text-green-600 focus:ring-1 focus:ring-green-500"
           />
           <span class="text-bold w-full py-4 text-sm">
             {{ answer }}
@@ -177,7 +164,6 @@
     if (!currentAnswer.value) {
       return;
     }
-    radio.value?.focus();
     currentStepNumber.value += 1;
   }
 
@@ -188,6 +174,28 @@
   function select(answer: string) {
     selectedAnswers.value[currentArrayIndex.value] = answer;
   }
+
+  function shuffle(array: string[]) {
+    let currentIndex = array.length;
+    let randomIndex;
+
+  // While there remain elements to shuffle.
+    while (currentIndex !== 0) {
+
+    // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+    // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    }
+
+    return array;
+  }
+
+  const shuffledAnswers = computed(() => {
+    return shuffle(currentQuestion.value.answers);
+  });
 
   function isSelected(answer: string) {
     return answer === currentAnswer.value;
