@@ -29,41 +29,27 @@
 
     <!-- Quiz questions -->
     <div class="flex w-full flex-col py-2">
-      <div class="flex flex-col flex-wrap">
+      <div ref="radio" class="flex flex-col flex-wrap">
         <!-- Form -->
         <p class="py-6 text-2xl font-medium leading-tight text-gray-700">
           {{ currentQuestion.title }}
         </p>
 
         <label
-          v-for="answer in currentQuestion.answers"
+          v-for="answer in shuffledAnswers"
           :key="answer"
           :for="'answer' + answer"
           :class="{
             'border-green-300 bg-green-100 text-green-800': isSelected(answer),
           }"
-          class="mt-2 flex cursor-pointer items-center justify-center rounded border border-gray-200 pl-4 text-gray-800 transition-all duration-200 ease-in-out"
+          class="mt-2 flex cursor-pointer items-center justify-center gap-2 rounded border border-gray-200 pl-4 text-gray-800 transition-all duration-200 ease-in-out"
         >
-          <div class="flex h-10 w-10 items-center justify-center">
-            <AtomsIcon
-              v-if="isSelected(answer)"
-              name="carbon:radio-button-checked"
-              class="text-green-600"
-            />
-
-            <AtomsIcon
-              v-else
-              name="carbon:radio-button"
-              class="text-gray-400"
-            />
-          </div>
-
           <input
             :id="'answer' + answer"
             :value="answer"
             :checked="isSelected(answer)"
             type="radio"
-            class="hidden"
+            class="text-green-600 focus:ring-1 focus:ring-green-500"
             @input="() => select(answer)"
           />
           <span class="text-bold w-full py-4 text-sm">
@@ -84,12 +70,33 @@
             {{ t('page.quiz.questions.back') }}
           </AtomsButton>
 
-          <AtomsButton :disabled="!currentAnswer" color="gray" @click="goNext">
+          <AtomsButton
+            v-if="!isLastStep"
+            :disabled="!currentAnswer"
+            color="gray"
+            @click="goNext"
+          >
             {{ t('page.quiz.questions.next') }}
             <AtomsIcon
               name="carbon:arrow-right"
               class="ml-2 text-lg text-gray-800"
             />
+          </AtomsButton>
+
+          <AtomsButton
+            v-else
+            :disabled="!currentAnswer"
+            color="primary"
+            @click="emitSbumit"
+          >
+            <AtomsLoading v-if="surveyLoading" />
+            <div v-else>
+              {{ t('page.quiz.questions.complete') }}
+              <AtomsIcon
+                name="carbon:checkmark"
+                class="ml-2 text-lg text-white"
+              />
+            </div>
           </AtomsButton>
         </div>
       </div>
@@ -103,6 +110,7 @@
 
   const props = defineProps<{
     quiz: ApiQuizQuestions;
+    surveyLoading: boolean;
   }>();
 
   const emit = defineEmits<{
@@ -112,6 +120,8 @@
   definePageMeta({
     documentDriven: false,
   });
+
+  const radio = ref<HTMLInputElement | null>(null);
 
   const { t } = useI18n();
 
@@ -159,18 +169,40 @@
     if (!currentAnswer.value) {
       return;
     }
-
-    if (isLastStep.value) {
-      emit('submit', selectedAnswers.value);
-      return;
-    }
-
     currentStepNumber.value += 1;
+  }
+
+  function emitSbumit() {
+    emit('submit', selectedAnswers.value);
   }
 
   function select(answer: string) {
     selectedAnswers.value[currentArrayIndex.value] = answer;
   }
+
+  function shuffle(array: string[]) {
+    let currentIndex = array.length;
+    let randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex !== 0) {
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
+  }
+
+  const shuffledAnswers = computed(() => {
+    return shuffle(currentQuestion.value.answers);
+  });
 
   function isSelected(answer: string) {
     return answer === currentAnswer.value;

@@ -1,9 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import ejs from 'ejs';
 import Joi from 'joi';
-import { createSendGridClient } from '~/server/utils/sendGrid';
 import { createSupabaseClient } from '~/server/utils/supabase';
-import emailTemplate from '~/server/utils/templates/quizResponseEmail';
 import {
   getDiplomaSVG,
   getPdfBufferFromSvg,
@@ -14,6 +12,8 @@ import type {
   Response,
   UserDetails,
   ApiQuizSubmit,
+  EmailQuizBody,
+  EmailDetails,
 } from '~/types/api/quiz';
 import {
   defineEventHandler,
@@ -39,7 +39,6 @@ async function validateBody(event: H3Event): Promise<Body> {
     userDetails: Joi.object({
       name: Joi.string().required().trim(),
       surname: Joi.string().required().trim(),
-      email: Joi.string().required().email().trim(),
     }),
   });
 
@@ -132,42 +131,6 @@ async function generateAndSaveDiplomas(
   await Promise.all([pdf, svg]);
 }
 
-/**
- * Sends e-mail with quiz results to the user
- */
-async function sendEmail(quiz: Quiz, response: Response) {
-  const sendGrid = createSendGridClient();
-  const { href } = new URL(
-    `/quiz/results/${response.id}`,
-    useRuntimeConfig().public.pageUrl,
-  );
-
-  const html = ejs.render(emailTemplate, {
-    name: response.user_details.name,
-    surname: response.user_details.surname,
-    score: response.score,
-    passed: response.passed,
-    quiz_name: quiz.title,
-    passing_score: quiz.passing_score,
-    href,
-  });
-
-  return sendGrid.send({
-    to: response.user_details.email,
-    from: {
-      name: 'Vue Storefront Developer',
-      email: 'noreply@developer.vuestorefront.io',
-    },
-    subject: `Your ${quiz.title} quiz results`,
-    html,
-    trackingSettings: {
-      clickTracking: {
-        enable: false,
-      },
-    },
-  });
-}
-
 export default defineEventHandler(async (event) => {
   const { name, selectedAnswers, userDetails } = await validateBody(event);
   const supabase = createSupabaseClient();
@@ -194,7 +157,6 @@ export default defineEventHandler(async (event) => {
 
   if (passed) {
     await generateAndSaveDiplomas(supabase, response, quiz);
-    await sendEmail(quiz, response);
   }
 
   setCookie(event, cookieName, submitterCookie, {
