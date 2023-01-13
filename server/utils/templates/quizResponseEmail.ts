@@ -100,22 +100,14 @@ export default `
                       <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                         <div style="font-family:Lato, Arial;font-size:15px;line-height:1;text-align:left;color:#000000;">
                           <p>Hi <%= name %> <%= surname %>,</p>
-                          <p>You scored <b><%= score %>%</b> in <%= quiz_name %> knowledge test.</p>
+                          <p>Congratulations - you scored <b><%= score %>%</b> in <%= quiz_name %>! You are now part of an exclusive group of developers who can show the market their Vue Storefront expertise.</p>
+                          <p>Find your personalized diploma attached to this email. We encourage you to share it on LinkedIn (if you tag our account, we will re-share your results with our own community, giving you even more visibility).</p>
                         </div>
                       </td>
                     </tr>
-                    <tr>
                       <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                         <div style="font-family:Lato, Arial;font-size:15px;line-height:1;text-align:left;color:#000000;">
-                          <p>Here is your <%= quiz_name %> Diploma!</p>
-                          <p><img src="<%= diploma %>" alt="Diploma" width="100%"></p>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                        <div style="font-family:Lato, Arial;font-size:15px;line-height:1;text-align:left;color:#000000;">
-                          <p>See the results page to share your achievement with others.</p>
+                          <p>Stay in touch and congratulations once again from the Vue Storefront team!</p>
                         </div>
                       </td>
                     </tr>

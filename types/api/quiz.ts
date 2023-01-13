@@ -1,3 +1,5 @@
+import { ComputedRef } from "nuxt/dist/app/compat/capi";
+
 export interface Question {
   title: string;
   answers: string[];

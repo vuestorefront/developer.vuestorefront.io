@@ -109,7 +109,7 @@
     <div
       class="container mx-auto flex flex-col flex-wrap px-5 py-4 text-gray-600 lg:w-2/3"
     >
-      <form class="flex flex-col items-center" @submit.prevent="submit">
+      <form class="flex flex-col items-center" @submit.stop.prevent="submit">
         <div class="flex flex-col space-y-4 md:w-2/3">
           <!-- Email address -->
           <div class="flex flex-col">
@@ -132,7 +132,11 @@
 
         <!-- Submit button -->
         <AtomsButton type="submit" color="primary" class="mt-6">
-          {{ t('page.quiz.userDetails.submit') }}
+          <AtomsLoading v-if="detailsLoading" />
+
+          <template v-else>
+            {{ t('page.quiz.userDetails.submit') }}
+          </template>
         </AtomsButton>
       </form>
     </div>
@@ -147,7 +151,8 @@
     EmailQuizBody,
   } from '~/types/api/quiz';
   import type { Session } from '@supabase/supabase-js';
-  import { sendEmail } from '~~/server/api/quiz/sendEmail';
+import { ApiUrl } from '~~/enums/apiUrl';
+import { notify } from '@kyvg/vue3-notification';
 
   const props = defineProps<{
     response: ApiQuizResponse;
@@ -164,6 +169,7 @@
 
   const shareUrl = ref('');
   const copiedIndicator = ref(false);
+  const detailsLoading = ref(false);
 
   const config = useRuntimeConfig();
 
@@ -235,6 +241,8 @@
     const name = response.username.split(' ')[0];
     const surname = response.username.split(' ')[1];
 
+    detailsLoading.value = true;
+
     const quizBody: EmailQuizBody = {
       title: response.quiz.title,
       passing_score: response.quiz.passing_score,
@@ -247,10 +255,22 @@
       email,
       score: response.score,
       passed: response.passed,
-      diploma: diplomaSvg.value,
+      diploma: diplomaPdf.value,
     };
 
-    await sendEmail(quizBody, detailsBody);
+    await $fetch(ApiUrl.QuizSendEmail, {
+      method: 'POST',
+      body: JSON.stringify({
+        quiz: quizBody,
+        details: detailsBody,
+      }),
+    });
+
+    detailsLoading.value = false;
+    notify({
+      title: t('page.quiz.userDetails.emailSent'),
+      type: 'success',
+    });
   }
 </script>
 
