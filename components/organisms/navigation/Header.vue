@@ -9,20 +9,6 @@
             :alt="t('components.organisms.navigation.header.title')"
           />
         </NuxtLink>
-        <PopoverGroup
-          as="nav"
-          class="header-content-center hidden space-x-10 lg:flex"
-        >
-          <ul class="header-content-center--list">
-            <li
-              v-for="(menu, index) in headerMenuItems"
-              :key="index"
-              class="header-content-center--item"
-            >
-              <MoleculesMegamenu v-bind="menu" />
-            </li>
-          </ul>
-        </PopoverGroup>
         <div class="header-content-right">
           <!--
           <Suspense>
@@ -45,6 +31,20 @@
             />
           </PopoverButton>
         </div>
+        <PopoverGroup
+          as="nav"
+          class="header-content-center hidden space-x-10 lg:flex"
+        >
+          <ul class="header-content-center--list">
+            <li
+              v-for="(menu, index) in headerMenuItems"
+              :key="index"
+              class="header-content-center--item"
+            >
+              <MoleculesMegamenu v-bind="menu" />
+            </li>
+          </ul>
+        </PopoverGroup>
       </div>
     </nav>
     <transition

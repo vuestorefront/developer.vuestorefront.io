@@ -97,57 +97,13 @@
         {{ t('page.quiz.result.takeTest') }}
       </AtomsButton>
     </div>
-
-    <!-- send by email -->
-
-    <h2 class="mt-12 mb-4 text-center text-3xl">
-      <AtomsTextFirstColoredWord
-        :text="t('page.quiz.userDetails.subheading')"
-      />
-    </h2>
-
-    <div
-      class="container mx-auto flex flex-col flex-wrap px-5 py-4 text-gray-600 lg:w-2/3"
-    >
-      <form class="flex flex-col items-center" @submit.prevent="submit">
-        <div class="flex flex-col space-y-4 md:w-2/3">
-          <!-- Email address -->
-          <div class="flex flex-col">
-            <label for="email">
-              {{ t('page.quiz.userDetails.email') }}
-            </label>
-            <input
-              id="email"
-              type="email"
-              name="email"
-              required
-              class="rounded-md border border-slate-300 bg-slate-50 px-4 py-2 focus:border-blue-300 focus:ring focus:ring-blue-200"
-            />
-
-            <p class="mt-2 text-center text-sm text-gray-500">
-              {{ t('page.quiz.userDetails.emailMessage') }}
-            </p>
-          </div>
-        </div>
-
-        <!-- Submit button -->
-        <AtomsButton type="submit" color="primary" class="mt-6">
-          {{ t('page.quiz.userDetails.submit') }}
-        </AtomsButton>
-      </form>
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n';
-  import type {
-    ApiQuizResponse,
-    EmailDetails,
-    EmailQuizBody,
-  } from '~/types/api/quiz';
+  import type { ApiQuizResponse } from '~/types/api/quiz';
   import type { Session } from '@supabase/supabase-js';
-  import { sendEmail } from '~~/server/api/quiz/sendEmail';
 
   const props = defineProps<{
     response: ApiQuizResponse;
@@ -160,7 +116,6 @@
   }>();
 
   const { t } = useI18n();
-  const route = useRoute();
 
   const shareUrl = ref('');
   const copiedIndicator = ref(false);
@@ -224,33 +179,6 @@
     setTimeout(() => {
       copiedIndicator.value = false;
     }, 2000);
-  }
-
-  async function submit(event: Event) {
-    const form = new FormData(event.target as HTMLFormElement);
-
-    const { id } = route.params;
-    const { response } = props;
-    const email = form.get('email') as string;
-    const name = response.username.split(' ')[0];
-    const surname = response.username.split(' ')[1];
-
-    const quizBody: EmailQuizBody = {
-      title: response.quiz.title,
-      passing_score: response.quiz.passing_score,
-    };
-
-    const detailsBody: EmailDetails = {
-      id: id[0],
-      name,
-      surname,
-      email,
-      score: response.score,
-      passed: response.passed,
-      diploma: diplomaSvg.value,
-    };
-
-    await sendEmail(quizBody, detailsBody);
   }
 </script>
 

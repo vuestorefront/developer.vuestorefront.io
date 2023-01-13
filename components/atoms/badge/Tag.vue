@@ -47,24 +47,18 @@
 
   const iconName = computed(() => {
     switch (props.type) {
-      case ColorTypeName.success: {
+      case ColorTypeName.success:
         return IconTypeName.success;
-      }
-      case ColorTypeName.info: {
+      case ColorTypeName.info:
         return IconTypeName.info;
-      }
-      case ColorTypeName.warning: {
+      case ColorTypeName.warning:
         return IconTypeName.warning;
-      }
-      case ColorTypeName.danger: {
+      case ColorTypeName.danger:
         return IconTypeName.danger;
-      }
-      case ColorTypeName.default: {
+      case ColorTypeName.default:
         return IconTypeName.default;
-      }
-      default: {
+      default:
         return IconTypeName.default;
-      }
     }
   });
 </script>

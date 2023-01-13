@@ -1,9 +1,9 @@
 <template>
-  <Icon :name="name" />
+  <Icon :name="name"/>
 </template>
 
 <script setup lang="ts">
-  defineProps<{
-    name: string;
-  }>();
+defineProps<{
+  name: string;
+}>();
 </script>

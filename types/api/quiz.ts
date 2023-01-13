@@ -12,20 +12,6 @@ export type Quiz = {
   passing_score: number;
 };
 
-export type EmailQuizBody = {
-  title: string;
-  passing_score: number;
-};
-
-export type EmailDetails = {
-  id: string;
-  name: string;
-  surname: string;
-  email: string;
-  score: number;
-  passed: boolean;
-  diploma: string;
-};
 export interface UserDetails {
   name: string;
   surname: string;

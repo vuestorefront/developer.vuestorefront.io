@@ -29,10 +29,6 @@
       "blog": {
         "title": "Engage with us",
         "message": "Read our incredible content in our developer focus blog."
-      },
-      "certification": {
-        "title": "Certification Program",
-        "message": "Become certified Vue Storefront professional",
       }
     },
     "documentation": {
@@ -68,16 +64,14 @@
         "progress": "{progress}%",
         "back": "Back",
         "next": "Next",
-        "complete": "Complete",
         "submit": "Submit"
       },
       "userDetails": {
-        "subheading": "Want to get your dimploma by email? Enter your details below",
+        "subheading": "Enter your information to get a personalised diploma",
         "firstName": "First name",
         "lastName": "Last name",
         "email": "E-mail",
-        "emailMessage": "We will not share your email with anyone else or use it for marketing purposes",
-        "submit": "Send me my diploma"
+        "emailMessage": "We will not use your email for marketing purposes, or sell it to anyone."
       },
       "tryAgain": {
         "head": {
@@ -107,18 +101,6 @@
         "badgeClaimed": "Discord badge claimed",
         "loginButton": "Login to Discord",
         "copied": "Copied"
-      }
-    },
-    "certification": {
-      "head": {
-        "title": "Vue Storefront Certification Program"
-      },
-      "banner": {
-        "title": "Certification Program"
-      },
-      "spread": {
-        "title": "Get certified",
-        "message": "Available certifications"
       }
     },
     "videos": {
@@ -167,7 +149,7 @@
       "pagination": {
         "next": "Next",
         "previous": "Previous",
-        "ellipsis": "…",
+        "ellipsis": "…"
       }
     },
     "organisms": {

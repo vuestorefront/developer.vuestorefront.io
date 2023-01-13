@@ -1,90 +1,14 @@
 <template>
   <AtomsLayoutContainer ref="container" class="space-y-2">
-    <div v-if="step === Steps.Intro">
-      <div class="flex gap-20">
-        <div class="w-11/12">
-          <h1>
-            <span class="text-5xl font-medium">
-              <span style="color: #02bb4d">Welcome</span> to Vue Storefront's
-              <span class="font-semibold">{{ quiz?.title }}</span>
-              Certification Program.
-            </span>
-          </h1>
-          <p>Our exams consist of a set of 10 questions:</p>
-          <ul>
-            <li>
-              the first 5 questions are about Vue Storefront and its
-              architecture;
-            </li>
-            <li>
-              the last 5 are dedicated to testing your knowledge about the
-              <span>{{ quiz?.title }}</span> integration.
-            </li>
-          </ul>
-          <p>
-            Becoming a certified Vue Storefront developer allows you to broaden
-            your career career opportunities in the e-commerce space, either by
-            helping you to you to stand out inside your current organisation,
-            or, in case you’re a freelancer, giving you the power to contribute
-            to different projects.
-          </p>
-        </div>
-        <div class="flex h-96 w-3/5 content-start">
-          <img
-            :src="`/brands/logos/${quiz?.title}.svg`"
-            alt="`${quiz?.title}"
-            class="h-40 w-full object-contain"
-          />
-        </div>
-      </div>
-      <div class="w-2/5">
-        <p class="my-4 text-lg font-semibold">
-          Provide your details to start the quiz:
-        </p>
-        <div class="flex flex-col">
-          <label for="first_name">
-            {{ t('page.quiz.userDetails.firstName') }}
-          </label>
-          <input
-            id="first_name"
-            v-model="firstName"
-            type="text"
-            name="name"
-            required
-            class="rounded-md border border-slate-300 bg-slate-50 px-4 py-2 focus:border-blue-300 focus:ring focus:ring-blue-200"
-          />
-        </div>
-
-        <!-- Last name -->
-        <div class="flex flex-col">
-          <label for="last_name">
-            {{ t('page.quiz.userDetails.lastName') }}
-          </label>
-          <input
-            id="last_name"
-            v-model="lastName"
-            type="text"
-            name="surname"
-            required
-            class="rounded-md border border-slate-300 bg-slate-50 px-4 py-2 focus:border-blue-300 focus:ring focus:ring-blue-200"
-          />
-        </div>
-      </div>
-      <AtomsButton
-        color="primary"
-        :disabled="!firstName || !lastName"
-        label="Start the Quiz"
-        text-color="secondary"
-        class="mt-12 w-full md:w-fit"
-        :shadow="false"
-        @click="startQuiz"
-      />
-    </div>
-
     <ActiveQuizSurvey
       v-if="step === Steps.Survey"
       :quiz="quiz"
-      :survey-loading="surveyLoading"
+      @submit="submitSurvey"
+    />
+
+    <ActiveQuizUserDetails
+      v-if="step === Steps.UserDetails"
+      :loading="loading"
       @submit="submitUserDetails"
     />
   </AtomsLayoutContainer>
@@ -106,9 +30,8 @@
   });
 
   const enum Steps {
-    Intro = 1,
-    Survey = 2,
-    Results = 3,
+    Survey = 1,
+    UserDetails = 2,
   }
 
   const { t } = useI18n();
@@ -116,10 +39,7 @@
   const router = useRouter();
   const config = useRuntimeConfig();
   const loading = ref(false);
-  const surveyLoading = ref(false);
-  const step = ref(Steps.Intro);
-  const firstName = ref(null);
-  const lastName = ref(null);
+  const step = ref(Steps.Survey);
   const form = reactive({
     selectedAnswers: [] as string[],
     userDetails: {},
@@ -174,29 +94,20 @@
     ],
   });
 
-  function startQuiz() {
-    step.value += 1;
-  }
-
   // Methods
   function submitSurvey(selectedAnswers: string[]) {
     form.selectedAnswers = selectedAnswers;
     step.value = Steps.UserDetails;
   }
 
-  async function submitUserDetails(selectedAnswers: string[]) {
-    form.selectedAnswers = selectedAnswers;
-    form.userDetails = {
-      name: firstName.value,
-      surname: lastName.value,
-    };
-    surveyLoading.value = true;
+  async function submitUserDetails(userDetails: UserDetails) {
+    form.userDetails = userDetails;
     loading.value = true;
 
     await $fetch<ApiQuizSubmit>(ApiUrl.QuizSubmit, {
       method: 'POST',
       body: {
-        name: quiz.value?.id,
+        name: quiz.value.id,
         ...form,
       },
     })
