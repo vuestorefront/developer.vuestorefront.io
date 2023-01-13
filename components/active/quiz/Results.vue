@@ -106,46 +106,46 @@
       />
     </h2>
 
-  <div
-    class="container mx-auto flex flex-col flex-wrap px-5 py-4 text-gray-600 lg:w-2/3"
-  >
-    <form class="flex flex-col items-center" @submit.prevent="submit">
-      <div class="flex flex-col space-y-4 md:w-2/3">
-        <!-- Email address -->
-        <div class="flex flex-col">
-          <label for="email">
-            {{ t('page.quiz.userDetails.email') }}
-          </label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            required
-            class="rounded-md border border-slate-300 bg-slate-50 px-4 py-2 focus:border-blue-300 focus:ring focus:ring-blue-200"
-          />
+    <div
+      class="container mx-auto flex flex-col flex-wrap px-5 py-4 text-gray-600 lg:w-2/3"
+    >
+      <form class="flex flex-col items-center" @submit.prevent="submit">
+        <div class="flex flex-col space-y-4 md:w-2/3">
+          <!-- Email address -->
+          <div class="flex flex-col">
+            <label for="email">
+              {{ t('page.quiz.userDetails.email') }}
+            </label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              required
+              class="rounded-md border border-slate-300 bg-slate-50 px-4 py-2 focus:border-blue-300 focus:ring focus:ring-blue-200"
+            />
 
-          <p class="mt-2 text-center text-sm text-gray-500">
-            {{ t('page.quiz.userDetails.emailMessage') }}
-          </p>
+            <p class="mt-2 text-center text-sm text-gray-500">
+              {{ t('page.quiz.userDetails.emailMessage') }}
+            </p>
+          </div>
         </div>
-      </div>
 
-      <!-- Submit button -->
-      <AtomsButton
-        type="submit"
-        color="primary"
-        class="mt-6"
-      >
+        <!-- Submit button -->
+        <AtomsButton type="submit" color="primary" class="mt-6">
           {{ t('page.quiz.userDetails.submit') }}
-      </AtomsButton>
-    </form>
-  </div>
+        </AtomsButton>
+      </form>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n';
-  import type { ApiQuizResponse, EmailDetails, EmailQuizBody } from '~/types/api/quiz';
+  import type {
+    ApiQuizResponse,
+    EmailDetails,
+    EmailQuizBody,
+  } from '~/types/api/quiz';
   import type { Session } from '@supabase/supabase-js';
   import { sendEmail } from '~~/server/api/quiz/sendEmail';
 

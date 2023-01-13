@@ -18,7 +18,7 @@
             </li>
             <li>
               the last 5 are dedicated to testing your knowledge about the
-              <span>{{  quiz?.title }}</span> integration.
+              <span>{{ quiz?.title }}</span> integration.
             </li>
           </ul>
           <p>
@@ -38,7 +38,7 @@
         </div>
       </div>
       <div class="w-2/5">
-        <p class="my-4 font-semibold text-lg">
+        <p class="my-4 text-lg font-semibold">
           Provide your details to start the quiz:
         </p>
         <div class="flex flex-col">
@@ -175,7 +175,7 @@
   });
 
   function startQuiz() {
-    step.value = step.value + 1;
+    step.value += 1;
   }
 
   // Methods
@@ -196,7 +196,7 @@
     await $fetch<ApiQuizSubmit>(ApiUrl.QuizSubmit, {
       method: 'POST',
       body: {
-        name: quiz.value.id,
+        name: quiz.value?.id,
         ...form,
       },
     })

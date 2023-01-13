@@ -70,7 +70,7 @@
     },
   );
 
-  console.log(props)
+  console.log(props);
 
   const isOpen = ref(false);
 </script>

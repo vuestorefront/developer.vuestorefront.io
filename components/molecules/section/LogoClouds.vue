@@ -49,29 +49,29 @@
 </template>
 
 <script setup lang="ts">
-import {IntegrationList} from '~/types/integrations';
-import {addKey} from '~/utils/array';
+  import { IntegrationList } from '~/types/integrations';
+  import { addKey } from '~/utils/array';
 
-console.log(props.brands)
+  const props = withDefaults(
+    defineProps<{
+      direction?: 'left' | 'right';
+      title?: string;
+      message?: string;
+      buttonText?: string;
+      buttonLink?: string;
+      brands?: IntegrationList;
+    }>(),
+    {
+      direction: 'left',
+      title: '',
+      message: '',
+      buttonText: '',
+      buttonLink: '',
+      brands: () => [],
+    },
+  );
 
-const props = withDefaults(
-  defineProps<{
-    direction?: 'left' | 'right';
-    title?: string;
-    message?: string;
-    buttonText?: string;
-    buttonLink?: string;
-    brands?: IntegrationList;
-  }>(),
-  {
-    direction: 'left',
-    title: '',
-    message: '',
-    buttonText: '',
-    buttonLink: '',
-    brands: () => [],
-  },
-);
+  console.log(props.brands);
 
-const elements = computed(() => addKey(props.brands));
+  const elements = computed(() => addKey(props.brands));
 </script>

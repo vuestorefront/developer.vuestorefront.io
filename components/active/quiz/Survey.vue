@@ -29,7 +29,7 @@
 
     <!-- Quiz questions -->
     <div class="flex w-full flex-col py-2">
-      <div class="flex flex-col flex-wrap" ref="radio">
+      <div ref="radio" class="flex flex-col flex-wrap">
         <!-- Form -->
         <p class="py-6 text-2xl font-medium leading-tight text-gray-700">
           {{ currentQuestion.title }}
@@ -42,15 +42,15 @@
           :class="{
             'border-green-300 bg-green-100 text-green-800': isSelected(answer),
           }"
-          class="mt-2 flex cursor-pointer gap-2 items-center justify-center rounded border border-gray-200 pl-4 text-gray-800 transition-all duration-200 ease-in-out"
+          class="mt-2 flex cursor-pointer items-center justify-center gap-2 rounded border border-gray-200 pl-4 text-gray-800 transition-all duration-200 ease-in-out"
         >
           <input
             :id="'answer' + answer"
             :value="answer"
             :checked="isSelected(answer)"
             type="radio"
-            @input="() => select(answer)"
             class="text-green-600 focus:ring-1 focus:ring-green-500"
+            @input="() => select(answer)"
           />
           <span class="text-bold w-full py-4 text-sm">
             {{ answer }}
@@ -70,7 +70,12 @@
             {{ t('page.quiz.questions.back') }}
           </AtomsButton>
 
-          <AtomsButton :disabled="!currentAnswer" v-if="!isLastStep" color="gray" @click="goNext">
+          <AtomsButton
+            v-if="!isLastStep"
+            :disabled="!currentAnswer"
+            color="gray"
+            @click="goNext"
+          >
             {{ t('page.quiz.questions.next') }}
             <AtomsIcon
               name="carbon:arrow-right"
@@ -179,15 +184,17 @@
     let currentIndex = array.length;
     let randomIndex;
 
-  // While there remain elements to shuffle.
+    // While there remain elements to shuffle.
     while (currentIndex !== 0) {
-
-    // Pick a remaining element.
+      // Pick a remaining element.
       randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
+      currentIndex -= 1;
 
-    // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
     }
 
     return array;

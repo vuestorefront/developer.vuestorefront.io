@@ -44,7 +44,7 @@
     () => props.label || cardBadgeLabel[props.model] || '',
   );
 
-    console.log(props, 'props')
+  console.log(props, 'props');
   const cssClasses = computed<string>(
     () => `${baseClass.value} ${badgePosition.value}`,
   );
