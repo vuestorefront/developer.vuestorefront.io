@@ -1,8 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import Joi from 'joi';
-import { createSendGridClient } from '~/server/utils/sendGrid';
 import { createSupabaseClient } from '~/server/utils/supabase';
-import emailTemplate from '~/server/utils/templates/quizResponseEmail';
 import {
   getDiplomaSVG,
   getPdfBufferFromSvg,
@@ -13,6 +11,8 @@ import type {
   Response,
   UserDetails,
   ApiQuizSubmit,
+  EmailQuizBody,
+  EmailDetails,
 } from '~/types/api/quiz';
 import {
   defineEventHandler,
@@ -38,7 +38,6 @@ async function validateBody(event: H3Event): Promise<Body> {
     userDetails: Joi.object({
       name: Joi.string().required().trim(),
       surname: Joi.string().required().trim(),
-      email: Joi.string().required().email().trim(),
     }),
   });
 

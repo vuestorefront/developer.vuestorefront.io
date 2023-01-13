@@ -10,7 +10,7 @@
         leave-from="opacity-100"
         leave-to="opacity-0"
       >
-        <div class="fixed inset-0 bg-black bg-opacity-25"/>
+        <div class="fixed inset-0 bg-black bg-opacity-25" />
       </TransitionChild>
 
       <div class="fixed inset-0 z-40 flex">
@@ -36,7 +36,7 @@
                 @click="$emit('close')"
               >
                 <span class="sr-only">{{ t('global.interface.close') }}</span>
-                <Icon name="carbon:close" class="text-3xl"/>
+                <Icon name="carbon:close" class="text-3xl" />
               </button>
             </div>
 
@@ -94,28 +94,23 @@
 </template>
 
 <script setup lang="ts">
-import {
-  Dialog,
-  DialogPanel,
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  TransitionChild,
-  TransitionRoot,
-} from '@headlessui/vue';
-import {useI18n} from 'vue-i18n';
-import {useVideosList} from '~/composables/store/useVideosList';
+  import {
+    Dialog,
+    DialogPanel,
+    Disclosure,
+    DisclosureButton,
+    DisclosurePanel,
+    TransitionChild,
+    TransitionRoot,
+  } from '@headlessui/vue';
+  import { useI18n } from 'vue-i18n';
+  import { useVideosList } from '~/composables/store/useVideosList';
 
-withDefaults(defineProps<{ open: boolean }>(), {open: false});
+  withDefaults(defineProps<{ open: boolean }>(), { open: false });
 
-defineEmits(['close']);
+  defineEmits(['close']);
 
-const {t} = useI18n();
+  const { t } = useI18n();
 
-const {
-  filters,
-  changeFilter,
-  getCounter,
-} = useVideosList();
-
+  const { filters, changeFilter, getCounter } = useVideosList();
 </script>

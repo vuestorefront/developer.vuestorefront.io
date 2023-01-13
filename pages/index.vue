@@ -34,6 +34,26 @@
       <AtomsLayoutFullWidthContainer>
         <Suspense>
           <LazyAtomsTextHeadingCenter
+            :title="t('page.home.certification.title')"
+            :message="t('page.home.certification.message')"
+          />
+        </Suspense>
+        <Suspense>
+          <div class="mt-8 grid content-center items-center justify-center gap-4 lg:mt-0 grid-cols-2 md:grid-cols-3 order-last">
+            <AtomsBrandsBox
+            v-for="brand in elements"
+            :key="brand.key"
+            v-bind="brand"
+            shaped
+          />
+          </div>
+        </Suspense>
+      </AtomsLayoutFullWidthContainer>
+    </AtomsLayoutFullWidthSection>
+    <AtomsLayoutFullWidthSection>
+      <AtomsLayoutFullWidthContainer>
+        <Suspense>
+          <LazyAtomsTextHeadingCenter
             :title="t('page.home.blog.title')"
             :message="t('page.home.blog.message')"
           />
@@ -95,6 +115,8 @@
     }),
   );
 
+  console.log(commerceVendors);
+
   const homeIntegrationBanners = computed(() => {
     return [
       {
@@ -134,4 +156,44 @@
   const { data, pending, error } = await $apiAsyncData();
 
   const postsList = convertPostsToProps(data.value);
+  const elements = [
+    {
+      name: 'commercetools',
+      link: 'https://developer.vuestorefront.io/quiz/questions/commercetools',
+      logo: '/brands/logos/commercetools.svg',
+      status: 'prod',
+      license: 'enterprise',
+      categories: ['commerce'],
+    },
+    {
+      name: 'BigCommerce',
+      link: 'https://developer.vuestorefront.io/quiz/questions/bigcommerce',
+      logo: '/brands/logos/bigcommerce.svg',
+      status: 'prod',
+      license: 'enterprise',
+      categories: ['commerce'],
+    },
+    {
+      name: 'Elastic Path',
+      link: 'https://developer.vuestorefront.io/quiz/questions/bigcommerce',
+      logo: '/brands/logos/elasticpath.svg',
+      status: 'prod',
+      license: 'enterprise',
+      categories: ['commerce'],
+    },
+    {
+      name: 'Magento',
+      link: 'https://developer.vuestorefront.io/quiz/questions/magento',
+      logo: '/brands/logos/magento.svg',
+      status: 'prod',
+      license: 'os',
+      categories: ['commerce'],
+    },
+    {
+      name: 'And More',
+      link: 'https://developer.vuestorefront.io/certification',
+      logo: '/brands/logos/and_more.svg',
+      status: 'prod',
+    }
+  ];
 </script>

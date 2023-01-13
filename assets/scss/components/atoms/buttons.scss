@@ -37,12 +37,12 @@
         &.button-disabled,
         [attr="disabled"] {
           @apply
-          bg-primary-200
-          hover:bg-primary-400;
+          bg-gray-200
+          hover:bg-gray-400;
 
           &.button-text,
           & .button-text {
-            @apply text-gray-200;
+            @apply text-gray-600;
           }
         }
 
