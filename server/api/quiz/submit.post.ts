@@ -1,5 +1,4 @@
 import { randomUUID } from 'node:crypto';
-import ejs from 'ejs';
 import Joi from 'joi';
 import { createSendGridClient } from '~/server/utils/sendGrid';
 import { createSupabaseClient } from '~/server/utils/supabase';
