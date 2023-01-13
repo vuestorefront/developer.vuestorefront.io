@@ -185,7 +185,7 @@ import { notify } from '@kyvg/vue3-notification';
     const url = new URL(
       `/storage/v1/object/public/quiz-diplomas/${props.response.id}.svg`,
       config.public.supabase.url,
-    );
+    ); 
 
     return url.href;
   });
