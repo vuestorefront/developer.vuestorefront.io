@@ -1,4 +1,4 @@
-FROM node:16 as builder
+FROM node:16.19 as builder
 
 ARG PAGE_URL
 ARG ALGOLIA_TOKEN
@@ -35,7 +35,7 @@ RUN NODE_ENV=development yarn install --frozen-lockfile
 
 RUN NODE_ENV=production yarn build
 
-FROM node:lts
+FROM node:16.19
 
 ARG PAGE_URL
 ARG ALGOLIA_TOKEN
