@@ -4,6 +4,7 @@ export enum ApiUrl {
   Integrations = '/api/integrations',
   QuizQuestions = '/api/quiz/questions',
   QuizSubmit = '/api/quiz/submit',
+  QuizSendEmail = '/api/quiz/send-email',
   QuizResponse = '/api/quiz/response',
   QuizClaimBadge = '/api/quiz/claim-badge',
 }
