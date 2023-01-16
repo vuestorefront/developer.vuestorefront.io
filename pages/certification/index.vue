@@ -67,7 +67,7 @@
     {
       name: 'VSF Basic',
       link: 'https://developer.vuestorefront.io/quiz/questions/basics',
-      logo: '/brands/logos/Vue Storefront Basics.svg',
+      logo: '/brands/logos/basics.svg',
       status: 'prod',
       license: 'vsf',
     },
