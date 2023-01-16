@@ -89,7 +89,7 @@
     },
     {
       name: 'Elastic Path',
-      link: 'https://developer.vuestorefront.io/quiz/questions/bigcommerce',
+      link: 'https://developer.vuestorefront.io/quiz/questions/elasticpath',
       logo: '/brands/logos/elasticpath.svg',
       status: 'prod',
       license: 'enterprise',
