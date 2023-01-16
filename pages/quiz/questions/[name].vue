@@ -31,8 +31,8 @@
         </div>
         <div class="hidden lg:flex lg:h-96 lg:w-3/5 lg:content-start">
           <img
-            :src="`/brands/logos/${quiz?.title}.svg`"
-            alt="`${quiz?.title}"
+            :src="`/brands/logos/${quiz?.id}.svg`"
+            :alt="quiz?.title"
             class="h-40 w-full object-contain"
           />
         </div>
@@ -143,6 +143,8 @@
 
     return href;
   });
+
+  console.log(quiz.value.id)
 
   useHead({
     meta: [
