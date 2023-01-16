@@ -1,7 +1,7 @@
 <template>
   <AtomsLayoutContainer ref="container" class="space-y-2">
     <div v-if="step === Steps.Intro">
-      <div class="flex gap-20">
+      <div class="flex lg:gap-20">
         <div class="w-11/12">
           <h1>
             <span class="text-5xl font-medium">
@@ -29,7 +29,7 @@
             to different projects.
           </p>
         </div>
-        <div class="flex h-96 w-3/5 content-start">
+        <div class="hidden lg:flex lg:h-96 lg:w-3/5 lg:content-start">
           <img
             :src="`/brands/logos/${quiz?.title}.svg`"
             alt="`${quiz?.title}"
@@ -37,7 +37,7 @@
           />
         </div>
       </div>
-      <div class="w-2/5">
+      <div class="w-full lg:w-2/5">
         <p class="my-4 text-lg font-semibold">
           Provide your details to start the quiz:
         </p>
