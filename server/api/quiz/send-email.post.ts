@@ -2,6 +2,7 @@ import ejs from 'ejs';
 import { createSendGridClient } from '~/server/utils/sendGrid';
 import { EmailDetails, EmailQuizBody } from '~~/types/api/quiz';
 import emailTemplate from '~/server/utils/templates/quizResponseEmail';
+import { createSupabaseClient } from '~/server/utils/supabase';
 
 import {
   defineEventHandler,
@@ -30,9 +31,10 @@ async function downloadPdf(url: string) {
 
 async function sendEmail(quiz: EmailQuizBody, details: EmailDetails) {
   const sendGrid = createSendGridClient();
+
   const { href } = new URL(
     `/quiz/results/${details.id}`,
-    useRuntimeConfig().public.pageUrl as string,
+    useRuntimeConfig().public.pageUrl,
   );
 
   // const image = await downloadImage(details.diploma);
@@ -75,9 +77,10 @@ async function sendEmail(quiz: EmailQuizBody, details: EmailDetails) {
 
 export default defineEventHandler(async (event) => {
   const body = await readBody<SendEmailBody>(event);
+  const supabase = createSupabaseClient();
 
   const { quiz, details } = body;
-
+  
   await sendEmail(quiz, details);
 
   return {

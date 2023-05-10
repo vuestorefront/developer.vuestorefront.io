@@ -72,12 +72,13 @@
         "submit": "Submit"
       },
       "userDetails": {
-        "subheading": "Want to get your dimploma by email? Enter your details below",
+        "subheading": "Want to get your dimploma by email?",
         "firstName": "First name",
         "lastName": "Last name",
+        "consent": "I agree that my email will be stored and used to send me a diploma.",
         "email": "E-mail",
         "emailMessage": "We will not share your email with anyone else or use it for marketing purposes",
-        "emailSent": "Your diploma has been sent to your email address",
+        "emailSent": "",
         "submit": "Send me my diploma"
       },
       "tryAgain": {
