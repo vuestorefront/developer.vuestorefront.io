@@ -80,6 +80,18 @@
       &--prod, &--none {
         @apply hidden;
       }
+
+      &--pro {
+        @apply
+        text-white
+        bg-primary-600;
+      }
+
+      &--beginner {
+        @apply
+        text-white
+        bg-secondary-600;
+      }
     }
 
 

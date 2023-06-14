@@ -40,7 +40,9 @@ async function fetchQuiz(
       `
       id,
       title,
-      questions
+      questions,
+      type,
+      amount
     `,
     )
     .eq('id', name)

@@ -41,6 +41,8 @@ export const cssStatusClass: EnumRecord<IntegrationStatus, string> = {
   [IntegrationStatus.beta]: 'card-badge-status--beta',
   [IntegrationStatus.wip]: 'card-badge-status--wip',
   [IntegrationStatus.prod]: 'card-badge-status--prod',
+  [IntegrationStatus.pro]: 'card-badge-status--pro',
+  [IntegrationStatus.beginner]: 'card-badge-status--beginner',
 };
 
 export const typeLabel: EnumRecord<IntegrationLicense, string> = {
@@ -53,6 +55,8 @@ export const statusLabel: EnumRecord<IntegrationStatus, string> = {
   [IntegrationStatus.beta]: 'Beta',
   [IntegrationStatus.wip]: 'In development',
   [IntegrationStatus.prod]: 'Production',
+  [IntegrationStatus.pro]: 'Pro',
+  [IntegrationStatus.beginner]: 'Beginner',
 };
 
 export const cssPositionClass: EnumRecord<BadgePosition, string> = {
