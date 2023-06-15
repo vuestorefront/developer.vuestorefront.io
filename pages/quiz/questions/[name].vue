@@ -94,6 +94,7 @@ import type {
   ApiQuizQuestions,
   ApiQuizSubmit,
 } from '~/types/api/quiz';
+import { useUserDetails } from '~/store/userDetails';
 
 definePageMeta({
   documentDriven: false,
@@ -112,6 +113,7 @@ const { t } = useI18n();
 const route = useRoute();
 const router = useRouter();
 const config = useRuntimeConfig();
+const { setUserDetails } = useUserDetails();
 const loading = ref(false);
 const surveyLoading = ref(false);
 const step = ref(Steps.Intro);
@@ -133,8 +135,6 @@ const { data: quiz } = await useFetch<ApiQuizQuestions>(
     },
   },
 );
-
-console.log(quiz, 'quiz');
 
 const ogImage = computed(() => {
   const { href } = new URL(
@@ -198,6 +198,11 @@ async function submitUserDetails(selectedAnswers: string[]) {
     surname: lastName.value,
     email: email.value,
   };
+  setUserDetails({
+    firstName: firstName.value,
+    lastName: lastName.value,
+    email: email.value,
+  })
   surveyLoading.value = true;
   loading.value = true;
 

@@ -70,7 +70,6 @@
 
     <div class="container mx-auto flex flex-col flex-wrap px-5 py-4 text-gray-600 lg:w-2/3">
       <form class="flex flex-col items-center" @submit.stop.prevent="submit">
-
         <!-- Submit button -->
         <AtomsButton type="submit" color="primary" class="mt-6">
           <AtomsLoading v-if="detailsLoading" />
@@ -94,6 +93,7 @@ import type {
 import type { Session } from '@supabase/supabase-js';
 import { ApiUrl } from '~~/enums/apiUrl';
 import { notify } from '@kyvg/vue3-notification';
+import { useUserDetails } from '~/store/userDetails';
 
 const props = defineProps<{
   response: ApiQuizResponse;
@@ -107,6 +107,7 @@ defineEmits<{
 
 const { t } = useI18n();
 const route = useRoute();
+const store = useUserDetails();
 
 const shareUrl = ref('');
 const copiedIndicator = ref(false);
@@ -178,7 +179,7 @@ async function submit(event: Event) {
 
   const { id } = route.params;
   const { response } = props;
-  const email = form.get('email') as string;
+  const { email } = store.userDetails;
   const name = response.username.split(' ')[0];
   const surname = response.username.split(' ')[1];
 
@@ -206,7 +207,6 @@ async function submit(event: Event) {
       details: detailsBody,
     }),
   });
-
 
   detailsLoading.value = false;
   notify({

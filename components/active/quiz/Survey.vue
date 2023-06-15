@@ -1,13 +1,9 @@
 <template>
   <h1 class="my-4 text-center text-4xl">
-    <AtomsTextFirstColoredWord
-      :text="t('page.quiz.questions.header', { test: quiz.title })"
-    />
+    <AtomsTextFirstColoredWord :text="t('page.quiz.questions.header', { test: quiz.title })" />
   </h1>
 
-  <div
-    class="container mx-auto flex flex-col flex-wrap px-5 py-4 text-gray-600 lg:w-2/3"
-  >
+  <div class="container mx-auto flex flex-col flex-wrap px-5 py-4 text-gray-600 lg:w-2/3">
     <!-- Quiz header -->
     <div class="flex justify-between pt-4">
       <div class="mb-1 text-sm text-gray-500">
@@ -16,10 +12,8 @@
 
       <div class="flex items-center md:w-64">
         <div class="mr-2 w-full rounded-full bg-gray-100">
-          <div
-            class="h-2 rounded-full bg-green-500 transition-all duration-200 ease-in-out"
-            :style="{ width: progress + '%' }"
-          ></div>
+          <div class="h-2 rounded-full bg-green-500 transition-all duration-200 ease-in-out"
+            :style="{ width: progress + '%' }"></div>
         </div>
         <div class="w-10 text-xs text-gray-500">
           {{ t('page.quiz.questions.progress', { progress }) }}
@@ -35,67 +29,34 @@
           {{ currentQuestion.title }}
         </p>
 
-        <label
-          v-for="answer in shuffledAnswers"
-          :key="answer"
-          :for="'answer' + answer"
-          :class="{
-            'border-green-300 bg-green-100 text-green-800': isSelected(answer),
-          }"
-          class="mt-2 flex cursor-pointer items-center justify-center gap-2 rounded border border-gray-200 pl-4 text-gray-800 transition-all duration-200 ease-in-out"
-        >
-          <input
-            :id="'answer' + answer"
-            :value="answer"
-            :checked="isSelected(answer)"
-            type="radio"
-            class="text-green-600 focus:ring-1 focus:ring-green-500"
-            @input="() => select(answer)"
-          />
+        <label v-for="answer in shuffledAnswers" :key="answer" :for="'answer' + answer" :class="{
+          'border-green-300 bg-green-100 text-green-800': isSelected(answer),
+        }"
+          class="mt-2 flex cursor-pointer items-center justify-center gap-2 rounded border border-gray-200 pl-4 text-gray-800 transition-all duration-200 ease-in-out">
+          <input :id="'answer' + answer" :value="answer" :checked="isSelected(answer)" type="radio"
+            class="text-green-600 focus:ring-1 focus:ring-green-500" @input="() => select(answer)" />
           <span class="text-bold w-full py-4 text-sm">
             {{ answer }}
           </span>
         </label>
 
         <!-- Buttons -->
-        <div
-          :class="isFirstStep ? 'justify-end' : 'justify-between'"
-          class="mt-6 flex w-full flex-wrap items-center"
-        >
+        <div :class="isFirstStep ? 'justify-end' : 'justify-between'" class="mt-6 flex w-full flex-wrap items-center">
           <AtomsButton v-if="!isFirstStep" color="gray" @click="goBack">
-            <AtomsIcon
-              name="carbon:arrow-left"
-              class="mr-2 text-lg text-gray-800"
-            />
+            <AtomsIcon name="carbon:arrow-left" class="mr-2 text-lg text-gray-800" />
             {{ t('page.quiz.questions.back') }}
           </AtomsButton>
 
-          <AtomsButton
-            v-if="!isLastStep"
-            :disabled="!currentAnswer"
-            color="gray"
-            @click="goNext"
-          >
+          <AtomsButton v-if="!isLastStep" :disabled="!currentAnswer" color="gray" @click="goNext">
             {{ t('page.quiz.questions.next') }}
-            <AtomsIcon
-              name="carbon:arrow-right"
-              class="ml-2 text-lg text-gray-800"
-            />
+            <AtomsIcon name="carbon:arrow-right" class="ml-2 text-lg text-gray-800" />
           </AtomsButton>
 
-          <AtomsButton
-            v-else
-            :disabled="!currentAnswer"
-            color="primary"
-            @click="emitSbumit"
-          >
+          <AtomsButton v-else :disabled="!currentAnswer" color="primary" @click="emitSbumit">
             <AtomsLoading v-if="surveyLoading" />
             <div v-else>
               {{ t('page.quiz.questions.complete') }}
-              <AtomsIcon
-                name="carbon:checkmark"
-                class="ml-2 text-lg text-white"
-              />
+              <AtomsIcon name="carbon:checkmark" class="ml-2 text-lg text-white" />
             </div>
           </AtomsButton>
         </div>
@@ -105,106 +66,107 @@
 </template>
 
 <script setup lang="ts">
-  import { useI18n } from 'vue-i18n';
-  import type { ApiQuizQuestions } from '~/types/api/quiz';
+import { useI18n } from 'vue-i18n';
+import type { ApiQuizQuestions } from '~/types/api/quiz';
 
-  const props = defineProps<{
-    quiz: ApiQuizQuestions;
-    surveyLoading: boolean;
-  }>();
+const props = defineProps<{
+  quiz: ApiQuizQuestions;
+  surveyLoading: boolean;
+}>();
 
-  const emit = defineEmits<{
-    (e: 'submit', answers: string[]): void;
-  }>();
+const emit = defineEmits<{
+  (e: 'submit', answers: string[]): void;
+}>();
 
-  definePageMeta({
-    documentDriven: false,
-  });
+definePageMeta({
+  documentDriven: false,
+});
 
-  const radio = ref<HTMLInputElement | null>(null);
+const radio = ref<HTMLInputElement | null>(null);
 
-  const { t } = useI18n();
+const { t } = useI18n();
+const email = ref<string>('');
 
-  // Refs
-  const selectedAnswers = ref<string[]>([]);
-  const currentStepNumber = ref<number>(1);
+// Refs
+const selectedAnswers = ref<string[]>([]);
+const currentStepNumber = ref<number>(1);
 
-  // Computed
-  const max = computed<number>(() => {
-    return props.quiz.questions?.length;
-  });
+// Computed
+const max = computed<number>(() => {
+  return props.quiz.questions?.length;
+});
 
-  const progress = computed(() => {
-    return Math.round((currentStepNumber.value / max.value) * 100);
-  });
+const progress = computed(() => {
+  return Math.round((currentStepNumber.value / max.value) * 100);
+});
 
-  const currentArrayIndex = computed(() => {
-    return currentStepNumber.value - 1;
-  });
+const currentArrayIndex = computed(() => {
+  return currentStepNumber.value - 1;
+});
 
-  const currentQuestion = computed(() => {
-    return props.quiz.questions?.[currentArrayIndex.value];
-  });
+const currentQuestion = computed(() => {
+  return props.quiz.questions?.[currentArrayIndex.value];
+});
 
-  const currentAnswer = computed(() => {
-    return selectedAnswers.value[currentArrayIndex.value];
-  });
+const currentAnswer = computed(() => {
+  return selectedAnswers.value[currentArrayIndex.value];
+});
 
-  const isFirstStep = computed(() => {
-    return currentStepNumber.value === 1;
-  });
+const isFirstStep = computed(() => {
+  return currentStepNumber.value === 1;
+});
 
-  const isLastStep = computed(() => {
-    return currentStepNumber.value === max.value;
-  });
+const isLastStep = computed(() => {
+  return currentStepNumber.value === max.value;
+});
 
-  // Methods
-  function goBack() {
-    if (currentStepNumber.value > 1) {
-      currentStepNumber.value -= 1;
-    }
+// Methods
+function goBack() {
+  if (currentStepNumber.value > 1) {
+    currentStepNumber.value -= 1;
+  }
+}
+
+function goNext() {
+  if (!currentAnswer.value) {
+    return;
+  }
+  currentStepNumber.value += 1;
+}
+
+function emitSbumit() {
+  emit('submit', selectedAnswers.value);
+}
+
+function select(answer: string) {
+  selectedAnswers.value[currentArrayIndex.value] = answer;
+}
+
+function shuffle(array: string[]) {
+  let currentIndex = array.length;
+  let randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex !== 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
   }
 
-  function goNext() {
-    if (!currentAnswer.value) {
-      return;
-    }
-    currentStepNumber.value += 1;
-  }
+  return array;
+}
 
-  function emitSbumit() {
-    emit('submit', selectedAnswers.value);
-  }
+const shuffledAnswers = computed(() => {
+  return shuffle(currentQuestion.value.answers);
+});
 
-  function select(answer: string) {
-    selectedAnswers.value[currentArrayIndex.value] = answer;
-  }
-
-  function shuffle(array: string[]) {
-    let currentIndex = array.length;
-    let randomIndex;
-
-    // While there remain elements to shuffle.
-    while (currentIndex !== 0) {
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex],
-        array[currentIndex],
-      ];
-    }
-
-    return array;
-  }
-
-  const shuffledAnswers = computed(() => {
-    return shuffle(currentQuestion.value.answers);
-  });
-
-  function isSelected(answer: string) {
-    return answer === currentAnswer.value;
-  }
+function isSelected(answer: string) {
+  return answer === currentAnswer.value;
+}
 </script>
