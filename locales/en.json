@@ -120,7 +120,9 @@
       },
       "spread": {
         "title": "Get certified",
-        "message": "Available certifications"
+        "message": "Available certifications",
+        "vsf2": "Vue Storefront 2",
+        "sdk": "Vue Storefront SDK"
       }
     },
     "videos": {

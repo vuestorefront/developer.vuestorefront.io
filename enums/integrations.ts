@@ -3,6 +3,8 @@ export enum IntegrationStatus {
   beta = 'beta',
   prod = 'prod',
   wip = 'wip',
+  pro = 'pro',
+  beginner = 'beginner',
 }
 
 export enum IntegrationLicense {

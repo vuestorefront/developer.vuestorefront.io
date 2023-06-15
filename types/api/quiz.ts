@@ -12,6 +12,8 @@ export type Quiz = {
   correct_answers: string[];
   discord_role_id: string;
   passing_score: number;
+  type: string;
+  amount: number;
 };
 
 export type EmailQuizBody = {
@@ -47,7 +49,7 @@ export type Response = {
   created_at: string;
 };
 
-export type ApiQuizQuestions = Pick<Quiz, 'id' | 'title' | 'questions'>;
+export type ApiQuizQuestions = Pick<Quiz, 'id' | 'title' | 'questions' | 'type' | 'amount'>;
 
 export type ApiQuizResponse = {
   id: Response['id'];

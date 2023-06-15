@@ -10,17 +10,24 @@
               Certification Program.
             </span>
           </h1>
-          <p>Our exams consist of a set of 10 questions:</p>
-          <ul>
-            <li>
-              the first 5 questions are about Vue Storefront and its
-              architecture;
-            </li>
-            <li>
-              the last 5 are dedicated to testing your knowledge about the
-              <span>{{ quiz?.title }}</span> integration.
-            </li>
-          </ul>
+          <div v-if="quiz?.type !== 'sdk'">
+            <p>Our exams consist of a set of {{ quiz?.amount }} questions:</p>
+            <ul>
+              <li>
+                the first 5 questions are about Vue Storefront and its
+                architecture;
+              </li>
+              <li>
+                the last 5 are dedicated to testing your knowledge about the
+                <span>{{ quiz?.title }}</span> integration.
+              </li>
+            </ul>
+          </div>
+          <div v-else>
+            <p>Our exams consist of a set of {{ quiz?.amount }} <span class="font-bold">{{ quiz?.title }}</span> specific
+              questions.</p>
+          </div>
+
           <p>
             Becoming a certified Vue Storefront developer allows you to broaden
             your career opportunities in the e-commerce space, either by helping
@@ -93,6 +100,7 @@ definePageMeta({
   title: 'i18n:page.quiz.questions.head.title',
 });
 
+
 const enum Steps {
   UserDetails = 0,
   Intro = 1,
@@ -116,8 +124,6 @@ const form = reactive({
   userDetails: {},
 });
 
-console.log(consent.value)
-
 const { data: quiz } = await useFetch<ApiQuizQuestions>(
   ApiUrl.QuizQuestions,
   {
@@ -127,6 +133,8 @@ const { data: quiz } = await useFetch<ApiQuizQuestions>(
     },
   },
 );
+
+console.log(quiz, 'quiz');
 
 const ogImage = computed(() => {
   const { href } = new URL(
