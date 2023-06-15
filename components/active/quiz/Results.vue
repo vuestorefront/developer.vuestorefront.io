@@ -55,6 +55,7 @@
             {{ t('page.quiz.result.downloadTitle') }}
           </p>
 
+
           <AtomsButton download :href="diplomaPdf" target="_blank" color="primary">
             {{ t('page.quiz.result.download') }}
           </AtomsButton>
@@ -64,21 +65,52 @@
 
     <!-- send by email -->
 
-    <h2 class="mt-12 mb-4 text-center text-3xl">
-      <AtomsTextFirstColoredWord :text="t('page.quiz.userDetails.subheading')" />
-    </h2>
+    <div v-if="email">
+      <h2 class="mt-12 mb-4 text-center text-3xl">
+        <AtomsTextFirstColoredWord :text="t('page.quiz.userDetails.subheading')" />
+      </h2>
 
-    <div class="container mx-auto flex flex-col flex-wrap px-5 py-4 text-gray-600 lg:w-2/3">
-      <form class="flex flex-col items-center" @submit.stop.prevent="submit">
-        <!-- Submit button -->
-        <AtomsButton type="submit" color="primary" class="mt-6">
-          <AtomsLoading v-if="detailsLoading" />
+      <div class="container mx-auto flex flex-col flex-wrap px-5 py-4 text-gray-600 lg:w-2/3">
+        <form class="flex flex-col items-center" @submit.stop.prevent="submit">
+          <!-- Submit button -->
+          <AtomsButton type="submit" color="primary" class="mt-6">
+            <AtomsLoading v-if="detailsLoading" />
 
-          <template v-else>
-            {{ t('page.quiz.userDetails.submit') }}
-          </template>
-        </AtomsButton>
-      </form>
+            <template v-else>
+              {{ t('page.quiz.userDetails.submit') }}
+            </template>
+          </AtomsButton>
+        </form>
+      </div>
+    </div>
+
+    <div v-else>
+      <h2 class="mt-12 mb-4 text-center text-3xl">
+        <AtomsTextFirstColoredWord :text="t('page.quiz.userDetails.subheading')" />
+      </h2>
+
+      <div class="container mx-auto flex flex-col flex-wrap px-5 py-4 text-gray-600 lg:w-2/3">
+        <form class="flex flex-col items-center" @submit.stop.prevent="submit">
+
+          <div class="flex flex-col">
+            <input id="email" type="email" name="email" required
+              class="rounded-md border border-slate-300 bg-slate-50 px-4 py-2 focus:border-blue-300 focus:ring focus:ring-blue-200" />
+
+            <p class="mt-2 text-center text-sm text-gray-500">
+              {{ t('page.quiz.userDetails.emailMessage') }}
+            </p>
+          </div>
+
+          <!-- Submit button -->
+          <AtomsButton type="submit" color="primary" class="mt-6">
+            <AtomsLoading v-if="detailsLoading" />
+
+            <template v-else>
+              {{ t('page.quiz.userDetails.submit') }}
+            </template>
+          </AtomsButton>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -108,6 +140,7 @@ defineEmits<{
 const { t } = useI18n();
 const route = useRoute();
 const store = useUserDetails();
+const { email } = store.userDetails;
 
 const shareUrl = ref('');
 const copiedIndicator = ref(false);
@@ -179,9 +212,9 @@ async function submit(event: Event) {
 
   const { id } = route.params;
   const { response } = props;
-  const { email } = store.userDetails;
   const name = response.username.split(' ')[0];
   const surname = response.username.split(' ')[1];
+  const formEmail = form.get('email') as string;
 
   detailsLoading.value = true;
 
@@ -194,7 +227,7 @@ async function submit(event: Event) {
     id,
     name,
     surname,
-    email,
+    email: email || formEmail,
     score: response.score,
     passed: response.passed,
     diploma: diplomaPdf.value,
