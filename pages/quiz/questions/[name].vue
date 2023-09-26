@@ -28,7 +28,7 @@
               questions.</p>
           </div>
 
-          <p>
+          <p v-if="quiz?.id !== 'essentials'">
             Becoming a certified Vue Storefront developer allows you to broaden
             your career opportunities in the e-commerce space, either by helping
             you to you to stand out inside your current organisation, or, in
