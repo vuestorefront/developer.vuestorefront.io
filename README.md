@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/1626923/156934585-5c585b9f-53ff-4eee-beb3-a3a410c48d47.png" alt="Vue Storefront" />
+  <img src="https://github.com/vuestorefront/.github/blob/main/profile/alokai-logo-w.png?raw=true" alt="Alokai" />
 </p>
 
 <h3 align="center">
@@ -9,7 +9,7 @@
   Welcome to our community developer portal repository. This project is dedicated to all our community members and contributors.
 </p>
 <p align="center">
-  The developer portal is a hub of information about the Vue Storefront framework and the community materials. You will find videos, blog posts, documentation and much more.
+  The developer portal is a hub of information about the Alokai framework and the community materials. You will find videos, blog posts, documentation and much more.
 </p>
 
 <p align="center">
@@ -143,20 +143,20 @@ the [Vue i18n][vue-i18n] plugin to handle the translations.
 
 ## Deployment
 
-The Vue Storefront developer portal is currently being deployed to the Vue Storefront Cloud Platform.
+The Alokai developer portal is currently being deployed to the Alokai Cloud Platform.
 
 We are using [Deploybot](https://deploybot.app/) to manage the deployment automatically.
 
 ## Contributing
 
-If you like the ideas behind Vue Storefront and want to become a contributor - join our [Discord server][discord], check
+If you like the ideas behind Alokai and want to become a contributor - join our [Discord server][discord], check
 the [list of the active issues][issues] or contact us directly via contributors(at)vuestorefront(dot)io.
 
 If you have discovered a 🐜 or have feature suggestion, feel free to [create an issue][create-issue] on GitHub.
 
 ## Support us
 
-**Vue Storefront is and always will be Open Source, released under MIT Licence.**
+**Alokai is and always will be Open Source, released under MIT Licence.**
 
 You can support us in various ways:
 
@@ -165,11 +165,11 @@ You can support us in various ways:
 
 ## Partners
 
-Vue Storefront is a Community effort brought to You by our great Core Team and supported by the following companies.
+Alokai is a Community effort brought to You by our great Core Team and supported by the following companies.
 
-[**See Vue Storefront partners directory**][vsf-partners]
+[**See Alokai partners directory**][vsf-partners]
 
-Vue Storefront source code is completely free and released under the [MIT License][license].
+Alokai source code is completely free and released under the [MIT License][license].
 
 
 [atomicdesign]: https://atomicdesign.bradfrost.com/
